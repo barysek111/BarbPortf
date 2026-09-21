@@ -1,0 +1,42 @@
+---
+alwaysApply: true
+---
+
+# Component workflow
+
+## Edit the component, not the instance
+
+When asked to change something, change the **component**, so every instance
+across the site changes with it — even when the request names a specific page
+("the services rows on /about", "the grid on the homepage"). Only scope a change
+to one page when explicitly told to.
+
+If a request genuinely needs to differ per page, add a prop to the single
+component rather than forking it into a second one.
+
+## Always update the design system page
+
+`src/app/design-system/page.tsx` is the catalogue. Every component change must
+update it in the same pass:
+
+1. **Render it** — new components go in `SECTION_PREVIEWS` (section components)
+   or the atoms group, so Cursor design mode can edit them.
+2. **Rewrite the description** if behaviour changed. A note that describes
+   removed behaviour is worse than no note. Mention props and any layout
+   constraints a consumer has to respect.
+3. **Remove the entry** when a component is deleted.
+
+"Used on:" lines are derived automatically from the import graph by
+`src/lib/component-usage.ts` — never hand-maintain them.
+
+Verify coverage after any add/remove:
+
+```sh
+find src/components -name "*.tsx" -exec rg -o 'export function ([A-Za-z]+)' -r '$1' {} \; | sort -u
+rg -o '(?:name: "|  )([A-Z][A-Za-z]+)(?:",| ?: <)' -r '$1' src/app/design-system/page.tsx --pcre2 | sort -u
+```
+
+## No dead code
+
+Deleting a component means deleting its file, its imports, its design-system
+entry, and any content fields only it consumed.

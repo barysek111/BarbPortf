@@ -1,0 +1,18 @@
+---
+description: This app is a from-zero 1:1 Framer rebuild. Never reuse the old NewBuild codebase.
+alwaysApply: true
+---
+
+# Isolation
+
+This workspace (`titarvl-1to1`) is a **new** 1:1 rebuild of https://titarvl.framer.website/
+
+Do **not**:
+- Import, copy, or extend anything from `../NewBuild/` (`src/`, `globals.css`, `tokens.ts`, components, content)
+- Reuse previous token names, spacing scales, type utilities, or layout classes from that rebuild
+- Treat Uncage dump HTML as React source — parse it into `docs/research/` then implement fresh
+
+Do:
+- Put extraction artifacts only in `docs/research/` and `docs/design-references/`
+- Build tokens/components only from extracted Framer CSS, `data-framer-name`, and live computed styles
+- Keep content identical to the live Framer site until the user edits it later

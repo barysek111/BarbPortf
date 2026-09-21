@@ -1,26 +1,381 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------------------
+   TITARVL design system
+   Every token below is derived from docs/research/framer-extract.json
+   (Framer publish output), not authored by hand. See DESIGN_SYSTEM.md.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Martian Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/2V0PKIcADoYhV6w87xrTKjs4CYElh_VS9YA4TlTnaTq9wQ-ecb642bf.woff2") format("woff2");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* The source ships a single Inter Display weight (500) and uses it everywhere.
+   Declaring a weight range here would let the browser synthesise a heavier
+   face, which reads noticeably bolder than the reference. */
+@font-face {
+  font-family: "Inter Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/iwWTDc49ENF2tCHbqlNARXw6Ug-727f74c0.woff2") format("woff2");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* -- Colour tokens (the three --token-* custom props on the source body) -- */
+  --color-*: initial;
+  --color-ink: #000;
+  --color-paper: #fff;
+  --color-muted: #a7a7a7;
+  --color-selection: #ff0c10;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* -- Typefaces -- */
+  --font-*: initial;
+  --font-mono: "Martian Mono", ui-monospace, monospace;
+  --font-display: "Inter Display", ui-sans-serif, sans-serif;
+
+  /* -- Breakpoints --------------------------------------------------------
+     The source uses two breakpoint families plus two type-only switches:
+       layout variants : 810 / 1200 / 1440
+       type presets    : pcouyd switches at 1440, jskmgv switches at 1400
+     Tailwind's defaults are cleared so only real source breakpoints exist. */
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 810px;
+  --breakpoint-desktop: 1200px;
+  --breakpoint-wide: 1400px;
+  --breakpoint-max: 1440px;
+
+  /* -- Spacing ------------------------------------------------------------
+     A single 4px-based scale shared by gap, padding and margin. The token
+     number is the pixel value, so `gap-12` is 12px — never a multiplier.
+
+     Steps of 4 up to 44, then 8 upward. 18 values, no exceptions.
+
+     There is deliberately no `--spacing` base step, so only the values listed
+     here exist. Note Tailwind does not error on an unknown utility — `gap-7`
+     simply produces no CSS and silently does nothing. `npm run check:spacing`
+     is what actually catches off-scale usage.
+
+     Component dimensions are not rhythm and use explicit brackets
+     (`w-[139px]`) rather than this scale. */
+  --spacing-0: 0px;
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-36: 36px;
+  --spacing-44: 44px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-76: 76px;
+  --spacing-96: 96px;
+  --spacing-104: 104px;
+  --spacing-152: 152px;
+  --spacing-216: 216px;
+
+  /* -- Layout wrap -- */
+  --container-section: 1920px;
+  --container-site: 3840px;
+  /* Longest comfortable measure for a full-width headline. */
+  --container-measure: 1440px;
+
+  /* -- Elevation --------------------------------------------------------
+     The only shadows in the system, used by the hero ring cards. Everything
+     else in the design is deliberately flat. */
+  --shadow-*: initial;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.08);
+  --shadow-card-raised: 0 14px 26px rgb(0 0 0 / 0.2);
+
+  /* -- Radii -- */
+  --radius-*: initial;
+  --radius-none: 0px;
+  --radius-media: 8px;
+  --radius-pill: 10px;
+  --radius-card: 15px;
+}
+
+/* Semantic aliases naming the *role* a space plays. Each points at a primitive
+   above; components prefer these where a role exists.
+   Values still reflect the pre-migration rhythm and move to their targets in
+   the gutter step (gutter 10 -> 12, header 52 -> 56). */
+@theme {
+  --spacing-hairline: 2px; /* near-flush text stacks */
+  --spacing-tight: 4px; /* image strips and galleries */
+  --spacing-gutter: 12px; /* page side padding and grid gutters */
+  --spacing-header: 56px; /* headline to content inside a section */
+  --spacing-headline: 56px; /* alias of header */
+  --spacing-section: 96px; /* section root pb-section only — never py, never inner */
+  --spacing-page-top: 216px; /* page top offset below the nav */
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: -0.05em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-selection);
+    color: var(--color-paper);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------------------
+   Type levels
+   One utility per Framer text preset. Responsive steps are part of the level
+   so components never restate font sizes.
+--------------------------------------------------------------------------- */
+
+/* preset u1p157 — labels, nav, meta */
+@utility type-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3em;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+/* preset 10gezu1 — emphasis labels */
+@utility type-label-strong {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2em;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+/* preset zw6rd6 — body */
+@utility type-body {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.1em;
+  letter-spacing: 0em;
+  text-transform: none;
+}
+
+/* preset jskmgv — h3 and stat figures. Note the 1400px switch. */
+@utility type-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 1em;
+
+  @media (width >= 810px) {
+    font-size: 23px;
+    line-height: 0.9em;
+  }
+  @media (width >= 1200px) {
+    font-size: 29px;
+  }
+  @media (width >= 1400px) {
+    font-size: 36px;
+  }
+}
+
+/* Stat figures. Shares the jskmgv size ramp but overrides line-height, tracking
+   and case, so it is its own level rather than a variant of type-h3.
+   The tight 0.8em line box is what lets the figure roll on hover. */
+@utility type-stat {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  text-transform: none;
+  font-size: 18px;
+  line-height: 0.8em;
+
+  @media (width >= 810px) {
+    font-size: 23px;
+  }
+  @media (width >= 1200px) {
+    font-size: 29px;
+  }
+  @media (width >= 1400px) {
+    font-size: 36px;
+  }
+}
+
+/* preset 1dpvgwi — page and hero titles */
+@utility type-display {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2em;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* preset pcouyd — section headlines. Note the 1440px switch. */
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1em;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-size: 41px;
+
+  @media (width >= 1200px) {
+    font-size: 51px;
+  }
+  @media (width >= 1440px) {
+    font-size: 64px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Layout primitives
+--------------------------------------------------------------------------- */
+
+/* Page wrap: outer 3840 cap, inner 1920 section cap, 10px gutters. */
+@utility site-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+}
+
+@utility section-wrap {
+  width: 100%;
+  max-width: var(--container-section);
+  padding-inline: var(--spacing-gutter);
+}
+
+/* ---------------------------------------------------------------------------
+   Projects grid
+   Row height hugs each row's tallest card (image aspect + 26px caption);
+   shorter cards sit at the bottom so captions share a baseline.
+--------------------------------------------------------------------------- */
+@utility works-grid {
+  --works-grid-columns: 4;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  column-gap: var(--spacing-gutter);
+  row-gap: var(--spacing-32);
+
+  @media (width >= 810px) {
+    grid-template-columns: repeat(2, 390px);
+    justify-content: start;
+  }
+
+  @media (width >= 1200px) {
+    grid-template-columns: repeat(var(--works-grid-columns), minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Hero frame
+   Centres the hero stage and sets its width only: 100vw on phone, 60vw from
+   810px. Height comes from the child (HeroRing’s 5:4), same as the design-
+   system preview where HeroRing sits without a frame.
+--------------------------------------------------------------------------- */
+@utility hero-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  inline-size: 100vw;
+
+  @media (width >= 810px) {
+    inline-size: 60vw;
+  }
+}
+
+/* Sections that must paint over the pinned/sticky bands behind them. */
+@utility stack-front {
+  position: relative;
+  z-index: 3;
+  background: var(--color-paper);
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   `appear` is a one-shot in-view reveal (SmoothScroll adds `.is-in`). It is not
+   a hover effect, and its offset is never the rest state.
+--------------------------------------------------------------------------- */
+
+@utility appear {
+  overflow: clip;
+
+  & > span {
+    display: block;
+    transform: translateY(20px);
+    transition: transform 0.8s ease;
+  }
+  &[data-appear="30"] > span {
+    transform: translateY(30px);
+  }
+  &[data-appear="60"] > span {
+    transform: translateY(60px);
+  }
+  &.is-in > span {
+    transform: translateY(0);
+  }
+  &.split-appear > span {
+    display: inline-block;
+  }
+}
+
+/* Text that is clipped to its box but has no entrance offset. */
+@utility reveal-clip {
+  overflow: clip;
+
+  & > span {
+    display: block;
+  }
 }

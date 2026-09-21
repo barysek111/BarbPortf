@@ -1,0 +1,55 @@
+{
+  "home": {
+    "layers": 441,
+    "rules": 1093,
+    "media": [
+      "default",
+      "not (color:color(display-p3 1 1 1))",
+      "not (aspect-ratio:1)",
+      "(background:-webkit-named-image(i)) and (not (contain-intrinsic-size:inherit))",
+      "(max-width: 809.98px)",
+      "(min-width: 810px) and (max-width: 1199.98px)",
+      "(height: 100dvh)"
+    ]
+  },
+  "works": {
+    "layers": 139,
+    "rules": 602,
+    "media": [
+      "default",
+      "not (color:color(display-p3 1 1 1))",
+      "not (aspect-ratio:1)",
+      "(background:-webkit-named-image(i)) and (not (contain-intrinsic-size:inherit))",
+      "(max-width: 809.98px)",
+      "(min-width: 810px) and (max-width: 1199.98px)",
+      "(height: 100dvh)"
+    ]
+  },
+  "about": {
+    "layers": 183,
+    "rules": 736,
+    "media": [
+      "default",
+      "not (color:color(display-p3 1 1 1))",
+      "not (aspect-ratio:1)",
+      "(background:-webkit-named-image(i)) and (not (contain-intrinsic-size:inherit))",
+      "(max-width: 809.98px)",
+      "(min-width: 810px) and (max-width: 1199.98px)",
+      "(min-width: 810px) and (max-width: 1399.98px)",
+      "(height: 100dvh)"
+    ]
+  },
+  "contact": {
+    "layers": 111,
+    "rules": 697,
+    "media": [
+      "default",
+      "not (color:color(display-p3 1 1 1))",
+      "not (aspect-ratio:1)",
+      "(background:-webkit-named-image(i)) and (not (contain-intrinsic-size:inherit))",
+      "(max-width: 809.98px)",
+      "(min-width: 810px) and (max-width: 1199.98px)",
+      "(height: 100dvh)"
+    ]
+  }
+}

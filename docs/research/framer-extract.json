@@ -1,0 +1,6368 @@
+{
+  "extractedAt": "2026-09-15T18:11:43.574Z",
+  "source": "/Users/spagett/portfolio-projects/Framercopyy/uncage/output/_Users_spagett_portfolio-projects_Framercopyy_site",
+  "tokens": {
+    "--token-df0587c7-0e65-43e2-ae9e-b0d3bc25eb50": "#000",
+    "--token-2fafc004-c4d0-4774-b2d3-bca8581a8919": "#fff",
+    "--token-4213617f-db71-4b9f-b786-d4b4f6de56f3": "#a7a7a7"
+  },
+  "extraColors": [
+    [
+      "#000",
+      1462
+    ],
+    [
+      "#fff",
+      260
+    ],
+    [
+      "#09f",
+      82
+    ],
+    [
+      "#a7a7a7",
+      60
+    ],
+    [
+      "#ff0c10",
+      32
+    ],
+    [
+      "#ffffff",
+      32
+    ],
+    [
+      "#111",
+      16
+    ],
+    [
+      "#999",
+      8
+    ],
+    [
+      "#0006",
+      4
+    ],
+    [
+      "#f5f5f5",
+      2
+    ]
+  ],
+  "hydrate": {
+    "routeId": "augiA20Il",
+    "localeId": "default",
+    "breakpoints": [
+      {
+        "hash": "72rtr7",
+        "mediaQuery": "(min-width: 1200px)"
+      },
+      {
+        "hash": "kyg8e3",
+        "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+      },
+      {
+        "hash": "6t0xxu",
+        "mediaQuery": "(max-width: 809.98px)"
+      },
+      {
+        "hash": "14aqazl",
+        "mediaQuery": "(min-width: 1440px)"
+      },
+      {
+        "hash": "614tft",
+        "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+      },
+      {
+        "hash": "1ljt0nv",
+        "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+      },
+      {
+        "hash": "rj6gpt",
+        "mediaQuery": "(max-width: 809.98px)"
+      }
+    ]
+  },
+  "typePresets": {
+    "10gezu1": [
+      {
+        "media": "default",
+        "fontFamily": "\"Martian Mono\",monospace",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "lineHeight": "1.2em",
+        "letterSpacing": "-.05em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "20px"
+      }
+    ],
+    "1dpvgwi": [
+      {
+        "media": "default",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "48px",
+        "fontWeight": "500",
+        "lineHeight": "1.2em",
+        "letterSpacing": "-.01em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "20px"
+      }
+    ],
+    "pcouyd": [
+      {
+        "media": "@media (max-width:1439px) and (min-width:1200px)",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "51px",
+        "fontWeight": "500",
+        "lineHeight": "1em",
+        "letterSpacing": "-.04em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "40px"
+      },
+      {
+        "media": "@media (max-width:1199px) and (min-width:0)",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "41px",
+        "fontWeight": "500",
+        "lineHeight": "1em",
+        "letterSpacing": "-.04em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "40px"
+      },
+      {
+        "media": "default",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "64px",
+        "fontWeight": "500",
+        "lineHeight": "1em",
+        "letterSpacing": "-.04em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "40px"
+      }
+    ],
+    "jskmgv": [
+      {
+        "media": "default",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "36px",
+        "fontWeight": "500",
+        "lineHeight": ".9em",
+        "letterSpacing": "-.01em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "40px"
+      },
+      {
+        "media": "@media (max-width:1399px) and (min-width:1200px)",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "29px",
+        "fontWeight": "500",
+        "lineHeight": ".9em",
+        "letterSpacing": "-.01em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "40px"
+      },
+      {
+        "media": "@media (max-width:1199px) and (min-width:810px)",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "23px",
+        "fontWeight": "500",
+        "lineHeight": ".9em",
+        "letterSpacing": "-.01em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "40px"
+      },
+      {
+        "media": "@media (max-width:809px) and (min-width:0)",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "1em",
+        "letterSpacing": "-.01em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "40px"
+      }
+    ],
+    "zw6rd6": [
+      {
+        "media": "default",
+        "fontFamily": "\"Inter Display\",\"Inter Display Placeholder\",sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "1.1em",
+        "letterSpacing": "0em",
+        "textTransform": "none",
+        "paragraphSpacing": "20px"
+      }
+    ],
+    "u1p157": [
+      {
+        "media": "default",
+        "fontFamily": "\"Martian Mono\",monospace",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "1.3em",
+        "letterSpacing": "-.05em",
+        "textTransform": "uppercase",
+        "paragraphSpacing": "20px"
+      }
+    ]
+  },
+  "presetIdMap": {
+    "AZoWlJ4IN": 423,
+    "HdfSiqSOj": 54,
+    "pMe7Izqxo": 39,
+    "jZpxU24kU": 39,
+    "TCmL8PQnd": 4
+  },
+  "layout": {
+    "maxWidths": [
+      [
+        "1920px",
+        22
+      ],
+      [
+        "100%",
+        10
+      ],
+      [
+        "620px",
+        6
+      ],
+      [
+        "1440px",
+        4
+      ],
+      [
+        "3840px",
+        2
+      ],
+      [
+        "350px",
+        2
+      ],
+      [
+        "630px",
+        2
+      ],
+      [
+        "85%",
+        2
+      ],
+      [
+        "450px",
+        2
+      ],
+      [
+        "1199.98px)&quot",
+        2
+      ],
+      [
+        "809.98px)&quot",
+        2
+      ],
+      [
+        "1199.98px)\"",
+        2
+      ],
+      [
+        "809.98px)\"",
+        2
+      ],
+      [
+        "1439.98px)&quot",
+        1
+      ],
+      [
+        "1439.98px)\"",
+        1
+      ]
+    ],
+    "paddings": [
+      [
+        "0",
+        272
+      ],
+      [
+        "var(--framer-input-padding)",
+        16
+      ],
+      [
+        "0px",
+        14
+      ],
+      [
+        "0 10px",
+        12
+      ],
+      [
+        "0 0 12px",
+        6
+      ],
+      [
+        "0 0 76px",
+        6
+      ],
+      [
+        "0px 0px 6px 0px",
+        6
+      ],
+      [
+        "0 0 0 24px",
+        6
+      ],
+      [
+        "0 10px 96px",
+        4
+      ],
+      [
+        "7px 0 0",
+        4
+      ],
+      [
+        "0 0 52px",
+        4
+      ],
+      [
+        "96px 0",
+        4
+      ],
+      [
+        "0 0 96px",
+        4
+      ],
+      [
+        "24px 0 0",
+        4
+      ],
+      [
+        "0 0 0 10px",
+        4
+      ],
+      [
+        "20px",
+        2
+      ],
+      [
+        "10px",
+        2
+      ],
+      [
+        "52px 0",
+        2
+      ],
+      [
+        "0 0 10px",
+        2
+      ],
+      [
+        "10px 0 0",
+        2
+      ],
+      [
+        "var(--framer-link-text-background-padding,initial)",
+        2
+      ],
+      [
+        "initial",
+        2
+      ],
+      [
+        "52px 0 0",
+        2
+      ],
+      [
+        "0 0 42px",
+        2
+      ],
+      [
+        "0 10px 44px",
+        2
+      ],
+      [
+        "96px 10px 0",
+        2
+      ],
+      [
+        "var(--1qrp0p2)",
+        2
+      ],
+      [
+        "0 0 24px",
+        2
+      ],
+      [
+        "12px 0",
+        2
+      ],
+      [
+        "22px 10px",
+        2
+      ],
+      [
+        "0 24px 0 0",
+        2
+      ],
+      [
+        "0 0 0 36px",
+        2
+      ],
+      [
+        "150px 10px",
+        2
+      ],
+      [
+        "100px 10px 10px",
+        2
+      ],
+      [
+        "10px 0",
+        2
+      ],
+      [
+        "10px 0 24px",
+        2
+      ],
+      [
+        "10px 10px 0",
+        2
+      ],
+      [
+        "4px 8px",
+        1
+      ]
+    ],
+    "gaps": [
+      [
+        "0",
+        174
+      ],
+      [
+        "10px",
+        88
+      ],
+      [
+        "1px",
+        12
+      ],
+      [
+        "unset",
+        8
+      ],
+      [
+        "12px",
+        8
+      ],
+      [
+        "20px",
+        6
+      ],
+      [
+        "2px",
+        4
+      ],
+      [
+        "6px",
+        4
+      ],
+      [
+        "24px",
+        4
+      ],
+      [
+        "36px",
+        4
+      ],
+      [
+        "8px",
+        3
+      ],
+      [
+        "5px",
+        3
+      ],
+      [
+        "var(--stack-native-row-gap)",
+        2
+      ],
+      [
+        "var(--stack-native-column-gap)",
+        2
+      ],
+      [
+        "30px 10px",
+        2
+      ],
+      [
+        "42px",
+        2
+      ],
+      [
+        "16px",
+        2
+      ],
+      [
+        "60px",
+        2
+      ],
+      [
+        "0 36px",
+        2
+      ]
+    ],
+    "radii": [
+      [
+        "inherit",
+        102
+      ],
+      [
+        "0px",
+        26
+      ],
+      [
+        "8px",
+        13
+      ],
+      [
+        "15px",
+        1
+      ],
+      [
+        "10px",
+        1
+      ]
+    ],
+    "grids": [
+      [
+        "repeat(2,minmax(50px,1fr))",
+        6
+      ],
+      [
+        "repeat(5,minmax(50px,1fr))",
+        4
+      ],
+      [
+        "repeat(4,minmax(50px,1fr))",
+        4
+      ],
+      [
+        "repeat(1,minmax(50px,1fr))",
+        2
+      ],
+      [
+        "repeat(12,minmax(50px,1fr))",
+        2
+      ]
+    ]
+  },
+  "listedComponents": [
+    [
+      "framer-lib-cursors-host",
+      16
+    ],
+    [
+      "framer-fEHtQ",
+      16
+    ],
+    [
+      "PropertyOverrides",
+      16
+    ],
+    [
+      "framer-SZNeA",
+      16
+    ],
+    [
+      "framer-USIzC",
+      16
+    ],
+    [
+      "framer-5EfF8",
+      16
+    ],
+    [
+      "framer-lib-combinedCSSRules",
+      16
+    ],
+    [
+      "framer-m1lJq",
+      16
+    ],
+    [
+      "framer-uRLwX",
+      10
+    ],
+    [
+      "framer-BNqt1",
+      10
+    ],
+    [
+      "framer-Z7L99",
+      6
+    ],
+    [
+      "framer-WZqEJ",
+      5
+    ],
+    [
+      "framer-lib-form-plain-text-input",
+      2
+    ],
+    [
+      "framer-lib-form-select",
+      2
+    ],
+    [
+      "framer-igYKE",
+      2
+    ],
+    [
+      "framer-OwnOa",
+      2
+    ],
+    [
+      "framer-8ifp0",
+      2
+    ],
+    [
+      "framer-FdoCA",
+      2
+    ],
+    [
+      "framer-iIqb4",
+      1
+    ],
+    [
+      "framer-6iyeJ",
+      1
+    ],
+    [
+      "framer-iw6ol",
+      1
+    ],
+    [
+      "framer-59R6F",
+      1
+    ],
+    [
+      "framer-JtIyE",
+      1
+    ],
+    [
+      "framer-VU2OY",
+      1
+    ],
+    [
+      "framer-SlX0i",
+      1
+    ],
+    [
+      "framer-4nyCF",
+      1
+    ],
+    [
+      "framer-ZTawx",
+      1
+    ],
+    [
+      "framer-Mgzt1",
+      1
+    ],
+    [
+      "framer-txG6L",
+      1
+    ],
+    [
+      "framer-PDlDK",
+      1
+    ],
+    [
+      "framer-dJb9y",
+      1
+    ],
+    [
+      "framer-3pAI6",
+      1
+    ],
+    [
+      "framer-rbSUb",
+      1
+    ],
+    [
+      "framer-TROdJ",
+      1
+    ],
+    [
+      "framer-MJbJJ",
+      1
+    ],
+    [
+      "framer-C0fyI",
+      1
+    ],
+    [
+      "framer-XCVOS",
+      1
+    ]
+  ],
+  "componentHints": {
+    "framer-fEHtQ": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-SZNeA": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-USIzC": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-5EfF8": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-m1lJq": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-uRLwX": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-BNqt1": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-Z7L99": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-WZqEJ": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-igYKE": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-OwnOa": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-8ifp0": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-FdoCA": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-iIqb4": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-6iyeJ": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-iw6ol": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-59R6F": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-JtIyE": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-VU2OY": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-SlX0i": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-4nyCF": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-ZTawx": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-Mgzt1": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-txG6L": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-PDlDK": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-dJb9y": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-3pAI6": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-rbSUb": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-TROdJ": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-MJbJJ": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-C0fyI": {
+      "names": [],
+      "sampleText": []
+    },
+    "framer-XCVOS": {
+      "names": [],
+      "sampleText": []
+    }
+  },
+  "hoverRules": [
+    {
+      "selector": "a.framer-text:hover,span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))));background-color:var(--framer-link-hover-text-background-color-rgb,var(--framer-link-hover-text-background-color,var(--"
+    },
+    {
+      "selector": "code.framer-text a.framer-text:hover,code.framer-text span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))))"
+    },
+    {
+      "selector": "a.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "t([data-text-fill]),code.framer-text span.framer-text[data-framer-page-link-current]:hover,code.framer-text span.framer-text[data-framer-page-link-current]:hover span.framer-text:not([data-text-fill])",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "ent-type=Text] a h3 span span:hover,[data-framer-component-type=Text] a h4 span span:hover,[data-framer-component-type=Text] a h5 span span:hover,[data-framer-component-type=Text] a h6 span span:hover",
+      "css": "--font-family:var(--framer-link-hover-font-family,var(--framer-link-font-family,var(--framer-font-family)));--font-style:var(--framer-link-hover-font-style,var(--framer-link-font-style,var(--framer-font-style)));--font-weight:var(--framer-link-hover-font-weight,var(--framer-link-font-weight,var(--framer-font-weight)));--text-color:var(--framer-link-hover-text-color,var(--framer-link-text-color,var"
+    },
+    {
+      "selector": "a.framer-text:hover,a.framer-text:hover span.framer-text:not([data-text-fill]),span.framer-text[data-nested-link]:hover,span.framer-text[data-nested-link]:hover span.framer-text:not([data-text-fill])",
+      "css": "font-family:var(--framer-font-family-preview,var(--framer-link-hover-font-family,var(--framer-blockquote-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif)))));font-style:var(--framer-font-style-preview,var(--framer-link-hover-font-style,var(--framer-blockquote-font-style,var(--framer-link-font-style,var(--framer-font-style,normal)))));font-weigh"
+    },
+    {
+      "selector": "a.framer-text:hover,span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-blockquote-text-color,var(--framer-link-text-color,var(--framer-text-color,#000))));-webkit-text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-blockquote-text-decoration,var(--framer-link-text-decoration,var(--framer-text-decoration,initial))));text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-bloc"
+    },
+    {
+      "selector": "a.framer-text:hover,span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))));background-color:var(--framer-link-hover-text-background-color-rgb,var(--framer-link-hover-text-background-color,var(--"
+    },
+    {
+      "selector": "code.framer-text a.framer-text:hover,code.framer-text span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-blockquote-text-color,var(--framer-link-text-color,var(--framer-code-text-color,var(--framer-text-color,#000)))))"
+    },
+    {
+      "selector": "code.framer-text a.framer-text:hover,code.framer-text span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))))"
+    },
+    {
+      "selector": "current]:hover span.framer-text:not([data-text-fill]),span.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover span.framer-text:not([data-text-fill])",
+      "css": "color:inherit;font-family:var(--framer-font-family-preview,var(--framer-link-hover-font-family,var(--framer-link-current-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif)))));font-style:var(--framer-font-style-preview,var(--framer-link-hover-font-style,var(--framer-link-current-font-style,var(--framer-link-font-style,var(--framer-font-style,norm"
+    },
+    {
+      "selector": "a.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-link-current-text-color,var(--framer-link-text-color,var(--framer-text-color,#000))));-webkit-text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-link-current-text-decoration,var(--framer-link-text-decoration,var(--framer-text-decoration,initial))));text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-"
+    },
+    {
+      "selector": "a.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "code.framer-text a.framer-text[data-framer-page-link-current]:hover,code.framer-text span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-link-current-text-color,var(--framer-link-text-color,var(--framer-code-text-color,var(--framer-text-color,#000)))))"
+    },
+    {
+      "selector": "t([data-text-fill]),code.framer-text span.framer-text[data-framer-page-link-current]:hover,code.framer-text span.framer-text[data-framer-page-link-current]:hover span.framer-text:not([data-text-fill])",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "[data-framer-component-type=DeprecatedRichText] a:hover,[data-framer-component-type=DeprecatedRichText] a:hover span:not([data-text-fill])",
+      "css": "font-family:var(--framer-link-hover-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif)));font-style:var(--framer-link-hover-font-style,var(--framer-link-font-style,var(--framer-font-style,normal)));font-weight:var(--framer-link-hover-font-weight,var(--framer-link-font-weight,var(--framer-font-weight,400)));color:var(--framer-link-hover-text-color"
+    },
+    {
+      "selector": "ype=DeprecatedRichText] a[data-framer-page-link-current]:hover,[data-framer-component-type=DeprecatedRichText] a[data-framer-page-link-current]:hover span:not([data-text-fill]):not([data-nested-link])",
+      "css": "font-family:var(--framer-link-hover-font-family,var(--framer-link-current-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif))));font-style:var(--framer-link-hover-font-style,var(--framer-link-current-font-style,var(--framer-link-font-style,var(--framer-font-style,normal))));font-weight:var(--framer-link-hover-font-weight,var(--framer-link-current"
+    },
+    {
+      "selector": ".framer-form-text-input-clear:hover,.framer-form-text-input-clear:focus-visible",
+      "css": "color:var(--framer-input-font-color)"
+    },
+    {
+      "selector": "a.framer-text:hover,span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))));background-color:var(--framer-link-hover-text-background-color-rgb,var(--framer-link-hover-text-background-color,var(--"
+    },
+    {
+      "selector": "code.framer-text a.framer-text:hover,code.framer-text span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))))"
+    },
+    {
+      "selector": "a.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "t([data-text-fill]),code.framer-text span.framer-text[data-framer-page-link-current]:hover,code.framer-text span.framer-text[data-framer-page-link-current]:hover span.framer-text:not([data-text-fill])",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "ent-type=Text] a h3 span span:hover,[data-framer-component-type=Text] a h4 span span:hover,[data-framer-component-type=Text] a h5 span span:hover,[data-framer-component-type=Text] a h6 span span:hover",
+      "css": "--font-family:var(--framer-link-hover-font-family,var(--framer-link-font-family,var(--framer-font-family)));--font-style:var(--framer-link-hover-font-style,var(--framer-link-font-style,var(--framer-font-style)));--font-weight:var(--framer-link-hover-font-weight,var(--framer-link-font-weight,var(--framer-font-weight)));--text-color:var(--framer-link-hover-text-color,var(--framer-link-text-color,var"
+    },
+    {
+      "selector": "a.framer-text:hover,a.framer-text:hover span.framer-text:not([data-text-fill]),span.framer-text[data-nested-link]:hover,span.framer-text[data-nested-link]:hover span.framer-text:not([data-text-fill])",
+      "css": "font-family:var(--framer-font-family-preview,var(--framer-link-hover-font-family,var(--framer-blockquote-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif)))));font-style:var(--framer-font-style-preview,var(--framer-link-hover-font-style,var(--framer-blockquote-font-style,var(--framer-link-font-style,var(--framer-font-style,normal)))));font-weigh"
+    },
+    {
+      "selector": "a.framer-text:hover,span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-blockquote-text-color,var(--framer-link-text-color,var(--framer-text-color,#000))));-webkit-text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-blockquote-text-decoration,var(--framer-link-text-decoration,var(--framer-text-decoration,initial))));text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-bloc"
+    },
+    {
+      "selector": "a.framer-text:hover,span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))));background-color:var(--framer-link-hover-text-background-color-rgb,var(--framer-link-hover-text-background-color,var(--"
+    },
+    {
+      "selector": "code.framer-text a.framer-text:hover,code.framer-text span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-blockquote-text-color,var(--framer-link-text-color,var(--framer-code-text-color,var(--framer-text-color,#000)))))"
+    },
+    {
+      "selector": "code.framer-text a.framer-text:hover,code.framer-text span.framer-text[data-nested-link]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-blockquote-text-color-rgb,var(--framer-blockquote-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))))"
+    },
+    {
+      "selector": "current]:hover span.framer-text:not([data-text-fill]),span.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover span.framer-text:not([data-text-fill])",
+      "css": "color:inherit;font-family:var(--framer-font-family-preview,var(--framer-link-hover-font-family,var(--framer-link-current-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif)))));font-style:var(--framer-font-style-preview,var(--framer-link-hover-font-style,var(--framer-link-current-font-style,var(--framer-link-font-style,var(--framer-font-style,norm"
+    },
+    {
+      "selector": "a.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-link-current-text-color,var(--framer-link-text-color,var(--framer-text-color,#000))));-webkit-text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-link-current-text-decoration,var(--framer-link-text-decoration,var(--framer-text-decoration,initial))));text-decoration-line:var(--framer-link-hover-text-decoration,var(--framer-"
+    },
+    {
+      "selector": "a.framer-text[data-framer-page-link-current]:hover,span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "code.framer-text a.framer-text[data-framer-page-link-current]:hover,code.framer-text span.framer-text[data-framer-page-link-current]:hover",
+      "css": "color:var(--framer-link-hover-text-color,var(--framer-link-current-text-color,var(--framer-link-text-color,var(--framer-code-text-color,var(--framer-text-color,#000)))))"
+    },
+    {
+      "selector": "t([data-text-fill]),code.framer-text span.framer-text[data-framer-page-link-current]:hover,code.framer-text span.framer-text[data-framer-page-link-current]:hover span.framer-text:not([data-text-fill])",
+      "css": "color:var(--framer-link-hover-text-color-rgb,var(--framer-link-hover-text-color,var(--framer-link-current-text-color-rgb,var(--framer-link-current-text-color,var(--framer-link-text-color-rgb,var(--framer-link-text-color,var(--framer-code-text-color-rgb,var(--framer-code-text-color,var(--framer-text-color-rgb,var(--framer-text-color,#000))))))))));background-color:var(--framer-link-hover-text-backg"
+    },
+    {
+      "selector": "[data-framer-component-type=DeprecatedRichText] a:hover,[data-framer-component-type=DeprecatedRichText] a:hover span:not([data-text-fill])",
+      "css": "font-family:var(--framer-link-hover-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif)));font-style:var(--framer-link-hover-font-style,var(--framer-link-font-style,var(--framer-font-style,normal)));font-weight:var(--framer-link-hover-font-weight,var(--framer-link-font-weight,var(--framer-font-weight,400)));color:var(--framer-link-hover-text-color"
+    },
+    {
+      "selector": "ype=DeprecatedRichText] a[data-framer-page-link-current]:hover,[data-framer-component-type=DeprecatedRichText] a[data-framer-page-link-current]:hover span:not([data-text-fill]):not([data-nested-link])",
+      "css": "font-family:var(--framer-link-hover-font-family,var(--framer-link-current-font-family,var(--framer-link-font-family,var(--framer-font-family,Inter,Inter Placeholder,sans-serif))));font-style:var(--framer-link-hover-font-style,var(--framer-link-current-font-style,var(--framer-link-font-style,var(--framer-font-style,normal))));font-weight:var(--framer-link-hover-font-weight,var(--framer-link-current"
+    },
+    {
+      "selector": ".framer-form-text-input-clear:hover,.framer-form-text-input-clear:focus-visible",
+      "css": "color:var(--framer-input-font-color)"
+    }
+  ],
+  "keyframes": [
+    "__framer-loading-spin"
+  ],
+  "transitions": [
+    [
+      "transition:var(--framer-input-focused-transition)",
+      6
+    ],
+    [
+      "transition:color .15s",
+      2
+    ],
+    [
+      "transition: opacity 0.4s ease-out",
+      1
+    ],
+    [
+      "transition:x,...g",
+      1
+    ]
+  ],
+  "homeSections": [
+    {
+      "tag": "nav",
+      "name": "Desktop"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Hero"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Latest"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Services"
+    },
+    {
+      "tag": "section",
+      "name": "Section - What I Do"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Video"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Quote"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Benefits"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Showcase Reel"
+    },
+    {
+      "tag": "section",
+      "name": "Section - FAQ"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Testimonial"
+    },
+    {
+      "tag": "section",
+      "name": "Desktop 2"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Contact"
+    },
+    {
+      "tag": "section",
+      "name": "Section - Photos"
+    },
+    {
+      "tag": "footer",
+      "name": "Desktop"
+    }
+  ],
+  "homeNamedLayers": [
+    [
+      "Desktop",
+      28
+    ],
+    [
+      "Container",
+      25
+    ],
+    [
+      "Count",
+      22
+    ],
+    [
+      "Title",
+      15
+    ],
+    [
+      "Description",
+      14
+    ],
+    [
+      "Video",
+      13
+    ],
+    [
+      "Wrapper",
+      13
+    ],
+    [
+      "Big Desktop Closed",
+      12
+    ],
+    [
+      "Video Wrap",
+      11
+    ],
+    [
+      "Nav Link",
+      10
+    ],
+    [
+      "Image Wrapper",
+      10
+    ],
+    [
+      "Unactive",
+      9
+    ],
+    [
+      "Without []",
+      8
+    ],
+    [
+      "Process Tag",
+      8
+    ],
+    [
+      "Variant 1",
+      7
+    ],
+    [
+      "Filler",
+      6
+    ],
+    [
+      "Question",
+      6
+    ],
+    [
+      "Arrow SVG",
+      6
+    ],
+    [
+      "Arrow",
+      6
+    ],
+    [
+      "Divider",
+      6
+    ],
+    [
+      "Normal",
+      5
+    ],
+    [
+      "1",
+      5
+    ],
+    [
+      "2",
+      5
+    ],
+    [
+      "3",
+      5
+    ],
+    [
+      "4",
+      5
+    ],
+    [
+      "Service Card Images Desktop",
+      4
+    ],
+    [
+      "Project Info",
+      4
+    ],
+    [
+      "Project & Type",
+      4
+    ],
+    [
+      "Year & CTA",
+      4
+    ],
+    [
+      "Images Button",
+      4
+    ],
+    [
+      "Description Button",
+      4
+    ],
+    [
+      "Images & Description",
+      4
+    ],
+    [
+      "Images",
+      4
+    ],
+    [
+      "Image 1",
+      4
+    ],
+    [
+      "Image 2",
+      4
+    ],
+    [
+      "Image 3",
+      4
+    ],
+    [
+      "Image 4",
+      4
+    ],
+    [
+      "Deskop",
+      4
+    ],
+    [
+      "Stats & Description",
+      4
+    ],
+    [
+      "Stats",
+      4
+    ],
+    [
+      "Name",
+      4
+    ],
+    [
+      "Logo",
+      3
+    ],
+    [
+      "Tag",
+      3
+    ],
+    [
+      "Title & Editorial Tag",
+      3
+    ],
+    [
+      "Editorial Tag",
+      3
+    ],
+    [
+      "Blank",
+      3
+    ],
+    [
+      "Logo SVG",
+      2
+    ],
+    [
+      "White",
+      2
+    ],
+    [
+      "[",
+      2
+    ],
+    [
+      "Number",
+      2
+    ],
+    [
+      "]",
+      2
+    ],
+    [
+      "Default",
+      2
+    ],
+    [
+      "Headline",
+      2
+    ],
+    [
+      "Latest",
+      2
+    ],
+    [
+      "Button",
+      2
+    ],
+    [
+      "Text",
+      2
+    ],
+    [
+      "Col 1 Blank",
+      2
+    ],
+    [
+      "Header",
+      2
+    ],
+    [
+      "Email",
+      2
+    ],
+    [
+      "Phone",
+      2
+    ],
+    [
+      "Topic",
+      2
+    ],
+    [
+      "Message",
+      2
+    ],
+    [
+      "Cookies",
+      2
+    ],
+    [
+      "Logo & Menu Button Mobile",
+      1
+    ],
+    [
+      "Nav Links",
+      1
+    ],
+    [
+      "Home & Work",
+      1
+    ],
+    [
+      "Works Unactive",
+      1
+    ],
+    [
+      "About & Contact",
+      1
+    ],
+    [
+      "Main",
+      1
+    ],
+    [
+      "Section - Hero",
+      1
+    ],
+    [
+      "3D Carousel",
+      1
+    ],
+    [
+      "Videos",
+      1
+    ],
+    [
+      "SPACER",
+      1
+    ],
+    [
+      "Videp Wrap",
+      1
+    ],
+    [
+      "Titles Wrapper",
+      1
+    ],
+    [
+      "Titles",
+      1
+    ],
+    [
+      "latest work",
+      1
+    ],
+    [
+      "VOL. 01",
+      1
+    ],
+    [
+      "Scroll Down",
+      1
+    ],
+    [
+      "Section - Latest",
+      1
+    ],
+    [
+      "Section - Services",
+      1
+    ],
+    [
+      "services",
+      1
+    ],
+    [
+      "Services",
+      1
+    ],
+    [
+      "Web Design & Development",
+      1
+    ],
+    [
+      "Graphic Design",
+      1
+    ],
+    [
+      "Brand Identity",
+      1
+    ],
+    [
+      "Brand Guidelines",
+      1
+    ],
+    [
+      "Section - What I Do",
+      1
+    ],
+    [
+      "Tags",
+      1
+    ],
+    [
+      "Section - Video",
+      1
+    ],
+    [
+      "Col 2",
+      1
+    ],
+    [
+      "Section - Quote",
+      1
+    ],
+    [
+      "Subhead",
+      1
+    ],
+    [
+      "Section - Benefits",
+      1
+    ],
+    [
+      "Section - Showcase Reel",
+      1
+    ],
+    [
+      "video - holder",
+      1
+    ],
+    [
+      "spacer",
+      1
+    ],
+    [
+      "Section - FAQ",
+      1
+    ],
+    [
+      "Section - Testimonial",
+      1
+    ],
+    [
+      "Desktop 2",
+      1
+    ],
+    [
+      "Header & tags",
+      1
+    ],
+    [
+      "Testimonial",
+      1
+    ],
+    [
+      "Review",
+      1
+    ],
+    [
+      "Review 2",
+      1
+    ],
+    [
+      "Profile",
+      1
+    ],
+    [
+      "Profile Photo",
+      1
+    ],
+    [
+      "Name, Position, Agency",
+      1
+    ],
+    [
+      "Position & Agency",
+      1
+    ],
+    [
+      "Previous Button",
+      1
+    ],
+    [
+      "Next Button",
+      1
+    ],
+    [
+      "Section - Contact",
+      1
+    ],
+    [
+      "Subhead Wrapper",
+      1
+    ],
+    [
+      "Subhead ",
+      1
+    ],
+    [
+      "Form",
+      1
+    ],
+    [
+      "Inputs Container",
+      1
+    ],
+    [
+      "Form Fields",
+      1
+    ],
+    [
+      "Section - Photos",
+      1
+    ],
+    [
+      "Mobile",
+      1
+    ],
+    [
+      "Mobile Ticker",
+      1
+    ],
+    [
+      "Contact Info",
+      1
+    ],
+    [
+      "Contact",
+      1
+    ],
+    [
+      "Info",
+      1
+    ],
+    [
+      "Mail",
+      1
+    ],
+    [
+      "Year & Rights",
+      1
+    ],
+    [
+      "© 2025",
+      1
+    ],
+    [
+      "Rights",
+      1
+    ],
+    [
+      "Privacy",
+      1
+    ],
+    [
+      "Social Media",
+      1
+    ],
+    [
+      "Instagram",
+      1
+    ],
+    [
+      "Behance",
+      1
+    ],
+    [
+      "Light",
+      1
+    ],
+    [
+      "Backdrop",
+      1
+    ],
+    [
+      "Content",
+      1
+    ],
+    [
+      "Bottom",
+      1
+    ],
+    [
+      "Border",
+      1
+    ]
+  ],
+  "pages": {
+    "index.html": {
+      "breakpoints": [
+        {
+          "hash": "72rtr7",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "kyg8e3",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "6t0xxu",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-iIqb4",
+        "framer-6iyeJ",
+        "framer-iw6ol",
+        "framer-59R6F",
+        "framer-JtIyE",
+        "framer-WZqEJ",
+        "framer-VU2OY",
+        "framer-SlX0i",
+        "framer-4nyCF",
+        "framer-ZTawx",
+        "framer-Mgzt1",
+        "framer-txG6L",
+        "framer-igYKE",
+        "framer-OwnOa",
+        "framer-Z7L99",
+        "framer-8ifp0"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Hero"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Latest"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Services"
+        },
+        {
+          "tag": "section",
+          "name": "Section - What I Do"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Video"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Quote"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Benefits"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Showcase Reel"
+        },
+        {
+          "tag": "section",
+          "name": "Section - FAQ"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Testimonial"
+        },
+        {
+          "tag": "section",
+          "name": "Desktop 2"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Contact"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos"
+        },
+        {
+          "tag": "footer",
+          "name": "Desktop"
+        }
+      ],
+      "namedLayers": [
+        [
+          "Desktop",
+          28
+        ],
+        [
+          "Container",
+          25
+        ],
+        [
+          "Count",
+          22
+        ],
+        [
+          "Title",
+          15
+        ],
+        [
+          "Description",
+          14
+        ],
+        [
+          "Video",
+          13
+        ],
+        [
+          "Wrapper",
+          13
+        ],
+        [
+          "Big Desktop Closed",
+          12
+        ],
+        [
+          "Video Wrap",
+          11
+        ],
+        [
+          "Nav Link",
+          10
+        ],
+        [
+          "Image Wrapper",
+          10
+        ],
+        [
+          "Unactive",
+          9
+        ],
+        [
+          "Without []",
+          8
+        ],
+        [
+          "Process Tag",
+          8
+        ],
+        [
+          "Variant 1",
+          7
+        ],
+        [
+          "Filler",
+          6
+        ],
+        [
+          "Question",
+          6
+        ],
+        [
+          "Arrow SVG",
+          6
+        ],
+        [
+          "Arrow",
+          6
+        ],
+        [
+          "Divider",
+          6
+        ],
+        [
+          "Normal",
+          5
+        ],
+        [
+          "1",
+          5
+        ],
+        [
+          "2",
+          5
+        ],
+        [
+          "3",
+          5
+        ],
+        [
+          "4",
+          5
+        ],
+        [
+          "Service Card Images Desktop",
+          4
+        ],
+        [
+          "Project Info",
+          4
+        ],
+        [
+          "Project & Type",
+          4
+        ],
+        [
+          "Year & CTA",
+          4
+        ],
+        [
+          "Images Button",
+          4
+        ],
+        [
+          "Description Button",
+          4
+        ],
+        [
+          "Images & Description",
+          4
+        ],
+        [
+          "Images",
+          4
+        ],
+        [
+          "Image 1",
+          4
+        ],
+        [
+          "Image 2",
+          4
+        ],
+        [
+          "Image 3",
+          4
+        ],
+        [
+          "Image 4",
+          4
+        ],
+        [
+          "Deskop",
+          4
+        ],
+        [
+          "Stats & Description",
+          4
+        ],
+        [
+          "Stats",
+          4
+        ],
+        [
+          "Name",
+          4
+        ],
+        [
+          "Logo",
+          3
+        ],
+        [
+          "Tag",
+          3
+        ],
+        [
+          "Title & Editorial Tag",
+          3
+        ],
+        [
+          "Editorial Tag",
+          3
+        ],
+        [
+          "Blank",
+          3
+        ],
+        [
+          "Logo SVG",
+          2
+        ],
+        [
+          "White",
+          2
+        ],
+        [
+          "[",
+          2
+        ],
+        [
+          "Number",
+          2
+        ],
+        [
+          "]",
+          2
+        ],
+        [
+          "Default",
+          2
+        ],
+        [
+          "Headline",
+          2
+        ],
+        [
+          "Latest",
+          2
+        ],
+        [
+          "Button",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Col 1 Blank",
+          2
+        ],
+        [
+          "Header",
+          2
+        ],
+        [
+          "Email",
+          2
+        ],
+        [
+          "Phone",
+          2
+        ],
+        [
+          "Topic",
+          2
+        ],
+        [
+          "Message",
+          2
+        ],
+        [
+          "Cookies",
+          2
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Section - Hero",
+          1
+        ],
+        [
+          "3D Carousel",
+          1
+        ],
+        [
+          "Videos",
+          1
+        ],
+        [
+          "SPACER",
+          1
+        ],
+        [
+          "Videp Wrap",
+          1
+        ],
+        [
+          "Titles Wrapper",
+          1
+        ],
+        [
+          "Titles",
+          1
+        ],
+        [
+          "latest work",
+          1
+        ],
+        [
+          "VOL. 01",
+          1
+        ],
+        [
+          "Scroll Down",
+          1
+        ],
+        [
+          "Section - Latest",
+          1
+        ],
+        [
+          "Section - Services",
+          1
+        ],
+        [
+          "services",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Web Design & Development",
+          1
+        ],
+        [
+          "Graphic Design",
+          1
+        ],
+        [
+          "Brand Identity",
+          1
+        ],
+        [
+          "Brand Guidelines",
+          1
+        ],
+        [
+          "Section - What I Do",
+          1
+        ],
+        [
+          "Tags",
+          1
+        ],
+        [
+          "Section - Video",
+          1
+        ],
+        [
+          "Col 2",
+          1
+        ],
+        [
+          "Section - Quote",
+          1
+        ],
+        [
+          "Subhead",
+          1
+        ],
+        [
+          "Section - Benefits",
+          1
+        ],
+        [
+          "Section - Showcase Reel",
+          1
+        ],
+        [
+          "video - holder",
+          1
+        ],
+        [
+          "spacer",
+          1
+        ],
+        [
+          "Section - FAQ",
+          1
+        ],
+        [
+          "Section - Testimonial",
+          1
+        ],
+        [
+          "Desktop 2",
+          1
+        ],
+        [
+          "Header & tags",
+          1
+        ],
+        [
+          "Testimonial",
+          1
+        ],
+        [
+          "Review",
+          1
+        ],
+        [
+          "Review 2",
+          1
+        ],
+        [
+          "Profile",
+          1
+        ],
+        [
+          "Profile Photo",
+          1
+        ],
+        [
+          "Name, Position, Agency",
+          1
+        ],
+        [
+          "Position & Agency",
+          1
+        ],
+        [
+          "Previous Button",
+          1
+        ],
+        [
+          "Next Button",
+          1
+        ],
+        [
+          "Section - Contact",
+          1
+        ],
+        [
+          "Subhead Wrapper",
+          1
+        ],
+        [
+          "Subhead ",
+          1
+        ],
+        [
+          "Form",
+          1
+        ],
+        [
+          "Inputs Container",
+          1
+        ],
+        [
+          "Form Fields",
+          1
+        ],
+        [
+          "Section - Photos",
+          1
+        ],
+        [
+          "Mobile",
+          1
+        ],
+        [
+          "Mobile Ticker",
+          1
+        ],
+        [
+          "Contact Info",
+          1
+        ],
+        [
+          "Contact",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Mail",
+          1
+        ],
+        [
+          "Year & Rights",
+          1
+        ],
+        [
+          "© 2025",
+          1
+        ],
+        [
+          "Rights",
+          1
+        ],
+        [
+          "Privacy",
+          1
+        ],
+        [
+          "Social Media",
+          1
+        ],
+        [
+          "Instagram",
+          1
+        ],
+        [
+          "Behance",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "10gezu1",
+        "1dpvgwi",
+        "pcouyd",
+        "jskmgv",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:21:42 GMT+2 Bratislava, Slovakia TITARVL — CREATIVE DIRECTION latest work VOL. 01 [ s c r o l l d o w n ] latest [ 10 ] [ v i e w a l l ] 001 Chronicae 002 Arcane Studio 003 Solara 004 EDIFIER® MAGAZINE 005 Rowan Keats 006 BIG BABY TAPE® MAGAZINE 007 Cartes d’Atelier 008 Palmira 009 Scene Pro 010 EXAЛA(A) service(s) [ v i e w a l l ] [01] web design & development SITE STRUCTURE i m a g e s / d e s c r i p t i o n [02] Graphic Design VISUAL ASSETS i m a g e s / d e s c r i p t i o n [03] Brand identity VISUAL SYSTEM i m a g e s / d e s c r i p t i o n [04] brand guidelines IDENTITY SYSTEM i m a g e s / d e s c r i p t i o n what i do A SELECTED APPROACH T I T A R V L i s a d i g i t a l p r a c t i c e w o r k i n g a t t h e i n t e r s e c t i o n o f b r a n d i d e n t i t y a n d w e b , d e s i g n i n g a n d b u i l d i n g d i s t i n c t d i g i t a l e x p e r i e n c e s w h e r e c o n c e p t , t y p o g r a p h y , a n d e x e c u t i o n c o m e t o g e t h e r a s o n e c o h e s i v e s y s t e m . titarvl 2026 bratislava, sk 視覚 文字 Design is the silent ambassador of your brand [ a b o u t m e ] THE ADVANTAGE EXPERIENCE GUIDES THE WORK EXECUTION [01] 0 + 0 + Client collaborations [02] 0 + 0 + Years in practice [03] 0 + 0 + Delivered works [04] 60 % 60 % End-to-end delivery Show Case frequently asked questions CLARITY BUILDS THE IMAGE clarity [01] What services do you offer? SERVICES [02] What is your typical turnaround time? TIMELINE [03] Do you only work in Framer? tools [04] Can you handle both design and development? WORKFLOW [05] Do you offer brand strategy as well? scope [06] What does your process look like? PROCESS trust Voices Behind the Work testimonial \" C o m m u n i c a t i o n w a s c l e a r t h r o u g h o u t t h e e n t i r e p r o c e s s , a n d e v e r y s t e p f e l t w e l l t h o u g h t o u t . T h e f i n a l r e s u l t w a s p r e c i s e , c o h e s i v e , a n d t r u e t o t h e o r i g i n a l d i r e c t i o n . \" MAYA LEE BRAND MANAGER — ATELIER NOIR contact say bonjour inquiry Every connection begins with a conversation. Share your vision with us, and together we’ll create something that lasts Name Email Phone Topic Select topic Web Design & Development Brand Identity Brand Guidelines Graphic Design Other Your message [ s u b m i t ] Contact for all enquiries please contact info@titarvl.com titarvl © 2025 all rights reserved Cookies Policy Privacy Policy Instagram Behance Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "about.html": {
+      "breakpoints": [
+        {
+          "hash": "47jdtm",
+          "mediaQuery": "(min-width: 1400px)"
+        },
+        {
+          "hash": "15i0keg",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1399.98px)"
+        },
+        {
+          "hash": "tdbt9m",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-PDlDK",
+        "framer-WZqEJ",
+        "framer-dJb9y",
+        "framer-Z7L99",
+        "framer-3pAI6"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Hero"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Experience"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Services"
+        },
+        {
+          "tag": "footer",
+          "name": "Desktop"
+        }
+      ],
+      "namedLayers": [
+        [
+          "Desktop",
+          12
+        ],
+        [
+          "Container",
+          10
+        ],
+        [
+          "Nav Link",
+          10
+        ],
+        [
+          "Blank",
+          10
+        ],
+        [
+          "Unactive",
+          9
+        ],
+        [
+          "Description",
+          8
+        ],
+        [
+          "Title",
+          7
+        ],
+        [
+          "Tag",
+          6
+        ],
+        [
+          "Header",
+          6
+        ],
+        [
+          "Wrapper",
+          6
+        ],
+        [
+          "Count",
+          5
+        ],
+        [
+          "Images",
+          5
+        ],
+        [
+          "Type",
+          5
+        ],
+        [
+          "Position",
+          4
+        ],
+        [
+          "Company",
+          4
+        ],
+        [
+          "Year",
+          4
+        ],
+        [
+          "Project Info",
+          4
+        ],
+        [
+          "Image 1",
+          4
+        ],
+        [
+          "Logo",
+          3
+        ],
+        [
+          "Titles",
+          3
+        ],
+        [
+          "Logo SVG",
+          2
+        ],
+        [
+          "White",
+          2
+        ],
+        [
+          "Title & Editorial Tag",
+          2
+        ],
+        [
+          "Editorial Tag",
+          2
+        ],
+        [
+          "Subhead ",
+          2
+        ],
+        [
+          "Cookies",
+          2
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Section - Hero",
+          1
+        ],
+        [
+          "Wrapper / Desktop",
+          1
+        ],
+        [
+          "Row 1",
+          1
+        ],
+        [
+          "Row 2",
+          1
+        ],
+        [
+          "Row 3",
+          1
+        ],
+        [
+          "Scroll Down",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Section - About",
+          1
+        ],
+        [
+          "Subhead Wrapper",
+          1
+        ],
+        [
+          "Blocks",
+          1
+        ],
+        [
+          "Subhead 1",
+          1
+        ],
+        [
+          "Subhead 2",
+          1
+        ],
+        [
+          "Section - Experience",
+          1
+        ],
+        [
+          "Section - Services",
+          1
+        ],
+        [
+          "Header & Services",
+          1
+        ],
+        [
+          "Services ",
+          1
+        ],
+        [
+          "Focus",
+          1
+        ],
+        [
+          "Status",
+          1
+        ],
+        [
+          "Services Cards",
+          1
+        ],
+        [
+          "Contact Info",
+          1
+        ],
+        [
+          "Contact",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Mail",
+          1
+        ],
+        [
+          "Name",
+          1
+        ],
+        [
+          "Year & Rights",
+          1
+        ],
+        [
+          "© 2025",
+          1
+        ],
+        [
+          "Rights",
+          1
+        ],
+        [
+          "Privacy",
+          1
+        ],
+        [
+          "Social Media",
+          1
+        ],
+        [
+          "Instagram",
+          1
+        ],
+        [
+          "Behance",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "jskmgv",
+        "10gezu1",
+        "u1p157",
+        "zw6rd6"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:21:46 GMT+2 Bratislava, Slovakia about TITARVL IS A DIGITAL DESIGNER WORKING ACROSS WEB, UI/UX AND BRAND IDENTITY info [ s c r o l l d o w n ] about STUDIO, WORK, AND APPROACH process thinking Every project begins with a clear idea. Concept and structure come first, shaping decisions and defining direction. A thoughtful approach ensures that each design is intentional, relevant, and built on a strong conceptual foundation. making This is where ideas are translated into form. Through precise execution, attention to detail, and systematic workflows, concepts become functional, scalable, and visually consistent across digital platforms and touchpoints. PRACTICE Experience CAREER Brand & Product Designer Freelance gobigname (’24–’25) ui/ux designer full-time arcane studio (’22–’24) design ingineer full-time FORMA LAB (’21–’22) junior ui/ux designer freelance titarvl studio (’20–’21) service(s) type Web Design & development brand identity brand guidelines graphic design focus concept structure execution Status open for work [01] Web Design & Development I design and build modern, performance-driven websites that merge visual clarity with seamless user experience, translating your brand into a polished, functional digital presence. [02] Graphic Design I craft purposeful graphic design that communicates clearly and elevates your brand—balancing aesthetics and function across digital, print, and campaign materials. [03] Brand Identity I design distinctive brand identities that capture your vision and values, shaping logos, typography, and visual systems that feel intentional, timeless, and instantly recognizable. [04] Brand Guidelines I create clear, refined brand guidelines that define how your brand looks, sounds, and behaves—ensuring consistency across every platform, touchpoint, and collaboration. Contact for all enquiries please contact info@titarvl.com titarvl © 2025 all rights reserved Cookies Policy Privacy Policy Instagram Behance Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "contact.html": {
+      "breakpoints": [
+        {
+          "hash": "14gslgc",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "15p4pax",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "4agiew",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-rbSUb",
+        "framer-WZqEJ",
+        "framer-igYKE",
+        "framer-OwnOa",
+        "framer-Z7L99"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Contact"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos"
+        },
+        {
+          "tag": "footer",
+          "name": "Desktop"
+        }
+      ],
+      "namedLayers": [
+        [
+          "Nav Link",
+          10
+        ],
+        [
+          "Unactive",
+          9
+        ],
+        [
+          "1",
+          5
+        ],
+        [
+          "2",
+          5
+        ],
+        [
+          "3",
+          5
+        ],
+        [
+          "4",
+          5
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Desktop",
+          3
+        ],
+        [
+          "Logo",
+          3
+        ],
+        [
+          "Blank",
+          3
+        ],
+        [
+          "Name",
+          3
+        ],
+        [
+          "Logo SVG",
+          2
+        ],
+        [
+          "White",
+          2
+        ],
+        [
+          "Title",
+          2
+        ],
+        [
+          "Email",
+          2
+        ],
+        [
+          "Phone",
+          2
+        ],
+        [
+          "Topic",
+          2
+        ],
+        [
+          "Message",
+          2
+        ],
+        [
+          "Wrapper",
+          2
+        ],
+        [
+          "Cookies",
+          2
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Section - Contact",
+          1
+        ],
+        [
+          "Tag",
+          1
+        ],
+        [
+          "Title & Editorial Tag",
+          1
+        ],
+        [
+          "Editorial Tag",
+          1
+        ],
+        [
+          "Subhead Wrapper",
+          1
+        ],
+        [
+          "Subhead ",
+          1
+        ],
+        [
+          "Form",
+          1
+        ],
+        [
+          "Inputs Container",
+          1
+        ],
+        [
+          "Form Fields",
+          1
+        ],
+        [
+          "Default",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Section - Photos",
+          1
+        ],
+        [
+          "Mobile",
+          1
+        ],
+        [
+          "Mobile Ticker",
+          1
+        ],
+        [
+          "Contact Info",
+          1
+        ],
+        [
+          "Contact",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Mail",
+          1
+        ],
+        [
+          "Year & Rights",
+          1
+        ],
+        [
+          "© 2025",
+          1
+        ],
+        [
+          "Rights",
+          1
+        ],
+        [
+          "Privacy",
+          1
+        ],
+        [
+          "Social Media",
+          1
+        ],
+        [
+          "Instagram",
+          1
+        ],
+        [
+          "Behance",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "10gezu1",
+        "1dpvgwi",
+        "zw6rd6",
+        "pcouyd",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:21:48 GMT+2 Bratislava, Slovakia contact say bonjour inquiry Every connection begins with a conversation. Share your vision with us, and together we’ll create something that lasts Name Email Phone Topic Select topic Web Design & Development Brand Identity Brand Guidelines Graphic Design Other Your message [ s u b m i t ] Contact for all enquiries please contact info@titarvl.com titarvl © 2025 all rights reserved Cookies Policy Privacy Policy Instagram Behance Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works.html": {
+      "breakpoints": [
+        {
+          "hash": "1lhtj24",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "imkeua",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "iloakl",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-TROdJ",
+        "framer-MJbJJ",
+        "framer-Z7L99",
+        "framer-8ifp0"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Works"
+        },
+        {
+          "tag": "footer",
+          "name": "Desktop"
+        }
+      ],
+      "namedLayers": [
+        [
+          "Desktop",
+          12
+        ],
+        [
+          "Container",
+          12
+        ],
+        [
+          "Nav Link",
+          12
+        ],
+        [
+          "Count",
+          12
+        ],
+        [
+          "Title",
+          11
+        ],
+        [
+          "Unactive",
+          10
+        ],
+        [
+          "Image Wrapper",
+          10
+        ],
+        [
+          "Description",
+          10
+        ],
+        [
+          "Logo",
+          3
+        ],
+        [
+          "Wrapper",
+          3
+        ],
+        [
+          "Logo SVG",
+          2
+        ],
+        [
+          "White",
+          2
+        ],
+        [
+          "[",
+          2
+        ],
+        [
+          "Number",
+          2
+        ],
+        [
+          "]",
+          2
+        ],
+        [
+          "Cookies",
+          2
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - Works",
+          1
+        ],
+        [
+          "Grid Desktop",
+          1
+        ],
+        [
+          "Headline",
+          1
+        ],
+        [
+          "Works",
+          1
+        ],
+        [
+          "Type",
+          1
+        ],
+        [
+          "Active",
+          1
+        ],
+        [
+          "Blank",
+          1
+        ],
+        [
+          "Contact Info",
+          1
+        ],
+        [
+          "Contact",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Mail",
+          1
+        ],
+        [
+          "Name",
+          1
+        ],
+        [
+          "Year & Rights",
+          1
+        ],
+        [
+          "© 2025",
+          1
+        ],
+        [
+          "Rights",
+          1
+        ],
+        [
+          "Privacy",
+          1
+        ],
+        [
+          "Social Media",
+          1
+        ],
+        [
+          "Instagram",
+          1
+        ],
+        [
+          "Behance",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "10gezu1",
+        "1dpvgwi",
+        "pcouyd",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:21:50 GMT+2 Bratislava, Slovakia Works [ 10 ] grid list 001 Chronicae 002 Arcane Studio 003 Solara 004 EDIFIER® MAGAZINE 005 Rowan Keats 006 BIG BABY TAPE® MAGAZINE 007 Cartes d’Atelier 008 Palmira 009 Scene Pro 010 EXAЛA(A) Contact for all enquiries please contact info@titarvl.com titarvl © 2025 all rights reserved Cookies Policy Privacy Policy Instagram Behance Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "privacy-policy.html": {
+      "breakpoints": [
+        {
+          "hash": "14s18ym",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "ewp85d",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "1mrxpu7",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-C0fyI",
+        "framer-WZqEJ",
+        "framer-FdoCA",
+        "framer-Z7L99"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Hero"
+        },
+        {
+          "tag": "footer",
+          "name": "Desktop"
+        }
+      ],
+      "namedLayers": [
+        [
+          "Nav Link",
+          10
+        ],
+        [
+          "Unactive",
+          9
+        ],
+        [
+          "Title",
+          8
+        ],
+        [
+          "Description",
+          6
+        ],
+        [
+          "Desktop",
+          3
+        ],
+        [
+          "Container",
+          3
+        ],
+        [
+          "Logo",
+          3
+        ],
+        [
+          "Logo SVG",
+          2
+        ],
+        [
+          "White",
+          2
+        ],
+        [
+          "Blank",
+          2
+        ],
+        [
+          "Wrapper",
+          2
+        ],
+        [
+          "Cookies",
+          2
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - Hero",
+          1
+        ],
+        [
+          "Tag",
+          1
+        ],
+        [
+          "Title & Editorial Tag",
+          1
+        ],
+        [
+          "Editorial Tag",
+          1
+        ],
+        [
+          "Subhead Wrapper",
+          1
+        ],
+        [
+          "Variant 2",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Blocks",
+          1
+        ],
+        [
+          "Block 1",
+          1
+        ],
+        [
+          "Block 2",
+          1
+        ],
+        [
+          "Block 3",
+          1
+        ],
+        [
+          "Block 4",
+          1
+        ],
+        [
+          "Block 5",
+          1
+        ],
+        [
+          "Block 6",
+          1
+        ],
+        [
+          "Contact Info",
+          1
+        ],
+        [
+          "Contact",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Mail",
+          1
+        ],
+        [
+          "Name",
+          1
+        ],
+        [
+          "Year & Rights",
+          1
+        ],
+        [
+          "© 2025",
+          1
+        ],
+        [
+          "Rights",
+          1
+        ],
+        [
+          "Privacy",
+          1
+        ],
+        [
+          "Social Media",
+          1
+        ],
+        [
+          "Instagram",
+          1
+        ],
+        [
+          "Behance",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "10gezu1",
+        "1dpvgwi",
+        "zw6rd6",
+        "pcouyd",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:21:57 GMT+2 Bratislava, Slovakia PRIVACY privacy policy DATA PROTECTION INFORMATION WE COLLECT We collect basic personal information that you voluntarily provide through contact forms, such as your name, email address, or message content. We may also collect non-personal data like browser type, device information, and general usage patterns. HOW WE USE YOUR INFORMATION Your information is used solely to respond to inquiries, communicate with you, and improve the performance and usability of the website. We do not use your data for unsolicited marketing. SHARING YOUR INFORMATION We do not sell, rent, or trade your personal information. Data may only be shared with trusted third-party services necessary to operate the website (such as hosting or analytics providers). DATA SECURITY We take reasonable measures to protect your information. However, no online platform can guarantee complete security. THIRD-PARTY LINKS This website may contain links to external websites. We are not responsible for the privacy practices or content of those sites. CHANGES TO THIS POLICY This policy may be updated occasionally. Continued use of the website indicates acceptance of any changes. Contact for all enquiries please contact info@titarvl.com titarvl © 2025 all rights reserved Cookies Policy Privacy Policy Instagram Behance Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "cookies-policy.html": {
+      "breakpoints": [
+        {
+          "hash": "hiuenh",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "e7xnom",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "1njxp6q",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-XCVOS",
+        "framer-WZqEJ",
+        "framer-FdoCA",
+        "framer-Z7L99"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Hero"
+        },
+        {
+          "tag": "footer",
+          "name": "Desktop"
+        }
+      ],
+      "namedLayers": [
+        [
+          "Nav Link",
+          10
+        ],
+        [
+          "Unactive",
+          9
+        ],
+        [
+          "Title",
+          6
+        ],
+        [
+          "Description",
+          4
+        ],
+        [
+          "Desktop",
+          3
+        ],
+        [
+          "Container",
+          3
+        ],
+        [
+          "Logo",
+          3
+        ],
+        [
+          "Logo SVG",
+          2
+        ],
+        [
+          "White",
+          2
+        ],
+        [
+          "Blank",
+          2
+        ],
+        [
+          "Wrapper",
+          2
+        ],
+        [
+          "Cookies",
+          2
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - Hero",
+          1
+        ],
+        [
+          "Tag",
+          1
+        ],
+        [
+          "Title & Editorial Tag",
+          1
+        ],
+        [
+          "Editorial Tag",
+          1
+        ],
+        [
+          "Subhead Wrapper",
+          1
+        ],
+        [
+          "Variant 2",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Blocks",
+          1
+        ],
+        [
+          "Block 1",
+          1
+        ],
+        [
+          "Block 2",
+          1
+        ],
+        [
+          "Block 3",
+          1
+        ],
+        [
+          "Block 4",
+          1
+        ],
+        [
+          "Contact Info",
+          1
+        ],
+        [
+          "Contact",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Mail",
+          1
+        ],
+        [
+          "Name",
+          1
+        ],
+        [
+          "Year & Rights",
+          1
+        ],
+        [
+          "© 2025",
+          1
+        ],
+        [
+          "Rights",
+          1
+        ],
+        [
+          "Privacy",
+          1
+        ],
+        [
+          "Social Media",
+          1
+        ],
+        [
+          "Instagram",
+          1
+        ],
+        [
+          "Behance",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "10gezu1",
+        "1dpvgwi",
+        "zw6rd6",
+        "pcouyd",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:21:54 GMT+2 Bratislava, Slovakia COOKIES cookies policy TRACKING WHAT ARE COOKIES Cookies are small data files stored on your device to help improve website functionality and user experience. HOW WE USE COOKIES Cookies are used to analyze traffic, understand usage behavior, and optimize performance. They help ensure the website functions correctly across devices. MANAGING COOKIES You can control or disable cookies through your browser settings. Please note that disabling cookies may affect certain features of the website. ANALYTICS We may use third-party analytics tools that place cookies to collect anonymous usage data for performance insights. Contact for all enquiries please contact info@titarvl.com titarvl © 2025 all rights reserved Cookies Policy Privacy Policy Instagram Behance Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/arcane-studio.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          25
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 5",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Image 6",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:21:59 GMT+2 Bratislava, Slovakia Arcane Studio about the project A design-led e-commerce website concept presenting furniture objects through clean grids, typographic restraint, and an editorial visual system. All projects and visuals featured in this template are original work by TITARVL. client Arcane Studio services Web Design & Development year 2025 location London, United Kingdom Chronicae [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/big-baby-tape-C2-AE-magazine.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          25
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 5",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Image 6",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:21 GMT+2 Bratislava, Slovakia BIG BABY TAPE® MAGAZINE about the project A non-commercial magazine design inspired by Big Baby Tape, focused on bold typography and expressive layouts. This project was created as a personal exploration of editorial design and visual storytelling, fully designed in Photoshop. All projects and visuals featured in this template are original work by TITARVL. client BIG BABY TAPE services Graphic Design year 2024 location Moscow, Russia Rowan Keats [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/cartes-d-E2-80-99atelier.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          25
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:17 GMT+2 Bratislava, Slovakia Cartes d’Atelier about the project A non-commercial editorial design inspired by playing cards, exploring typography, layout, and material aesthetics through a fashion-driven visual language. All projects and visuals featured in this template are original work by TITARVL. client Cartes d’Atelier services Graphic Design year 2025 location Bratislava, Slovakia BIG BABY TAPE® MAGAZINE [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/chronicae.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          9
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 5",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Image 6",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:03 GMT+2 Bratislava, Slovakia Chronicae about the project Nopal Tech, a sustainable agriculture SaaS startup, needed a future forward brand identity. I designed a clean, modern logo, visual system for presentations and pitch decks, and website assets that helped position them as leaders in their field. All projects and visuals featured in this template are original work by TITARVL. client Chronicae services Web Design & Development year 2025 location New York, USA EXAЛA(A) [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/edifier-C2-AE-magazine.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          21
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 5",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Image 6",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:27 GMT+2 Bratislava, Slovakia EDIFIER® MAGAZINE about the project A product-focused magazine concept for Edifier, exploring editorial layout, typography, and visual hierarchy to present audio products in a clean and structured way, balancing clarity with strong visual rhythm. All projects and visuals featured in this template are original work by TITARVL. client EDIFIER services Brand Guidelines year 2025 location Hong Kong, China Solara [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/exa-D0-BBa-a-.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          17
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:06 GMT+2 Bratislava, Slovakia EXAЛA(A) about the project A non-commercial poster exploring experimental typography, texture, and abstraction, developed as a conceptual visual study focused on form, contrast, and atmosphere through layered composition. All projects and visuals featured in this template are original work by TITARVL. client EXAЛA(A) services Graphic Design year 2025 location Milan, Italy Scene Pro [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/palmira.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          17
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 5",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Image 6",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:14 GMT+2 Bratislava, Slovakia Palmira about the project Palmira is a boutique beach resort made for slow days and salty air. It’s a place for laid-back travelers to reset and feel the warmth of the coast. Palmira offers a tropical escape from the everyday, with open-air cabanas, relaxed rooms, and more. All projects and visuals featured in this template are original work by TITARVL. client Palmira services Brand Identity year 2025 location Tokyo, Japan Cartes d’Atelier [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/rowan-keats.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          25
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 5",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Image 6",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:23 GMT+2 Bratislava, Slovakia Rowan Keats about the project A website concept designed for filmmakers, focused on visual storytelling, immersive layouts, and a cinematic presentation of video projects. Built to highlight motion, mood, and narrative. All projects and visuals featured in this template are original work by TITARVL. client Rowan Keats services Web Design & Development year 2025 location Berlin, Germany EDIFIER® MAGAZINE [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/scene-pro.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          25
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Video 1",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:12 GMT+2 Bratislava, Slovakia Scene Pro about the project A portfolio of photography and film work exploring visual storytelling, motion, and mood across different projects. All projects and visuals featured in this template are original work by TITARVL. client Scene Pro services Web Design & Development year 2026 location Seoul, South Korea Palmira [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    },
+    "works/solara.html": {
+      "breakpoints": [
+        {
+          "hash": "1479u6u",
+          "mediaQuery": "(min-width: 1200px)"
+        },
+        {
+          "hash": "k4p5g9",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "r9poyd",
+          "mediaQuery": "(max-width: 809.98px)"
+        },
+        {
+          "hash": "14aqazl",
+          "mediaQuery": "(min-width: 1440px)"
+        },
+        {
+          "hash": "614tft",
+          "mediaQuery": "(min-width: 1200px) and (max-width: 1439.98px)"
+        },
+        {
+          "hash": "1ljt0nv",
+          "mediaQuery": "(min-width: 810px) and (max-width: 1199.98px)"
+        },
+        {
+          "hash": "rj6gpt",
+          "mediaQuery": "(max-width: 809.98px)"
+        }
+      ],
+      "components": [
+        "framer-fEHtQ",
+        "framer-SZNeA",
+        "framer-USIzC",
+        "framer-5EfF8",
+        "framer-m1lJq",
+        "framer-uRLwX",
+        "framer-BNqt1"
+      ],
+      "sections": [
+        {
+          "tag": "nav",
+          "name": "Desktop"
+        },
+        {
+          "tag": "section",
+          "name": "Section - About the Project"
+        },
+        {
+          "tag": "section",
+          "name": "Section - Photos "
+        }
+      ],
+      "namedLayers": [
+        [
+          "Default",
+          36
+        ],
+        [
+          "Image 1",
+          25
+        ],
+        [
+          "Container",
+          4
+        ],
+        [
+          "Nav Link",
+          4
+        ],
+        [
+          "Header",
+          4
+        ],
+        [
+          "Unactive",
+          3
+        ],
+        [
+          "Logo",
+          2
+        ],
+        [
+          "Project Title",
+          2
+        ],
+        [
+          "Client",
+          2
+        ],
+        [
+          "Year",
+          2
+        ],
+        [
+          "Location",
+          2
+        ],
+        [
+          "Desktop",
+          1
+        ],
+        [
+          "Logo & Menu Button Mobile",
+          1
+        ],
+        [
+          "Logo SVG",
+          1
+        ],
+        [
+          "White",
+          1
+        ],
+        [
+          "Nav Links",
+          1
+        ],
+        [
+          "Home & Work",
+          1
+        ],
+        [
+          "Works Unactive",
+          1
+        ],
+        [
+          "Count",
+          1
+        ],
+        [
+          "[",
+          1
+        ],
+        [
+          "Number",
+          1
+        ],
+        [
+          "]",
+          1
+        ],
+        [
+          "About & Contact",
+          1
+        ],
+        [
+          "Main",
+          1
+        ],
+        [
+          "Spacer",
+          1
+        ],
+        [
+          "Section - About the Project",
+          1
+        ],
+        [
+          "Description & Info",
+          1
+        ],
+        [
+          "About the Project",
+          1
+        ],
+        [
+          "Info",
+          1
+        ],
+        [
+          "Services",
+          1
+        ],
+        [
+          "Service",
+          1
+        ],
+        [
+          "Section - Photos ",
+          1
+        ],
+        [
+          "Images",
+          1
+        ],
+        [
+          "Image 3",
+          1
+        ],
+        [
+          "Image 5",
+          1
+        ],
+        [
+          "Image 2",
+          1
+        ],
+        [
+          "Image 4",
+          1
+        ],
+        [
+          "Section - Next Project",
+          1
+        ],
+        [
+          "Normal",
+          1
+        ],
+        [
+          "Canvas",
+          1
+        ],
+        [
+          "Drag",
+          1
+        ],
+        [
+          "SVG",
+          1
+        ],
+        [
+          "Light",
+          1
+        ],
+        [
+          "Backdrop",
+          1
+        ],
+        [
+          "Content",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Bottom",
+          1
+        ],
+        [
+          "Border",
+          1
+        ]
+      ],
+      "presets": [
+        "1dpvgwi",
+        "pcouyd",
+        "10gezu1",
+        "zw6rd6",
+        "u1p157"
+      ],
+      "textPreview": "Home Works [ 10 ] About Contact 01:22:29 GMT+2 Bratislava, Slovakia Solara about the project An e-commerce website concept focused on curated product presentation, clean layouts, and an editorial approach to online shopping. All projects and visuals featured in this template are original work by TITARVL. client Solara services Web Design & Development year 2025 location Paris, France Arcane Studio [ n e x t p r o j e c t ] SCROLL/DRAG TO MOVE Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    }
+  }
+}
