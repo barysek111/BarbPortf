@@ -73,7 +73,10 @@ export function Nav() {
                 href="/works"
                 label="Works"
                 count={projects.length}
-                active={pathname === "/works" || pathname.startsWith("/works/")}
+                active={
+                  pathname === "/works" ||
+                  projects.some((project) => pathname === `/${project.slug}`)
+                }
                 open={open}
                 onClick={close}
               />

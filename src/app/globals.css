@@ -31,6 +31,7 @@
   --color-ink: #000;
   --color-paper: #fff;
   --color-muted: #a7a7a7;
+  --color-surface: #f0f0f0;
   --color-selection: #ff0c10;
   --color-transparent: transparent;
   --color-current: currentColor;
@@ -55,7 +56,7 @@
      A single 4px-based scale shared by gap, padding and margin. The token
      number is the pixel value, so `gap-12` is 12px — never a multiplier.
 
-     Steps of 4 up to 44, then 8 upward. 18 values, no exceptions.
+     Steps of 4 up to 44, then 8 upward. 19 values, no exceptions.
 
      There is deliberately no `--spacing` base step, so only the values listed
      here exist. Note Tailwind does not error on an unknown utility — `gap-7`
@@ -81,6 +82,7 @@
   --spacing-96: 96px;
   --spacing-104: 104px;
   --spacing-152: 152px;
+  --spacing-176: 176px;
   --spacing-216: 216px;
 
   /* -- Layout wrap -- */
@@ -314,6 +316,22 @@
 
   @media (width >= 1200px) {
     grid-template-columns: repeat(var(--works-grid-columns), minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Image row stack spacing
+   Consecutive ImageRow sections (same parent, adjacent in DOM) sit gap-gutter
+   apart — same token as column gap inside the row. Only the last row in a
+   stack keeps pb-section before the next non–image-row section.
+--------------------------------------------------------------------------- */
+@layer components {
+  [data-name="Section - Image Row"] {
+    padding-bottom: var(--spacing-gutter);
+  }
+
+  [data-name="Section - Image Row"]:not(:has(+ [data-name="Section - Image Row"])) {
+    padding-bottom: var(--spacing-section);
   }
 }
 

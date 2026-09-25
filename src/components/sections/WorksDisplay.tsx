@@ -33,7 +33,7 @@ const GRID = "works-grid";
 // so the rule sits outside the row's 12px bottom padding.
 const LIST_ROW =
   "relative flex flex-col gap-20 overflow-clip pb-12 " +
-  "desktop:flex-row desktop:items-stretch desktop:gap-gutter " +
+  "desktop:h-176 desktop:flex-row desktop:items-stretch desktop:gap-gutter " +
   "after:pointer-events-none after:absolute after:inset-0 after:border-b after:border-muted after:content-['']";
 
 function Toggle({ label, on, onClick }: { label: string; on: boolean; onClick: () => void }) {
@@ -92,38 +92,30 @@ export function WorksDisplay({
           <div className="flex flex-col gap-12">
             {projects.map((project) => (
               <div key={project.slug} className={LIST_ROW}>
-                <div className="flex min-w-0 flex-col justify-between gap-64 desktop:h-[200px] desktop:flex-1 desktop:gap-0">
+                <div className="flex min-w-0 h-full min-h-0 flex-col justify-between gap-64 desktop:flex-1 desktop:gap-0">
                   <div className="flex flex-row items-start justify-between gap-gutter">
                     <div className="flex flex-col gap-hairline">
                       <p className="type-label reveal-clip">
                         <span>{project.title}</span>
                       </p>
-                      <p className="type-label reveal-clip">
-                        <span>{project.services}</span>
+                      <p className="type-label reveal-clip w-[60%] max-w-[60%] text-muted">
+                        <span>{project.description}</span>
                       </p>
                     </div>
                     <p className="type-label reveal-clip">
-                      <span>{project.location}</span>
-                    </p>
-                  </div>
-                  <div className="flex flex-row items-start justify-between gap-gutter">
-                    <p className="type-label reveal-clip">
                       <span>{project.year}</span>
                     </p>
-                    <BracketButton href={`/works/${project.slug}`}>view project</BracketButton>
                   </div>
+                  <BracketButton href={`/${project.slug}`}>view project</BracketButton>
                 </div>
-                <div className="flex h-[200px] flex-row gap-tight overflow-x-auto overflow-y-hidden desktop:min-w-0 desktop:flex-1">
-                  {project.listImages.map((image) => (
+                <div className="grid h-176 min-w-0 shrink-0 grid-cols-4 gap-tight overflow-hidden desktop:h-full desktop:min-h-0 desktop:flex-1">
+                  {project.listImages.slice(0, 4).map((image, imageIndex) => (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      key={`${project.slug}-${image.src}-${image.w}`}
+                      key={`${project.slug}-${imageIndex}`}
                       src={image.src}
                       alt=""
-                      width={image.w}
-                      height={200}
-                      className="block h-[200px] w-auto flex-none object-cover"
-                      style={{ width: image.w }}
+                      className="block h-full w-full object-cover"
                     />
                   ))}
                 </div>

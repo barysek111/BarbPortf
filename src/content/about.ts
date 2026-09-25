@@ -5,14 +5,14 @@ export const about = {
     "/images/framer/HMjIaFcucOPD4WU28UCr7dStZw0-8b15f109.avif",
   ],
   label: "about",
-  headline: "STUDIO, WORK, AND APPROACH",
+  headline: "DESIGNING THINGS THAT MAKE SENSE",
   thinking: {
-    label: "thinking",
-    text: "Every project begins with a clear idea. Concept and structure come first, shaping decisions and defining direction. A thoughtful approach ensures that each design is intentional, relevant, and built on a strong conceptual foundation.",
+    label: "A CREATIVE BACKGROUND",
+    text: "My path into product design started with a background in branding and visual design. Working across websites, digital products, campaigns, and physical touchpoints taught me to think about both how something looks and how it works. UX and product design became a natural next step, giving me the opportunity to bring those skills together and focus more closely on the people using what I design.",
   },
   making: {
-    label: "making",
-    text: "This is where ideas are translated into form. Through precise execution, attention to detail, and systematic workflows, concepts become functional, scalable, and visually consistent across digital platforms and touchpoints.",
+    label: "ALWAYS FIGURING THINGS OUT",
+    text: "I am naturally curious and enjoy getting stuck into unfamiliar problems. I like understanding how things work, talking to people, testing ideas, and gradually shaping something better. I am happiest somewhere between thinking and making, whether that means exploring a new concept, prototyping an interaction, or bringing order to a growing design system.",
   },
   experienceTitle: "Experience",
   jobs: [

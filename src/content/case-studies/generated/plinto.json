@@ -1,0 +1,123 @@
+[
+  {
+    "headline": "Research",
+    "sections": [
+      {
+        "label": "Finance operator context",
+        "paragraphs": [
+          "I mapped the finance operator's context. People work under time pressure. Every approval carries audit weight. Speed and accuracy pull in opposite directions."
+        ]
+      },
+      {
+        "label": "Competitive patterns",
+        "paragraphs": [
+          "I looked at AP automation tools to see what patterns were working and where gaps existed. Confidence scoring and transparent reasoning were common in stronger products."
+        ]
+      },
+      {
+        "label": "The gap",
+        "paragraphs": [
+          "Most still used the same layout for every exception type, just changing labels. The opportunity was to let the interface adapt based on what kind of decision the operator was making."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Conceptual Direction",
+    "sections": [
+      {
+        "label": "One adaptive workspace",
+        "paragraphs": [
+          "Instead of four separate modals for different cases, I designed one desktop workspace that adapts. The invoice queue stays stable. The KPI summary and filters stay stable. The copilot pane and action footer change based on the invoice's state."
+        ]
+      },
+      {
+        "label": "Three states, one story",
+        "paragraphs": [
+          "Auto-matched invoices where PO, vendor, and amount all align within policy. Operator confirms quickly with a fast path and optional copilot summary. Needs review cases requiring human judgment. Could be variance, first-time vendor, or policy edge case. The UI surfaces the specific issue and suggests next steps. Approval requires a reason or checklist. Blocked cases as hard stops. Duplicate suspicion or no PO match. Resolution options stay explicit. Copilot explains why approval isn't available."
+        ]
+      },
+      {
+        "label": "Design principles",
+        "paragraphs": [
+          "Status before detail. Reasoning in the open. Progressive depth. Human control with audit trail. Calibrated friction where it mattered."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Design",
+    "sections": [
+      {
+        "label": "Layout exploration",
+        "paragraphs": [
+          "I tested three layout directions. Chat-forward with the copilot dominant. Dashboard-first with KPI strip and invoice table. Minimal decision card with compact facts. The control room layout with queue plus split view won because it matched how people actually worked."
+        ]
+      },
+      {
+        "label": "Interaction model",
+        "paragraphs": [
+          "Selecting an invoice opens the copilot pane with context loaded. Quick actions in chat trigger typed replies, a brief thinking state, and AI confirmation. The action footer updates so approval shows as completed in place."
+        ]
+      },
+      {
+        "label": "Responsive adaptation",
+        "paragraphs": [
+          "The workflow adapts to viewport size. Desktop shows full split view. Mobile collapses into a queue with bottom sheet for review. Same logic, different layout."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Prototype",
+    "sections": [
+      {
+        "label": "Deliverable",
+        "paragraphs": [
+          "The final deliverable was a clickable HTML prototype of the workspace. Three desktop states: Auto-matched, Needs review, and Blocked. Each shows how the shared shell carries different content density and actions."
+        ]
+      },
+      {
+        "label": "Auto-matched state",
+        "paragraphs": [
+          "Clean matches with copilot summary, primary approve action, and minimal fields between scan and decision. The path is fast."
+        ]
+      },
+      {
+        "label": "Needs review state",
+        "paragraphs": [
+          "Specific exception detail with contextual guidance helping the operator understand what's wrong. Approval stays gated until the issue is addressed. The copilot chat helps walk through the decision."
+        ]
+      },
+      {
+        "label": "Blocked state",
+        "paragraphs": [
+          "Hard stops with explicit resolution paths. No single click approval when policy blocks the match. The operator knows exactly what needs to happen next."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Reflection",
+    "sections": [
+      {
+        "label": "Questions to test",
+        "paragraphs": [
+          "Do operators correctly predict required effort from the status without opening the invoice. Does acting through copilot quick replies feel faster than traditional form buttons, or does it add uncertainty. When invoices are blocked, can operators find resolution without support or do they still export to email."
+        ]
+      },
+      {
+        "label": "What comes next",
+        "paragraphs": [
+          "Batch actions on Auto-matched queues, vendor management tied to Needs review cases, tolerance rules configured per client, and analytics on override rates. The prototype is structured so those features can extend the same shell instead of replacing it."
+        ]
+      },
+      {
+        "label": "The outcome",
+        "paragraphs": [
+          "This work proved that even a constrained interview task can explore meaningful design problems. The prototype asked the right questions about how people work with AI in financial decisions."
+        ]
+      }
+    ]
+  }
+]

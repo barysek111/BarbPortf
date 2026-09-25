@@ -1,0 +1,94 @@
+[
+  {
+    "headline": "Research",
+    "sections": [
+      {
+        "label": "Observation",
+        "paragraphs": [
+          "I watched the finance team work. I saw the frustration of switching between tools. I mapped all the exception cases they encountered."
+        ]
+      },
+      {
+        "label": "Competitive patterns",
+        "paragraphs": [
+          "I looked at how other B2B finance tools handled reconciliation. The pattern was clear: most tools used one layout for every exception type and only changed labels. That doesn't work when the actual complexity varies so much."
+        ]
+      },
+      {
+        "label": "Scope alignment",
+        "paragraphs": [
+          "I also aligned with the product owner and development team on scope. What could ship in V1. What had to wait for V2. What was technically possible."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Direction",
+    "sections": [
+      {
+        "label": "Three operator states",
+        "paragraphs": [
+          "Auto-matched invoices that the system already knows are correct. Needs review cases where human judgment is required. Blocked cases where something is wrong enough that a single click shouldn't approve."
+        ]
+      },
+      {
+        "label": "Adaptive UI",
+        "paragraphs": [
+          "The UI would adapt to each state. Auto-matched invoices would have a fast approval path. Needs review cases would surface the specific issue and require a reason before approval. Blocked cases would explain why approval wasn't available and show the resolution path."
+        ]
+      },
+      {
+        "label": "Audit trail",
+        "paragraphs": [
+          "Every action would be logged so the audit trail was complete."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Design",
+    "sections": [
+      {
+        "label": "Layout exploration",
+        "paragraphs": [
+          "I explored multiple layout approaches before settling on three columns. Invoices on the left, matched payments in the center, search on the right. This layout matched how people actually thought about the task and let them complete reconciliation without context switching."
+        ]
+      },
+      {
+        "label": "State-based design",
+        "paragraphs": [
+          "The interface adapts based on what state the invoice is in. The action footer changes. The detail panel changes. The reconciliation status badges tell the story before the user opens anything."
+        ]
+      },
+      {
+        "label": "Component system",
+        "paragraphs": [
+          "I designed every component as an extension of Powermatch's existing design system. Status badges, invoice cards, the reconciliation workspace, the activity log showing every change."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Outcomes",
+    "sections": [
+      {
+        "label": "Speed gains",
+        "paragraphs": [
+          "After launch, the finance team completed reconciliation 22% faster because they weren't switching between tools anymore. Support tickets about reconciliation confusion dropped 14%. Every change was now logged so the audit trail was complete."
+        ]
+      },
+      {
+        "label": "Key insight",
+        "paragraphs": [
+          "Interaction design matters more than visual design when the interface is for complex decision making. The visual polish helps, but getting the structure right, the state management right, and the feedback right is what actually moves the needle."
+        ]
+      },
+      {
+        "label": "The proof",
+        "paragraphs": [
+          "A well-designed tool can turn frustration into speed without sacrificing accuracy or auditability."
+        ]
+      }
+    ]
+  }
+]

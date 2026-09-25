@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
+import { CaseStudyPage } from "@/components/work/CaseStudyPage";
 import { ProjectStub } from "@/components/work/ProjectStub";
-import { SolaraPage } from "@/components/work/SolaraPage";
+import { getCaseStudy } from "@/content/case-studies";
 import { getProject, projects } from "@/content/projects";
 
 export function generateStaticParams() {
@@ -16,8 +17,9 @@ export default async function WorkPage({
   const project = getProject(slug);
   if (!project) notFound();
 
-  if (slug === "solara") {
-    return <SolaraPage />;
+  const caseStudy = getCaseStudy(slug);
+  if (caseStudy) {
+    return <CaseStudyPage study={caseStudy} />;
   }
 
   return <ProjectStub project={project} />;

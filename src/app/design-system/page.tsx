@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BracketButton } from "@/components/ui/BracketButton";
+import { ImageFrame } from "@/components/ui/ImageFrame";
+import { ImageRow } from "@/components/sections/ImageRow";
 import { NavClock } from "@/components/layout/NavClock";
 import { WorkCard } from "@/components/work/WorkCard";
 import { Hero } from "@/components/home/Hero";
@@ -13,7 +15,9 @@ import { Education } from "@/components/sections/Education";
 import { Photos } from "@/components/home/Photos";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { Chapter } from "@/components/sections/Chapter";
+import { CaseStudyPage } from "@/components/work/CaseStudyPage";
 import { ProjectHero } from "@/components/work/ProjectHero";
+import { getCaseStudy } from "@/content/case-studies";
 import { projects } from "@/content/projects";
 import { solara } from "@/content/solara";
 import { getComponentUsage } from "@/lib/component-usage";
@@ -36,6 +40,7 @@ const colors = [
   { name: "ink", value: "#000", use: "Type, rules, inverse surfaces" },
   { name: "paper", value: "#fff", use: "Page background" },
   { name: "muted", value: "#a7a7a7", use: "Inactive toggles, secondary meta" },
+  { name: "surface", value: "#f0f0f0", use: "ImageFrame solid background fill" },
   { name: "selection", value: "#ff0c10", use: "Text selection only" },
 ];
 
@@ -66,6 +71,11 @@ const spacingAliases = [
   { name: "page-top", value: "216px", use: "Page top offset below the nav" },
 ];
 
+/** Placeholders from the Ageras case-study gallery (design-system demos only). */
+const MEDIA_A = "/images/framer/O7ToMbwrW2Kyojg6kIITlM4Cs-b1efb23d.avif";
+const MEDIA_B = "/images/framer/nZVIc7KvsqiOi1p5VDtfGUs53EA-e8994ee4.avif";
+const MEDIA_C = "/images/framer/QD2AxA7bZdiagkNhpHtgD6IuDIo-0f8ca57f.avif";
+
 const layoutUtils = [
   { cls: "site-main", use: "Outermost wrap. Caps the page at 3840px and centres it." },
   { cls: "section-wrap", use: "Section wrap. Caps at 1920px with the 10px gutter." },
@@ -94,19 +104,29 @@ const atoms: Entry[] = [
     file: "work/WorkCard.tsx",
     note: "Project thumbnail with an index and title caption. Used by both the home grid and the works page.",
   },
+  {
+    name: "ImageFrame",
+    file: "ui/ImageFrame.tsx",
+    note: "Case-study frame: max-h 800px (row height ≤ 800). fill: full-width object-cover, no surface pad (intrinsic height until row stretch). solid / background: p-44, bg-surface on solid; image scales in the padded area (max-h-full); orientation-aware contain. In ImageRow, columns stretch to the tallest frame.",
+  },
 ];
 
 const sections: Entry[] = [
   { name: "Hero", file: "home/Hero.tsx", note: "Full-height opener. Meta pinned left and right, scroll cue centred. hero-frame only centres and sets width (100vw / 60vw from 810px); HeroRing owns the 5:4 height — same as its design-system preview. mb-section sits outside the 100svh box so the next section starts 96px below the fold." },
   { name: "HeroRing", file: "home/HeroRing.tsx", note: "Cards on a tilted ring in perspective. Stage is aspect 5:4 at 100% of parent width; layout scales the oval to those bounds. Spins continuously at 4°/s (~90s/turn) with no hover pause or flip. Honours reduced-motion. On the homepage the parent is hero-frame (60vw); on the design-system page the parent is the content column." },
-  { name: "WorksDisplay", file: "sections/WorksDisplay.tsx", note: "The single way projects are displayed, with a grid/list toggle in place of a CTA. Default title is “LATEST WORK”; the bracket count is projects.length. Grid is 1 column, 2×390px from 810px, then 4 fluid columns from 1200px. Each row hugs its tallest card; shorter cards bottom-align so captions share a baseline. Images fill the column width and take their height from their own aspect ratio, never stretched. List rows use muted bottom rules. Section-to-section space is pb-section (96px) on the root; pb-header is only the title-to-grid gap. Props: title, headingLevel, className (e.g. pt-page-top on /works). Must stay a direct child of site-main." },
+  { name: "WorksDisplay", file: "sections/WorksDisplay.tsx", note: "The single way projects are displayed, with a grid/list toggle in place of a CTA. Default title is “LATEST WORK”; the bracket count is projects.length. Grid is 1 column, 2×390px from 810px, then 4 fluid columns from 1200px. Each row hugs its tallest card; shorter cards bottom-align so captions share a baseline. Images fill the column width and take their height from their own aspect ratio, never stretched. List rows use muted bottom rules: title and muted 60%-width summary top-left, year top-right, view project below; the image column is a fixed four-up grid (equal columns, object-cover); from desktop, the whole row is h-176 (176px list-row token). Section-to-section space is pb-section (96px) on the root; pb-header is only the title-to-grid gap. Props: title, headingLevel, className (e.g. pt-page-top on /works). Must stay a direct child of site-main." },
   { name: "Services", file: "home/Services.tsx", note: "Headline “SERVICES” sits in the right column, matching Education/Experience. Ruled rows: two equal halves from desktop. Left is the 64×64 SVG icon beside “[01] Title”; right is the muted type-label description. Row content is vertically centred. Each row owns muted top/bottom rules. Height is content plus 24px above and below." },
   { name: "WhatIDo", file: "home/WhatIDo.tsx", note: "Label above a large statement block, with a 12px (gutter) gap between them. Section-to-section space is pb-section on the root." },
   { name: "Experience", file: "sections/Experience.tsx", note: "Label and headline above a list of roles, each row pairing the role with its company and years. Used on /about. Rows carry muted top/bottom rules; height is content plus 24px above and below." },
   { name: "Education", file: "sections/Education.tsx", note: "Courses, certificates and degrees. Same muted ruled-list layout as Experience — both render through CredentialSection, so a layout change reaches both; only the label, headline and rows differ. Used on /about." },
   { name: "Photos", file: "home/Photos.tsx", note: "Infinite photo ticker at 70px/s, pauses on hover, respects reduced-motion." },
   { name: "AboutHero", file: "sections/AboutHero.tsx", note: "About-page opener: “about” kicker left, headline right, then thinking/making copy and a two-up photo pair. First-on-page uses pt-page-top; section-to-section space is pb-section." },
-  { name: "Chapter", file: "sections/Chapter.tsx", note: "Two-column chapter: headline on the left, stacked labelled copy blocks on the right. Section-to-section space is pb-section (96px) on the root. Props: headline, blocks. Independent of the about page." },
+  { name: "Chapter", file: "sections/Chapter.tsx", note: "Two-column chapter: headline left, any number of sub-sections right. Each sub-section is a type-label title plus one or more type-body paragraphs (gap 1.1em between paragraphs in the same sub-section). Props: headline, sections[{ label, paragraphs[] }]. Stack multiple <Chapter /> instances on a case study for additional chapters. pb-section on the root only." },
+  {
+    name: "ImageRow",
+    file: "sections/ImageRow.tsx",
+    note: "Case-study media row: columns 1 | 2 | 3 (equal grid fractions from tablet, stacked on phone). gap-gutter between frames (matches works-grid). Row height = tallest frame, max 800px. Stacked ImageRows: vertical gap = gutter (globals.css); only the last row in a stack gets pb-section. Used on /ageras.",
+  },
 ];
 
 const shell: Entry[] = [
@@ -119,8 +139,13 @@ const shell: Entry[] = [
 
 const work: Entry[] = [
   { name: "ProjectHero", file: "work/ProjectHero.tsx", note: "Case-study opener: title, a single body block (two paragraphs in one type-body element), then three equal meta columns. Left column has 160px inner right padding so the body stays clear of the meta. Props: title, aboutLabel, description, meta." },
-  { name: "SolaraPage", file: "work/SolaraPage.tsx", note: "The one fully built case study: ProjectHero, first image row, Chapter, remaining gallery, then a draggable next-project canvas." },
-  { name: "ProjectStub", file: "work/ProjectStub.tsx", note: "Placeholder for the remaining projects — single image, no case study yet." },
+  {
+    name: "CaseStudyPage",
+    file: "work/CaseStudyPage.tsx",
+    note: "Case study shell: ProjectHero, optional hero ImageRow, stacked Chapter blocks (optional imageRows per chapter), optional draggable next-project canvas when next + scatter are set. Content from src/content/case-studies/.",
+  },
+  { name: "SolaraPage", file: "work/SolaraPage.tsx", note: "Thin wrapper: CaseStudyPage for ageras (getCaseStudy). Prefer CaseStudyPage + getCaseStudy in routes." },
+  { name: "ProjectStub", file: "work/ProjectStub.tsx", note: "Fallback when no entry in src/content/case-studies/ — single image only." },
 ];
 
 /* ── page ───────────────────────────────────────────────────────────── */
@@ -137,7 +162,9 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   Education: <Education />,
   Photos: <Photos />,
   AboutHero: <AboutHero />,
-  Chapter: <Chapter />,
+  Chapter: (
+    <Chapter headline={solara.chapters[0].headline} sections={[...solara.chapters[0].sections]} />
+  ),
   ProjectHero: (
     <ProjectHero
       title={solara.title}
@@ -146,6 +173,10 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
       meta={solara.meta}
     />
   ),
+  CaseStudyPage: (() => {
+    const study = getCaseStudy("plinto-ai-invoicing");
+    return study ? <CaseStudyPage study={study} /> : null;
+  })(),
 };
 
 function Section({ title, intro, children }: { title: string; intro?: string; children: React.ReactNode }) {
@@ -236,10 +267,10 @@ export default function DesignSystemPage() {
 
       <Section
         title="Spacing"
-        intro="One 4px-based scale shared by gap, padding and margin. The token number is the pixel value, so gap-12 is 12px — never a multiplier. Steps of 4 up to 44, then 8 upward. There is no base step, so only these 18 values exist. Component dimensions (logo width, thumbnail height, hero frame) are not rhythm and use explicit brackets like w-[139px] instead. Tailwind does not error on an unknown utility — gap-7 silently does nothing — so `npm run check:spacing` is what enforces the scale."
+        intro="One 4px-based scale shared by gap, padding and margin. The token number is the pixel value, so gap-12 is 12px — never a multiplier. Steps of 4 up to 44, then 8 upward. There is no base step, so only these 19 values exist. Component dimensions (logo width, thumbnail height, hero frame) are not rhythm and use explicit brackets like w-[139px] instead. Tailwind does not error on an unknown utility — gap-7 silently does nothing — so `npm run check:spacing` is what enforces the scale."
       >
         <div className="flex flex-wrap items-end gap-24">
-          {[0, 2, 4, 8, 12, 16, 20, 24, 32, 36, 44, 56, 64, 76, 96, 104, 152, 216].map((n) => (
+          {[0, 2, 4, 8, 12, 16, 20, 24, 32, 36, 44, 56, 64, 76, 96, 104, 152, 176, 216].map((n) => (
             <div key={n} className="flex flex-col gap-gutter">
               <div className="bg-ink" style={{ width: n, height: n }} />
               <p className={DOC_DIM}>{n}</p>
@@ -296,6 +327,40 @@ export default function DesignSystemPage() {
               <WorkCard project={projects[0]} index={0} />
             </div>
           </Row>
+          <Row entry={atoms[3]} usage={usage}>
+            <div className="grid grid-cols-1 gap-tight tablet:grid-cols-3">
+              <ImageFrame variant="fill" src={MEDIA_A} alt="" />
+              <ImageFrame variant="solid" src={MEDIA_B} alt="" />
+              <ImageFrame variant="background" src={MEDIA_B} alt="" backgroundSrc={MEDIA_C} />
+            </div>
+          </Row>
+        </div>
+      </Section>
+
+      <Section
+        title="Image rows (catalogue)"
+        intro="Layout-only demos using the three Ageras gallery placeholders. Column widths are grid fractions; frames cap at 800px height."
+      >
+        <div className="flex flex-col gap-header">
+          <p className={DOC_DIM}>One column — fill</p>
+          <ImageRow columns={1} frames={[{ variant: "fill", src: MEDIA_A, alt: "" }]} />
+          <p className={DOC_DIM}>Two columns — solid + background</p>
+          <ImageRow
+            columns={2}
+            frames={[
+              { variant: "solid", src: MEDIA_A, alt: "" },
+              { variant: "background", src: MEDIA_B, alt: "", backgroundSrc: MEDIA_C },
+            ]}
+          />
+          <p className={DOC_DIM}>Three columns — one per variant</p>
+          <ImageRow
+            columns={3}
+            frames={[
+              { variant: "fill", src: MEDIA_A, alt: "" },
+              { variant: "solid", src: MEDIA_B, alt: "" },
+              { variant: "background", src: MEDIA_B, alt: "", backgroundSrc: MEDIA_C },
+            ]}
+          />
         </div>
       </Section>
 

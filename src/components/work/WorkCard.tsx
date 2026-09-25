@@ -3,7 +3,7 @@ import { formatIndex, type Project } from "@/content/projects";
 
 export function WorkCard({ project, index }: { project: Project; index: number }) {
   return (
-    <Link href={`/works/${project.slug}`} className="relative min-w-0 overflow-clip">
+    <Link href={`/${project.slug}`} className="relative min-w-0 overflow-clip">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={project.image}

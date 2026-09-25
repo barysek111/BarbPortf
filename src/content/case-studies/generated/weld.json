@@ -1,0 +1,82 @@
+[
+  {
+    "headline": "Research",
+    "sections": [
+      {
+        "label": "Audit findings",
+        "paragraphs": [
+          "I audited Weld's existing assets and looked at how competitors positioned themselves. The findings were clear: inconsistency everywhere. Different icons, conflicting colors, no clear visual hierarchy. Their website felt like it was made by committee with no one guiding the vision."
+        ]
+      },
+      {
+        "label": "Competitive analysis",
+        "paragraphs": [
+          "I analyzed direct competitors and indirect ones. What worked, what felt dated, where there was room to differentiate. The biggest gap was personality. Everyone was trying to look serious. That was the opportunity."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Direction",
+    "sections": [
+      {
+        "label": "Brand refresh",
+        "paragraphs": [
+          "I developed a refreshed visual identity with a bold color palette, clean typography, and modern visual language. The logo stayed, but everything around it got tighter and smarter. Custom iconography and illustration would inject personality without sacrificing trust."
+        ]
+      },
+      {
+        "label": "Website clarity",
+        "paragraphs": [
+          "For the website, the priority was clarity. Make it obvious what Weld does, who it's for, and why they should care. Each page needed to serve a specific purpose, whether that was explaining features, showing pricing, or getting people to sign up."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Design",
+    "sections": [
+      {
+        "label": "Design system foundation",
+        "paragraphs": [
+          "The new brand system became the foundation for everything. A scalable Figma library with components, grids, color tokens, and icons. This toolkit sped up prototyping and made handoff to developers clean."
+        ]
+      },
+      {
+        "label": "Website redesign",
+        "paragraphs": [
+          "The website got a complete redesign. Homepage, pricing, signup, resources, and product pages all aligned with the new identity. Navigation was clarified. Information architecture was rethought so visitors could find what they needed without friction."
+        ]
+      },
+      {
+        "label": "Brand personality",
+        "paragraphs": [
+          "Custom icons and illustrations brought the brand to life. Every icon was designed to support the copy, not replace it. Infographics explained complex concepts visually. The overall effect was professional but not cold."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Outcomes",
+    "sections": [
+      {
+        "label": "Foundation for growth",
+        "paragraphs": [
+          "The design system became Weld's foundation for future growth. New features and pages could ship without starting from scratch. The brand felt cohesive across the website and product."
+        ]
+      },
+      {
+        "label": "Clear communication",
+        "paragraphs": [
+          "Most importantly, the website finally communicated clearly what Weld did and why anyone should use it. The redesign aligned the whole visual experience around the message: Weld is the trustworthy way to connect your data tools."
+        ]
+      },
+      {
+        "label": "The lesson",
+        "paragraphs": [
+          "Consistency compounds. By standardizing visual language across components, the whole system became more powerful than any individual piece."
+        ]
+      }
+    ]
+  }
+]
