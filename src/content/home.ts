@@ -43,13 +43,6 @@ export const services = [
   },
 ];
 
-export const photos = [
-  { src: "/images/framer/QeEUs59laLeO1ZE9aHTpsHd0GA-7a0c078f.avif", w: 350, h: 438 },
-  { src: "/images/framer/xXYbdDqkxA2c1arUA827SoS3lIM-62652227.avif", w: 350, h: 438 },
-  { src: "/images/framer/VgmoQJAX56XvHjW14MWU5WR3MU-51757349.avif", w: 350, h: 240 },
-  { src: "/images/framer/MTmdyaiu6k0EW1fPDIwFBtatNoo-5d4a2fc8.avif", w: 350, h: 525 },
-];
-
 export const whatIDo = {
   tags: ["what i do"],
   body:

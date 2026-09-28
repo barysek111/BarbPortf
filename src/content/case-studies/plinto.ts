@@ -1,9 +1,61 @@
 import plintoChapters from "./generated/plinto.json";
 import { buildScopeChapter } from "./parse-refined-md";
-import type { CaseStudy } from "./types";
+import type { CaseStudy, CaseStudyChapter } from "./types";
+
+const solid = (src: string, alt: string) => ({ variant: "solid" as const, src, alt });
+
+function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
+  if (chapter.headline === "Design") {
+    return {
+      ...chapter,
+      imageRows: [
+        {
+          columns: 3,
+          frames: [
+            solid(
+              "/images/works/plinto/wireframe-conversational-ease.svg",
+              "Wireframe exploring conversational ease",
+            ),
+            solid(
+              "/images/works/plinto/wireframe-decision-card.svg",
+              "Wireframe of the decision card",
+            ),
+            solid(
+              "/images/works/plinto/wireframe-control-room.svg",
+              "Wireframe of the control room layout",
+            ),
+          ],
+        },
+      ],
+    };
+  }
+
+  if (chapter.headline === "Prototype") {
+    return {
+      ...chapter,
+      imageRows: [
+        {
+          columns: 1,
+          frames: [
+            solid("/images/works/plinto/screen-1.svg", "Plinto approval prototype screen"),
+          ],
+        },
+        {
+          columns: 2,
+          frames: [
+            solid("/images/works/plinto/blocked-invoice.jpg", "Blocked invoice state"),
+            solid("/images/works/plinto/ai-chat-screens.jpg", "AI chat screens"),
+          ],
+        },
+      ],
+    };
+  }
+
+  return chapter;
+}
 
 export const plintoCaseStudy = {
-  slug: "plinto-ai-invoicing",
+  slug: "plinto",
   title: "Plinto: Designing an AI Invoice Approval Interface",
   aboutLabel: "about the project",
   description:
@@ -16,6 +68,10 @@ export const plintoCaseStudy = {
     { label: "client", value: "Plinto" },
     { label: "year", value: "2026" },
   ],
+  heroImage: {
+    src: "/images/works/plinto/hero.jpg",
+    alt: "Plinto invoice approval interface",
+  },
   chapters: [
     buildScopeChapter(
       "Plinto is an early stage Copenhagen startup building an AI virtual controller for financial controlling. Finance teams processing dozens of invoices each week often work across disconnected tools with no single place to review AI output and record a decision. This case study covers a product design task focused on the approval moment: after the AI has parsed an invoice, matched it against purchase orders, and assigned a status, the operator needs to understand the recommendation and act with confidence.",
@@ -26,6 +82,6 @@ export const plintoCaseStudy = {
         "Design for speed on Auto-matched invoices while making Blocked cases structurally hard to bypass",
       ],
     ),
-    ...plintoChapters,
+    ...plintoChapters.map(withImageRows),
   ],
 } satisfies CaseStudy;

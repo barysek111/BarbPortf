@@ -3,7 +3,7 @@ import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy } from "./types";
 
 export const eatGrimCaseStudy = {
-  slug: "eat-grim-brand-identity",
+  slug: "eatgrim",
   title: "Eat Grim Brand Identity",
   aboutLabel: "about the project",
   description:

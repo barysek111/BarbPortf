@@ -9,21 +9,16 @@ import { cn } from "@/lib/cn";
 /**
  * The single way projects are displayed. Grid by default, with a grid/list toggle.
  *
- * Used by the homepage and /works, so the column arithmetic below lives in exactly
- * one place. The works-grid utility owns columns and gutters; row height hugs each
- * row's tallest card.
+ * Used by the homepage and /works. The works-grid utility owns columns and gutters
+ * (2-up below 810px, 4-up from tablet); row height hugs each row's tallest card.
  */
 
-const ROLL =
-  "block h-[1.3em] leading-[1.3em] transition-transform duration-[450ms] " +
-  "group-hover:-translate-y-full group-focus-visible:-translate-y-full";
+const ROLL = "label-roll group-hover:-translate-y-full group-focus-visible:-translate-y-full";
 
 // Inactive toggles are muted; the active one takes the 8px mark to its left.
 const TOGGLE =
   "group relative cursor-pointer overflow-clip border-0 bg-transparent p-0 " +
-  "not-[.is-on]:text-muted " +
-  "[&.is-on]:before:absolute [&.is-on]:before:top-[calc(50%-4px)] [&.is-on]:before:-left-12 " +
-  "[&.is-on]:before:h-8 [&.is-on]:before:w-8 [&.is-on]:before:bg-current [&.is-on]:before:content-['']";
+  "not-[.is-on]:text-muted [&.is-on]:mark-leader-before";
 
 // Columns and gutters live in the `works-grid` utility in globals.css.
 // To change the column count set --works-grid-columns.
@@ -32,9 +27,15 @@ const GRID = "works-grid";
 // Matches the service row: a full-bleed ::after painting only its bottom edge,
 // so the rule sits outside the row's 12px bottom padding.
 const LIST_ROW =
-  "relative flex flex-col gap-20 overflow-clip pb-12 " +
+  "relative flex flex-col gap-gutter overflow-clip pb-12 " +
   "desktop:h-176 desktop:flex-row desktop:items-stretch desktop:gap-gutter " +
   "after:pointer-events-none after:absolute after:inset-0 after:border-b after:border-muted after:content-['']";
+
+const LIST_IMAGES =
+  "grid min-w-0 shrink-0 gap-tight overflow-hidden " +
+  "below-tablet:grid-cols-2 below-tablet:grid-rows-2 below-tablet:h-auto " +
+  "tablet:h-176 tablet:grid-cols-4 " +
+  "desktop:h-full desktop:min-h-0 desktop:flex-1";
 
 function Toggle({ label, on, onClick }: { label: string; on: boolean; onClick: () => void }) {
   return (
@@ -92,33 +93,41 @@ export function WorksDisplay({
           <div className="flex flex-col gap-12">
             {projects.map((project) => (
               <div key={project.slug} className={LIST_ROW}>
-                <div className="flex min-w-0 h-full min-h-0 flex-col justify-between gap-64 desktop:flex-1 desktop:gap-0">
-                  <div className="flex flex-row items-start justify-between gap-gutter">
-                    <div className="flex flex-col gap-hairline">
+                <div className="flex min-w-0 flex-col desktop:h-full desktop:min-h-0 desktop:flex-1 desktop:justify-between">
+                  <div className="flex tablet:flex-row tablet:items-start tablet:justify-between tablet:gap-gutter">
+                    <div className="flex min-w-0 flex-col gap-hairline">
                       <p className="type-label reveal-clip">
                         <span>{project.title}</span>
                       </p>
-                      <p className="type-label reveal-clip w-[60%] max-w-[60%] text-muted">
+                      <p className="type-label reveal-clip w-full text-muted tablet:w-[60%] tablet:max-w-[60%]">
                         <span>{project.description}</span>
                       </p>
+                      <p className="type-label reveal-clip tablet:hidden">
+                        <span>{project.year}</span>
+                      </p>
                     </div>
-                    <p className="type-label reveal-clip">
+                    <p className="type-label reveal-clip hidden shrink-0 tablet:block">
                       <span>{project.year}</span>
                     </p>
                   </div>
-                  <BracketButton href={`/${project.slug}`}>view project</BracketButton>
+                  <BracketButton href={`/${project.slug}`} className="hidden desktop:inline-flex">
+                    view project
+                  </BracketButton>
                 </div>
-                <div className="grid h-176 min-w-0 shrink-0 grid-cols-4 gap-tight overflow-hidden desktop:h-full desktop:min-h-0 desktop:flex-1">
+                <div className={LIST_IMAGES}>
                   {project.listImages.slice(0, 4).map((image, imageIndex) => (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       key={`${project.slug}-${imageIndex}`}
                       src={image.src}
                       alt=""
-                      className="block h-full w-full object-cover"
+                      className="block h-full w-full object-cover below-tablet:aspect-[4/3] below-tablet:h-auto tablet:aspect-auto"
                     />
                   ))}
                 </div>
+                <BracketButton href={`/${project.slug}`} className="desktop:hidden">
+                  view project
+                </BracketButton>
               </div>
             ))}
           </div>

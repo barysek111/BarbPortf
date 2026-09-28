@@ -1,4 +1,6 @@
-export const solara = {
+import type { CaseStudy } from "./types";
+
+export const agerasCaseStudy = {
   slug: "ageras",
   title: "Ageras Website UI/UX Consolidation",
   aboutLabel: "about the project",
@@ -295,28 +297,8 @@ export const solara = {
     { label: "client", value: "Ageras" },
     { label: "year", value: "2025" },
   ],
-  heroImageRow: [
-    {
-      variant: "solid" as const,
-      src: "/images/works/ageras/showcase-phone.jpg",
-      alt: "Ageras mobile quote flow on textured green background",
-    },
-    {
-      variant: "solid" as const,
-      src: "/images/works/ageras/pricing.jpg",
-      alt: "Ageras pricing and plan comparison web UI",
-    },
-  ],
-  next: {
-    title: "Powermatch Invoice Reconciliation",
-    href: "/powermatch-invoice-reconciliation",
+  heroImage: {
+    src: "/images/works/ageras/hero.png",
+    alt: "Ageras website and mobile product screens",
   },
-  scatter: [
-    { src: "/images/framer/DLR5vTshQrN6AnIv0HP3iAea8M-c3770bf5.avif", x: "-29.1%", y: "-35.9%", w: 244, h: 305 },
-    { src: "/images/framer/zMaNUF45eJ6XLGOpxRNcVZ7K8EY-6b409a74.avif", x: "-0.1%", y: "-35.9%", w: 244, h: 305 },
-    { src: "/images/framer/Nda9lE6a3cUZNY91AbeaoYoYNyQ-6b731e0b.avif", x: "9.1%", y: "-3.9%", w: 244, h: 305 },
-    { src: "/images/framer/MdGX7ATfz8E3ZqFdB4O7LJgVzc4-1f74b3dc.avif", x: "40.9%", y: "2.0%", w: 244, h: 305 },
-    { src: "/images/framer/1ZzntJzHG3BpDFXfH53ru5ozE-f6d4db04.avif", x: "-19.1%", y: "15.0%", w: 244, h: 153 },
-    { src: "/images/framer/Iy1QvcioDnEx2yZn4QTGzlDH1gI-5ff4802b.avif", x: "21.9%", y: "11.0%", w: 244, h: 153 },
-  ],
-} as const;
+} satisfies CaseStudy;

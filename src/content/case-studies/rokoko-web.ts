@@ -3,7 +3,7 @@ import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy } from "./types";
 
 export const rokokoWebCaseStudy = {
-  slug: "rokoko-website-revamp",
+  slug: "rokokoweb",
   title: "Rokoko Website Revamp",
   aboutLabel: "about the project",
   description:

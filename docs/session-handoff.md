@@ -11,7 +11,7 @@
 - **Chapter** stack: SCOPE + 6 chapters from `ageras-refined.md`
 - **Image rows** under **Direction** (sitemaps fill, login solid) and **Design System** (6 rows + icons/tabs) and **Prototype & Validation** (fullpages solid, 3-col fill mockups)
 - **Next project** canvas (scatter + drag) → Powermatch
-- Content: `src/content/solara.ts` (also wired via `getCaseStudy("ageras")`)
+- Content: `src/content/case-studies/ageras.ts` (wired via `getCaseStudy("ageras")`)
 
 ### Other 7 projects — text-only case studies
 Routes use **`CaseStudyPage`** + **`getCaseStudy(slug)`**:
@@ -54,7 +54,7 @@ No hero **ImageRow**, no chapter **imageRows**, no next-project block yet.
 | Area | Path |
 |------|------|
 | Case study shell | `src/components/work/CaseStudyPage.tsx` |
-| Ageras content | `src/content/solara.ts` |
+| Ageras content | `src/content/case-studies/ageras.ts` |
 | Other case studies | `src/content/case-studies/` |
 | Dynamic route | `src/app/[slug]/page.tsx` |
 | Image row spacing | `src/app/globals.css` (Image row stack spacing) |

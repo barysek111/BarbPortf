@@ -12,14 +12,15 @@ import { Services } from "@/components/home/Services";
 import { WhatIDo } from "@/components/home/WhatIDo";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
-import { Photos } from "@/components/home/Photos";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { Chapter } from "@/components/sections/Chapter";
 import { CaseStudyPage } from "@/components/work/CaseStudyPage";
+import { NextProject } from "@/components/work/NextProject";
 import { ProjectHero } from "@/components/work/ProjectHero";
+import { ProjectStub } from "@/components/work/ProjectStub";
 import { getCaseStudy } from "@/content/case-studies";
-import { projects } from "@/content/projects";
-import { solara } from "@/content/solara";
+import { getProjectNeighbor, projects } from "@/content/projects";
+import { agerasCaseStudy } from "@/content/case-studies/ageras";
 import { getComponentUsage } from "@/lib/component-usage";
 
 // Internal reference page. Kept out of the nav and out of search results.
@@ -45,8 +46,8 @@ const colors = [
 ];
 
 const breakpoints = [
-  { name: "tablet", value: "810px", use: "Phone to tablet. Grids go 2-up." },
-  { name: "desktop", value: "1200px", use: "Most layout variants switch here: nav, 50/50 splits, 5-col grid." },
+  { name: "tablet", value: "810px", use: "Primary layout step: works grid 4-up, ImageRow columns, Chapter/ProjectHero/Services stack-to-split, hero meta, list-mode image strip." },
+  { name: "desktop", value: "1200px", use: "Nav inline + NavClock, list rows side-by-side (h-176), WorksDisplay list CTA in text column; type-h2/h3 larger steps continue above." },
   { name: "wide", value: "1400px", use: "Type only — type-h3 reaches its largest step." },
   { name: "max", value: "1440px", use: "Type only — type-h2 reaches its largest step." },
 ];
@@ -79,7 +80,11 @@ const MEDIA_C = "/images/framer/QD2AxA7bZdiagkNhpHtgD6IuDIo-0f8ca57f.avif";
 const layoutUtils = [
   { cls: "site-main", use: "Outermost wrap. Caps the page at 3840px and centres it." },
   { cls: "section-wrap", use: "Section wrap. Caps at 1920px with the 10px gutter." },
-  { cls: "stack-front", use: "Lifts a section above the sticky/pinned bands behind it." },
+  { cls: "stack-front", use: "Lifts a section above the sticky/pinned bands behind it (z-stack)." },
+  { cls: "z-nav / z-stack / z-lift", use: "Stacking tokens: fixed nav (8), hero meta / stack-front (3), overlaid type or media (1)." },
+  { cls: "label-roll", use: "Bracket label roll line; pair with group-hover:-translate-y-full on BracketButton, toggles, NextProject." },
+  { cls: "mark-leader / mark-leader-before", use: "8px square one gutter left of a label (nav active, footer links, list toggle when .is-on)." },
+  { cls: "below-tablet", use: "Variant for width < 810px (strictly below tablet). Used by WorksDisplay list image strip." },
   { cls: "appear", use: "One-shot in-view reveal. Offset via data-appear 20/30/60. Not a hover effect." },
   { cls: "reveal-clip", use: "Clips text to its box with no entrance offset." },
 ];
@@ -92,7 +97,7 @@ const atoms: Entry[] = [
   {
     name: "BracketButton",
     file: "ui/BracketButton.tsx",
-    note: "The only button style. Square brackets frame the label, which rolls up to a duplicate on hover. Renders as a link when given href, otherwise a button.",
+    note: "The only button style. Square brackets frame the label, which rolls up to a duplicate on hover (label-roll). Renders as a link when given href, otherwise a button.",
   },
   {
     name: "NavClock",
@@ -102,7 +107,7 @@ const atoms: Entry[] = [
   {
     name: "WorkCard",
     file: "work/WorkCard.tsx",
-    note: "Project thumbnail with an index and title caption. Used by both the home grid and the works page.",
+    note: "Project thumbnail with an index and title caption. The whole card links to the project. Hover scales the image to 110% over 700ms, clipped to the image, and replaces the pointer with a [VIEW] label that follows it. Caption row has no side padding: muted index flush left, title flush right, pt-gutter above. Used by the home grid and the works page.",
   },
   {
     name: "ImageFrame",
@@ -112,40 +117,43 @@ const atoms: Entry[] = [
 ];
 
 const sections: Entry[] = [
-  { name: "Hero", file: "home/Hero.tsx", note: "Full-height opener. Meta pinned left and right, scroll cue centred. hero-frame only centres and sets width (100vw / 60vw from 810px); HeroRing owns the 5:4 height — same as its design-system preview. mb-section sits outside the 100svh box so the next section starts 96px below the fold." },
+  { name: "Hero", file: "home/Hero.tsx", note: "Full-height opener. Below 810px, “latest work” is hidden and “product designer” is centred over the carousel (z-stack). From tablet, meta is pinned left and right again. Scroll cue centred with bottom-gutter (12px) from the viewport bottom. hero-frame only centres and sets width (100vw / 60vw from 810px); HeroRing owns the 5:4 height — same as its design-system preview. mb-section sits outside the 100svh box so the next section starts 96px below the fold." },
   { name: "HeroRing", file: "home/HeroRing.tsx", note: "Cards on a tilted ring in perspective. Stage is aspect 5:4 at 100% of parent width; layout scales the oval to those bounds. Spins continuously at 4°/s (~90s/turn) with no hover pause or flip. Honours reduced-motion. On the homepage the parent is hero-frame (60vw); on the design-system page the parent is the content column." },
-  { name: "WorksDisplay", file: "sections/WorksDisplay.tsx", note: "The single way projects are displayed, with a grid/list toggle in place of a CTA. Default title is “LATEST WORK”; the bracket count is projects.length. Grid is 1 column, 2×390px from 810px, then 4 fluid columns from 1200px. Each row hugs its tallest card; shorter cards bottom-align so captions share a baseline. Images fill the column width and take their height from their own aspect ratio, never stretched. List rows use muted bottom rules: title and muted 60%-width summary top-left, year top-right, view project below; the image column is a fixed four-up grid (equal columns, object-cover); from desktop, the whole row is h-176 (176px list-row token). Section-to-section space is pb-section (96px) on the root; pb-header is only the title-to-grid gap. Props: title, headingLevel, className (e.g. pt-page-top on /works). Must stay a direct child of site-main." },
-  { name: "Services", file: "home/Services.tsx", note: "Headline “SERVICES” sits in the right column, matching Education/Experience. Ruled rows: two equal halves from desktop. Left is the 64×64 SVG icon beside “[01] Title”; right is the muted type-label description. Row content is vertically centred. Each row owns muted top/bottom rules. Height is content plus 24px above and below." },
+  { name: "WorksDisplay", file: "sections/WorksDisplay.tsx", note: "The single way projects are displayed, with a grid/list toggle (label-roll + mark-leader-before when .is-on). Default title is “LATEST WORK”; the bracket count is projects.length. Grid is 2 equal columns below 810px, then 4 fluid columns from tablet up. Column gap is gutter (12px); row gap is 44px. List rows use muted bottom rules. Below desktop (1200px) each list row stacks: copy, image strip, then view project, with gap-gutter between stack items. From tablet–1199px the summary is 60% width with year top-right and a four-across image strip (h-176); below tablet the summary is full width, year under copy, strip 2×2. From desktop the row is side-by-side h-176 with the CTA at the bottom of the text column. pb-section on the root; pb-header is title-to-grid only. Props: title, headingLevel, className. Must stay a direct child of site-main." },
+  { name: "Services", file: "home/Services.tsx", note: "Headline “SERVICES” is full width, matching Education/Experience. Ruled rows stack only below 810px; from tablet up, two equal halves. Left is the 64×64 SVG icon beside “[01] Title”; right is the muted type-label description (wraps; full copy visible at every width). Row content is vertically centred. Each row owns muted top/bottom rules. Height is content plus 24px above and below." },
   { name: "WhatIDo", file: "home/WhatIDo.tsx", note: "Label above a large statement block, with a 12px (gutter) gap between them. Section-to-section space is pb-section on the root." },
-  { name: "Experience", file: "sections/Experience.tsx", note: "Label and headline above a list of roles, each row pairing the role with its company and years. Used on /about. Rows carry muted top/bottom rules; height is content plus 24px above and below." },
-  { name: "Education", file: "sections/Education.tsx", note: "Courses, certificates and degrees. Same muted ruled-list layout as Experience — both render through CredentialSection, so a layout change reaches both; only the label, headline and rows differ. Used on /about." },
-  { name: "Photos", file: "home/Photos.tsx", note: "Infinite photo ticker at 70px/s, pauses on hover, respects reduced-motion." },
-  { name: "AboutHero", file: "sections/AboutHero.tsx", note: "About-page opener: “about” kicker left, headline right, then thinking/making copy and a two-up photo pair. First-on-page uses pt-page-top; section-to-section space is pb-section." },
-  { name: "Chapter", file: "sections/Chapter.tsx", note: "Two-column chapter: headline left, any number of sub-sections right. Each sub-section is a type-label title plus one or more type-body paragraphs (gap 1.1em between paragraphs in the same sub-section). Props: headline, sections[{ label, paragraphs[] }]. Stack multiple <Chapter /> instances on a case study for additional chapters. pb-section on the root only." },
+  { name: "Experience", file: "sections/Experience.tsx", note: "Headline left above a list of roles, each row pairing the role with its company and years. Used on /about. Rows carry muted top/bottom rules; height is content plus 24px above and below." },
+  { name: "Education", file: "sections/Education.tsx", note: "Courses, certificates and degrees. Same muted ruled-list layout as Experience — both render through CredentialSection, so a layout change reaches both; only the label, headline and rows differ. Headline is left-aligned. Used on /about." },
+  { name: "AboutHero", file: "sections/AboutHero.tsx", note: "About-page opener: Chapter with the headline plus thinking/making sections. The making section includes a half-width ImageFrame. First-on-page pt-page-top is passed to Chapter." },
+  { name: "Chapter", file: "sections/Chapter.tsx", note: "Two-column chapter from tablet (810px): headline left (max-width 70% of the left column), sub-sections right. Below 810px stacks with gap-36 between the headline and the section stack, matching gap-36 between sub-sections. Each sub-section is type-label plus type-body paragraphs; gap-[1.1em] between paragraphs matches type-body line-height (typography rhythm, not spacing scale). Optional ImageFrames in the right-column stack (gap-36) at half column width. Props: headline, sections[{ label, paragraphs[], images? }], headingLevel, className, id. pb-section on the root only." },
   {
     name: "ImageRow",
     file: "sections/ImageRow.tsx",
-    note: "Case-study media row: columns 1 | 2 | 3 (equal grid fractions from tablet, stacked on phone). gap-gutter between frames (matches works-grid). Row height = tallest frame, max 800px. Stacked ImageRows: vertical gap = gutter (globals.css); only the last row in a stack gets pb-section. Used on /ageras.",
+    note: "Case-study media row: columns 1 | 2 | 3 (equal grid fractions from tablet, stacked on phone). gap-gutter between frames (matches works-grid). Row height = tallest frame, max 800px. Stacked ImageRows: vertical gap = gutter (globals.css); only the last row in a stack gets pb-section. Design-system preview shows 1-, 2-, and 3-column examples.",
   },
 ];
 
 const shell: Entry[] = [
-  { name: "CredentialSection", file: "sections/CredentialSection.tsx", note: "Shared ruled-list layout behind Experience and Education. Never rendered on its own — edit it to change both at once. Optional label in the left column; headline always in the right. Rows own muted top/bottom rules so the list reads as continuous." },
+  { name: "CredentialSection", file: "sections/CredentialSection.tsx", note: "Shared ruled-list layout behind Experience and Education. Never rendered on its own — edit it to change both at once. Section headline is full width (no half-column cap); optional label stacks below it. Each row is three columns at every width: equal-width title and meta (1fr / 1fr), then year auto-aligned right; copy wraps within its column instead of stacking or clipping. Rows own muted top/bottom rules so the list reads as continuous." },
   { name: "SiteLayout", file: "layout/SiteLayout.tsx", note: "Wraps every route with smooth scroll, nav and footer." },
   { name: "Nav", file: "layout/Nav.tsx", note: "Fixed bar using mix-blend so it inverts against whatever sits behind it. Collapses to a [menu] overlay below 1200px." },
-  { name: "Footer", file: "layout/Footer.tsx", note: "Oversized wordmark with contact and meta rows. Links reveal an 8px mark on hover." },
+  { name: "Footer", file: "layout/Footer.tsx", note: "Oversized wordmark with contact and meta rows. Links reveal an 8px mark on hover. Top padding is pt-104 (104px). Bottom padding is pb-24 (24px)." },
   { name: "SmoothScroll", file: "layout/SmoothScroll.tsx", note: "Lenis provider. Also drives the appear reveals." },
 ];
 
 const work: Entry[] = [
-  { name: "ProjectHero", file: "work/ProjectHero.tsx", note: "Case-study opener: title, a single body block (two paragraphs in one type-body element), then three equal meta columns. Left column has 160px inner right padding so the body stays clear of the meta. Props: title, aboutLabel, description, meta." },
+  { name: "ProjectHero", file: "work/ProjectHero.tsx", note: "Case-study opener: type-h2 title (full width below 810px, max-w-1/2 from tablet), then about plus three meta blocks. Below 810px all four stack with uniform gap-16 between sections (contents flattens meta into the same column); from tablet, two columns with three equal meta columns on the right. The about label uses type-label, same as meta labels. Left column has 160px inner right padding from tablet so the body stays clear of the meta. A one-column solid ImageRow sits under that copy, inside this component. pb-section (96px, the page-section gap) on the copy separates it from the row; the row’s own last-row pb-section is the gap before the next section. imageSrc defaults to public/images/project-hero-placeholder.jpg; pass a project image to replace it (Ageras uses public/images/works/ageras/hero.png). Props: title, aboutLabel, description, meta, imageSrc, imageAlt." },
   {
     name: "CaseStudyPage",
     file: "work/CaseStudyPage.tsx",
-    note: "Case study shell: ProjectHero, optional hero ImageRow, stacked Chapter blocks (optional imageRows per chapter), optional draggable next-project canvas when next + scatter are set. Content from src/content/case-studies/.",
+    note: "Case study shell: ProjectHero (copy plus its one-column solid image row), stacked Chapter blocks (optional imageRows per chapter), then NextProject for the following project in list order. Content from src/content/case-studies/.",
   },
-  { name: "SolaraPage", file: "work/SolaraPage.tsx", note: "Thin wrapper: CaseStudyPage for ageras (getCaseStudy). Prefer CaseStudyPage + getCaseStudy in routes." },
-  { name: "ProjectStub", file: "work/ProjectStub.tsx", note: "Fallback when no entry in src/content/case-studies/ — single image only." },
+  {
+    name: "NextProject",
+    file: "work/NextProject.tsx",
+    note: "Closing project-page link. type-h3 title, bracket label, and that project’s home-grid thumbnail centered behind them at 50vw below 810px, 25vw from tablet. A 40% white overlay (bg-paper/40) covers the image only, under the type. Only the image and the title-plus-label are links; the empty space around them is not. Hovering either blurs the image (12px) and scales it to 125% inside the clipped frame so the blur does not wash the edges white, and rolls the label. Both return when the pointer leaves. 500ms. pt-104 plus the previous section’s pb-section (96px) matches the gap below (this section’s pb-section plus the footer’s pt-104). Props: title, href, imageSrc, label. Case studies pass the next project in src/content/projects.ts order; the last project (Eat Grim) passes the previous one and label “previous project”.",
+  },
+  { name: "ProjectStub", file: "work/ProjectStub.tsx", note: "Fallback when no entry in src/content/case-studies/ — single image, then the same NextProject neighbor as a case study." },
 ];
 
 /* ── page ───────────────────────────────────────────────────────────── */
@@ -160,23 +168,59 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   WhatIDo: <WhatIDo />,
   Experience: <Experience />,
   Education: <Education />,
-  Photos: <Photos />,
   AboutHero: <AboutHero />,
+  ImageRow: (
+    <div className="flex flex-col gap-header">
+      <ImageRow columns={1} frames={[{ variant: "fill", src: MEDIA_A, alt: "" }]} />
+      <ImageRow
+        columns={2}
+        frames={[
+          { variant: "solid", src: MEDIA_A, alt: "" },
+          { variant: "background", src: MEDIA_B, alt: "", backgroundSrc: MEDIA_C },
+        ]}
+      />
+      <ImageRow
+        columns={3}
+        frames={[
+          { variant: "fill", src: MEDIA_A, alt: "" },
+          { variant: "solid", src: MEDIA_B, alt: "" },
+          { variant: "background", src: MEDIA_B, alt: "", backgroundSrc: MEDIA_C },
+        ]}
+      />
+    </div>
+  ),
   Chapter: (
-    <Chapter headline={solara.chapters[0].headline} sections={[...solara.chapters[0].sections]} />
+    <Chapter
+      headline={agerasCaseStudy.chapters[0].headline}
+      sections={agerasCaseStudy.chapters[0].sections}
+    />
   ),
   ProjectHero: (
     <ProjectHero
-      title={solara.title}
-      aboutLabel={solara.aboutLabel}
-      description={solara.description}
-      meta={solara.meta}
+      title={agerasCaseStudy.title}
+      aboutLabel={agerasCaseStudy.aboutLabel}
+      description={agerasCaseStudy.description}
+      meta={agerasCaseStudy.meta}
+      imageSrc={agerasCaseStudy.heroImage?.src}
+      imageAlt={agerasCaseStudy.heroImage?.alt}
     />
   ),
   CaseStudyPage: (() => {
-    const study = getCaseStudy("plinto-ai-invoicing");
+    const study = getCaseStudy("plinto");
     return study ? <CaseStudyPage study={study} /> : null;
   })(),
+  NextProject: (() => {
+    const neighbor = getProjectNeighbor("ageras");
+    return neighbor ? (
+      <NextProject
+        title={neighbor.project.title}
+        href={`/${neighbor.project.slug}`}
+        imageSrc={neighbor.project.image}
+        label={neighbor.label}
+      />
+    ) : null;
+  })(),
+  ProjectStub: <ProjectStub project={projects[0]} />,
 };
 
 function Section({ title, intro, children }: { title: string; intro?: string; children: React.ReactNode }) {
@@ -337,38 +381,12 @@ export default function DesignSystemPage() {
         </div>
       </Section>
 
-      <Section
-        title="Image rows (catalogue)"
-        intro="Layout-only demos using the three Ageras gallery placeholders. Column widths are grid fractions; frames cap at 800px height."
-      >
-        <div className="flex flex-col gap-header">
-          <p className={DOC_DIM}>One column — fill</p>
-          <ImageRow columns={1} frames={[{ variant: "fill", src: MEDIA_A, alt: "" }]} />
-          <p className={DOC_DIM}>Two columns — solid + background</p>
-          <ImageRow
-            columns={2}
-            frames={[
-              { variant: "solid", src: MEDIA_A, alt: "" },
-              { variant: "background", src: MEDIA_B, alt: "", backgroundSrc: MEDIA_C },
-            ]}
-          />
-          <p className={DOC_DIM}>Three columns — one per variant</p>
-          <ImageRow
-            columns={3}
-            frames={[
-              { variant: "fill", src: MEDIA_A, alt: "" },
-              { variant: "solid", src: MEDIA_B, alt: "" },
-              { variant: "background", src: MEDIA_B, alt: "", backgroundSrc: MEDIA_C },
-            ]}
-          />
-        </div>
-      </Section>
-
       <Section title="Section components">
         <p className={`${DOC} max-w-[680px]`}>
           Each one below is the live component, imported from the same module the routes use — editing it here changes
-          every instance across the site. Sticky and full-height sections behave differently outside their page context,
-          so treat position as approximate and everything else as real. Seen in place on{" "}
+          every instance across the site. Folders: home/ (homepage blocks), sections/ (shared page sections), work/
+          (case-study and project UI), layout/ (shell), ui/ (atoms). Sticky and full-height sections behave differently
+          outside their page context, so treat position as approximate and everything else as real. Seen in place on{" "}
           <Link href="/" className="underline">
             the homepage
           </Link>

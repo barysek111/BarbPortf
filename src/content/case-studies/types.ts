@@ -21,8 +21,7 @@ export type CaseStudy = {
   aboutLabel: string;
   description: string;
   meta: readonly { label: string; value: string }[];
-  heroImageRow?: readonly ImageFrameProps[];
+  /** One-column solid image under the hero copy. Omitted studies use the ProjectHero placeholder. */
+  heroImage?: { src: string; alt: string };
   chapters: readonly CaseStudyChapter[];
-  next?: { title: string; href: string };
-  scatter?: readonly { src: string; x: string; y: string; w: number; h: number }[];
 };

@@ -105,6 +105,11 @@ Verified identical live vs local at 390 / 810 / 1200 / 1440 / 1920.
 
 ## Component map (home)
 
+> **Next.js rebuild:** This map describes the Framer reference site. The app in
+> `titarvl-1to1` implements a subset only (e.g. Hero, Works, Services, What I Do,
+> About, case studies). Sections such as Video, FAQ, Testimonial, Contact form, and
+> Photos are not built unless added deliberately.
+
 12 named sections, in order: Hero, Latest, Services, What I Do, Video, Quote,
 Benefits, Showcase Reel, FAQ, Testimonial, Contact, Photos.
 

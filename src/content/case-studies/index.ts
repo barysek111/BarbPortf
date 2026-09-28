@@ -1,4 +1,5 @@
-import { solara } from "@/content/solara";
+/** Case-study modules use kebab filenames (`coco-care.ts`); route slugs stay compact (`cococare`). */
+import { agerasCaseStudy } from "./ageras";
 import { cocoCareCaseStudy } from "./coco-care";
 import { eatGrimCaseStudy } from "./eat-grim";
 import { plintoCaseStudy } from "./plinto";
@@ -7,18 +8,6 @@ import { rokokoBrandCaseStudy } from "./rokoko-brand";
 import { rokokoWebCaseStudy } from "./rokoko-web";
 import type { CaseStudy } from "./types";
 import { weldCaseStudy } from "./weld";
-
-const agerasCaseStudy = {
-  slug: solara.slug,
-  title: solara.title,
-  aboutLabel: solara.aboutLabel,
-  description: solara.description,
-  meta: solara.meta,
-  heroImageRow: solara.heroImageRow,
-  chapters: solara.chapters,
-  next: solara.next,
-  scatter: solara.scatter,
-} satisfies CaseStudy;
 
 const caseStudies: Record<string, CaseStudy> = {
   [agerasCaseStudy.slug]: agerasCaseStudy,

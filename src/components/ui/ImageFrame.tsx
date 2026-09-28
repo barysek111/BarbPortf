@@ -73,7 +73,7 @@ export function ImageFrame({
           // eslint-disable-next-line @next/next/no-img-element
           <img src={backgroundSrc} alt="" className="absolute inset-0 h-full w-full object-cover" />
         ) : null}
-        <div className="relative z-1 flex min-h-0 w-full min-w-0 flex-1 items-center justify-center">
+        <div className="relative z-lift flex min-h-0 w-full min-w-0 flex-1 items-center justify-center">
           <ContainedImage src={src} alt={alt} />
         </div>
       </div>

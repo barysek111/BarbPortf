@@ -1,10 +1,13 @@
 import type { CaseStudyChapter } from "./types";
 
+type MutableSection = { label: string; paragraphs: string[] };
+type MutableChapter = { headline: string; sections: MutableSection[] };
+
 /** Parse refined case-study markdown: ## chapter, **sub-section**, body paragraphs. */
 export function parseRefinedMd(md: string): CaseStudyChapter[] {
-  const chapters: CaseStudyChapter[] = [];
-  let current: CaseStudyChapter | null = null;
-  let section: { label: string; paragraphs: readonly string[] } | null = null;
+  const chapters: MutableChapter[] = [];
+  let current: MutableChapter | null = null;
+  let section: MutableSection | null = null;
   let paragraphLines: string[] = [];
 
   const flushParagraph = () => {

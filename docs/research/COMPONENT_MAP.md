@@ -1,5 +1,9 @@
 # Component map (from `data-framer-name` + `data-framer-components`)
 
+> **Next.js rebuild:** Framer-only reference. The live app implements a subset;
+> see `src/app/design-system/page.tsx` for what exists in code (no Photos ticker,
+> FAQ, Testimonial, Contact form, etc., unless added later).
+
 ## Linked / reused (hashed IDs)
 
 | ID | Role | Pages |

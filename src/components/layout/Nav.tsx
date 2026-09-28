@@ -29,7 +29,7 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-[8] mx-auto w-full max-w-(--container-section)",
+        "fixed inset-x-0 top-0 z-nav mx-auto w-full max-w-(--container-section)",
         // The source inverts the bar against whatever is behind it.
         open ? "min-h-svh bg-paper text-ink" : "text-paper mix-blend-difference"
       )}
@@ -121,7 +121,7 @@ function NavItem({
         <span
           aria-hidden="true"
           className={cn(
-            "absolute top-[calc(50%-4px)] -left-12 h-8 w-8 bg-current transition-opacity duration-200",
+            "mark-leader transition-opacity duration-200",
             active ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
           )}
         />

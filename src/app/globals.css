@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Matches --breakpoint-tablet (810px): width strictly below tablet. */
+@custom-variant below-tablet (@media (width < 810px));
+
 /* ---------------------------------------------------------------------------
    TITARVL design system
    Every token below is derived from docs/research/framer-extract.json
@@ -104,6 +107,12 @@
   --radius-media: 8px;
   --radius-pill: 10px;
   --radius-card: 15px;
+
+  /* -- Stacking (nav bar, hero meta, framed media) -- */
+  --z-index-*: initial;
+  --z-index-nav: 8;
+  --z-index-stack: 3;
+  --z-index-lift: 1;
 }
 
 /* Semantic aliases naming the *role* a space plays. Each points at a primitive
@@ -304,17 +313,12 @@
   --works-grid-columns: 4;
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: end;
   column-gap: var(--spacing-gutter);
-  row-gap: var(--spacing-32);
+  row-gap: var(--spacing-44);
 
   @media (width >= 810px) {
-    grid-template-columns: repeat(2, 390px);
-    justify-content: start;
-  }
-
-  @media (width >= 1200px) {
     grid-template-columns: repeat(var(--works-grid-columns), minmax(0, 1fr));
   }
 }
@@ -357,8 +361,38 @@
 /* Sections that must paint over the pinned/sticky bands behind them. */
 @utility stack-front {
   position: relative;
-  z-index: 3;
+  z-index: var(--z-index-stack);
   background: var(--color-paper);
+}
+
+/* 8px square to the left of bracket labels / nav links (gutter offset). */
+@utility mark-leader {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: calc(-1 * var(--spacing-gutter));
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  background-color: currentcolor;
+}
+
+@utility mark-leader-before {
+  &::before {
+    position: absolute;
+    top: calc(50% - 4px);
+    left: calc(-1 * var(--spacing-gutter));
+    width: var(--spacing-8);
+    height: var(--spacing-8);
+    background-color: currentcolor;
+    content: "";
+  }
+}
+
+/* Bracket control label roll (BracketButton, toggles, NextProject). */
+@utility label-roll {
+  display: block;
+  height: 1.3em;
+  line-height: 1.3em;
+  transition: transform 450ms ease-out;
 }
 
 /* ---------------------------------------------------------------------------

@@ -3,7 +3,7 @@ import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy } from "./types";
 
 export const rokokoBrandCaseStudy = {
-  slug: "rokoko-brand-identity",
+  slug: "rokokobrand",
   title: "Rokoko Brand Identity",
   aboutLabel: "about the project",
   description:

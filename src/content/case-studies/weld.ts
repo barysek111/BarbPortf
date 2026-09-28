@@ -3,7 +3,7 @@ import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy } from "./types";
 
 export const weldCaseStudy = {
-  slug: "weld-digital-presence",
+  slug: "weld",
   title: "Weld Website Revamp",
   aboutLabel: "about the project",
   description:

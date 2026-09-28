@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-const ROLL = "block h-[1.3em] leading-[1.3em] transition-transform duration-[450ms] ease-out";
-
 export function BracketButton({
   href,
   children,
@@ -24,12 +22,12 @@ export function BracketButton({
     <>
       <span aria-hidden="true">[</span>
       <span className="flex h-[1.3em] flex-col overflow-hidden">
-        <span className={cn(ROLL, "group-hover:-translate-y-full group-focus-visible:-translate-y-full")}>
+        <span className="label-roll group-hover:-translate-y-full group-focus-visible:-translate-y-full">
           {children}
         </span>
         <span
           aria-hidden="true"
-          className={cn(ROLL, "group-hover:-translate-y-full group-focus-visible:-translate-y-full")}
+          className="label-roll group-hover:-translate-y-full group-focus-visible:-translate-y-full"
         >
           {children}
         </span>

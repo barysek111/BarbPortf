@@ -11,7 +11,6 @@ export type Project = {
   image: string;
   imageH: number;
   listImages: Thumb[];
-  nextSlug: string;
   masonryY: number;
 };
 
@@ -27,92 +26,103 @@ function cardHeight(width: number, height: number) {
   return Math.round((372 * height) / width);
 }
 
+/**
+ * Grid card image is `file` under public/images/works/.
+ * `listFolder` names public/images/works/list/{listFolder}/ for list-mode thumbs only —
+ * it may differ from `slug` when the asset folder predates short routes.
+ */
 const entries = [
   {
     file: "plinto-ai-invoicing.jpg",
     title: "Plinto AI Invoicing",
-    slug: "plinto-ai-invoicing",
+    slug: "plinto",
+    listFolder: "plinto-ai-invoicing",
     client: "Plinto",
     services: "Product Design",
     summary:
       "Designing the human-AI handoff moment for an invoice approval workflow. A single decision component that adapts its interface, gating logic, and visual hierarchy to four risk levels.",
     year: "2026",
     location: "Copenhagen, Denmark",
-    w: 1024,
-    h: 1022,
+    w: 1080,
+    h: 1350,
     masonryY: 93,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
   {
     file: "powermatch-invoice-reconciliation.jpg",
     title: "Powermatch Invoice Reconciliation",
-    slug: "powermatch-invoice-reconciliation",
+    slug: "powermatch",
+    listFolder: "powermatch-invoice-reconciliation",
     client: "Powermatch",
     services: "Product Design",
     summary:
       "Designing an invoice reconciliation feature. Replacing a fragmented cross-tool workflow with a flow for matching payments to invoices.",
     year: "2025",
     location: "Copenhagen, Denmark",
-    w: 717,
-    h: 963,
+    w: 1350,
+    h: 1080,
     masonryY: 326,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
   {
     file: "ageras-web-ux-ui.jpg",
-    title: "Ageras Web UX:UI",
+    title: "Ageras Web UX&UI",
     slug: "ageras",
+    listFolder: "ageras",
     client: "Ageras",
     services: "UX/UI Design",
     summary:
       "End-to-end website redesign across four markets, from wireframes and sitemaps to a final UI. Building the foundation for a comprehensive, responsive and scalable design system.",
     year: "2025",
     location: "Copenhagen, Denmark",
-    w: 798,
-    h: 1024,
+    w: 1080,
+    h: 1500,
     masonryY: 93,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
   {
-    file: "coco-care-app.png",
+    file: "coco-care-app.jpg",
     title: "Coco Care App",
-    slug: "coco-care-app",
+    slug: "cococare",
+    listFolder: "coco-care-app",
     client: "Coco Care",
     services: "Product Design",
     summary:
       "A digital physiotherapy platform designed to help patients recover at home and enable physiotherapists to track progress. I designed both the mobile app and web portal from user flows to interface details.",
     year: "2024",
     location: "Copenhagen, Denmark",
-    w: 932,
-    h: 1024,
+    w: 1080,
+    h: 1350,
     masonryY: 303,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
   {
     file: "rokoko-brand-identity.jpg",
     title: "Rokoko Brand Identity",
-    slug: "rokoko-brand-identity",
+    slug: "rokokobrand",
+    listFolder: "rokoko-brand-identity",
     client: "Rokoko",
     services: "Brand Identity",
     summary:
       "Rebrand of everything from digital experience, SoMe campaigns, email templates, internal branding to print.",
     year: "2022",
     location: "Copenhagen, Denmark",
-    w: 763,
-    h: 1025,
+    w: 1080,
+    h: 1500,
     masonryY: 93,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
   {
     file: "rokoko-website-revamp.jpg",
     title: "Rokoko Website Revamp",
-    slug: "rokoko-website-revamp",
+    slug: "rokokoweb",
+    listFolder: "rokoko-website-revamp",
     client: "Rokoko",
     services: "Web Design",
     summary: "Redesign of the company's main marketing website, webshop and a helpdesk site.",
     year: "2023",
     location: "Copenhagen, Denmark",
-    w: 1009,
+    w: 1637,
     h: 1310,
     masonryY: 707,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
@@ -120,7 +130,8 @@ const entries = [
   {
     file: "weld-digital-presence.svg",
     title: "Weld Digital Presence",
-    slug: "weld-digital-presence",
+    slug: "weld",
+    listFolder: "weld-digital-presence",
     client: "Weld",
     services: "Digital Design",
     summary:
@@ -135,7 +146,8 @@ const entries = [
   {
     file: "eat-grim-brand-identity.jpg",
     title: "Eat Grim Brand Identity",
-    slug: "eat-grim-brand-identity",
+    slug: "eatgrim",
+    listFolder: "eat-grim-brand-identity",
     client: "Eat Grim",
     services: "Brand Identity",
     summary:
@@ -149,9 +161,8 @@ const entries = [
   },
 ] as const;
 
-export const projects: Project[] = entries.map((entry, index) => {
+export const projects: Project[] = entries.map((entry) => {
   const image = `/images/works/${entry.file}`;
-  const nextSlug = entries[(index + 1) % entries.length].slug;
 
   return {
     slug: entry.slug,
@@ -164,8 +175,7 @@ export const projects: Project[] = entries.map((entry, index) => {
     image,
     imageH: cardHeight(entry.w, entry.h),
     masonryY: entry.masonryY,
-    listImages: listThumbs(entry.slug, entry.showcase),
-    nextSlug,
+    listImages: listThumbs(entry.listFolder, entry.showcase),
   };
 });
 
@@ -175,4 +185,16 @@ export function formatIndex(index: number) {
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
+}
+
+/** Next project in list order. The last project points at the one before it. */
+export function getProjectNeighbor(slug: string):
+  | { project: Project; label: "next project" | "previous project" }
+  | undefined {
+  const index = projects.findIndex((project) => project.slug === slug);
+  if (index < 0) return undefined;
+  const isLast = index === projects.length - 1;
+  const project = projects[isLast ? index - 1 : index + 1];
+  if (!project) return undefined;
+  return { project, label: isLast ? "previous project" : "next project" };
 }

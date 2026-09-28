@@ -5,14 +5,13 @@ import { site } from "@/content/site";
 // Links reveal an 8px square to their left on hover, drawn as a ::before so it
 // sits outside the text box and never shifts layout.
 const MARK =
-  "type-label relative w-max before:absolute before:top-[calc(50%-4px)] before:-left-12 before:h-8 before:w-8 " +
-  "before:bg-current before:opacity-0 before:transition-opacity before:duration-200 before:content-[''] " +
+  "type-label mark-leader-before relative w-max before:opacity-0 before:transition-opacity before:duration-200 " +
   "hover:before:opacity-100 focus-visible:before:opacity-100";
 
 export function Footer() {
   return (
     <footer className="stack-front w-full bg-paper text-ink">
-      <div className="mx-auto flex w-full max-w-(--container-section) flex-col px-gutter pt-104 pb-gutter">
+      <div className="mx-auto flex w-full max-w-(--container-section) flex-col px-gutter pt-104 pb-24">
         <div className="hidden min-h-[32px] items-center justify-end desktop:flex">
           <div className="flex flex-col items-end gap-hairline text-right">
             <p className="type-label">for all enquiries please contact</p>

@@ -3,7 +3,7 @@ import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy } from "./types";
 
 export const cocoCareCaseStudy = {
-  slug: "coco-care-app",
+  slug: "cococare",
   title: "Coco Care Interface Design",
   aboutLabel: "about the project",
   description:
