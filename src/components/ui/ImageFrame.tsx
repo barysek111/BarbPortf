@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/cn";
 
@@ -23,16 +24,18 @@ function ContainedImage({ src, alt }: { src: string; alt: string }) {
   const [orientation, setOrientation] = useState<"portrait" | "landscape" | null>(null);
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       src={src}
       alt={alt}
+      width={1200}
+      height={1200}
+      sizes="(max-width: 809px) 100vw, 33vw"
       onLoad={(e) => {
-        const { naturalWidth, naturalHeight } = e.currentTarget;
-        setOrientation(naturalHeight > naturalWidth ? "portrait" : "landscape");
+        const img = e.currentTarget;
+        setOrientation(img.naturalHeight > img.naturalWidth ? "portrait" : "landscape");
       }}
       className={cn(
-        "block max-h-full max-w-full object-contain",
+        "block h-auto max-h-full max-w-full object-contain",
         orientation === "portrait" && "h-auto w-auto",
         orientation === "landscape" && "h-auto w-full",
         orientation === null && "h-auto w-auto",
@@ -43,10 +46,12 @@ function ContainedImage({ src, alt }: { src: string; alt: string }) {
 
 function FillImage({ src, alt }: { src: string; alt: string }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       src={src}
       alt={alt}
+      width={1920}
+      height={1200}
+      sizes="100vw"
       className="block h-auto max-h-[800px] w-full object-cover object-center"
     />
   );
@@ -70,8 +75,7 @@ export function ImageFrame({
     return (
       <div className={cn(FRAME, "flex-col p-44")} data-name="Image Frame — background">
         {backgroundSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={backgroundSrc} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <Image src={backgroundSrc} alt="" fill sizes="100vw" className="object-cover" />
         ) : null}
         <div className="relative z-lift flex min-h-0 w-full min-w-0 flex-1 items-center justify-center">
           <ContainedImage src={src} alt={alt} />

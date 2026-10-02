@@ -11,11 +11,11 @@ export const about = {
   },
   experienceTitle: "Experience",
   jobs: [
-    { role: "Digital Brand Designer", company: "Ageras", period: "2024–2025" },
-    { role: "Product Designer", company: "Coco Care", period: "2023–2024" },
-    { role: "Digital Designer", company: "Rokoko", period: "2022–2023" },
-    { role: "Visual Designer", company: "Weld", period: "2021–2022" },
-    { role: "Brand Designer", company: "Eat Grim", period: "2019–2021" },
-    { role: "Designer Intern", company: "1508.dk", period: "2019" },
+    { role: "Digital Brand Designer", company: "Ageras", period: "(’24–’25)" },
+    { role: "Product Designer", company: "Coco Care", period: "(’23–’24)" },
+    { role: "Digital Designer", company: "Rokoko", period: "(’22–’23)" },
+    { role: "Visual Designer", company: "Weld", period: "(’21–’22)" },
+    { role: "Brand Designer", company: "Eat Grim", period: "(’19–’21)" },
+    { role: "Designer Intern", company: "1508.dk", period: "(’19)" },
   ],
 };

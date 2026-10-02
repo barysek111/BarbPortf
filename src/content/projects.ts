@@ -113,7 +113,7 @@ const entries = [
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
   {
-    file: "rokoko-website-revamp.jpg",
+    file: "rokoko-website-revamp.mp4",
     title: "Rokoko Website Revamp",
     slug: "rokokoweb",
     listFolder: "rokoko-website-revamp",
@@ -122,8 +122,8 @@ const entries = [
     summary: "Redesign of the company's main marketing website, webshop and a helpdesk site.",
     year: "2023",
     location: "Copenhagen, Denmark",
-    w: 1637,
-    h: 1310,
+    w: 720,
+    h: 720,
     masonryY: 707,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
@@ -152,7 +152,7 @@ const entries = [
     services: "Brand Identity",
     summary:
       "Brand guidelines and digital+print B2B and B2C presence for a sustainable subscription-based startup.",
-    year: "2019–2021",
+    year: "2019",
     location: "Copenhagen, Denmark",
     w: 946,
     h: 1147,

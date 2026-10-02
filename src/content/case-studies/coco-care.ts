@@ -1,6 +1,63 @@
 import cocoCareChapters from "./generated/cococare.json";
 import { buildScopeChapter } from "./parse-refined-md";
-import type { CaseStudy } from "./types";
+import type { CaseStudy, CaseStudyChapter } from "./types";
+
+const PLACEHOLDER = "/images/works/cococare/placeholder.png";
+
+const solid = (src: string, alt: string) => ({ variant: "solid" as const, src, alt });
+const placeholder = (alt = "") => solid(PLACEHOLDER, alt || "Work in progress");
+
+function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
+  if (chapter.headline === "Direction") {
+    return {
+      ...chapter,
+      imageRows: [
+        {
+          columns: 1,
+          frames: [
+            solid("/images/works/cococare/project-goals.svg", "Coco Care project goals"),
+          ],
+        },
+        {
+          columns: 2,
+          frames: [placeholder(), placeholder()],
+        },
+        {
+          columns: 2,
+          frames: [placeholder(), placeholder()],
+        },
+      ],
+    };
+  }
+
+  if (chapter.headline === "Design") {
+    return {
+      ...chapter,
+      imageRows: [
+        { columns: 1, frames: [placeholder()] },
+        { columns: 1, frames: [placeholder()] },
+        { columns: 1, frames: [placeholder()] },
+        { columns: 1, frames: [placeholder()] },
+        { columns: 2, frames: [placeholder(), placeholder()] },
+        { columns: 2, frames: [placeholder(), placeholder()] },
+      ],
+    };
+  }
+
+  if (chapter.headline === "Testing") {
+    return {
+      ...chapter,
+      imageRows: [
+        {
+          columns: 3,
+          frames: [placeholder(), placeholder(), placeholder()],
+        },
+      ],
+    };
+  }
+
+  return chapter;
+}
 
 export const cocoCareCaseStudy = {
   slug: "cococare",
@@ -26,6 +83,6 @@ export const cocoCareCaseStudy = {
         "Increase patient engagement and compliance.",
       ],
     ),
-    ...cocoCareChapters,
+    ...cocoCareChapters.map(withImageRows),
   ],
 } satisfies CaseStudy;

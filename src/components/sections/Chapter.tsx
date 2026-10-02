@@ -1,18 +1,18 @@
 import { ImageFrame, type ImageFrameProps } from "@/components/ui/ImageFrame";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/cn";
 
-/** One right-column block: sub-headline plus body paragraphs and optional images. */
+/** One right-column block: sub-headline plus body paragraphs (gap-12) and optional images. */
 export type ChapterSection = {
   label: string;
   paragraphs: readonly string[];
-  /** ImageFrames in the right-column stack (same gap-36 as sections); each is half that column. */
+  /** ImageFrames in the right-column stack (gap-36); each is half that column. */
   images?: readonly ImageFrameProps[];
 };
 
 /**
  * Two-column chapter: headline left (max 70% of that column), stacked sub-sections right.
- * Images sit in the right-column stack (gap-36, same as section-to-section) at half column width.
- * Section-to-section space is pb-section (96px) on the root only.
+ * Between-section rhythm comes from site-main gap-96.
  */
 export function Chapter({
   headline,
@@ -24,30 +24,22 @@ export function Chapter({
   headline: string;
   sections: readonly ChapterSection[];
   headingLevel?: "h1" | "h2";
-  /** Extra section-level classes, e.g. a page's top offset. */
   className?: string;
   id?: string;
 }) {
-  const Heading = headingLevel;
-
   return (
-    <section
-      id={id}
-      className={cn("w-full max-w-(--container-section) px-gutter pb-section", className)}
-      data-name="Section - Chapter"
-    >
-      <div className="grid grid-cols-1 items-start gap-36 tablet:grid-cols-2 tablet:gap-gutter">
-        <Heading className="type-h2 appear max-w-[70%]" data-appear="60">
-          <span>{headline}</span>
-        </Heading>
-        <div className="flex flex-col gap-36">
+    <section id={id} className={cn("section-wrap", className)} data-name="Section - Chapter">
+      <div className="grid grid-cols-1 items-start gap-36 tablet:grid-cols-2 tablet:gap-12">
+        <SectionHeading as={headingLevel} className="max-w-[70%]">
+          {headline}
+        </SectionHeading>
+        <div className="flex w-full max-w-[500px] flex-col gap-36 justify-self-start">
           {sections.flatMap((section, sectionIndex) => [
-            <div key={`${section.label}-${sectionIndex}`}>
+            <div key={`${section.label}-${sectionIndex}`} className="flex flex-col gap-12">
               <p className="type-label appear" data-appear="20">
                 <span>{section.label}</span>
               </p>
-              {/* 1.1em matches type-body line-height — typography rhythm, not spacing scale */}
-              <div className="mt-12 flex flex-col gap-[1.1em]">
+              <div className="flex flex-col gap-[1.1em]">
                 {section.paragraphs.map((paragraph, paragraphIndex) => (
                   <p
                     key={paragraphIndex}

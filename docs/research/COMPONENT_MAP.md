@@ -1,42 +1,47 @@
-# Component map (from `data-framer-name` + `data-framer-components`)
+# Component map (Framer reference — not a build backlog)
 
-> **Next.js rebuild:** Framer-only reference. The live app implements a subset;
-> see `src/app/design-system/page.tsx` for what exists in code (no Photos ticker,
-> FAQ, Testimonial, Contact form, etc., unless added later).
+Extracted from the template site’s `data-framer-name` and `data-framer-components`.
+**Do not treat this file as work to implement.** The live app is defined by routes in
+`src/app/` and the catalogue in `src/app/design-system/page.tsx`.
 
-## Linked / reused (hashed IDs)
+## Live app (what we ship)
 
-| ID | Role | Pages |
-|---|---|---|
-| `framer-fEHtQ` | Nav | all |
-| `framer-SZNeA` / `USIzC` / `5EfF8` | Nav internals | all |
-| `framer-m1lJq` | Bracket button `[ view all ]` | all |
-| `framer-Z7L99` | Footer | all |
-| `framer-8ifp0` | Work card | Home, Works |
-| `framer-WZqEJ` | Editorial split header | Home, About, Contact |
-| `framer-igYKE` | Contact form | Home, Contact |
-| `framer-OwnOa` | Photo ticker | Home, Contact |
-| `framer-59R6F` | Service row | Home |
-| `framer-VU2OY` | Stats | Home |
-| `framer-SlX0i` family | FAQ accordion | Home |
-| `framer-txG6L` | Testimonial | Home |
-| `framer-iIqb4` / `6iyeJ` / `iw6ol` | Hero / carousel | Home |
+| Route | Sections / components |
+|-------|------------------------|
+| `/` | Nav, Hero (+ HeroRing), WorksDisplay, Services, WhatIDo, Footer |
+| `/works` | Nav, WorksDisplay (`title="Works"`), Footer |
+| `/about` | Nav, Chapter (about opener + optional section images), CredentialSection ×2 (Experience, Education), Services, Footer |
+| `/[slug]` | Nav, ProjectHero, ChapterBlock (Chapter + ImageRow), NextProject (`slug`), Footer |
+| `/design-system` | Internal catalogue only (noindex) |
 
-## Home sections (top → bottom)
+Project slugs: `plinto`, `powermatch`, `ageras`, `cococare`, `rokokobrand`, `rokokoweb`, `weld`, `eatgrim`.
+Each listed project has a case study in `src/content/case-studies/` and a static page via `generateStaticParams`.
+Long Framer-style URLs redirect in `next.config.ts` to those slugs.
+
+**Not in the app (removed from template scope):** FAQ, Testimonial, Contact form, Photos ticker, Video, Quote, Benefits, Showcase Reel, `/contact`, legal pages.
+
+## Framer template — home (historical order)
 
 Nav → Hero → Latest → Services → What I Do → Video → Quote → Benefits → Showcase Reel → FAQ → Testimonial → Contact → Photos → Footer
 
-## Other pages
+Only the segments through **What I Do** (plus Nav/Footer) were kept for this rebuild.
 
-- About: Hero, About (thinking/making), Experience, Services
-- Works: header + grid/list toggle + cards
-- Contact: same form as home + photos ticker
-- Work case study: hero title, about, meta, gallery
-- Privacy / Cookies: legal copy
+## Framer IDs → closest live component (when useful for parity checks)
 
-## Small pieces
+| ID | Framer role | Live counterpart |
+|----|-------------|------------------|
+| `framer-fEHtQ` | Nav | `layout/Nav.tsx` |
+| `framer-m1lJq` | Bracket button | `ui/Button.tsx` |
+| `framer-Z7L99` | Footer | `layout/Footer.tsx` |
+| `framer-8ifp0` | Work card | `work/WorkCard.tsx` |
+| `framer-59R6F` | Service row | `home/Services.tsx` |
+| `framer-iIqb4` / `6iyeJ` / `iw6ol` | Hero / carousel | `home/Hero.tsx`, `home/HeroRing.tsx` |
+| `framer-WZqEJ` | Editorial split header | `sections/Chapter.tsx` (about + case studies) |
 
-- Bracket button variants: `Normal`, `Without []`
-- Nav variants: `Unactive`, Works count `[ 10 ]`
-- FAQ variants: `Big Desktop Closed`
-- Service toggle: `Images` / `Description`
+Removed template-only (no live component): Contact form (`framer-igYKE`), photo ticker (`framer-OwnOa`), FAQ (`framer-SlX0i`), testimonial (`framer-txG6L`), stats block (`framer-VU2OY`).
+
+## Framer template — other pages (historical)
+
+- About: thinking/making + Experience + Services (matches `/about` structurally via Chapter + CredentialSection + Services)
+- Works: grid/list + cards → `sections/WorksDisplay.tsx`
+- Case study: hero, about, meta, gallery → `work/ProjectHero.tsx`, `sections/Chapter.tsx`, `sections/ImageRow.tsx`

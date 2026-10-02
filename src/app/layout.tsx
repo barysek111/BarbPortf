@@ -4,7 +4,10 @@ import { site } from "@/content/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: site.title,
+  title: {
+    default: site.title,
+    template: `%s — ${site.name}`,
+  },
   description: site.description,
 };
 

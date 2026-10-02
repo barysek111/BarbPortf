@@ -14,7 +14,7 @@
 - Content: `src/content/case-studies/ageras.ts` (wired via `getCaseStudy("ageras")`)
 
 ### Other 7 projects — text-only case studies
-Routes use **`CaseStudyPage`** + **`getCaseStudy(slug)`**:
+Routes use **`app/[slug]/page.tsx`** + **`ChapterBlock`** + **`getCaseStudy(slug)`**:
 `plinto-ai-invoicing`, `powermatch-invoice-reconciliation`, `coco-care-app`, `rokoko-brand-identity`, `rokoko-website-revamp`, `weld-digital-presence`, `eat-grim-brand-identity`
 
 Each has: **ProjectHero** (copy aligned with barboragadlinova.com / gentle handoff) + **SCOPE** (live background + challenge bullets as numbered list) + chapters from refined MD.
@@ -23,8 +23,8 @@ No hero **ImageRow**, no chapter **imageRows**, no next-project block yet.
 
 ### Components & rules
 - **`ImageFrame`**: solid | fill | background; **max height 800px**; fill uses block img (not zero-height)
-- **`ImageRow`**: 1/2/3 col, **gap-gutter** between frames
-- **Stacked ImageRows** (`globals.css`): consecutive rows **pb-gutter**; last in stack **pb-section**
+- **`ImageRow`**: 1/2/3 col, **gap-12** between frames
+- **Stacked ImageRows** (`globals.css`): consecutive rows **pb-12**; last in stack **pb-96**
 - **`Chapter`**: optional **`imageRows`** on chapter objects (Ageras only so far)
 - Routing: **`src/app/[slug]/page.tsx`** (removed `src/app/works/[slug]/page.tsx`); **`/works`** list unchanged
 
@@ -43,7 +43,7 @@ No hero **ImageRow**, no chapter **imageRows**, no next-project block yet.
 1. Hero **ImageRow** (or skip) per project
 2. Chapter **imageRows** from gentle/public folders or Framer exports
 3. **Next project** footer per case study (title + href from `projects.nextSlug`)
-4. **Chapter → first ImageRow** spacing: user asked about large gap (Chapter **pb-section** 96px); optional rule: Chapter `:has(+ Image Row)` → **pb-gutter**
+4. **Chapter → first ImageRow** spacing: user asked about large gap (Chapter **pb-96**); optional rule: Chapter `:has(+ Image Row)` → **pb-12**
 5. Left-column empty space beside long **Chapter** copy (headline left, sections right) — layout question, not a bug
 6. Commit when ready (large untracked `public/images/works/`)
 
@@ -53,7 +53,7 @@ No hero **ImageRow**, no chapter **imageRows**, no next-project block yet.
 ## Key files
 | Area | Path |
 |------|------|
-| Case study shell | `src/components/work/CaseStudyPage.tsx` |
+| Case study route | `src/app/[slug]/page.tsx` + `ChapterBlock` |
 | Ageras content | `src/content/case-studies/ageras.ts` |
 | Other case studies | `src/content/case-studies/` |
 | Dynamic route | `src/app/[slug]/page.tsx` |

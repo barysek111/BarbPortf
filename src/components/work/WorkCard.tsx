@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { formatIndex, type Project } from "@/content/projects";
+import { WorkThumbMedia } from "@/components/work/WorkThumbMedia";
 
 export function WorkCard({ project, index }: { project: Project; index: number }) {
   const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
@@ -17,15 +18,13 @@ export function WorkCard({ project, index }: { project: Project; index: number }
         onMouseLeave={() => setCursor(null)}
       >
         <div className="overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <WorkThumbMedia
             src={project.image}
             alt={project.title}
-            className="block h-auto w-full origin-center rounded-none transition-transform duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110"
-            style={{ aspectRatio: `372 / ${project.imageH}` }}
+            height={project.imageH}
           />
         </div>
-        <div className="type-label flex h-[26px] items-start justify-between gap-gutter overflow-clip pt-gutter">
+        <div className="type-label flex h-[26px] items-start justify-between gap-12 overflow-clip pt-12">
           <span className="text-muted">{formatIndex(index)}</span>
           <span className="min-w-0 text-right">{project.title}</span>
         </div>

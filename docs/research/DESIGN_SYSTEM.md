@@ -1,155 +1,109 @@
 # TITARVL — design system (rule-level extraction)
 
-**Source of truth:** `docs/research/spec/*.json`, produced by `scripts/extract-spec.mjs`.
+**Framer reference:** `docs/research/spec/*.json` from `scripts/extract-spec.mjs`.
 
-These values are read from the published site's **CSSOM rules**, not inferred from
-rendered pixels. That distinction matters: a flattened HTML/CSS export bakes every
-token down to a computed pixel value, which is what destroyed the system on the
-first attempt. Rules carry their media queries, so responsive behaviour is
-*declared* rather than sampled.
+**Live app:** tokens and components are implemented in `src/app/globals.css` and
+`src/components/`. The catalogue is `src/app/design-system/page.tsx` — prefer that
+over this doc for current behaviour.
 
-## How the extraction works
+Values below describe the **published Framer site** unless noted as **live app**.
 
-| Capability | Result |
-|---|---|
-| Stylesheets readable | 21 of 21, none blocked |
-| CSS rules captured | 1093 (home) |
-| Named layers (`data-framer-name`) | 441 (home) |
-| Media queries at rule level | 7 |
-
-Framer renders **every breakpoint variant into a single DOM**, hiding the inactive
-ones with `hidden-<hash>` classes. `framer-extract.json → hydrate.breakpoints` maps
-each hash to its media query, so one page load yields all breakpoints with
-certainty about which is which. No viewport resizing, no sampling.
-
-### Tooling
+## Tooling
 
 | Script | Purpose |
 |---|---|
 | `scripts/extract-spec.mjs` | Dump rule-level spec per page |
 | `scripts/spec.mjs` | Query it (`list` / `show <layer>` / `tree`) |
 | `scripts/compare-live.mjs` | Verify geometry live vs local across widths |
-| `scripts/probe-lines.mjs` | Line-box structure, reveals wrap points |
+| `scripts/check-spacing.mjs` | Enforce numeric spacing utilities in `src/` |
+| `scripts/probe-lines.mjs` | Line-box structure, wrap points |
 | `scripts/probe-chain.mjs` | Ancestor chain with box model |
-
-Verification only. Never derive values from the local build — it is a derivative.
 
 ## Breakpoints
 
-Two layout families plus two type-only switches:
-
-| Token | Value | Role |
+| Token | Value | Layout role (live app) |
 |---|---|---|
-| `tablet` | `810px` | phone → tablet |
-| `desktop` | `1200px` | tablet → desktop, most layout variants |
-| `wide` | `1400px` | **type only** — `jskmgv` final step |
-| `max` | `1440px` | **type only** — `pcouyd` final step |
+| `tablet` | `810px` | Nav inline (no menu overlay); footer 4-col; works grid 4-up; ImageRow columns; chapter/hero splits |
+| `desktop` | `1200px` | Works list row + CTA; ProjectHero title half-width + about column pad; type-h2 size step |
+| `wide` | `1400px` | **Type only** — `type-h3` / `type-stat` final step |
+| `max` | `1440px` | **Type only** — `type-h2` final step |
 
-The 1400/1440 split is genuine: the h3/stat preset steps at 1400px while the h2
-preset steps at 1440px. Replicate it; do not normalise the two together.
+Custom variant: `below-tablet` = width &lt; 810px.
 
-Layout variant queries as declared: `(max-width: 809.98px)`,
+Framer layout queries (reference): `(max-width: 809.98px)`,
 `(min-width: 810px) and (max-width: 1199.98px)`, `(min-width: 1200px)`.
 
 ## Colour
-
-Three tokens on `body`, nothing else is a real colour decision.
 
 | Token | Value |
 |---|---|
 | `--color-ink` | `#000` |
 | `--color-paper` | `#fff` |
 | `--color-muted` | `#a7a7a7` |
+| `--color-surface` | `#f0f0f0` |
 | `--color-selection` | `#ff0c10` |
-
-`rgb(0,0,238)` seen in dumps is the browser's default link blue — noise, not a token.
 
 ## Type levels
 
-One utility per Framer preset, in `src/app/globals.css`. Responsive steps belong to
-the level so components never restate a font size.
+Defined in `src/app/globals.css`. Components use utilities only — no ad-hoc font sizes.
 
-| Utility | Preset | Spec |
-|---|---|---|
-| `type-label` | `u1p157` | Martian Mono 12px/400, lh 1.3em, ls −0.05em, upper |
-| `type-label-strong` | `10gezu1` | Martian Mono 12px/600, lh 1.2em, ls −0.05em, upper |
-| `type-body` | `zw6rd6` | Inter Display 16px/500, lh 1.1em, ls 0 |
-| `type-h3` | `jskmgv` | Inter Display 500, ls −0.01em, upper — 18 → 23 → 29 → 36px |
-| `type-display` | `1dpvgwi` | Inter Display 48px/500, lh 1.2em, ls −0.01em, upper |
-| `type-h2` | `pcouyd` | Inter Display 500, lh 1em, ls −0.04em, upper — 41 → 51 → 64px |
-
-`type-h3` line-height is `1em` on phone and `0.9em` from 810px up.
-
-## Spacing
-
-The source is px-authored on a 10px rhythm with an irregular scale. The Tailwind
-base step is set to `--spacing: 1px`, so every utility maps 1:1 to the extracted
-value (`pb-96` is 96px). Recurring values: 5 10 12 16 20 24 30 36 42 52 60 76 96 150.
-
-Named aliases: `gutter` 10px, `header` 52px, `headline` 76px, `section` 96px.
-
-## Page wrap
-
-| Property | Value |
+| Utility | Spec (summary) |
 |---|---|
-| Outer cap | `3840px` (`site-main`) |
-| Section cap | `1920px` (`section-wrap`) |
-| Side padding | `10px`, constant at every breakpoint |
-| Grid | `repeat(N, minmax(50px, 1fr))` — 5-col latest, 12-col stacks, 2-col splits |
+| `type-label` | Martian Mono 12px/400, lh 1.3em, ls −0.05em, upper |
+| `type-body` | Inter Display 16px/500, lh 1.1em |
+| `type-h3` | Inter Display 500, upper — 18 → 23 → 29 → 36px (810 / 1200 / 1400) |
+| `type-stat` | Same size ramp as h3; lh 0.8em, ls −0.05em, normal case |
+| `type-display` | Inter Display 48px/500 — open mobile nav |
+| `type-h2` | Inter Display 500, upper — 41 → 51 → 64px (1200 / 1440) |
 
-Verified identical live vs local at 390 / 810 / 1200 / 1440 / 1920.
+## Spacing (live app)
+
+**Numeric only** in class strings: `gap-12`, `pb-96`, `pt-216`, etc. The number is
+**pixels** (`gap-12` = 12px). No semantic spacing class names (`gap-gutter`, `pb-section`, …).
+
+Allowed scale (see `scripts/check-spacing.mjs`):
+
+`0 2 4 8 12 16 20 24 32 36 44 56 64 76 96 104 152 176 216`
+
+Common rhythm:
+
+| Utility | px | Role |
+|---|---|---|
+| `gap-12` / `p-12` | 12 | `section-wrap` horizontal padding, grid gutters |
+| `gap-36` | 36 | Section headline → content (Services, CredentialSection, Chapter stack) |
+| `gap-56` | 56 | ProjectHero copy stacks |
+| `gap-96` | 96 | `site-main` / case-study `article` between sections; large in-section steps |
+| `pt-216` | 216 | Page top below fixed nav |
+| `pt-104` | 104 | NextProject top band |
+| `pt-176` | 176 | Footer top band |
+| `pb-96` | 96 | NextProject bottom — pairs with case-study `article` gap-96 above |
+
+Framer source used a different px rhythm (often 10px gutters in extract); the live
+app standardises on the table above.
+
+## Layout (live app)
+
+| Primitive | Role |
+|---|---|
+| `site-main` | 3840 cap, centred column, **`gap-96`** between direct children |
+| `section-wrap` | 1920 cap, **`padding-inline: 12px`** |
+| `works-grid` | 2 col → 4 col @810 |
+
+## Nav & footer (live app)
+
+- **Nav:** Menu overlay **&lt;810px** only. From 810px: inline **Works**, **About**, **NavClock** (no Home link). Logo → home.
+- **Footer:** **`gap-24`** between stack blocks at all widths. Contact always visible: left-aligned &lt;810, right-aligned ≥810. Meta grid: 2 col → 4 col @810.
 
 ## Radii
 
-`0` default, `8px` media frames, `10px` and `15px` rare.
+`0` default, `8px` media (`radius-media`), `10px` / `15px` rare.
 
-## Component map (home)
+## Motion
 
-> **Next.js rebuild:** This map describes the Framer reference site. The app in
-> `titarvl-1to1` implements a subset only (e.g. Hero, Works, Services, What I Do,
-> About, case studies). Sections such as Video, FAQ, Testimonial, Contact form, and
-> Photos are not built unless added deliberately.
-
-12 named sections, in order: Hero, Latest, Services, What I Do, Video, Quote,
-Benefits, Showcase Reel, FAQ, Testimonial, Contact, Photos.
-
-Framer does not publish component boundaries — `data-framer-name` gives layer names
-("Nav Links", "Project Info", "Service Card Images Desktop"), which is a strong
-proxy but a map you infer, not a file you extract.
-
-## Editorial header
-
-Kicker + tag + headline, used by Benefits, FAQ and Contact.
-
-- under 1200px: kicker and tag share row 1, headline drops to row 2, full width
-- 1200px and up: kicker in column 1; headline and tag share column 2, headline
-  flush left, tag flush right, **column gap 0** (columns split the content box
-  exactly in half — headline starts at x=960 in a 1920 viewport)
-- kicker and headline **shrink-wrap**; they must not stretch to the column
-
-Headlines wrap at deterministic points: the rendered box width is exactly
-proportional to font size across breakpoints (535.2px at 64px → 342.8px at 41px,
-a ratio of 41/64). That only happens with fixed breaks, so breaks live in
-`src/content/headlines.ts` as a `lines` array rather than as CSS guesswork.
-
-## Known residual deltas
-
-- Nav links sit 1.4px lower on live: its brand row is 34px tall vs 31.2px local,
-  so `align-items: center` centres the link column slightly lower.
-- Headline boxes are ~0.9% wider locally (534.9 vs 529.7 at 64px) — webfont
-  rendering, one weight loaded locally vs the full family.
-- Headline box height 128px local vs 141px live — live wraps each line in
-  animation containers that add height.
-
-## Rest vs Appear vs Hover
-
-- **Rest** = no pointer, after load and scroll. This is the default CSS.
-- **Appear** = one-shot in-view only. Never reuse appear offsets as rest.
-- **Hover** = only what changes on pointer (FAQ wipe, letter roll, stat roll).
-- Stat rest values are `10+ / 5+ / 25+ / 100%`; never copy the `0+` counter start.
+- **Appear** — one-shot in-view (`SmoothScroll` + `.is-in`), not hover.
+- **Hover** — bracket label roll, stat roll, FAQ-style patterns on reference site.
 
 ## Content
 
-Copy, imagery, video and the wordmark in `public/` and `src/content/` are the
-original template's, kept only as placeholders so layout can be verified. They are
-not licensed for publication and must be replaced before this goes anywhere public.
+Copy and assets in `src/content/` and `public/` match the Framer template as
+placeholders until replaced for publication.

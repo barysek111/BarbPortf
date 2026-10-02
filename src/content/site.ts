@@ -1,6 +1,5 @@
 export const site = {
   name: "BARBORA GADLINOVA",
-  // TODO: replace with your own title and description.
   title: "Barbora Gadlinova — Product Designer",
   description: "Portfolio of Barbora Gadlinova, product designer based in Copenhagen.",
   email: "barboragadlinova@gmail.com",

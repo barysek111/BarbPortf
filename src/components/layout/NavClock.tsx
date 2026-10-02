@@ -26,7 +26,7 @@ export function NavClock({ className }: { className?: string }) {
   }, []);
 
   return (
-    <div className={cn("type-label min-h-[2.6em] whitespace-nowrap", className)}>
+    <div className={cn("type-label flex flex-col gap-2 whitespace-nowrap", className)}>
       <p>{time}</p>
       <p>{site.clockLabel}</p>
     </div>

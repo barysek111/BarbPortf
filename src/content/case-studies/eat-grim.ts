@@ -15,7 +15,7 @@ export const eatGrimCaseStudy = {
         "Brand Identity\nDesign systems\nPackaging\nResponsive Web Design\nMerchandising\nPhotography\nIllustration",
     },
     { label: "client", value: "Eat Grim" },
-    { label: "year", value: "2019–2021" },
+    { label: "year", value: "2019" },
   ],
   chapters: [
     buildScopeChapter(

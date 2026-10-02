@@ -1,10 +1,10 @@
-import { BracketButton } from "@/components/ui/BracketButton";
+import { Button } from "@/components/ui/Button";
 import { HeroRing } from "@/components/home/HeroRing";
 
 export function Hero() {
   return (
     <section
-      className="relative flex h-svh w-full max-w-(--container-section) items-center overflow-clip px-gutter mb-section"
+      className="section-wrap relative flex h-svh items-center overflow-clip"
       data-name="Section - Hero"
     >
       <div className="relative h-full w-full">
@@ -15,13 +15,12 @@ export function Hero() {
           product designer
         </p>
 
-        {/* The frame sizes the stage; the ring fills it. */}
         <div className="hero-frame" data-name="3D Carousel">
           <HeroRing />
         </div>
 
-        <div className="absolute bottom-gutter left-1/2 z-stack -translate-x-1/2">
-          <BracketButton href="#latest">scroll down</BracketButton>
+        <div className="absolute bottom-12 left-1/2 z-stack -translate-x-1/2">
+          <Button href="#latest">scroll down</Button>
         </div>
       </div>
     </section>

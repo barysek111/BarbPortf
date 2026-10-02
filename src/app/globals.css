@@ -111,22 +111,9 @@
   /* -- Stacking (nav bar, hero meta, framed media) -- */
   --z-index-*: initial;
   --z-index-nav: 8;
+  --z-index-cursor: 9;
   --z-index-stack: 3;
   --z-index-lift: 1;
-}
-
-/* Semantic aliases naming the *role* a space plays. Each points at a primitive
-   above; components prefer these where a role exists.
-   Values still reflect the pre-migration rhythm and move to their targets in
-   the gutter step (gutter 10 -> 12, header 52 -> 56). */
-@theme {
-  --spacing-hairline: 2px; /* near-flush text stacks */
-  --spacing-tight: 4px; /* image strips and galleries */
-  --spacing-gutter: 12px; /* page side padding and grid gutters */
-  --spacing-header: 56px; /* headline to content inside a section */
-  --spacing-headline: 56px; /* alias of header */
-  --spacing-section: 96px; /* section root pb-section only — never py, never inner */
-  --spacing-page-top: 216px; /* page top offset below the nav */
 }
 
 @layer base {
@@ -154,6 +141,11 @@
   ::selection {
     background: var(--color-selection);
     color: var(--color-paper);
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
   }
 
   a {
@@ -190,16 +182,6 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 1.3em;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-}
-
-/* preset 10gezu1 — emphasis labels */
-@utility type-label-strong {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.2em;
   letter-spacing: -0.05em;
   text-transform: uppercase;
 }
@@ -293,6 +275,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--spacing-96);
   width: 100%;
   max-width: var(--container-site);
   margin-inline: auto;
@@ -301,7 +284,7 @@
 @utility section-wrap {
   width: 100%;
   max-width: var(--container-section);
-  padding-inline: var(--spacing-gutter);
+  padding-inline: var(--spacing-12);
 }
 
 /* ---------------------------------------------------------------------------
@@ -315,27 +298,11 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: end;
-  column-gap: var(--spacing-gutter);
+  column-gap: var(--spacing-12);
   row-gap: var(--spacing-44);
 
   @media (width >= 810px) {
     grid-template-columns: repeat(var(--works-grid-columns), minmax(0, 1fr));
-  }
-}
-
-/* ---------------------------------------------------------------------------
-   Image row stack spacing
-   Consecutive ImageRow sections (same parent, adjacent in DOM) sit gap-gutter
-   apart — same token as column gap inside the row. Only the last row in a
-   stack keeps pb-section before the next non–image-row section.
---------------------------------------------------------------------------- */
-@layer components {
-  [data-name="Section - Image Row"] {
-    padding-bottom: var(--spacing-gutter);
-  }
-
-  [data-name="Section - Image Row"]:not(:has(+ [data-name="Section - Image Row"])) {
-    padding-bottom: var(--spacing-section);
   }
 }
 
@@ -365,21 +332,56 @@
   background: var(--color-paper);
 }
 
-/* 8px square to the left of bracket labels / nav links (gutter offset). */
-@utility mark-leader {
-  position: absolute;
-  top: calc(50% - 4px);
-  left: calc(-1 * var(--spacing-gutter));
-  width: var(--spacing-8);
-  height: var(--spacing-8);
-  background-color: currentcolor;
+/** Full viewport width inside centred site-main (e.g. footer ink band). */
+@utility footer-bleed {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
 }
 
+/* Footer wordmark below tablet: BARB / G. — scale so BARB spans content width. */
+@utility footer-wordmark-mobile {
+  container-type: inline-size;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  flex-direction: column;
+  color: inherit;
+}
+
+@utility site-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: var(--color-paper);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: var(--z-index-cursor);
+  opacity: 0;
+  will-change: transform;
+}
+
+@utility footer-wordmark-mobile-line {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  font-family: var(--font-display);
+  font-size: 39.5cqw;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* 8px square to the left of labels / links (12px offset). */
 @utility mark-leader-before {
   &::before {
     position: absolute;
     top: calc(50% - 4px);
-    left: calc(-1 * var(--spacing-gutter));
+    left: calc(-1 * var(--spacing-12));
     width: var(--spacing-8);
     height: var(--spacing-8);
     background-color: currentcolor;
@@ -387,12 +389,15 @@
   }
 }
 
-/* Bracket control label roll (BracketButton, toggles, NextProject). */
+/* Label roll (Button, NavLink): clip one line; track shifts on hover. */
 @utility label-roll {
   display: block;
   height: 1.3em;
   line-height: 1.3em;
-  transition: transform 450ms ease-out;
+}
+
+@utility label-roll-track {
+  transition: translate 450ms ease-out;
 }
 
 /* ---------------------------------------------------------------------------

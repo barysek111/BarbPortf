@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BracketButton } from "@/components/ui/BracketButton";
+import { Button } from "@/components/ui/Button";
+import { LabelRoll } from "@/components/ui/LabelRoll";
+import { NavLink } from "@/components/layout/NavLink";
+import { ImageRowStack } from "@/components/sections/ImageRowStack";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ImageFrame } from "@/components/ui/ImageFrame";
 import { ImageRow } from "@/components/sections/ImageRow";
 import { NavClock } from "@/components/layout/NavClock";
 import { WorkCard } from "@/components/work/WorkCard";
 import { Hero } from "@/components/home/Hero";
-import { HeroRing } from "@/components/home/HeroRing";
 import { WorksDisplay } from "@/components/sections/WorksDisplay";
 import { Services } from "@/components/home/Services";
 import { WhatIDo } from "@/components/home/WhatIDo";
-import { Experience } from "@/components/sections/Experience";
-import { Education } from "@/components/sections/Education";
-import { AboutHero } from "@/components/sections/AboutHero";
 import { Chapter } from "@/components/sections/Chapter";
-import { CaseStudyPage } from "@/components/work/CaseStudyPage";
+import { CredentialSection } from "@/components/sections/CredentialSection";
+import { ButtonToggleDemo } from "@/app/design-system/ButtonToggleDemo";
 import { NextProject } from "@/components/work/NextProject";
 import { ProjectHero } from "@/components/work/ProjectHero";
-import { ProjectStub } from "@/components/work/ProjectStub";
-import { getCaseStudy } from "@/content/case-studies";
-import { getProjectNeighbor, projects } from "@/content/projects";
+import { about } from "@/content/about";
+import { projects } from "@/content/projects";
 import { agerasCaseStudy } from "@/content/case-studies/ageras";
 import { getComponentUsage } from "@/lib/component-usage";
 
@@ -46,15 +46,14 @@ const colors = [
 ];
 
 const breakpoints = [
-  { name: "tablet", value: "810px", use: "Primary layout step: works grid 4-up, ImageRow columns, Chapter/ProjectHero/Services stack-to-split, hero meta, list-mode image strip." },
-  { name: "desktop", value: "1200px", use: "Nav inline + NavClock, list rows side-by-side (h-176), WorksDisplay list CTA in text column; type-h2/h3 larger steps continue above." },
+  { name: "tablet", value: "810px", use: "Nav inline + NavClock; footer desktop layout; works grid 4-up; ImageRow columns; Chapter/ProjectHero/Services split; hero meta; list image strip." },
+  { name: "desktop", value: "1200px", use: "WorksDisplay list rows side-by-side (h-176) + view project CTA; type-h2/h3 larger steps continue above." },
   { name: "wide", value: "1400px", use: "Type only — type-h3 reaches its largest step." },
   { name: "max", value: "1440px", use: "Type only — type-h2 reaches its largest step." },
 ];
 
 const typeLevels = [
   { cls: "type-label", spec: "Martian Mono 12 / 400 / 1.3em / −0.05em / upper", use: "Labels, nav, meta, captions" },
-  { cls: "type-label-strong", spec: "Martian Mono 12 / 600 / 1.2em / −0.05em / upper", use: "Emphasised labels, FAQ tags" },
   { cls: "type-body", spec: "Inter Display 16 / 500 / 1.1em", use: "Body copy, form fields" },
   { cls: "type-h3", spec: "Inter Display 18 → 23 → 29 → 36 / 500", use: "Sub-headings, stat figures" },
   { cls: "type-stat", spec: "Inter Display 18 → 23 → 29 → 36 / 500 / 0.8em / −0.05em", use: "Stat figures only. Tight line box so the value can roll on hover." },
@@ -62,14 +61,15 @@ const typeLevels = [
   { cls: "type-h2", spec: "Inter Display 41 → 51 → 64 / 500 / 1em", use: "Section headlines" },
 ];
 
-const spacingAliases = [
-  { name: "hairline", value: "2px", use: "Near-flush text stacks — nav count, footer meta, card titles" },
-  { name: "tight", value: "4px", use: "Image strips and galleries" },
-  { name: "gutter", value: "12px", use: "Page side padding and every grid gutter" },
-  { name: "header", value: "56px", use: "Headline to content, and sub-section separation" },
-  { name: "headline", value: "56px", use: "Alias of header — headline to content" },
-  { name: "section", value: "96px", use: "Between sections" },
-  { name: "page-top", value: "216px", use: "Page top offset below the nav" },
+/** Common rhythm steps — use these numeric utilities only (no semantic spacing class names). */
+const spacingRhythm = [
+  { utility: "gap-2 / p-2", value: "2px", use: "Near-flush text stacks — nav count, footer meta, card titles" },
+  { utility: "gap-4", value: "4px", use: "Image strips and galleries" },
+  { utility: "gap-12 / px-12", value: "12px", use: "Page side padding (section-wrap), grid gutters" },
+  { utility: "gap-36", value: "36px", use: "Headline block to content (Services, CredentialSection, Chapter stack)" },
+  { utility: "gap-56", value: "56px", use: "ProjectHero copy stacks" },
+  { utility: "gap-96 (site-main)", value: "96px", use: "Between direct children of site-main / case-study article; ProjectHero copy → hero image" },
+  { utility: "pt-216", value: "216px", use: "Page top offset below the nav" },
 ];
 
 /** Placeholders from the Ageras case-study gallery (design-system demos only). */
@@ -78,12 +78,16 @@ const MEDIA_B = "/images/framer/nZVIc7KvsqiOi1p5VDtfGUs53EA-e8994ee4.avif";
 const MEDIA_C = "/images/framer/QD2AxA7bZdiagkNhpHtgD6IuDIo-0f8ca57f.avif";
 
 const layoutUtils = [
-  { cls: "site-main", use: "Outermost wrap. Caps the page at 3840px and centres it." },
-  { cls: "section-wrap", use: "Section wrap. Caps at 1920px with the 10px gutter." },
+  { cls: "site-main", use: "Page wrap. Caps at 3840px, centres content, gap-96 between sections; Footer is last child (same max width)." },
+  { cls: "section-wrap", use: "Section wrap. Caps at 1920px with 12px horizontal padding." },
+  { cls: "gap-36", use: "36px — section headline to content (Services, Experience/Education, Chapter below tablet)." },
+  { cls: "gap-56", use: "56px — ProjectHero in-section copy rhythm." },
+  { cls: "gap-96", use: "96px — between site-main children or in-section stacks (ProjectHero)." },
+  { cls: "ruled-row (lib/ruled-row.ts)", use: "Row: px-12 py-24 + border-t. Services, CredentialSection, Works list." },
   { cls: "stack-front", use: "Lifts a section above the sticky/pinned bands behind it (z-stack)." },
   { cls: "z-nav / z-stack / z-lift", use: "Stacking tokens: fixed nav (8), hero meta / stack-front (3), overlaid type or media (1)." },
-  { cls: "label-roll", use: "Bracket label roll line; pair with group-hover:-translate-y-full on BracketButton, toggles, NextProject." },
-  { cls: "mark-leader / mark-leader-before", use: "8px square one gutter left of a label (nav active, footer links, list toggle when .is-on)." },
+  { cls: "label-roll / label-roll-track", use: "Roll stack: clip on outer line box; track shifts −50% on control hover (translate transition on track)." },
+  { cls: "mark-leader-before", use: "8px square 12px left of label — NavLink (hover + active), Button toggle when pressed." },
   { cls: "below-tablet", use: "Variant for width < 810px (strictly below tablet). Used by WorksDisplay list image strip." },
   { cls: "appear", use: "One-shot in-view reveal. Offset via data-appear 20/30/60. Not a hover effect." },
   { cls: "reveal-clip", use: "Clips text to its box with no entrance offset." },
@@ -95,65 +99,114 @@ type Entry = { name: string; file: string; note: string };
 
 const atoms: Entry[] = [
   {
-    name: "BracketButton",
-    file: "ui/BracketButton.tsx",
-    note: "The only button style. Square brackets frame the label, which rolls up to a duplicate on hover (label-roll). Renders as a link when given href, otherwise a button.",
+    name: "Button",
+    file: "ui/Button.tsx",
+    note: "Simple (default): `[` gap-4 LabelRoll `]`; roll on hover. Toggle on/off as before. Nav uses NavLink.",
   },
   {
     name: "NavClock",
     file: "layout/NavClock.tsx",
-    note: "Live local time plus location, desktop nav only. Ticks once a second and is hidden below 1200px.",
+    note: "Live local time plus location (flex col gap-2), from tablet (810px) up. Ticks once a second.",
   },
   {
     name: "WorkCard",
     file: "work/WorkCard.tsx",
-    note: "Project thumbnail with an index and title caption. The whole card links to the project. Hover scales the image to 110% over 700ms, clipped to the image, and replaces the pointer with a [VIEW] label that follows it. Caption row has no side padding: muted index flush left, title flush right, pt-gutter above. Used by the home grid and the works page.",
+    note: "Project thumbnail with index + title. WorkThumbMedia: images intrinsic height; mp4/webm in aspect-square frame, object-cover object-top (crops bottom e.g. watermark). Loop muted autoplay. Hover scale 110% / 1.4s. [VIEW] on pointer.",
   },
   {
     name: "ImageFrame",
     file: "ui/ImageFrame.tsx",
-    note: "Case-study frame: max-h 800px (row height ≤ 800). fill: full-width object-cover, no surface pad (intrinsic height until row stretch). solid / background: p-44, bg-surface on solid; image scales in the padded area (max-h-full); orientation-aware contain. In ImageRow, columns stretch to the tallest frame.",
+    note: "Case-study frame: max-h 800px (row height ≤ 800). fill: full-width object-cover, no surface pad (intrinsic height until row stretch). solid / background: p-44, bg-surface on solid; image scales in the padded area (max-h-full); orientation-aware contain. Uses next/image. In ImageRow, columns stretch to the tallest frame.",
+  },
+  {
+    name: "SectionHeading",
+    file: "ui/SectionHeading.tsx",
+    note: "Section title (type-h2 + appear). Parent stack uses gap-36 for headline-to-content on Services / Credential / Chapter (stacked). Props: as (h1 | h2), appear (20 | 30 | 60), className.",
+  },
+  {
+    name: "NavLink",
+    file: "layout/NavLink.tsx",
+    note: "Nav only: LabelRoll on label + leader (hover + active via markLeaderNavClass). Menu open: type-display row. Optional [count]. No extra left padding on label.",
+  },
+  {
+    name: "LabelRoll",
+    file: "ui/LabelRoll.tsx",
+    note: "Two-line roll stack; used inside Button and NavLink.",
   },
 ];
 
+const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
+  Button: (
+    <>
+      <Button href="#">view all</Button>
+      <ButtonToggleDemo />
+    </>
+  ),
+  NavClock: <NavClock />,
+  WorkCard: (
+    <div className="max-w-[390px]">
+      <WorkCard project={projects[0]} index={0} />
+    </div>
+  ),
+  ImageFrame: (
+    <div className="grid grid-cols-1 gap-4 tablet:grid-cols-3">
+      <ImageFrame variant="fill" src={MEDIA_A} alt="" />
+      <ImageFrame variant="solid" src={MEDIA_B} alt="" />
+      <ImageFrame variant="background" src={MEDIA_B} alt="" backgroundSrc={MEDIA_C} />
+    </div>
+  ),
+  SectionHeading: <SectionHeading>LATEST WORK</SectionHeading>,
+  NavLink: <NavLink href="/works" label="works" count={projects.length} active />,
+  LabelRoll: (
+    <span className="type-label inline-flex hover:[&_.label-roll-track]:-translate-y-1/2">
+      <LabelRoll>view</LabelRoll>
+    </span>
+  ),
+};
+
 const sections: Entry[] = [
-  { name: "Hero", file: "home/Hero.tsx", note: "Full-height opener. Below 810px, “latest work” is hidden and “product designer” is centred over the carousel (z-stack). From tablet, meta is pinned left and right again. Scroll cue centred with bottom-gutter (12px) from the viewport bottom. hero-frame only centres and sets width (100vw / 60vw from 810px); HeroRing owns the 5:4 height — same as its design-system preview. mb-section sits outside the 100svh box so the next section starts 96px below the fold." },
-  { name: "HeroRing", file: "home/HeroRing.tsx", note: "Cards on a tilted ring in perspective. Stage is aspect 5:4 at 100% of parent width; layout scales the oval to those bounds. Spins continuously at 4°/s (~90s/turn) with no hover pause or flip. Honours reduced-motion. On the homepage the parent is hero-frame (60vw); on the design-system page the parent is the content column." },
-  { name: "WorksDisplay", file: "sections/WorksDisplay.tsx", note: "The single way projects are displayed, with a grid/list toggle (label-roll + mark-leader-before when .is-on). Default title is “LATEST WORK”; the bracket count is projects.length. Grid is 2 equal columns below 810px, then 4 fluid columns from tablet up. Column gap is gutter (12px); row gap is 44px. List rows use muted bottom rules. Below desktop (1200px) each list row stacks: copy, image strip, then view project, with gap-gutter between stack items. From tablet–1199px the summary is 60% width with year top-right and a four-across image strip (h-176); below tablet the summary is full width, year under copy, strip 2×2. From desktop the row is side-by-side h-176 with the CTA at the bottom of the text column. pb-section on the root; pb-header is title-to-grid only. Props: title, headingLevel, className. Must stay a direct child of site-main." },
-  { name: "Services", file: "home/Services.tsx", note: "Headline “SERVICES” is full width, matching Education/Experience. Ruled rows stack only below 810px; from tablet up, two equal halves. Left is the 64×64 SVG icon beside “[01] Title”; right is the muted type-label description (wraps; full copy visible at every width). Row content is vertically centred. Each row owns muted top/bottom rules. Height is content plus 24px above and below." },
-  { name: "WhatIDo", file: "home/WhatIDo.tsx", note: "Label above a large statement block, with a 12px (gutter) gap between them. Section-to-section space is pb-section on the root." },
-  { name: "Experience", file: "sections/Experience.tsx", note: "Headline left above a list of roles, each row pairing the role with its company and years. Used on /about. Rows carry muted top/bottom rules; height is content plus 24px above and below." },
-  { name: "Education", file: "sections/Education.tsx", note: "Courses, certificates and degrees. Same muted ruled-list layout as Experience — both render through CredentialSection, so a layout change reaches both; only the label, headline and rows differ. Headline is left-aligned. Used on /about." },
-  { name: "AboutHero", file: "sections/AboutHero.tsx", note: "About-page opener: Chapter with the headline plus thinking/making sections. The making section includes a half-width ImageFrame. First-on-page pt-page-top is passed to Chapter." },
-  { name: "Chapter", file: "sections/Chapter.tsx", note: "Two-column chapter from tablet (810px): headline left (max-width 70% of the left column), sub-sections right. Below 810px stacks with gap-36 between the headline and the section stack, matching gap-36 between sub-sections. Each sub-section is type-label plus type-body paragraphs; gap-[1.1em] between paragraphs matches type-body line-height (typography rhythm, not spacing scale). Optional ImageFrames in the right-column stack (gap-36) at half column width. Props: headline, sections[{ label, paragraphs[], images? }], headingLevel, className, id. pb-section on the root only." },
+  { name: "Hero", file: "home/Hero.tsx", note: "Full-height opener (HeroRing in home/HeroRing.tsx). Section-to-section rhythm from site-main gap-96. Scroll cue bottom-12. hero-frame 100vw / 60vw from tablet." },
+  { name: "WorksDisplay", file: "sections/WorksDisplay.tsx", note: "Client component: headline + count, then grid/list Button toggles (gap-12 from title, gap-2 between toggles). List: ruled rows; title type-label, description type-body ink; copy block gap-8 + view project (desktop); image strip tablet:h-176. Overlay Link below 1200px. Must stay a direct child of site-main." },
+  { name: "Services", file: "home/Services.tsx", note: "Section root gap-36; title in right half from desktop 1200px. Each row: ruledRowClass; 50/50 from tablet (gap-12), items-start. Left strip: below 810 flex row icon then index+title (gap-12); from tablet grid — index+title | icon. Right: type-body max-w-[500px]. Below 810: strip, gap-24, description." },
+  { name: "WhatIDo", file: "home/WhatIDo.tsx", note: "flex flex-col gap-12 between tag row and SectionHeading." },
+  { name: "Chapter", file: "sections/Chapter.tsx", note: "Two-column from tablet: gap-36 mobile stack / tablet:gap-12 between columns. Right stack max-w-[500px] justify-self-start. Sub-sections gap-36; sub-blocks gap-12 label→body. Optional ImageFrames at half width in right stack." },
+  {
+    name: "CredentialSection",
+    file: "sections/CredentialSection.tsx",
+    note: "Experience and Education. ruledRowClass rows. Stacked: row1 title (left) + year (right); row2 meta left — year column reserved from the top. Tablet+ 50/50 title | meta|year subgrid.",
+  },
   {
     name: "ImageRow",
     file: "sections/ImageRow.tsx",
-    note: "Case-study media row: columns 1 | 2 | 3 (equal grid fractions from tablet, stacked on phone). gap-gutter between frames (matches works-grid). Row height = tallest frame, max 800px. Stacked ImageRows: vertical gap = gutter (globals.css); only the last row in a stack gets pb-section. Design-system preview shows 1-, 2-, and 3-column examples.",
+    note: "Case-study media row: 1–3 columns, gap-12 between frames. Stack multiple rows with ImageRowStack (gap-12; optional last-row pb-96 when not using parent gap-96).",
+  },
+  {
+    name: "ChapterBlock",
+    file: "sections/ChapterBlock.tsx",
+    note: "Case-study unit: Chapter + optional ImageRowStack (gap-96 between copy and media; gap-12 between rows). padLast false — article gap-96 separates chapters. Used on /[slug] routes.",
+  },
+  {
+    name: "ImageRowStack",
+    file: "sections/ImageRowStack.tsx",
+    note: "Wraps stacked ImageRows with gap-12. Prop padLast (default true) adds pb-96 on last row when needed outside site-main/article gap-96.",
   },
 ];
 
 const shell: Entry[] = [
-  { name: "CredentialSection", file: "sections/CredentialSection.tsx", note: "Shared ruled-list layout behind Experience and Education. Never rendered on its own — edit it to change both at once. Section headline is full width (no half-column cap); optional label stacks below it. Each row is three columns at every width: equal-width title and meta (1fr / 1fr), then year auto-aligned right; copy wraps within its column instead of stacking or clipping. Rows own muted top/bottom rules so the list reads as continuous." },
-  { name: "SiteLayout", file: "layout/SiteLayout.tsx", note: "Wraps every route with smooth scroll, nav and footer." },
-  { name: "Nav", file: "layout/Nav.tsx", note: "Fixed bar using mix-blend so it inverts against whatever sits behind it. Collapses to a [menu] overlay below 1200px." },
-  { name: "Footer", file: "layout/Footer.tsx", note: "Oversized wordmark with contact and meta rows. Links reveal an 8px mark on hover. Top padding is pt-104 (104px). Bottom padding is pb-24 (24px)." },
-  { name: "SmoothScroll", file: "layout/SmoothScroll.tsx", note: "Lenis provider. Also drives the appear reveals." },
+  { name: "SiteLayout", file: "layout/SiteLayout.tsx", note: "SmoothScroll → SiteCursor + Nav + site-main (sections + Footer). Footer wrapper -mt-96 + h-96 spacer." },
+  { name: "SiteCursor", file: "layout/SiteCursor.tsx", note: "Pointer-fine only: 16px paper-filled dot + mix-blend-mode difference (dark on paper, light on ink). Portaled to body; cursor:none on html. Lerp ~0.11 rAF. z-index-cursor." },
+  { name: "Nav", file: "layout/Nav.tsx", note: "Fixed bar, mix-blend exclusion. Menu overlay below 810px only. From tablet: Works + About column (gap-2) + NavClock. No Home link." },
+  { name: "Footer", file: "layout/Footer.tsx", note: "Client: scroll-synced ink flip when ≥50% of footer band is visible (Lenis + resize); 1s paper↔ink (smooth ease) on bg/text, SVG invert. Band pt-104 pb-44, gap-44 between meta row and wordmark; spacer h-96 paper. Row 1: contact/links grid order. Row 2: mobile BARB/G.; tablet+ SVG." },
+  { name: "SmoothScroll", file: "layout/SmoothScroll.tsx", note: "Lenis provider. Also drives the appear reveals. Always active via SiteLayout." },
 ];
 
 const work: Entry[] = [
-  { name: "ProjectHero", file: "work/ProjectHero.tsx", note: "Case-study opener: type-h2 title (full width below 810px, max-w-1/2 from tablet), then about plus three meta blocks. Below 810px all four stack with uniform gap-16 between sections (contents flattens meta into the same column); from tablet, two columns with three equal meta columns on the right. The about label uses type-label, same as meta labels. Left column has 160px inner right padding from tablet so the body stays clear of the meta. A one-column solid ImageRow sits under that copy, inside this component. pb-section (96px, the page-section gap) on the copy separates it from the row; the row’s own last-row pb-section is the gap before the next section. imageSrc defaults to public/images/project-hero-placeholder.jpg; pass a project image to replace it (Ageras uses public/images/works/ageras/hero.png). Props: title, aboutLabel, description, meta, imageSrc, imageAlt." },
-  {
-    name: "CaseStudyPage",
-    file: "work/CaseStudyPage.tsx",
-    note: "Case study shell: ProjectHero (copy plus its one-column solid image row), stacked Chapter blocks (optional imageRows per chapter), then NextProject for the following project in list order. Content from src/content/case-studies/.",
-  },
+  { name: "ProjectHero", file: "work/ProjectHero.tsx", note: "Case-study opener: flex flex-col gap-96 + embedded hero ImageRow; copy uses gap-56. h1 full width below 1200px, desktop:max-w-1/2 from 1200px. About | meta: 2-col grid from tablet with gap-12. About column pad-right: none when stacked (<810); tablet:pr-56 (810–1199); desktop:pr-[160px] (1200+). Props: title, aboutLabel, description, meta, imageSrc, imageAlt." },
   {
     name: "NextProject",
     file: "work/NextProject.tsx",
-    note: "Closing project-page link. type-h3 title, bracket label, and that project’s home-grid thumbnail centered behind them at 50vw below 810px, 25vw from tablet. A 40% white overlay (bg-paper/40) covers the image only, under the type. Only the image and the title-plus-label are links; the empty space around them is not. Hovering either blurs the image (12px) and scales it to 125% inside the clipped frame so the blur does not wash the edges white, and rolls the label. Both return when the pointer leaves. 500ms. pt-104 plus the previous section’s pb-section (96px) matches the gap below (this section’s pb-section plus the footer’s pt-104). Props: title, href, imageSrc, label. Case studies pass the next project in src/content/projects.ts order; the last project (Eat Grim) passes the previous one and label “previous project”.",
+    note: "Closing project link. pt-104 + pb-96. Grid group: image zoom 125% + white overlay (paper 40% opacity) on hover/focus-within; no blur. Title + Button stacked center. Image link tabIndex -1.",
   },
-  { name: "ProjectStub", file: "work/ProjectStub.tsx", note: "Fallback when no entry in src/content/case-studies/ — single image, then the same NextProject neighbor as a case study." },
 ];
 
 /* ── page ───────────────────────────────────────────────────────────── */
@@ -162,15 +215,22 @@ const work: Entry[] = [
 // these propagates to every instance on the site.
 const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   Hero: <Hero />,
-  HeroRing: <HeroRing />,
   WorksDisplay: <WorksDisplay />,
   Services: <Services />,
   WhatIDo: <WhatIDo />,
-  Experience: <Experience />,
-  Education: <Education />,
-  AboutHero: <AboutHero />,
+  CredentialSection: (
+    <CredentialSection
+      name="Section - Experience"
+      title={about.experienceTitle}
+      rows={about.jobs.slice(0, 3).map((job) => ({
+        title: job.role,
+        meta: job.company,
+        year: job.period,
+      }))}
+    />
+  ),
   ImageRow: (
-    <div className="flex flex-col gap-header">
+    <ImageRowStack>
       <ImageRow columns={1} frames={[{ variant: "fill", src: MEDIA_A, alt: "" }]} />
       <ImageRow
         columns={2}
@@ -187,7 +247,7 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
           { variant: "background", src: MEDIA_B, alt: "", backgroundSrc: MEDIA_C },
         ]}
       />
-    </div>
+    </ImageRowStack>
   ),
   Chapter: (
     <Chapter
@@ -205,28 +265,13 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
       imageAlt={agerasCaseStudy.heroImage?.alt}
     />
   ),
-  CaseStudyPage: (() => {
-    const study = getCaseStudy("plinto");
-    return study ? <CaseStudyPage study={study} /> : null;
-  })(),
-  NextProject: (() => {
-    const neighbor = getProjectNeighbor("ageras");
-    return neighbor ? (
-      <NextProject
-        title={neighbor.project.title}
-        href={`/${neighbor.project.slug}`}
-        imageSrc={neighbor.project.image}
-        label={neighbor.label}
-      />
-    ) : null;
-  })(),
-  ProjectStub: <ProjectStub project={projects[0]} />,
+  NextProject: <NextProject slug="ageras" />,
 };
 
 function Section({ title, intro, children }: { title: string; intro?: string; children: React.ReactNode }) {
   return (
     <section className="flex flex-col gap-44">
-      <div className="flex flex-col gap-gutter">
+      <div className="flex flex-col gap-12">
         <p className={DOC_DIM}>{title}</p>
         {intro ? <p className={`${DOC} max-w-[680px]`}>{intro}</p> : null}
       </div>
@@ -255,8 +300,8 @@ function Row({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-gutter">
-      <div className="flex flex-wrap items-baseline gap-gutter">
+    <div className="flex flex-col gap-12">
+      <div className="flex flex-wrap items-baseline gap-12">
         <p className={DOC_TITLE}>{entry.name}</p>
         <p className={DOC_DIM}>{entry.file}</p>
       </div>
@@ -271,7 +316,7 @@ export default function DesignSystemPage() {
   const usage = getComponentUsage();
 
   return (
-    <main className="section-wrap flex flex-col gap-152 pt-page-top pb-152">
+    <main className="section-wrap flex flex-col gap-152 pt-216 pb-152">
       <header className="flex flex-col gap-16">
         <p className={DOC_DIM}>internal reference — not linked, not indexed</p>
         <h1 className={`${DOC_TITLE} text-[24px]`}>Design system</h1>
@@ -284,7 +329,7 @@ export default function DesignSystemPage() {
       <Section title="Colour">
         <div className="grid grid-cols-1 gap-36 tablet:grid-cols-2 desktop:grid-cols-4">
           {colors.map((c) => (
-            <div key={c.name} className="flex flex-col gap-gutter">
+            <div key={c.name} className="flex flex-col gap-12">
               <div className="h-[60px] w-full" style={{ background: c.value }} />
               <p className={DOC_TITLE}>{c.name}</p>
               <p className={DOC_DIM}>{c.value}</p>
@@ -315,16 +360,16 @@ export default function DesignSystemPage() {
       >
         <div className="flex flex-wrap items-end gap-24">
           {[0, 2, 4, 8, 12, 16, 20, 24, 32, 36, 44, 56, 64, 76, 96, 104, 152, 176, 216].map((n) => (
-            <div key={n} className="flex flex-col gap-gutter">
+            <div key={n} className="flex flex-col gap-12">
               <div className="bg-ink" style={{ width: n, height: n }} />
               <p className={DOC_DIM}>{n}</p>
             </div>
           ))}
         </div>
         <div className="flex flex-col gap-24">
-          {spacingAliases.map((a) => (
-            <div key={a.name} className="flex flex-col gap-hairline desktop:flex-row desktop:gap-24">
-              <p className={`${DOC_TITLE} desktop:w-[150px]`}>{a.name}</p>
+          {spacingRhythm.map((a) => (
+            <div key={a.utility} className="flex flex-col gap-2 desktop:flex-row desktop:gap-24">
+              <p className={`${DOC_TITLE} desktop:w-[180px]`}>{a.utility}</p>
               <p className={`${DOC_DIM} desktop:w-[100px]`}>{a.value}</p>
               <p className={`${DOC} flex-1`}>{a.use}</p>
             </div>
@@ -333,10 +378,10 @@ export default function DesignSystemPage() {
       </Section>
 
       <Section title="Type levels">
-        <div className="flex flex-col gap-headline">
+        <div className="flex flex-col gap-56">
           {typeLevels.map((t) => (
-            <div key={t.cls} className="flex flex-col gap-gutter">
-              <div className="flex flex-wrap items-baseline gap-gutter">
+            <div key={t.cls} className="flex flex-col gap-12">
+              <div className="flex flex-wrap items-baseline gap-12">
                 <p className={DOC_TITLE}>{t.cls}</p>
                 <p className={DOC_DIM}>{t.spec}</p>
               </div>
@@ -359,25 +404,12 @@ export default function DesignSystemPage() {
       </Section>
 
       <Section title="Atoms">
-        <div className="flex flex-col gap-section">
-          <Row entry={atoms[0]} usage={usage}>
-            <BracketButton href="#">view all</BracketButton>
-          </Row>
-          <Row entry={atoms[1]} usage={usage}>
-            <NavClock />
-          </Row>
-          <Row entry={atoms[2]} usage={usage}>
-            <div className="max-w-[390px]">
-              <WorkCard project={projects[0]} index={0} />
-            </div>
-          </Row>
-          <Row entry={atoms[3]} usage={usage}>
-            <div className="grid grid-cols-1 gap-tight tablet:grid-cols-3">
-              <ImageFrame variant="fill" src={MEDIA_A} alt="" />
-              <ImageFrame variant="solid" src={MEDIA_B} alt="" />
-              <ImageFrame variant="background" src={MEDIA_B} alt="" backgroundSrc={MEDIA_C} />
-            </div>
-          </Row>
+        <div className="flex flex-col gap-96">
+          {atoms.map((entry) => (
+            <Row key={entry.name} entry={entry} usage={usage}>
+              {ATOM_PREVIEWS[entry.name]}
+            </Row>
+          ))}
         </div>
       </Section>
 
@@ -395,8 +427,8 @@ export default function DesignSystemPage() {
         <div className="flex flex-col gap-152">
           {sections.map((e) => (
             <div key={e.name} className="flex flex-col gap-24">
-              <div className="flex flex-col gap-gutter">
-                <div className="flex flex-wrap items-baseline gap-gutter">
+              <div className="flex flex-col gap-12">
+                <div className="flex flex-wrap items-baseline gap-12">
                   <p className={DOC_TITLE}>{e.name}</p>
                   <p className={DOC_DIM}>{e.file}</p>
                 </div>
@@ -410,7 +442,7 @@ export default function DesignSystemPage() {
       </Section>
 
       <Section title="Shell">
-        <div className="flex flex-col gap-header">
+        <div className="flex flex-col gap-56">
           {shell.map((e) => (
             <Row key={e.name} entry={e} usage={usage} />
           ))}
@@ -418,7 +450,7 @@ export default function DesignSystemPage() {
       </Section>
 
       <Section title="Work">
-        <div className="flex flex-col gap-header">
+        <div className="flex flex-col gap-56">
           {work.map((e) => (
             <Row key={e.name} entry={e} usage={usage}>
               {SECTION_PREVIEWS[e.name]}

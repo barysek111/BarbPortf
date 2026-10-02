@@ -1,58 +1,90 @@
+import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import { getProjectNeighbor } from "@/content/projects";
+import { isWorkVideo } from "@/components/work/WorkThumbMedia";
+import { cn } from "@/lib/cn";
 
-export function NextProject({
-  title,
-  href,
-  imageSrc,
-  label,
-}: {
-  title: string;
-  href: string;
-  /** Home-grid thumbnail, centered behind the title. */
-  imageSrc?: string;
-  /** "next project" or "previous project". */
-  label: string;
-}) {
+export function NextProject(
+  props:
+    | { slug: string }
+    | {
+        title: string;
+        href: string;
+        imageSrc?: string;
+        imageHeight?: number;
+        label: string;
+      },
+) {
+  let title: string;
+  let href: string;
+  let imageSrc: string | undefined;
+  let imageHeight: number | undefined;
+  let label: string;
+
+  if ("slug" in props) {
+    const neighbor = getProjectNeighbor(props.slug);
+    if (!neighbor) return null;
+    title = neighbor.project.title;
+    href = `/${neighbor.project.slug}`;
+    imageSrc = neighbor.project.image;
+    imageHeight = neighbor.project.imageH;
+    label = neighbor.label;
+  } else {
+    ({ title, href, imageSrc, imageHeight, label } = props);
+  }
+
+  const hoverEase = "duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)]";
+  const hoverZoom = `${hoverEase} group-hover:scale-125 group-has-[:focus-visible]:scale-125`;
+  const hoverOverlay = `${hoverEase} group-hover:opacity-40 group-has-[:focus-visible]:opacity-40`;
+
   return (
-    <section
-      className="w-full max-w-(--container-section) px-gutter pt-104 pb-section"
-      data-name="Section - Next Project"
-    >
-      <div className="grid w-full place-items-center has-[:hover]:[&_img]:scale-125 has-[:hover]:[&_img]:[filter:blur(12px)] has-[:focus-visible]:[&_img]:scale-125 has-[:focus-visible]:[&_img]:[filter:blur(12px)] has-[:hover]:[&_.roll]:-translate-y-full has-[:focus-visible]:[&_.roll]:-translate-y-full">
+    <section className="section-wrap pt-104 pb-96" data-name="Section - Next Project">
+      <div className="group grid w-full place-items-center">
         {imageSrc ? (
           <Link
             href={href}
             aria-label={title}
             tabIndex={-1}
-            className="relative col-start-1 row-start-1 w-[50vw] overflow-hidden tablet:w-[25vw]"
+            className={cn(
+              "relative col-start-1 row-start-1 overflow-hidden tablet:w-[25vw]",
+              isWorkVideo(imageSrc) ? "aspect-square w-[50vw]" : "w-[50vw]",
+            )}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imageSrc}
-              alt=""
-              className="block h-auto w-full origin-center transition-[filter,transform] duration-500 ease-out"
+            {isWorkVideo(imageSrc) ? (
+              <video
+                src={imageSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-hidden
+                className={`absolute inset-0 h-full w-full object-cover object-top origin-center scale-100 transform-gpu transition-transform ${hoverZoom}`}
+              />
+            ) : (
+              <Image
+                src={imageSrc}
+                alt=""
+                width={372}
+                height={imageHeight ?? 372}
+                sizes="(max-width: 809px) 50vw, 25vw"
+                className={`block h-auto w-full origin-center scale-100 transform-gpu transition-transform ${hoverZoom}`}
+              />
+            )}
+            <span
+              aria-hidden="true"
+              className={`pointer-events-none absolute inset-0 bg-paper opacity-0 transition-opacity ${hoverOverlay}`}
             />
-            <span aria-hidden="true" className="absolute inset-0 bg-paper/40" />
           </Link>
         ) : null}
-        <Link
-          href={href}
-          className="z-lift col-start-1 row-start-1 flex w-max max-w-full flex-col items-center justify-center gap-12 text-center"
-        >
-          <h3 className="type-h3 appear" data-appear="60">
-            <span>{title}</span>
-          </h3>
-          <span className="type-label inline-flex items-center gap-hairline overflow-clip">
-            <span aria-hidden="true">[</span>
-            <span className="flex h-[1.3em] flex-col overflow-hidden">
-              <span className="roll label-roll">{label}</span>
-              <span aria-hidden="true" className="roll label-roll">
-                {label}
-              </span>
-            </span>
-            <span aria-hidden="true">]</span>
-          </span>
-        </Link>
+        <div className="z-lift col-start-1 row-start-1 flex w-max max-w-full flex-col items-center justify-center gap-12 text-center">
+          <Link href={href}>
+            <h3 className="type-h3 appear" data-appear="60">
+              <span>{title}</span>
+            </h3>
+          </Link>
+          <Button href={href}>{label}</Button>
+        </div>
       </div>
     </section>
   );

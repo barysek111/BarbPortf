@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { heroRing } from "@/content/hero-ring";
 
@@ -128,6 +129,8 @@ export function HeroRing() {
 
     commit();
     window.addEventListener("resize", commit);
+    const ro = new ResizeObserver(() => commit());
+    ro.observe(stage);
 
     let frame = 0;
     if (!reduced) {
@@ -144,6 +147,7 @@ export function HeroRing() {
 
     return () => {
       window.removeEventListener("resize", commit);
+      ro.disconnect();
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
@@ -163,12 +167,13 @@ export function HeroRing() {
           className="absolute top-0 left-0"
         >
           <div className="relative h-full w-full overflow-hidden bg-paper shadow-card">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={item.src}
               alt={item.alt}
+              fill
+              sizes={`${CARD_W}px`}
               draggable={false}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="object-cover"
             />
           </div>
         </div>

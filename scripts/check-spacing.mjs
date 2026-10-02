@@ -8,7 +8,7 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const SCALE = [0, 2, 4, 8, 12, 16, 20, 24, 32, 36, 44, 56, 64, 76, 96, 104, 152, 176, 216];
-const ALIASES = ["hairline", "tight", "gutter", "header", "headline", "section", "page-top"];
+const BANNED_ALIASES = ["hairline", "tight", "gutter", "header", "headline", "section", "page-top"];
 const PREFIX = "(?:gap-x|gap-y|gap|px|py|pt|pr|pb|pl|p|mx|my|mt|mr|mb|ml|m)";
 
 // Dimension utilities read from the same --spacing-* namespace, so a value off
@@ -43,7 +43,15 @@ for (const file of files) {
       if (!body || isProse(body)) continue;
       for (const m of body.matchAll(re)) {
         const raw = m[1];
-        if (ALIASES.includes(raw)) continue;
+        if (BANNED_ALIASES.includes(raw)) {
+          violations.push({
+            file: file.replace("src/", ""),
+            line: i + 1,
+            token: m[0],
+            hint: "use numeric spacing (e.g. gap-12 not gap-gutter)",
+          });
+          continue;
+        }
         if (/^(?:auto|px|full|screen|min|max|fit|reverse)$/.test(raw)) continue;
         if (!/^\d+$/.test(raw)) continue;
         if (SCALE.includes(Number(raw))) continue;
@@ -65,7 +73,7 @@ for (const file of files) {
 
 if (!violations.length) {
   console.log(`spacing ok — scale: ${SCALE.join(" ")}`);
-  console.log(`aliases: ${ALIASES.join(" ")}`);
+  console.log("numeric-only — semantic spacing aliases are not allowed in class strings");
   process.exit(0);
 }
 
@@ -74,6 +82,6 @@ for (const v of violations) {
   console.error(`  ${v.file}:${v.line}  ${v.token}${v.hint ? `  → ${v.hint}` : ""}`);
 }
 console.error(`\nAllowed: ${SCALE.join(" ")}`);
-console.error(`Or an alias: ${ALIASES.join(" ")}`);
+console.error("Do not use semantic aliases (gap-gutter, pb-section, etc.) — use the px scale only.");
 console.error(`Component dimensions should use brackets, e.g. w-[139px].`);
 process.exit(1);

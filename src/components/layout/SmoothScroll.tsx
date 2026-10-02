@@ -16,6 +16,21 @@ function ScrollReset() {
   return null;
 }
 
+function revealVisibleAppears() {
+  document.querySelectorAll("[data-appear]:not(.is-in)").forEach((node) => {
+    const r = node.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < window.innerHeight) {
+      node.classList.add("is-in");
+    }
+  });
+}
+
+/** Lenis + iOS Safari often miss IntersectionObserver; flush on scroll. */
+function AppearOnScroll() {
+  useLenis(revealVisibleAppears);
+  return null;
+}
+
 export function SmoothScroll({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
@@ -43,14 +58,25 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
           }
         }
       },
-      { threshold: 0, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0, rootMargin: "0px 0px 0px 0px" }
     );
-    observe();
-    const raf = requestAnimationFrame(observe);
-    const mo = new MutationObserver(observe);
+    const flush = () => {
+      observe();
+      revealVisibleAppears();
+    };
+    // Defer until after hydration — direct classList updates must not run during React hydrate.
+    const mo = new MutationObserver(() => {
+      observe();
+    });
+    const t1 = window.setTimeout(flush, 0);
+    const t2 = window.setTimeout(flush, 150);
+    const t3 = window.setTimeout(flush, 600);
     mo.observe(document.body, { childList: true, subtree: true });
+
     return () => {
-      cancelAnimationFrame(raf);
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
       io.disconnect();
       mo.disconnect();
     };
@@ -59,6 +85,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
   return (
     <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
       <ScrollReset />
+      <AppearOnScroll />
       {children}
     </ReactLenis>
   );
