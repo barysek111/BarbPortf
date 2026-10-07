@@ -127,3 +127,35 @@ export function getComponentUsage(exclude = "/design-system"): Record<string, st
     Object.entries(usage).map(([k, v]) => [k, [...v].sort()])
   );
 }
+
+/** Component file or route that imports `name`. Design-system files are skipped. */
+function ownerName(file: string): string | null {
+  if (file.includes(join(SRC, "app", "design-system"))) return null;
+  if (file === join(SRC, "app", "layout.tsx")) return "all pages";
+  if (/\/page\.tsx$/.test(file)) return routeOf(file);
+  return file.split("/").pop()!.replace(/\.tsx?$/, "");
+}
+
+/**
+ * Direct importers of each component (Nav, Footer, /, /works), excluding the
+ * design-system catalogue. Derived from the import graph — do not hand-write.
+ */
+export function getComponentHosts(): Record<string, string[]> {
+  const hosts: Record<string, Set<string>> = {};
+
+  for (const file of walkFiles(SRC)) {
+    const owner = ownerName(file);
+    if (!owner) continue;
+    for (const edge of importsOf(file)) {
+      if (!edge.to.includes(join(SRC, "components"))) continue;
+      for (const name of edge.names) {
+        if (name === owner) continue;
+        (hosts[name] ??= new Set()).add(owner);
+      }
+    }
+  }
+
+  return Object.fromEntries(
+    Object.entries(hosts).map(([name, set]) => [name, [...set].sort((a, b) => a.localeCompare(b))]),
+  );
+}

@@ -2,30 +2,55 @@ import cocoCareChapters from "./generated/cococare.json";
 import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy, CaseStudyChapter } from "./types";
 
-const PLACEHOLDER = "/images/works/cococare/placeholder.png";
+const media = "/images/works/cococare";
 
-const solid = (src: string, alt: string) => ({ variant: "solid" as const, src, alt });
-const placeholder = (alt = "") => solid(PLACEHOLDER, alt || "Work in progress");
+function solid(file: string, alt: string, description?: string) {
+  const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
+  return { variant: "solid" as const, src, alt, description };
+}
+
+function fill(file: string, alt: string) {
+  return { ...solid(file, alt), variant: "fill" as const };
+}
+
+function row(columns: 1 | 2 | 3, frames: Array<ReturnType<typeof solid> | ReturnType<typeof fill>>) {
+  return { columns, frames };
+}
 
 function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
+  if (chapter.headline === "Research") {
+    return {
+      ...chapter,
+      imageRows: [
+        row(3, [
+          solid("persona-jonas.svg", "Persona, Jonas"),
+          solid("persona-alice.svg", "Persona, Alice"),
+          solid("project-goals.svg", "Coco Care project goals"),
+        ]),
+      ],
+    };
+  }
+
   if (chapter.headline === "Direction") {
     return {
       ...chapter,
       imageRows: [
-        {
-          columns: 1,
-          frames: [
-            solid("/images/works/cococare/project-goals.svg", "Coco Care project goals"),
-          ],
-        },
-        {
-          columns: 2,
-          frames: [placeholder(), placeholder()],
-        },
-        {
-          columns: 2,
-          frames: [placeholder(), placeholder()],
-        },
+        row(2, [
+          solid("cococare-onboardingflow.svg", "Coco Care onboarding flow", "Onboarding flow"),
+          solid("cococare-exerciseflow.svg", "Coco Care exercise flow", "Training flow"),
+        ]),
+        row(2, [
+          solid(
+            "cococare-sitemap-admin.svg",
+            "Coco Care admin sitemap",
+            "Information architecture map - Admin view",
+          ),
+          solid(
+            "cococare-sitemap-fysio.svg",
+            "Coco Care physiotherapist sitemap",
+            "Information architecture map - Physiotherapist view",
+          ),
+        ]),
       ],
     };
   }
@@ -34,12 +59,20 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     return {
       ...chapter,
       imageRows: [
-        { columns: 1, frames: [placeholder()] },
-        { columns: 1, frames: [placeholder()] },
-        { columns: 1, frames: [placeholder()] },
-        { columns: 1, frames: [placeholder()] },
-        { columns: 2, frames: [placeholder(), placeholder()] },
-        { columns: 2, frames: [placeholder(), placeholder()] },
+        row(1, [solid("hi-fidelity-mobilescreens6-new.svg", "Settings flow")]),
+        row(3, [
+          solid("cococare-screens-mobile-1.svg", "Coco Care mobile screens"),
+          solid("cococare-screens-mobile-2.svg", "Coco Care mobile screens"),
+          solid("cococare-screens-mobile-3.svg", "Coco Care mobile screens"),
+        ]),
+        row(2, [
+          solid("hi-fidelity-portalscreen2-1.svg", "Patient page"),
+          solid("hi-fidelity-portalscreen3-2.svg", "Program builder"),
+        ]),
+        row(2, [
+          solid("hi-fidelity-portalscreen4-1.svg", "Active program"),
+          solid("hi-fidelity-portalscreen5-1.svg", "Goals"),
+        ]),
       ],
     };
   }
@@ -48,10 +81,11 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     return {
       ...chapter,
       imageRows: [
-        {
-          columns: 3,
-          frames: [placeholder(), placeholder(), placeholder()],
-        },
+        row(3, [
+          fill("revision1.svg", "Testing revision one"),
+          fill("revision2.svg", "Testing revision two"),
+          fill("revision3.svg", "Testing revision three"),
+        ]),
       ],
     };
   }
@@ -73,15 +107,21 @@ export const cocoCareCaseStudy = {
     { label: "client", value: "Coco Care" },
     { label: "year", value: "2024" },
   ],
+  heroImage: {
+    src: "/images/works/cococare/cococarenewhero.svg",
+    alt: "Coco Care product overview",
+    variant: "background",
+    backgroundSrc: "/images/works/cococare/cococareheroimgfillbackground.jpg",
+  },
   chapters: [
     buildScopeChapter(
-      "Coco Care is a digital physiotherapy solution that helps patients access personalized, evidence-based rehabilitation at home through an intuitive app. I designed the patient and physio experience and set the foundation for scheduling, exercise tracking and many more functions to boost engagement, compliance, and recovery outcomes.",
-      "Patients often struggle with motivation and consistency in physiotherapy. Clinics face high dropout rates and limited insight into patients' progress at home. Coco Care aims to:",
-      [
-        "Make digital rehabilitation accessible, clear and user-friendly.",
-        "Enable physios to track patient progress and personalize plans.",
-        "Increase patient engagement and compliance.",
-      ],
+        "Coco Care is a digital physiotherapy solution that helps patients access personalized, evidence-based rehabilitation at home through an intuitive app. I designed the patient and physio experience and set the foundation for scheduling, exercise tracking and many more functions to boost engagement, compliance, and recovery outcomes.",
+        "Patients often struggle with motivation and consistency in physiotherapy. Clinics face high dropout rates and limited insight into patients' progress at home. Coco Care aims to:",
+        [
+          "Make digital rehabilitation accessible, clear and user-friendly.",
+          "Enable physios to track patient progress and personalize plans.",
+          "Increase patient engagement and compliance.",
+        ],
     ),
     ...cocoCareChapters.map(withImageRows),
   ],

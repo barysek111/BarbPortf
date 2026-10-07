@@ -43,6 +43,8 @@ export default async function WorkPage({
         meta={study.meta}
         imageSrc={study.heroImage?.src}
         imageAlt={study.heroImage?.alt}
+        imageVariant={study.heroImage?.variant}
+        imageBackgroundSrc={study.heroImage?.backgroundSrc}
       />
 
       {study.chapters.map((chapter) => (

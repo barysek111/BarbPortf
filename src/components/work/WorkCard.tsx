@@ -14,6 +14,7 @@ export function WorkCard({ project, index }: { project: Project; index: number }
       <Link
         href={`/${project.slug}`}
         className="group relative min-w-0 cursor-none"
+        data-hide-site-cursor=""
         onMouseMove={(event) => setCursor({ x: event.clientX, y: event.clientY })}
         onMouseLeave={() => setCursor(null)}
       >

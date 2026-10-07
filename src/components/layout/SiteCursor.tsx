@@ -9,12 +9,14 @@ const SIZE = 16;
 /**
  * 16px dot (paper fill + difference) so it reads dark on paper and light on ink.
  * Lerps behind the system pointer. Portaled to body; pointer-fine only.
+ * Hidden over [data-hide-site-cursor] so a local label (WorkCard [view]) is the only cursor.
  */
 export function SiteCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
   const pos = useRef({ x: 0, y: 0 });
   const active = useRef(false);
+  const suppress = useRef(false);
   const raf = useRef(0);
   const [mounted, setMounted] = useState(false);
 
@@ -41,6 +43,12 @@ export function SiteCursor() {
       }
     };
 
+    const onOver = (e: MouseEvent) => {
+      const node = e.target;
+      suppress.current =
+        node instanceof Element && Boolean(node.closest("[data-hide-site-cursor]"));
+    };
+
     const onDocLeave = (e: MouseEvent) => {
       const next = e.relatedTarget;
       if (next === null || !(next instanceof Node) || !document.documentElement.contains(next)) {
@@ -54,19 +62,21 @@ export function SiteCursor() {
         pos.current.x += (target.current.x - pos.current.x) * LERP;
         pos.current.y += (target.current.y - pos.current.y) * LERP;
         el.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`;
-        el.style.opacity = active.current ? "1" : "0";
+        el.style.opacity = active.current && !suppress.current ? "1" : "0";
       }
       raf.current = requestAnimationFrame(tick);
     };
 
     raf.current = requestAnimationFrame(tick);
     window.addEventListener("mousemove", onMove, { passive: true });
+    document.addEventListener("mouseover", onOver);
     document.documentElement.addEventListener("mouseout", onDocLeave);
 
     return () => {
       root.classList.remove("has-custom-cursor");
       cancelAnimationFrame(raf.current);
       window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onOver);
       document.documentElement.removeEventListener("mouseout", onDocLeave);
     };
   }, [mounted]);

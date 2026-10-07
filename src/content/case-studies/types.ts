@@ -1,4 +1,4 @@
-import type { ImageFrameProps } from "@/components/ui/ImageFrame";
+import type { ImageFrameProps, ImageFrameVariant } from "@/components/ui/ImageFrame";
 import type { ImageRowColumns } from "@/components/sections/ImageRow";
 
 export type CaseStudySection = {
@@ -21,7 +21,12 @@ export type CaseStudy = {
   aboutLabel: string;
   description: string;
   meta: readonly { label: string; value: string }[];
-  /** One-column solid image under the hero copy. Omitted studies use the ProjectHero placeholder. */
-  heroImage?: { src: string; alt: string };
+  /** One-column image under the hero copy. Defaults to solid. Omitted studies use the ProjectHero placeholder. */
+  heroImage?: {
+    src: string;
+    alt: string;
+    variant?: ImageFrameVariant;
+    backgroundSrc?: string;
+  };
   chapters: readonly CaseStudyChapter[];
 };

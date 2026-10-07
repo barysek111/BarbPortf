@@ -33,6 +33,22 @@ function cardHeight(width: number, height: number) {
  */
 const entries = [
   {
+    file: "library-drift.jpg",
+    title: "Library Drift Figma Plugin",
+    slug: "library-drift",
+    listFolder: "library-drift",
+    client: "Saxo Bank",
+    services: "Plugin Design",
+    summary:
+      "A Figma plugin that scans design files to detect broken links to deleted components and deprecated variants. Solves a real problem for teams working with complex, evolving design systems.",
+    year: "2026",
+    location: "Copenhagen, Denmark",
+    w: 2250,
+    h: 1620,
+    masonryY: 93,
+    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
+  },
+  {
     file: "plinto-ai-invoicing.jpg",
     title: "Plinto AI Invoicing",
     slug: "plinto",

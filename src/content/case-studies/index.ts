@@ -2,6 +2,7 @@
 import { agerasCaseStudy } from "./ageras";
 import { cocoCareCaseStudy } from "./coco-care";
 import { eatGrimCaseStudy } from "./eat-grim";
+import { libraryDriftCaseStudy } from "./library-drift";
 import { plintoCaseStudy } from "./plinto";
 import { powermatchCaseStudy } from "./powermatch";
 import { rokokoBrandCaseStudy } from "./rokoko-brand";
@@ -18,6 +19,7 @@ const caseStudies: Record<string, CaseStudy> = {
   [rokokoWebCaseStudy.slug]: rokokoWebCaseStudy,
   [weldCaseStudy.slug]: weldCaseStudy,
   [eatGrimCaseStudy.slug]: eatGrimCaseStudy,
+  [libraryDriftCaseStudy.slug]: libraryDriftCaseStudy,
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {

@@ -1,5 +1,6 @@
 import { ImageRow } from "@/components/sections/ImageRow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { ImageFrameVariant } from "@/components/ui/ImageFrame";
 
 export type ProjectHeroMeta = {
   label: string;
@@ -15,6 +16,8 @@ export function ProjectHero({
   meta,
   imageSrc = HERO_PLACEHOLDER,
   imageAlt = "",
+  imageVariant = "solid",
+  imageBackgroundSrc,
 }: {
   title: string;
   aboutLabel: string;
@@ -22,6 +25,8 @@ export function ProjectHero({
   meta: readonly ProjectHeroMeta[];
   imageSrc?: string;
   imageAlt?: string;
+  imageVariant?: ImageFrameVariant;
+  imageBackgroundSrc?: string;
 }) {
   return (
     <section
@@ -55,7 +60,18 @@ export function ProjectHero({
           </div>
         </div>
       </div>
-      <ImageRow embedded columns={1} frames={[{ variant: "solid", src: imageSrc, alt: imageAlt }]} />
+      <ImageRow
+        embedded
+        columns={1}
+        frames={[
+          {
+            variant: imageVariant,
+            src: imageSrc,
+            alt: imageAlt,
+            backgroundSrc: imageBackgroundSrc,
+          },
+        ]}
+      />
     </section>
   );
 }

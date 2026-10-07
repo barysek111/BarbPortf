@@ -1,5 +1,16 @@
 import type { CaseStudy } from "./types";
 
+const media = "/images/works/ageras";
+
+function solid(file: string, alt: string, description?: string) {
+  const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
+  return { variant: "solid" as const, src, alt, description };
+}
+
+function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
+  return { columns, frames };
+}
+
 export const agerasCaseStudy = {
   slug: "ageras",
   title: "Ageras Website UI/UX Consolidation",
@@ -64,6 +75,11 @@ export const agerasCaseStudy = {
           ],
         },
       ],
+      imageRows: [
+        row(1, [solid("frame-1.svg", "Sitemap DK", "Sitemap DK")]),
+        row(1, [solid("newflowwageras.png", "Signup and login flow")]),
+        row(1, [solid("ageras-inspiration-scaled.png", "Visual exploration")]),
+      ],
     },
     {
       headline: "Direction",
@@ -78,33 +94,6 @@ export const agerasCaseStudy = {
           label: "Information architecture",
           paragraphs: [
             "The information architecture would put regional variants first without sacrificing global brand coherence. Homepage, product pages, pricing, support, and contact would all adapt to the user's region while feeling like one product.",
-          ],
-        },
-      ],
-      imageRows: [
-        {
-          columns: 2 as const,
-          frames: [
-            {
-              variant: "fill" as const,
-              src: "/images/works/ageras/sitemaps-dk.jpg",
-              alt: "Website sitemap Denmark — organic and paid traffic structures",
-            },
-            {
-              variant: "fill" as const,
-              src: "/images/works/ageras/sitemaps-nl.jpg",
-              alt: "Website sitemap Netherlands — organic and paid traffic structures",
-            },
-          ],
-        },
-        {
-          columns: 1 as const,
-          frames: [
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/login-exploration.jpg",
-              alt: "Signup and login flow exploration across payroll, invoicing, and partner paths",
-            },
           ],
         },
       ],
@@ -138,76 +127,28 @@ export const agerasCaseStudy = {
         },
       ],
       imageRows: [
-        {
-          columns: 2 as const,
-          frames: [
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/documentation-1.png",
-              alt: "Design system documentation overview",
-            },
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/design-system-screenshot-2025-09-17.png",
-              alt: "Design system documentation in Figma",
-            },
-          ],
-        },
-        {
-          columns: 2 as const,
-          frames: [
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/design-system-main.jpg",
-              alt: "Ageras design system main styles",
-            },
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/design-system-buttons-filter.jpg",
-              alt: "Buttons and filter components",
-            },
-          ],
-        },
-        {
-          columns: 2 as const,
-          frames: [
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/design-system-modals-2.jpg",
-              alt: "Modal components set two",
-            },
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/design-system-modals-1.jpg",
-              alt: "Modal components set one",
-            },
-          ],
-        },
-        {
-          columns: 1 as const,
-          frames: [
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/design-system-components.jpg",
-              alt: "Ageras design system component library overview",
-            },
-          ],
-        },
-        {
-          columns: 2 as const,
-          frames: [
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/design-system-icons.jpg",
-              alt: "Ageras design system icon set",
-            },
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/ageras-tabs-images.png",
-              alt: "Ageras tabbed imagery for product marketing",
-            },
-          ],
-        },
+        row(2, [
+          solid("documentation-1.png", "Design system documentation"),
+          solid("Screenshot-2025-09-17-at-14.10.24.png", "Design system documentation"),
+        ]),
+        row(1, [solid("Designsystemageras-grid-scaled.jpg", "Grid and layout rules")]),
+        row(2, [
+          solid("Designsystemageras-main-scaled.jpg", "Core styles and building blocks"),
+          solid("Designsystemageras-buttonsandfilter-scaled.jpg", "Buttons and filters"),
+        ]),
+        row(1, [solid("Designsystemageras-nav-scaled.jpg", "Navigation")]),
+        row(2, [
+          solid("Designsystemageras-modals-scaled.jpg", "Modals and dropdowns"),
+          solid("Designsystemageras-modals-1-scaled.jpg", "Modals and dropdowns"),
+        ]),
+        row(1, [solid("Designsystemageras-modals-2-scaled.jpg", "Modals and dropdowns")]),
+        row(1, [solid("Designsystemageras-components.jpg", "Section components")]),
+        row(1, [solid("Designsystemageras-icons-scaled.jpg", "Iconography")]),
+        row(2, [
+          solid("Ageras_tabsimages-1-scaled.png", "Image library, tab images"),
+          solid("Screenshot-2025-09-17-at-13.08.26.png", "Image library"),
+        ]),
+        row(1, [solid("Screenshot-2025-09-17-at-13.07.42.png", "Image library")]),
       ],
     },
     {
@@ -227,41 +168,24 @@ export const agerasCaseStudy = {
         },
       ],
       imageRows: [
-        {
-          columns: 2 as const,
-          frames: [
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/fullpages-1.png",
-              alt: "Ageras full-page landing design one",
-            },
-            {
-              variant: "solid" as const,
-              src: "/images/works/ageras/fullpages-2.png",
-              alt: "Ageras full-page landing design two",
-            },
-          ],
-        },
-        {
-          columns: 3 as const,
-          frames: [
-            {
-              variant: "fill" as const,
-              src: "/images/works/ageras/webmockup-5.jpg",
-              alt: "Ageras website mockup five",
-            },
-            {
-              variant: "fill" as const,
-              src: "/images/works/ageras/webmockup-4.jpg",
-              alt: "Ageras website mockup four",
-            },
-            {
-              variant: "fill" as const,
-              src: "/images/works/ageras/webmockup-3.jpg",
-              alt: "Ageras website mockup three",
-            },
-          ],
-        },
+        row(2, [
+          solid("ageras_fullpages1.png", "Main landing page"),
+          solid("ageras_fullpages2.png", "Main landing page"),
+        ]),
+        row(3, [
+          solid("ageraswebmockup11.jpg", "High fidelity mockup"),
+          solid("ageraswebmockup5-1.jpg", "High fidelity mockup"),
+          solid("ageraswebmockup4.jpg", "High fidelity mockup"),
+        ]),
+        row(3, [
+          solid("ageraswebmockup6.jpg", "High fidelity mockup"),
+          solid("ageraswebmockup3.jpg", "High fidelity mockup"),
+          solid("pricing.jpg", "Pricing page mockup"),
+        ]),
+        row(2, [
+          solid("ageraswebmockup7.jpg", "High fidelity mockup"),
+          solid("ageraswebmockup8.jpg", "High fidelity mockup"),
+        ]),
       ],
     },
     {
