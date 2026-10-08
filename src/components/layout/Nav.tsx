@@ -84,6 +84,13 @@ export function Nav() {
                 onClick={close}
               />
               <NavLink href="/about" label="About" active={pathname === "/about"} open={open} onClick={close} />
+              <NavLink
+                href="/playground"
+                label="Playground"
+                active={pathname === "/playground"}
+                open={open}
+                onClick={close}
+              />
             </div>
             <NavClock className="hidden tablet:block" />
           </div>

@@ -85,7 +85,7 @@ export function ImageFrame({
         <FillImage src={src} alt={alt} />
       </div>
     ) : variant === "background" ? (
-      <div className={cn(FRAME, "flex-col px-32 py-64")} data-name="Image Frame — background">
+      <div className={cn(FRAME, "flex-col px-32 py-32 desktop:py-64")} data-name="Image Frame — background">
         {backgroundSrc ? (
           <Image
             src={backgroundSrc}
@@ -102,7 +102,7 @@ export function ImageFrame({
         </div>
       </div>
     ) : (
-      <div className={cn(FRAME, "flex-col bg-surface px-32 py-64")} data-name="Image Frame — solid">
+      <div className={cn(FRAME, "flex-col bg-surface px-32 py-32 desktop:py-64")} data-name="Image Frame — solid">
         <div className="flex min-h-0 w-full min-w-0 flex-1 items-center justify-center">
           <ContainedImage src={src} alt={alt} sizes={sizes} />
         </div>

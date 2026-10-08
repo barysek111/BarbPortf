@@ -76,9 +76,8 @@ export const agerasCaseStudy = {
         },
       ],
       imageRows: [
-        row(1, [solid("frame-1.svg", "Sitemap DK", "Sitemap DK")]),
-        row(1, [solid("newflowwageras.png", "Signup and login flow")]),
-        row(1, [solid("ageras-inspiration-scaled.png", "Visual exploration")]),
+        row(1, [solid("sitemap-dk.svg", "Sitemap DK", "Sitemap DK")]),
+        row(1, [solid("newflowwageras.png", "Login and signup flow", "login & signup flow")]),
       ],
     },
     {
@@ -127,28 +126,12 @@ export const agerasCaseStudy = {
         },
       ],
       imageRows: [
-        row(2, [
-          solid("documentation-1.png", "Design system documentation"),
-          solid("Screenshot-2025-09-17-at-14.10.24.png", "Design system documentation"),
+        row(3, [
+          solid("breakpoints.png", "Breakpoints and page width"),
+          solid("buttons-filters.png", "Buttons and filters"),
+          solid("icons-use.png", "Iconography"),
         ]),
-        row(1, [solid("Designsystemageras-grid-scaled.jpg", "Grid and layout rules")]),
-        row(2, [
-          solid("Designsystemageras-main-scaled.jpg", "Core styles and building blocks"),
-          solid("Designsystemageras-buttonsandfilter-scaled.jpg", "Buttons and filters"),
-        ]),
-        row(1, [solid("Designsystemageras-nav-scaled.jpg", "Navigation")]),
-        row(2, [
-          solid("Designsystemageras-modals-scaled.jpg", "Modals and dropdowns"),
-          solid("Designsystemageras-modals-1-scaled.jpg", "Modals and dropdowns"),
-        ]),
-        row(1, [solid("Designsystemageras-modals-2-scaled.jpg", "Modals and dropdowns")]),
-        row(1, [solid("Designsystemageras-components.jpg", "Section components")]),
-        row(1, [solid("Designsystemageras-icons-scaled.jpg", "Iconography")]),
-        row(2, [
-          solid("Ageras_tabsimages-1-scaled.png", "Image library, tab images"),
-          solid("Screenshot-2025-09-17-at-13.08.26.png", "Image library"),
-        ]),
-        row(1, [solid("Screenshot-2025-09-17-at-13.07.42.png", "Image library")]),
+        row(1, [solid("tab-images-library.jpg", "Image library, tab images")]),
       ],
     },
     {
@@ -222,7 +205,9 @@ export const agerasCaseStudy = {
     { label: "year", value: "2025" },
   ],
   heroImage: {
-    src: "/images/works/ageras/hero.png",
+    src: "/images/works/ageras/agerasthumbnailprojectpage.jpg",
     alt: "Ageras website and mobile product screens",
+    variant: "background",
+    backgroundSrc: "/images/works/ageras/hero-background.jpg",
   },
 } satisfies CaseStudy;

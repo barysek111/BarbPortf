@@ -5,9 +5,11 @@ import { NavLink } from "@/components/layout/NavLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ImageFrame } from "@/components/ui/ImageFrame";
 import { ImageRow } from "@/components/sections/ImageRow";
+import { PlaygroundGrid } from "@/components/sections/PlaygroundGrid";
 import { NavClock } from "@/components/layout/NavClock";
 import { WorkCard } from "@/components/work/WorkCard";
 import { Hero } from "@/components/home/Hero";
+import { Hero2 } from "@/components/home/Hero2";
 import { WorksDisplay } from "@/components/sections/WorksDisplay";
 import { Services } from "@/components/home/Services";
 import { WhatIDo } from "@/components/home/WhatIDo";
@@ -90,7 +92,7 @@ const atoms: Entry[] = [
   },
   {
     name: "ImageFrame",
-    note: "Max height 700. Fill: edge to edge. Solid: surface fill, 64px top and bottom, 32px on the sides. Background: image behind, same padding. Optional description sits 8px under the frame, type-label in muted. GIFs and SVGs skip image optimization.",
+    note: "Max height 700. Fill: edge to edge. Solid: surface fill. Background: image behind. Both use 32px padding on all sides below desktop 1200, and 64px top and bottom from 1200. Optional description sits 8px under the frame, type-label in muted. Images stay in the format they were added as.",
   },
   { name: "SectionHeading", note: "Section title. 41px, 51px from desktop 1200, 64px from 1440." },
   { name: "NavLink", note: "Leader on hover and current page. Open menu uses display type, below tablet only." },
@@ -135,8 +137,12 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
 const sections: Entry[] = [
   { name: "Hero", note: "Full height. From tablet 810: frame is 60vw, labels sit on the sides." },
   {
+    name: "Hero2",
+    note: "Same labels and scroll button as Hero. The ring is an isometric lift carousel: portrait cards stand on a tilted row and the selected card widens and lifts. Uses the hero ring images except the 1st, 4th, 6th, 11th, and last. Stage is transparent so the page color shows. No prev, dots, or next bar.",
+  },
+  {
     name: "WorksDisplay",
-    note: "Grid by default. List stacks below desktop; side by side from 1200, with view project. Image strip is 4-up and 176px tall from tablet 810.",
+    note: "Grid by default. Column gap 64px on every viewport. List stacks below desktop; side by side from 1200, with view project. Image strip is 4-up and 176px tall from tablet 810.",
   },
   { name: "Services", note: "Rows stack below tablet. 50/50 from 810. Title sits in the right half from desktop 1200." },
   { name: "WhatIDo", note: "Tag row, then heading." },
@@ -148,6 +154,10 @@ const sections: Entry[] = [
   { name: "ImageRow", note: "1–3 frames. Columns from tablet 810." },
   { name: "ChapterBlock", note: "Chapter copy, then image rows." },
   { name: "ImageRowStack", note: "Stacked image rows, 24px apart." },
+  {
+    name: "PlaygroundGrid",
+    note: "3 columns below desktop 1200, 6 from desktop. 12px between columns, 64px between rows. Each cell has 32px padding on the left and right. Images keep their ratio, fill the padded cell, and sit on the top of the row. Row height follows the tallest image. Empty cell space is the page color.",
+  },
 ];
 
 const shell: Entry[] = [
@@ -156,7 +166,7 @@ const shell: Entry[] = [
   { name: "Nav", note: "Fixed. Menu below tablet 810. Links and clock from tablet." },
   {
     name: "Footer",
-    note: "Flips to ink near the bottom of the page. Wordmark stacks below tablet; SVG from tablet. Columns swap at desktop 1200.",
+    note: "Flips to ink near the bottom of the page. 104px of page color sits above the ink band. 104px between the link row and the wordmark. Wordmark stacks below tablet; SVG from tablet. Columns swap at desktop 1200.",
   },
   { name: "SmoothScroll", note: "Smooth scroll and in-view reveals." },
 ];
@@ -173,6 +183,7 @@ const work: Entry[] = [
 
 const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   Hero: <Hero />,
+  Hero2: <Hero2 />,
   WorksDisplay: <WorksDisplay />,
   Services: <Services />,
   WhatIDo: <WhatIDo />,
@@ -223,6 +234,7 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
     />
   ),
   NextProject: <NextProject slug="ageras" />,
+  PlaygroundGrid: <PlaygroundGrid />,
 };
 
 function Toc({
