@@ -1,93 +1,121 @@
 [
   {
-    "headline": "Research",
+    "headline": "focus areas",
     "sections": [
       {
-        "label": "Who I talked to",
+        "label": "Consistency",
         "paragraphs": [
-          "I interviewed three patients and three physiotherapists to understand how they actually worked. Watched them navigate their daily routines and where things broke down."
+          "Patients forget their exercises or are unsure if they're doing them correctly."
         ]
       },
       {
-        "label": "Patient insights",
+        "label": "Transparency",
         "paragraphs": [
-          "Patients forgot their exercises or weren't sure they were doing them correctly. They wanted clear, step-by-step guidance and a way to ask their physio when something didn't feel right. Progress felt invisible, which killed motivation."
+          "Progress tracking is unclear or missing, lowering motivation."
         ]
       },
       {
-        "label": "Physiotherapist insights",
+        "label": "Speed",
         "paragraphs": [
-          "Physiotherapists managed multiple patients across different programs. They wanted to quickly see who was compliant and who had fallen off. The manual work of tracking spreadsheets and emails outside the app was eating time they could spend on actual care. Updates to programs happened slowly because everything was manual."
+          "Physios want more efficient ways to assign, update, and monitor training plans."
         ]
       },
       {
-        "label": "Shared needs",
+        "label": "Reminders",
         "paragraphs": [
-          "Both sides needed reminders that didn't feel pushy. Not a notification every hour, but something that kept patients on track without overwhelming them."
-        ]
-      },
-      {
-        "label": "The core insight",
-        "paragraphs": [
-          "Patients couldn't see their progress clearly. Physiotherapists couldn't see what was happening at home. This data gap was driving the dropout problem."
+          "Both groups requested better reminders and feedback loops."
         ]
       }
     ]
   },
   {
-    "headline": "Direction",
+    "headline": "Key user needs",
     "sections": [
       {
-        "label": "Design goals",
+        "label": "01",
         "paragraphs": [
-          "Three goals shaped every decision. Patients needed to complete onboarding fast and understand what to do each day without confusion. Physiotherapists needed a way to manage multiple programs and see compliance at a glance. Both sides needed clear feedback so nothing felt mysterious."
+          "Enable physiotherapists to quickly assign, monitor, and adjust treatment plans for multiple patients with ease and in bulk."
         ]
       },
       {
-        "label": "What to build in V1",
+        "label": "02",
         "paragraphs": [
-          "I prioritized features that would move the needle. Real-time chat so patients could ask questions without leaving the app. Reminders timed right so they actually worked. A visual dashboard for patients showing progress and upcoming exercises. A program builder for physiotherapists where they could drag and drop exercises without friction. A full log of every change so nothing got lost."
+          "Help patients consistently complete their home rehab exercises. Motivate them and become part of their routine."
         ]
       },
       {
-        "label": "What to skip",
+        "label": "03",
         "paragraphs": [
-          "Everything else got pushed to V2. The goal was shipping something patients would actually use and physiotherapists would actually need, not a feature checklist."
+          "Provide both patients and physios with clear, engaging feedback and reminders that support ongoing progress and communication."
         ]
       }
     ]
   },
   {
-    "headline": "Design",
+    "headline": "UX Goals",
     "sections": [
       {
-        "label": "Separate experiences, shared logic",
+        "label": "Onboarding",
         "paragraphs": [
-          "The platform had two sides. A mobile app for patients and a web portal for physiotherapists. I didn't try to force them into the same design. Each needed its own mental model while keeping the underlying logic consistent."
+          "Ensure smooth introduction to the program and allow daily tasks to be completed without outside help by users across age and tech-literacy levels."
         ]
       },
       {
-        "label": "Patient app structure",
+        "label": "Guidance",
         "paragraphs": [
-          "For patients, the flow was simple: Home showing today's work and progress, the actual training flow with real-time feedback, and a way to see their goal history and adjust settings."
+          "Make exercise flows Painless even for limited accessibility needs users, as well as keeping tone of voice and visual language positive, encouraging and personal."
         ]
       },
       {
-        "label": "Physiotherapist portal structure",
+        "label": "Insights & Data",
         "paragraphs": [
-          "For physiotherapists, it was different. They needed to see all their patients, drill into one patient's data and compliance, create or edit a program, check progress, and communicate through chat."
+          "Provide physios with actionable data and easy navigation throughout different task flows to help with fast, and informed decisions."
         ]
       },
       {
-        "label": "Patient dashboard exploration",
+        "label": "Reassurance",
         "paragraphs": [
-          "I explored different dashboard layouts for patients. Should it be cards showing progress visually, or a simple list of tasks? Early testing showed patients responded better to seeing their progress as visual cards rather than text. That made the work feel less like a chore and more like momentum."
+          "Deliver feedback, reminders, and support in the channels each user prefers. Also providing a direct physio chat and providing a helping hand."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "structure and patterns",
+    "sections": [
+      {
+        "label": "Separate experiences, shared goals",
+        "paragraphs": [
+          "We first defined the relationship logic between patients and physiotherapists. To reduce cognitive load, we kept patient user flows simple, while focusing on control and efficiency for specialists."
         ]
       },
       {
-        "label": "Physiotherapist workspace",
+        "label": "Physiotherapist portal",
         "paragraphs": [
-          "The physiotherapist portal needed density without feeling overwhelming. Three column layout let them see patients on the left, match payments in the center, and search on the right. One screen, minimal context switching."
+          "This portal allows specialists to manage patients, track compliance, create or edit programs, monitor progress, and communicate via chat."
+        ]
+      },
+      {
+        "label": "Patient-facing app",
+        "paragraphs": [
+          "The home screen provides a complete overview of the recovery journey. Early testing revealed that patients prefer seeing their data in one place, as long as it remains encouraging and not overwhelming."
+        ]
+      }
+    ]
+  },
+  {
+    "headline": "Implementation",
+    "sections": [
+      {
+        "label": "Design system",
+        "paragraphs": [
+          "I created unified UI language and consistent patterns across the platform. Using reusable modules, hierarchies, and interactions to support usability, accessibility and trust The foundation allowed rapid prototyping and collaboration through the roadmap."
+        ]
+      },
+      {
+        "label": "Functional Prototype",
+        "paragraphs": [
+          "I quickly created semi-polished prototype, and and teste a staging version of selected flows. That allowed key feedback to be implemented before launch."
         ]
       }
     ]
@@ -106,24 +134,6 @@
         "paragraphs": [
           "Patients got through onboarding in about a minute and moved through exercise flows without getting stuck. The instructions were clear enough. Physiotherapists picked up the program builder quickly and liked dragging exercises around to build a routine."
         ]
-      },
-      {
-        "label": "Language adjustments",
-        "paragraphs": [
-          "Some medical jargon wasn't landing. \"PSFS Score\" meant nothing to patients, so I changed it to \"Progress Score.\" Same with \"Compliance\" to \"Completed Sessions.\" Simpler language opened the app up to people who didn't have a medical background."
-        ]
-      },
-      {
-        "label": "Context matters",
-        "paragraphs": [
-          "During the exercise flow, users hold their phone at arm's length watching the motion capture. Elements that looked fine on a desktop felt too small in that context. Made the in-training prompts bigger and removed unnecessary text."
-        ]
-      },
-      {
-        "label": "Feature for the next cycle",
-        "paragraphs": [
-          "One physiotherapist and one patient both mentioned wanting to see their complete rehab roadmap and goal history. That feature went into the roadmap for the next build."
-        ]
       }
     ]
   },
@@ -131,21 +141,15 @@
     "headline": "Outcomes",
     "sections": [
       {
-        "label": "The metrics",
+        "label": "Impressions and ease",
         "paragraphs": [
-          "After launch, the numbers showed the design choices were right. Patient compliance went up 18% in the first six months. Physiotherapists spent 22% less time per patient because they weren't switching between tools anymore. Support tickets about confusion dropped 14%. Both patients and physios rated the app 4.3 out of 5 for ease of use."
+          "Feedback was positive across both groups, with users especially appreciating clear instructions and intuitive navigation. Some requested even more dashboard visual cues and reminders, which were incorporated into the next design iteration to further boost compliance and satisfaction."
         ]
       },
       {
-        "label": "The system advantage",
+        "label": "On a good track",
         "paragraphs": [
-          "The design system made it easier to ship updates. New features came without rebuilding components from scratch."
-        ]
-      },
-      {
-        "label": "The intangible win",
-        "paragraphs": [
-          "The biggest win was actually the one you can't measure easily. Patients started feeling like they had a coach in their pocket. Physiotherapists felt like they had actual visibility into what was happening at home. That's what drove compliance up more than any interface detail."
+          "The biggest win is that patients started feeling like they had a coach in their pocket. Physiotherapists felt like they had visibility into what was happening at home. That's what drove compliance up more than any feature or detail."
         ]
       }
     ]

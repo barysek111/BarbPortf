@@ -7,6 +7,14 @@ import { join, resolve } from "node:path";
 
 const SRC = resolve(process.cwd(), "src");
 
+/** Internal catalogues. Kept out of "used on" so the list is live site usage. */
+const CATALOGUE_DIRS = ["design-system", "archive"].map((dir) => join(SRC, "app", dir));
+const CATALOGUE_ROUTES = new Set(["/design-system", "/archive"]);
+
+function isCatalogueFile(file: string) {
+  return CATALOGUE_DIRS.some((dir) => file === dir || file.startsWith(`${dir}/`));
+}
+
 function walkFiles(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
@@ -97,10 +105,10 @@ function walkFrom(
 
 /**
  * Maps every exported component name to the routes that reach it, directly or
- * through another component. The design-system route is excluded so the list
- * reflects real site usage rather than the catalogue itself.
+ * through another component. Catalogue routes are excluded so the list
+ * reflects real site usage rather than the documentation pages.
  */
-export function getComponentUsage(exclude = "/design-system"): Record<string, string[]> {
+export function getComponentUsage(): Record<string, string[]> {
   const files = walkFiles(SRC);
   const pages = files.filter((f) => /\/app\/.*page\.tsx$/.test(f));
   const edgeCache = new Map<string, Edge[]>();
@@ -109,12 +117,12 @@ export function getComponentUsage(exclude = "/design-system"): Record<string, st
 
   for (const page of pages) {
     const route = routeOf(page);
-    if (route === exclude) continue;
+    if (CATALOGUE_ROUTES.has(route)) continue;
     walkFrom(page, usage, route, edgeCache);
   }
 
   const layout = join(SRC, "app", "layout.tsx");
-  const allRoutes = pages.map(routeOf).filter((r) => r !== exclude).sort();
+  const allRoutes = pages.map(routeOf).filter((r) => !CATALOGUE_ROUTES.has(r)).sort();
   try {
     for (const route of allRoutes) {
       walkFrom(layout, usage, route, edgeCache);
@@ -128,17 +136,17 @@ export function getComponentUsage(exclude = "/design-system"): Record<string, st
   );
 }
 
-/** Component file or route that imports `name`. Design-system files are skipped. */
+/** Component file or route that imports `name`. Catalogue files are skipped. */
 function ownerName(file: string): string | null {
-  if (file.includes(join(SRC, "app", "design-system"))) return null;
+  if (isCatalogueFile(file)) return null;
   if (file === join(SRC, "app", "layout.tsx")) return "all pages";
   if (/\/page\.tsx$/.test(file)) return routeOf(file);
   return file.split("/").pop()!.replace(/\.tsx?$/, "");
 }
 
 /**
- * Direct importers of each component (Nav, Footer, /, /works), excluding the
- * design-system catalogue. Derived from the import graph — do not hand-write.
+ * Direct importers of each component (Nav, Footer, /, /works), excluding
+ * catalogue pages. Derived from the import graph — do not hand-write.
  */
 export function getComponentHosts(): Record<string, string[]> {
   const hosts: Record<string, Set<string>> = {};

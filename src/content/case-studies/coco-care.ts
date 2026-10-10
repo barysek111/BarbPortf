@@ -1,5 +1,4 @@
 import cocoCareChapters from "./generated/cococare.json";
-import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy, CaseStudyChapter } from "./types";
 
 const media = "/images/works/cococare";
@@ -17,8 +16,10 @@ function row(columns: 1 | 2 | 3, frames: Array<ReturnType<typeof solid> | Return
   return { columns, frames };
 }
 
+const archivedHeadlines = new Set(["focus areas"]);
+
 function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
-  if (chapter.headline === "Research") {
+  if (chapter.headline === "Key user needs") {
     return {
       ...chapter,
       imageRows: [
@@ -31,7 +32,7 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     };
   }
 
-  if (chapter.headline === "Direction") {
+  if (chapter.headline === "structure and patterns") {
     return {
       ...chapter,
       imageRows: [
@@ -55,23 +56,23 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     };
   }
 
-  if (chapter.headline === "Design") {
+  if (chapter.headline === "Implementation") {
     return {
       ...chapter,
       imageRows: [
-        row(1, [solid("hi-fidelity-mobilescreens6-new.svg", "Settings flow")]),
+        row(1, [solid("hi-fidelity-mobilescreens6-new.svg", "Settings flow", "Settings")]),
         row(3, [
-          solid("cococare-screens-mobile-1.svg", "Coco Care mobile screens"),
-          solid("cococare-screens-mobile-2.svg", "Coco Care mobile screens"),
-          solid("cococare-screens-mobile-3.svg", "Coco Care mobile screens"),
+          solid("cococare-screens-mobile-1.svg", "Coco Care mobile screens", "Program activity"),
+          solid("cococare-screens-mobile-2.svg", "Coco Care mobile screens", "Program activity"),
+          solid("cococare-screens-mobile-3.svg", "Coco Care mobile screens", "Info screens"),
         ]),
         row(2, [
-          solid("hi-fidelity-portalscreen2-1.svg", "Patient page"),
-          solid("hi-fidelity-portalscreen3-2.svg", "Program builder"),
+          solid("hi-fidelity-portalscreen2-1.svg", "Patient page", "patient page"),
+          solid("hi-fidelity-portalscreen3-2.svg", "Program builder", "program builder"),
         ]),
         row(2, [
-          solid("hi-fidelity-portalscreen4-1.svg", "Active program"),
-          solid("hi-fidelity-portalscreen5-1.svg", "Goals"),
+          solid("hi-fidelity-portalscreen4-1.svg", "Active program", "active program"),
+          solid("hi-fidelity-portalscreen5-1.svg", "Goals", "setting goals"),
         ]),
       ],
     };
@@ -92,6 +93,11 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
 
   return chapter;
 }
+
+/** Chapters kept in content and shown on /archive, omitted from the live case study. */
+export const cocoCareArchivedChapters = cocoCareChapters
+  .filter((chapter) => archivedHeadlines.has(chapter.headline))
+  .map(withImageRows);
 
 export const cocoCareCaseStudy = {
   slug: "cococare",
@@ -114,15 +120,19 @@ export const cocoCareCaseStudy = {
     backgroundSrc: "/images/works/cococare/cococareheroimgfillbackground.jpg",
   },
   chapters: [
-    buildScopeChapter(
-        "Coco Care is a digital physiotherapy solution that helps patients access personalized, evidence-based rehabilitation at home through an intuitive app. I designed the patient and physio experience and set the foundation for scheduling, exercise tracking and many more functions to boost engagement, compliance, and recovery outcomes.",
-        "Patients often struggle with motivation and consistency in physiotherapy. Clinics face high dropout rates and limited insight into patients' progress at home. Coco Care aims to:",
-        [
-          "Make digital rehabilitation accessible, clear and user-friendly.",
-          "Enable physios to track patient progress and personalize plans.",
-          "Increase patient engagement and compliance.",
-        ],
-    ),
-    ...cocoCareChapters.map(withImageRows),
+    {
+      headline: "SCOPE",
+      sections: [
+        {
+          label: "BACKGROUND and challenge:",
+          paragraphs: [
+            "Coco Care is a digital physiotherapy solution that helps patients access personalized, evidence-based rehabilitation at home through an intuitive app. I designed the patient and physio experience and set the foundation for scheduling, exercise tracking and many more functions to boost engagement, compliance, and recovery outcomes.",
+          ],
+        },
+      ],
+    },
+    ...cocoCareChapters
+      .filter((chapter) => !archivedHeadlines.has(chapter.headline))
+      .map(withImageRows),
   ],
 } satisfies CaseStudy;
