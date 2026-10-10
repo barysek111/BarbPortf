@@ -24,7 +24,7 @@ export const agerasCaseStudy = {
         {
           label: "PROJECT BACKGROUND",
           paragraphs: [
-            "Ageras was consolidating. Different websites for different regions, different products, different visual languages. The transition meant building one site that could flex to regional needs without losing its identity. I started with research and ended with a design system that would support growth.",
+            "Ageras is a fintech SaaS provider delivering a suite of digital tools designed to empower small business owners with financial management, invoicing, and accounting solutions. With offerings available in multiple regions, I was brought in to consolidate and evolve the digital experience into a single, coherent system.",
           ],
         },
         {
@@ -37,64 +37,56 @@ export const agerasCaseStudy = {
       ],
     },
     {
-      headline: "The Challenge",
+      headline: "Design goals & deliverables",
       sections: [
         {
-          label: "The customization problem",
+          label: "Refreshed visual identity",
           paragraphs: [
-            "Small business owners using Ageras come from different countries, speak different languages, and have different local regulations. The website needed to reflect that. But it also needed to feel like one product, not a patchwork of regional variants.",
+            "Establish a refreshed visual identity that's approachable, reliable, and distinctly Ageras.",
           ],
         },
         {
-          label: "System flexibility",
+          label: "Custom iconography and illustration",
           paragraphs: [
-            "The design system had to be powerful enough to support customization without fracturing. Flexible, but not so flexible that it became inconsistent.",
-          ],
-        },
-      ],
-    },
-    {
-      headline: "Research",
-      sections: [
-        {
-          label: "What I audited",
-          paragraphs: [
-            "I audited the existing digital presence. Looked at what was working in one region and failing in another. Talked to stakeholders across regions about what mattered most locally.",
+            "Develop a custom iconography and illustration style, as well as image style, to clarify complex content and boost brand recognition.",
           ],
         },
         {
-          label: "Competitive landscape",
+          label: "New UI and UX for the website",
           paragraphs: [
-            "The competitive analysis told me fintech players were either too complicated or too simplistic. There was room in the middle.",
+            "Reimagine the website's UI and UX for seamless task completion and easy product discovery.",
           ],
         },
         {
-          label: "Regional mapping",
+          label: "Scalable design system for web",
           paragraphs: [
-            "I mapped which products were available in which regions, what messaging resonated where, and what the legal and compliance requirements meant for content and disclosure.",
+            "Build a scalable design system, making it effortless to expand and customize the suite as Ageras grows into new markets and product areas.",
           ],
         },
-      ],
-      imageRows: [
-        row(1, [solid("sitemap-dk.svg", "Sitemap DK", "Sitemap DK")]),
-        row(1, [solid("newflowwageras.png", "Login and signup flow", "login & signup flow")]),
       ],
     },
     {
       headline: "Direction",
       sections: [
         {
-          label: "Modular approach",
-          paragraphs: [
-            "The site would be built in modular components so each region could customize without rebuilding. A global navigation framework. Regional product sitemaps. Flexible landing pages that could be tailored to local needs.",
-          ],
-        },
-        {
           label: "Information architecture",
           paragraphs: [
             "The information architecture would put regional variants first without sacrificing global brand coherence. Homepage, product pages, pricing, support, and contact would all adapt to the user's region while feeling like one product.",
           ],
         },
+        {
+          label: "Regions and services overview",
+          paragraphs: [
+            "In this part of the process, I created an overview of what regions Ageras offers their products and what the local product and service offering is.",
+          ],
+        },
+      ],
+      imageRows: [
+        row(1, [solid("sitemap-dk.svg", "Sitemap DK", "Sitemap DK")]),
+        row(2, [
+          solid("flooood.png", "Login and signup flow", "login & signup flow"),
+          solid("ssss.svg", "Regions and services overview", "Regions and services overview"),
+        ]),
       ],
     },
     {
@@ -104,12 +96,6 @@ export const agerasCaseStudy = {
           label: "Component library",
           paragraphs: [
             "Instead of regional silos, I built a scalable component library. Buttons, cards, modals, forms, navigation, tables, and specialized fintech components like account balances and transaction lists.",
-          ],
-        },
-        {
-          label: "Documentation approach",
-          paragraphs: [
-            "I created detailed documentation for every component. Usage guidelines. States. Responsive behavior. Color and spacing rules. This made it possible for developers to ship consistent implementations without constant design review.",
           ],
         },
         {
@@ -124,14 +110,33 @@ export const agerasCaseStudy = {
             "The system included modular section components. Feature highlights, testimonials, pricing tables, comparison matrices. Each could be used independently or combined into full pages. This approach meant building a new page took days instead of weeks.",
           ],
         },
+        {
+          label: "Documentation",
+          paragraphs: [
+            "Detailed documentation was created for every component and interaction pattern, providing clear usage guidelines and best practices. This ensures maintainability and knowledge transfer as the team grows.",
+          ],
+        },
       ],
       imageRows: [
         row(3, [
-          solid("breakpoints.png", "Breakpoints and page width"),
-          solid("buttons-filters.png", "Buttons and filters"),
-          solid("icons-use.png", "Iconography"),
+          solid(
+            "breakpoints.png",
+            "Global layout settings for responsiveness and rhythm",
+            "Global layout settings for responsiveness and rhythm",
+          ),
+          solid("buttons-filters.png", "Base components", "Base components"),
+          solid("icons-use.png", "Custom brand icon pack", "Custom brand icon pack"),
         ]),
-        row(1, [solid("tab-images-library.jpg", "Image library, tab images")]),
+        row(1, [
+          {
+            ...solid("newagerasimgs.png", "Website content library", "Website content library"),
+            color: "007751",
+          },
+        ]),
+        row(2, [
+          solid("component-docs-cards.png", "Documentation and specs", "Documentation and specs"),
+          solid("component-docs-sections.png", "Documentation and specs", "Documentation and specs"),
+        ]),
       ],
     },
     {
@@ -140,56 +145,34 @@ export const agerasCaseStudy = {
         {
           label: "Landing page templates",
           paragraphs: [
-            "I created main landing pages for clarity and conversion. Each template adapted key messaging and value propositions to regional and user segment needs. High fidelity mockups demonstrated the final look and feel and guided the engineering team on implementation details.",
+            "Each template adapts key messaging, value propositions, and calls to action to the needs of specific user segments and regions, as well as keeping conversion and best marketing practices for landing pages as a top priority.",
           ],
         },
         {
-          label: "Regional feedback loops",
+          label: "High fidelity screens and component library ready to ship",
           paragraphs: [
-            "The designs went through rounds of feedback with stakeholders across regions. What worked in Denmark needed tweaking for the Netherlands. What resonated with freelancers didn't work for small studios. The system had to be strong enough to handle that variety.",
+            "These screens helped align stakeholders and gave the engineering team the precise details needed for development",
           ],
         },
       ],
       imageRows: [
-        row(2, [
-          solid("ageras_fullpages1.png", "Main landing page"),
-          solid("ageras_fullpages2.png", "Main landing page"),
-        ]),
-        row(3, [
-          solid("ageraswebmockup11.jpg", "High fidelity mockup"),
-          solid("ageraswebmockup5-1.jpg", "High fidelity mockup"),
-          solid("ageraswebmockup4.jpg", "High fidelity mockup"),
-        ]),
-        row(3, [
-          solid("ageraswebmockup6.jpg", "High fidelity mockup"),
-          solid("ageraswebmockup3.jpg", "High fidelity mockup"),
-          solid("pricing.jpg", "Pricing page mockup"),
-        ]),
-        row(2, [
-          solid("ageraswebmockup7.jpg", "High fidelity mockup"),
-          solid("ageraswebmockup8.jpg", "High fidelity mockup"),
-        ]),
+        row(1, [solid("newwscreens.png", "Page screens")]),
+        row(1, [{ ...solid("pricing.svg", "Pricing page"), color: "002E33" }]),
       ],
     },
     {
-      headline: "Outcomes",
+      headline: "Implementation",
       sections: [
         {
-          label: "Cohesive multi-market presence",
+          label: "Handover",
           paragraphs: [
-            "After implementation, Ageras had one cohesive website that felt right in every market. The system was flexible enough that regional teams could customize landing pages and messaging without touching the core design.",
+            "Transitioning from prototype to production, I provided detailed specs, asset exports, documentation. In this stage, I did daily check-ins with the developers and used Linear for a status overview and feedback loop, as I was the one responsible for quality control and approval of the final interface.",
           ],
         },
         {
-          label: "Speed to market",
+          label: "Learnings",
           paragraphs: [
-            "Most importantly, the design system meant new pages and features could ship fast. The developers had clear specs. The designers had clear rules. New regional variants didn't require new design work.",
-          ],
-        },
-        {
-          label: "The core principle",
-          paragraphs: [
-            "The best systems are prescriptive about what matters and flexible about everything else. Strong enough to maintain brand coherence. Loose enough to adapt to real-world complexity.",
+            "This project reinforced how a robust, modular design system is essential for supporting product evolution and consistent user experiences across markets. Continuous collaboration with all teams created a shared ownership of quality and set a foundation for scaling.",
           ],
         },
       ],
@@ -207,7 +190,7 @@ export const agerasCaseStudy = {
   heroImage: {
     src: "/images/works/ageras/agerasthumbnailprojectpage.jpg",
     alt: "Ageras website and mobile product screens",
-    variant: "background",
-    backgroundSrc: "/images/works/ageras/hero-background.jpg",
+    variant: "solid",
+    color: "222222",
   },
 } satisfies CaseStudy;

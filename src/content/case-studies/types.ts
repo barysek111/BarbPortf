@@ -4,6 +4,8 @@ import type { ImageRowColumns } from "@/components/sections/ImageRow";
 export type CaseStudySection = {
   label: string;
   paragraphs: readonly string[];
+  /** ImageFrames under this subsection in the right column. Same option Chapter uses on the about page. */
+  images?: readonly ImageFrameProps[];
 };
 
 export type CaseStudyChapter = {
@@ -27,6 +29,8 @@ export type CaseStudy = {
     alt: string;
     variant?: ImageFrameVariant;
     backgroundSrc?: string;
+    /** Solid frame fill. Bare hex is accepted. */
+    color?: string;
   };
   chapters: readonly CaseStudyChapter[];
 };

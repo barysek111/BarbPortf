@@ -186,6 +186,16 @@
   text-transform: uppercase;
 }
 
+/* type-label one step above medium */
+@utility type-label-medium {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3em;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
 /* preset zw6rd6 — body */
 @utility type-body {
   font-family: var(--font-display);

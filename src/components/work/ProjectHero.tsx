@@ -18,6 +18,7 @@ export function ProjectHero({
   imageAlt = "",
   imageVariant = "solid",
   imageBackgroundSrc,
+  imageColor,
 }: {
   title: string;
   aboutLabel: string;
@@ -27,6 +28,8 @@ export function ProjectHero({
   imageAlt?: string;
   imageVariant?: ImageFrameVariant;
   imageBackgroundSrc?: string;
+  /** Solid frame fill. */
+  imageColor?: string;
 }) {
   return (
     <section
@@ -39,7 +42,7 @@ export function ProjectHero({
         </SectionHeading>
         <div className="flex flex-col gap-16 tablet:grid tablet:grid-cols-2 tablet:gap-12">
           <div className="flex flex-col gap-12 tablet:pr-56 desktop:pr-[160px]">
-            <p className="type-label appear" data-appear="20">
+            <p className="type-label-medium appear" data-appear="20">
               <span>{aboutLabel}</span>
             </p>
             <p className="type-body appear whitespace-pre-line" data-appear="60">
@@ -49,7 +52,7 @@ export function ProjectHero({
           <div className="contents tablet:grid tablet:w-full tablet:grid-cols-3 tablet:items-start tablet:gap-12">
             {meta.map((item) => (
               <div key={item.label} className="flex min-w-0 flex-col gap-12">
-                <p className="type-label appear" data-appear="20">
+                <p className="type-label-medium appear" data-appear="20">
                   <span>{item.label}</span>
                 </p>
                 <p className="type-label appear whitespace-pre-line" data-appear="20">
@@ -69,6 +72,7 @@ export function ProjectHero({
             src: imageSrc,
             alt: imageAlt,
             backgroundSrc: imageBackgroundSrc,
+            color: imageColor,
           },
         ]}
       />

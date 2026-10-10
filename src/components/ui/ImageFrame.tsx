@@ -15,14 +15,32 @@ export type ImageFrameProps = {
   backgroundSrc?: string;
   /** Optional caption under the frame. Omitted frames have no caption. */
   description?: string;
+  /** Solid frame fill. Defaults to surface (#f0f0f0). Any CSS color; a bare hex like 055E42 is accepted. */
+  color?: string;
+  /** Image row column count. Solid and background padding follows it. Defaults to 1. */
+  columns?: 1 | 2 | 3;
   /** Responsive width hint for the optimizer. Image rows set this from the column count. */
   sizes?: string;
 };
 
+/** Equal padding on solid and background frames. Padding is inside the frame; it does not add to the 24px between rows. */
+const ROW_PAD = {
+  1: "p-64",
+  2: "p-64",
+  3: "p-36",
+} as const;
+
+/** Image max height so padding stays inside the 700px frame cap. */
+const IMAGE_MAX = {
+  1: "max-h-[572px]",
+  2: "max-h-[572px]",
+  3: "max-h-[628px]",
+} as const;
+
 /** Case-study frame height cap (ImageRow row height follows tallest frame, max this). */
 export const IMAGE_FRAME_MAX_H_PX = 700;
 
-const FRAME = "relative flex h-full w-full max-h-[700px] overflow-hidden";
+const FRAME = "relative flex h-full w-full max-h-[700px] flex-col overflow-hidden";
 
 /** GIFs stay animated, and SVGs are not an allowed optimizer type. */
 function skipOptimizer(src: string) {
@@ -30,28 +48,34 @@ function skipOptimizer(src: string) {
   return path.endsWith(".gif") || path.endsWith(".svg");
 }
 
-function ContainedImage({ src, alt, sizes }: { src: string; alt: string; sizes: string }) {
-  const [orientation, setOrientation] = useState<"portrait" | "landscape" | null>(null);
+/** Bare hex (`055E42`) becomes `#055E42`. Named and functional CSS colors pass through. */
+function cssColor(value: string) {
+  const color = value.trim();
+  return /^[0-9a-f]{3,8}$/i.test(color) ? `#${color}` : color;
+}
+
+function ContainedImage({
+  src,
+  alt,
+  maxClass,
+}: {
+  src: string;
+  alt: string;
+  maxClass: string;
+}) {
+  const [portrait, setPortrait] = useState(false);
 
   return (
-    <Image
+    // Native img so the frame hugs the real aspect ratio. A square width/height
+    // on next/image letterboxed wide pictures and the empty band read as row gap.
+    <img
       src={src}
       alt={alt}
-      width={3840}
-      height={3840}
-      sizes={sizes}
-      quality={90}
-      unoptimized={skipOptimizer(src)}
       onLoad={(e) => {
         const img = e.currentTarget;
-        setOrientation(img.naturalHeight > img.naturalWidth ? "portrait" : "landscape");
+        setPortrait(img.naturalHeight > img.naturalWidth);
       }}
-      className={cn(
-        "block h-auto max-h-full max-w-full object-contain",
-        orientation === "portrait" && "h-auto w-auto",
-        orientation === "landscape" && "h-auto w-full",
-        orientation === null && "h-auto w-auto",
-      )}
+      className={cn("block h-auto max-w-full object-contain object-top", maxClass, portrait ? "w-auto" : "w-full")}
     />
   );
 }
@@ -77,15 +101,19 @@ export function ImageFrame({
   alt = "",
   backgroundSrc,
   description,
+  color,
+  columns = 1,
   sizes = "100vw",
 }: ImageFrameProps) {
+  const pad = ROW_PAD[columns];
+  const imageMax = IMAGE_MAX[columns];
   const frame =
     variant === "fill" ? (
       <div className={FRAME} data-name="Image Frame — fill">
         <FillImage src={src} alt={alt} />
       </div>
     ) : variant === "background" ? (
-      <div className={cn(FRAME, "flex-col px-32 py-32 desktop:py-64")} data-name="Image Frame — background">
+      <div className={cn(FRAME, pad)} data-name="Image Frame — background">
         {backgroundSrc ? (
           <Image
             src={backgroundSrc}
@@ -97,14 +125,18 @@ export function ImageFrame({
             className="object-cover"
           />
         ) : null}
-        <div className="relative z-lift flex min-h-0 w-full min-w-0 flex-1 items-center justify-center">
-          <ContainedImage src={src} alt={alt} sizes={sizes} />
+        <div className="relative z-lift flex w-full min-w-0 items-start justify-center">
+          <ContainedImage src={src} alt={alt} maxClass={imageMax} />
         </div>
       </div>
     ) : (
-      <div className={cn(FRAME, "flex-col bg-surface px-32 py-32 desktop:py-64")} data-name="Image Frame — solid">
-        <div className="flex min-h-0 w-full min-w-0 flex-1 items-center justify-center">
-          <ContainedImage src={src} alt={alt} sizes={sizes} />
+      <div
+        className={cn(FRAME, pad, !color && "bg-surface")}
+        style={color ? { backgroundColor: cssColor(color) } : undefined}
+        data-name="Image Frame — solid"
+      >
+        <div className="flex w-full min-w-0 items-start justify-center">
+          <ContainedImage src={src} alt={alt} maxClass={imageMax} />
         </div>
       </div>
     );

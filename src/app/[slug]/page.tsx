@@ -45,6 +45,7 @@ export default async function WorkPage({
         imageAlt={study.heroImage?.alt}
         imageVariant={study.heroImage?.variant}
         imageBackgroundSrc={study.heroImage?.backgroundSrc}
+        imageColor={study.heroImage?.color}
       />
 
       {study.chapters.map((chapter) => (

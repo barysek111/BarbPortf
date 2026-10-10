@@ -3,21 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-const LERP = 0.11;
 const SIZE = 16;
 
 /**
  * 16px dot (paper fill + difference) so it reads dark on paper and light on ink.
- * Lerps behind the system pointer. Portaled to body; pointer-fine only.
+ * Sits on the system pointer with no follow delay. Portaled to body; pointer-fine only.
  * Hidden over [data-hide-site-cursor] so a local label (WorkCard [view]) is the only cursor.
  */
 export function SiteCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const target = useRef({ x: 0, y: 0 });
-  const pos = useRef({ x: 0, y: 0 });
   const active = useRef(false);
   const suppress = useRef(false);
-  const raf = useRef(0);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -33,48 +29,39 @@ export function SiteCursor() {
     const root = document.documentElement;
     root.classList.add("has-custom-cursor");
 
+    const place = (x: number, y: number) => {
+      const el = dotRef.current;
+      if (!el) return;
+      el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      el.style.opacity = active.current && !suppress.current ? "1" : "0";
+    };
+
     const onMove = (e: MouseEvent) => {
-      target.current.x = e.clientX;
-      target.current.y = e.clientY;
-      if (!active.current) {
-        active.current = true;
-        pos.current.x = e.clientX;
-        pos.current.y = e.clientY;
-      }
+      active.current = true;
+      place(e.clientX, e.clientY);
     };
 
     const onOver = (e: MouseEvent) => {
       const node = e.target;
       suppress.current =
         node instanceof Element && Boolean(node.closest("[data-hide-site-cursor]"));
+      place(e.clientX, e.clientY);
     };
 
     const onDocLeave = (e: MouseEvent) => {
       const next = e.relatedTarget;
       if (next === null || !(next instanceof Node) || !document.documentElement.contains(next)) {
         active.current = false;
+        place(e.clientX, e.clientY);
       }
     };
 
-    const tick = () => {
-      const el = dotRef.current;
-      if (el) {
-        pos.current.x += (target.current.x - pos.current.x) * LERP;
-        pos.current.y += (target.current.y - pos.current.y) * LERP;
-        el.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`;
-        el.style.opacity = active.current && !suppress.current ? "1" : "0";
-      }
-      raf.current = requestAnimationFrame(tick);
-    };
-
-    raf.current = requestAnimationFrame(tick);
     window.addEventListener("mousemove", onMove, { passive: true });
     document.addEventListener("mouseover", onOver);
     document.documentElement.addEventListener("mouseout", onDocLeave);
 
     return () => {
       root.classList.remove("has-custom-cursor");
-      cancelAnimationFrame(raf.current);
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseover", onOver);
       document.documentElement.removeEventListener("mouseout", onDocLeave);

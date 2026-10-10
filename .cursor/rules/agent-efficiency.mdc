@@ -1,0 +1,33 @@
+---
+description: Fast agent defaults — site-wide work without wasted tokens
+alwaysApply: true
+---
+
+# Agent efficiency (titarvl-1to1)
+
+## What we build
+
+This project is the **live site**: content (`src/content/`), components (`src/components/`), routes (`src/app/`), and the internal catalogue (`src/app/design-system/page.tsx`). Work may span **many files in one task** — not one component per chat.
+
+**Not in scope** unless the user asks: Framer-only sections removed from the template (FAQ, Contact form, Photos ticker, Video, etc.). `docs/research/` is reference only — do not treat `COMPONENT_MAP.md` as a build backlog.
+
+## Do not burn tokens
+
+- **No** starting dev server, opening localhost, or browser visual QA unless the user asks.
+- **No** git status/log/diff at the start unless the user asks for repo state or a commit.
+- **No** full-repo or full design-system read — open only files the task needs; use targeted search.
+- **No** subagents or long explore passes for a single known symbol or path.
+- **No** re-explaining isolation, breakpoints, or component workflow — follow existing `.cursor/rules/` and `components.mdc`.
+- **No** commits or pushes unless explicitly requested.
+
+## Work fast
+
+- **Edit shared components** (see `components.mdc`); update design-system entries in the **same pass** when behaviour or props change.
+- **“Used on:”** comes from `src/lib/component-usage.ts` — never hand-maintain routes on the design-system page.
+- Prefer **minimal correct diffs**; touch multiple components when the user’s task requires it.
+- Breakpoints: **tablet 810px**, **desktop 1200px**. Run `npm run check:spacing` only when spacing utilities/classes change.
+- Share localhost URLs as **text only** if the user asked for the server — do not open the browser for them.
+
+## When unclear
+
+Ask **one** short question instead of wide discovery. Default to implementing against existing patterns in the touched files.

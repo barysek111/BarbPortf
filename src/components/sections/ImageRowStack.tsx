@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-/** Stacked case-study media rows: gap-24 between rows; last row gets pb-96 when not using site-main gap-96. */
+/** 24px between row frames. Frame padding stays inside the frame and does not add to this gap. */
 export function ImageRowStack({
   children,
   className,

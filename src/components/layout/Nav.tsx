@@ -69,7 +69,7 @@ export function Nav() {
             className={cn(
               "flex-col items-start justify-start gap-0 py-56",
               open ? "flex" : "hidden",
-              "tablet:flex tablet:min-w-0 tablet:flex-1 tablet:flex-row tablet:items-center tablet:justify-between tablet:py-0",
+              "tablet:grid tablet:min-w-0 tablet:flex-1 tablet:grid-cols-3 tablet:items-center tablet:justify-items-start tablet:gap-12 tablet:py-0",
             )}
           >
             <div className={cn("flex flex-col items-start justify-center gap-2", open && "w-full")}>
@@ -84,14 +84,14 @@ export function Nav() {
                 onClick={close}
               />
               <NavLink href="/about" label="About" active={pathname === "/about"} open={open} onClick={close} />
-              <NavLink
-                href="/playground"
-                label="Playground"
-                active={pathname === "/playground"}
-                open={open}
-                onClick={close}
-              />
             </div>
+            <NavLink
+              href="/playground"
+              label="Playground"
+              active={pathname === "/playground"}
+              open={open}
+              onClick={close}
+            />
             <NavClock className="hidden tablet:block" />
           </div>
         </div>

@@ -30,7 +30,12 @@ export function ImageRow({
     <section className={cn(embedded ? "w-full" : "section-wrap")} data-name="Section - Image Row">
       <div className={cn("grid items-stretch gap-12", columnClass[columns])}>
         {frames.map((frame, index) => (
-          <ImageFrame key={`${frame.src}-${index}`} {...frame} sizes={imageSizes[columns]} />
+          <ImageFrame
+            key={`${frame.src}-${index}`}
+            {...frame}
+            columns={columns}
+            sizes={imageSizes[columns]}
+          />
         ))}
       </div>
     </section>

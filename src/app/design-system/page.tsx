@@ -53,7 +53,8 @@ const breakpoints = [
 ];
 
 const typeLevels = [
-  { cls: "type-label", spec: "12px, all sizes", use: "labels, nav, meta" },
+  { cls: "type-label", spec: "12px, weight 400, all sizes", use: "labels, nav, meta" },
+  { cls: "type-label-medium", spec: "12px, weight 600, all sizes", use: "project hero labels" },
   { cls: "type-body", spec: "16px, all sizes", use: "body copy" },
   { cls: "type-h3", spec: "18 → 23 at 810 → 29 at 1200 → 36 at 1400", use: "sub-headings" },
   { cls: "type-stat", spec: "same sizes as type-h3, tighter line", use: "stat figures" },
@@ -92,7 +93,7 @@ const atoms: Entry[] = [
   },
   {
     name: "ImageFrame",
-    note: "Max height 700. Fill: edge to edge. Solid: surface fill. Background: image behind. Both use 32px padding on all sides below desktop 1200, and 64px top and bottom from 1200. Optional description sits 8px under the frame, type-label in muted. Images stay in the format they were added as.",
+    note: "Max height 700. Fill: no side or top padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set (any CSS color; bare hex is accepted). Background: image behind. Solid and background padding is inside the frame, equal on all sides: 64px in a 1-column or 2-column image row, 36px in a 3-column row. A frame outside a row uses 64px. Stacked rows stay 24px apart; this padding does not add to that gap. Optional description sits 8px under the frame, type-label in muted. Images stay in the format they were added as.",
   },
   { name: "SectionHeading", note: "Section title. 41px, 51px from desktop 1200, 64px from 1440." },
   { name: "NavLink", note: "Leader on hover and current page. Open menu uses display type, below tablet only." },
@@ -116,6 +117,13 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
     <div className="grid grid-cols-1 gap-4 tablet:grid-cols-3">
       <ImageFrame variant="fill" src={IMAGE_PLACEHOLDER} alt="" description="Short caption under this frame" />
       <ImageFrame variant="solid" src={IMAGE_PLACEHOLDER} alt="" description="Short caption under this frame" />
+      <ImageFrame
+        variant="solid"
+        src={IMAGE_PLACEHOLDER}
+        alt=""
+        color="055E42"
+        description="Solid fill, custom color"
+      />
       <ImageFrame
         variant="background"
         src={IMAGE_PLACEHOLDER}
@@ -146,14 +154,23 @@ const sections: Entry[] = [
   },
   { name: "Services", note: "Rows stack below tablet. 50/50 from 810. Title sits in the right half from desktop 1200." },
   { name: "WhatIDo", note: "Tag row, then heading." },
-  { name: "Chapter", note: "Stacks below tablet. Two columns from 810." },
+  {
+    name: "Chapter",
+    note: "Stacks below tablet. Two columns from 810. A subsection can include an image in the right column, fill unless a variant is set. The image is the same width as the subsection text, with 36px above it.",
+  },
   {
     name: "CredentialSection",
     note: "Title and year on one line, meta below. 50/50 from tablet 810. Title offsets to the right half from desktop 1200.",
   },
-  { name: "ImageRow", note: "1–3 frames. Columns from tablet 810." },
+  {
+    name: "ImageRow",
+    note: "1–3 frames. Columns from tablet 810. Solid and background frames use 64px padding in 1 and 2 columns, and 36px in 3, on all sides.",
+  },
   { name: "ChapterBlock", note: "Chapter copy, then image rows." },
-  { name: "ImageRowStack", note: "Stacked image rows, 24px apart." },
+  {
+    name: "ImageRowStack",
+    note: "24px between row frames. Solid and background padding is inside the frame and does not add to that gap.",
+  },
   {
     name: "PlaygroundGrid",
     note: "3 columns below desktop 1200, 6 from desktop. 12px between columns, 64px between rows. Each cell has 32px padding on the left and right. Images keep their ratio, fill the padded cell, and sit on the top of the row. Row height follows the tallest image. Empty cell space is the page color.",
@@ -162,8 +179,11 @@ const sections: Entry[] = [
 
 const shell: Entry[] = [
   { name: "SiteLayout", note: "Cursor, nav, page, footer." },
-  { name: "SiteCursor", note: "16px dot on fine pointers. Hidden while hovering a WorkCard." },
-  { name: "Nav", note: "Fixed. Menu below tablet 810. Links and clock from tablet." },
+  { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard." },
+  {
+    name: "Nav",
+    note: "Fixed. Menu below tablet 810. From tablet, the right half is 3 equal columns with gap-12: works and about, playground, clock. The clock lines up with the third meta column in ProjectHero.",
+  },
   {
     name: "Footer",
     note: "Flips to ink near the bottom of the page. 104px of page color sits above the ink band. 104px between the link row and the wordmark. Wordmark stacks below tablet; SVG from tablet. Columns swap at desktop 1200.",
@@ -174,7 +194,7 @@ const shell: Entry[] = [
 const work: Entry[] = [
   {
     name: "ProjectHero",
-    note: "Title is full width below desktop, half width from 1200. About and meta are two columns from tablet 810. Image is one column, solid unless a variant is passed.",
+    note: "Title is full width below desktop, half width from 1200. About and meta are two columns from tablet 810. About and meta labels use type-label-medium. Values stay type-label. Image is one column, solid unless a variant is passed. `color` sets the solid fill.",
   },
   { name: "NextProject", note: "Image zooms to 125% on hover. Title and button centered." },
 ];
@@ -219,8 +239,15 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   ),
   Chapter: (
     <Chapter
-      headline={agerasCaseStudy.chapters[0].headline}
-      sections={agerasCaseStudy.chapters[0].sections}
+      headline={about.headline}
+      sections={[
+        { label: about.thinking.label, paragraphs: [about.thinking.text] },
+        {
+          label: about.making.label,
+          paragraphs: [about.making.text],
+          images: [{ src: about.making.image, alt: "", variant: "fill" }],
+        },
+      ]}
     />
   ),
   ProjectHero: (
@@ -231,6 +258,8 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
       meta={agerasCaseStudy.meta}
       imageSrc={agerasCaseStudy.heroImage?.src}
       imageAlt={agerasCaseStudy.heroImage?.alt}
+      imageVariant={agerasCaseStudy.heroImage?.variant}
+      imageColor={agerasCaseStudy.heroImage?.color}
     />
   ),
   NextProject: <NextProject slug="ageras" />,

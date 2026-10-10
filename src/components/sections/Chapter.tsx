@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 export type ChapterSection = {
   label: string;
   paragraphs: readonly string[];
-  /** ImageFrames in the right-column stack (gap-36); each is half that column. */
+  /** ImageFrames in the right column, same width as the subsection text, with gap-36 above. Fill unless a variant is set. */
   images?: readonly ImageFrameProps[];
 };
 
@@ -52,9 +52,11 @@ export function Chapter({
               </div>
             </div>,
             ...(section.images ?? []).map((frame, imageIndex) => (
-              <div key={`${section.label}-${sectionIndex}-img-${imageIndex}`} className="w-1/2">
-                <ImageFrame {...frame} />
-              </div>
+              <ImageFrame
+                key={`${section.label}-${sectionIndex}-img-${imageIndex}`}
+                {...frame}
+                variant={frame.variant ?? "fill"}
+              />
             )),
           ])}
         </div>
