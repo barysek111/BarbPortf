@@ -8,7 +8,7 @@ const SIZE = 16;
 /**
  * 16px dot (paper fill + difference) so it reads dark on paper and light on ink.
  * Sits on the system pointer with no follow delay. Portaled to body; pointer-fine only.
- * Hidden over [data-hide-site-cursor] so a local label (WorkCard [view]) is the only cursor.
+ * Hidden over [data-hide-site-cursor] so a local label (WorkCard and NextProject [view]) is the only cursor.
  */
 export function SiteCursor() {
   const dotRef = useRef<HTMLDivElement>(null);

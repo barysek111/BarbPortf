@@ -137,7 +137,7 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
 
 export const eatGrimCaseStudy = {
   slug: "eatgrim",
-  title: "Eat Grim Brand Identity",
+  title: "Eat Grim Brand",
   aboutLabel: "about the project",
   description:
     "Eat Grim changes the way people think about food by celebrating diversity in shape, size, and colour — creating real impact for farmers, consumers, and the planet.",

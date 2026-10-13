@@ -35,7 +35,7 @@ export default async function WorkPage({
   if (!study) notFound();
 
   return (
-    <article className="flex w-full flex-col gap-96">
+    <>
       <ProjectHero
         title={study.title}
         aboutLabel={study.aboutLabel}
@@ -58,6 +58,6 @@ export default async function WorkPage({
       ))}
 
       <NextProject slug={study.slug} />
-    </article>
+    </>
   );
 }

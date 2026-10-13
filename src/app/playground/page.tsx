@@ -10,9 +10,13 @@ export const metadata = pageMetadata({
 
 export default function PlaygroundPage() {
   return (
-    <section className="section-wrap flex flex-col gap-96 pt-216" data-name="Section - Playground">
-      <SectionHeading as="h1" className="desktop:max-w-1/2">{playgroundHeadline}</SectionHeading>
-      <PlaygroundGrid />
-    </section>
+    <>
+      <header data-name="Section - Playground">
+        <SectionHeading as="h1" className="desktop:max-w-1/2">{playgroundHeadline}</SectionHeading>
+      </header>
+      <section aria-label="Playground grid">
+        <PlaygroundGrid />
+      </section>
+    </>
   );
 }

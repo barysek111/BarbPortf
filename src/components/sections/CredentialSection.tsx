@@ -33,7 +33,7 @@ export function CredentialSection({
   name: string;
 }) {
   return (
-    <section className="section-wrap flex flex-col gap-36" data-name={name}>
+    <section className="flex flex-col gap-36" data-name={name}>
       <div className="desktop:grid desktop:grid-cols-2 desktop:gap-12">
         <div className="hidden min-w-0 desktop:block" aria-hidden="true" />
         <div className="flex min-w-0 flex-col gap-12">

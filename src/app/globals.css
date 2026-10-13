@@ -87,6 +87,7 @@
   --spacing-152: 152px;
   --spacing-176: 176px;
   --spacing-216: 216px;
+  --spacing-page-top: var(--spacing-216);
 
   /* -- Layout wrap -- */
   --container-section: 1920px;
@@ -127,6 +128,17 @@
   body {
     margin: 0;
     padding: 0;
+  }
+
+  /* Page side inset. 12px at 1200px and below, 24px above. */
+  html {
+    --page-inline: var(--spacing-24);
+  }
+
+  @media (width <= 1200px) {
+    html {
+      --page-inline: var(--spacing-12);
+    }
   }
 
   body {
@@ -280,21 +292,45 @@
    Layout primitives
 --------------------------------------------------------------------------- */
 
-/* Page wrap: outer 3840 cap, inner 1920 section cap, 10px gutters. */
-@utility site-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-96);
+/* Global horizontal inset: 24px above 1200px, 12px at 1200px and below. One shell for nav + page + footer content. */
+@utility page-inset {
+  box-sizing: border-box;
   width: 100%;
   max-width: var(--container-site);
   margin-inline: auto;
+  padding-inline: var(--page-inline);
 }
 
+/* Vertical rhythm between top-level page blocks (sections, footer stack). */
+@utility page-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-96);
+  width: 100%;
+  min-width: 0;
+}
+
+/* First page block clears fixed nav (216px). Full-viewport heroes set data-skip-page-top. */
+.page-main > :first-child:not([data-skip-page-top]) {
+  padding-top: var(--spacing-page-top);
+}
+
+@utility pt-page-top {
+  padding-top: var(--spacing-page-top);
+}
+
+/* Inner content column only — no side padding (comes from page-inset). */
 @utility section-wrap {
   width: 100%;
   max-width: var(--container-section);
-  padding-inline: var(--spacing-12);
+  margin-inline: auto;
+}
+
+/* Each top-level page block uses the inner 1920 column; section components omit section-wrap. */
+.page-main > :not(.footer-bleed):not([data-page-bleed]) {
+  width: 100%;
+  max-width: var(--container-section);
+  margin-inline: auto;
 }
 
 /* ---------------------------------------------------------------------------
@@ -308,11 +344,24 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: end;
-  column-gap: var(--spacing-64);
+  column-gap: var(--spacing-12);
   row-gap: var(--spacing-44);
 
   @media (width >= 810px) {
     grid-template-columns: repeat(var(--works-grid-columns), minmax(0, 1fr));
+  }
+
+  &.items-start {
+    align-items: stretch;
+  }
+
+  /* Each card spans title, then image, so those tracks line up across the row. */
+  &.items-start > a {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+    align-items: stretch;
+    row-gap: var(--spacing-12);
   }
 }
 
@@ -342,7 +391,7 @@
   background: var(--color-paper);
 }
 
-/** Full viewport width inside centred site-main (e.g. footer ink band). */
+/** Full viewport width for background; pair with page-inset on inner content (e.g. footer ink band). */
 @utility footer-bleed {
   width: 100vw;
   max-width: 100vw;

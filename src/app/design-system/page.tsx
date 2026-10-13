@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { LabelRoll } from "@/components/ui/LabelRoll";
 import { NavLink } from "@/components/layout/NavLink";
@@ -7,16 +8,18 @@ import { ImageFrame } from "@/components/ui/ImageFrame";
 import { ImageRow } from "@/components/sections/ImageRow";
 import { PlaygroundGrid } from "@/components/sections/PlaygroundGrid";
 import { NavClock } from "@/components/layout/NavClock";
+import { DitherOverlay } from "@/components/work/DitherOverlay";
 import { WorkCard } from "@/components/work/WorkCard";
 import { Hero } from "@/components/home/Hero";
 import { Hero2 } from "@/components/home/Hero2";
-import { WorksDisplay } from "@/components/sections/WorksDisplay";
+import { WorksGrid } from "@/components/sections/WorksGrid";
 import { Services } from "@/components/home/Services";
 import { WhatIDo } from "@/components/home/WhatIDo";
 import { Chapter } from "@/components/sections/Chapter";
 import { CredentialSection } from "@/components/sections/CredentialSection";
 import { ButtonToggleDemo } from "@/app/design-system/ButtonToggleDemo";
 import { NextProject } from "@/components/work/NextProject";
+import { ViewCursor } from "@/components/work/ViewCursor";
 import { ProjectHero } from "@/components/work/ProjectHero";
 import { about } from "@/content/about";
 import { projects } from "@/content/projects";
@@ -53,13 +56,69 @@ const breakpoints = [
 ];
 
 const typeLevels = [
-  { cls: "type-label", spec: "12px, weight 400, all sizes", use: "labels, nav, meta" },
-  { cls: "type-label-medium", spec: "12px, weight 600, all sizes", use: "project hero labels" },
-  { cls: "type-body", spec: "16px, all sizes", use: "body copy" },
-  { cls: "type-h3", spec: "18 → 23 at 810 → 29 at 1200 → 36 at 1400", use: "sub-headings" },
-  { cls: "type-stat", spec: "same sizes as type-h3, tighter line", use: "stat figures" },
-  { cls: "type-display", spec: "48px, all sizes", use: "hero titles, open mobile nav" },
-  { cls: "type-h2", spec: "41 → 51 at 1200 → 64 at 1440", use: "section headlines" },
+  {
+    cls: "type-label",
+    letterSpacing: "-5%",
+    textTransform: "uppercase",
+    fontSize: "12px",
+    fontWeight: "regular",
+    lineHeight: "130%",
+    use: "labels, nav, meta",
+  },
+  {
+    cls: "type-label-medium",
+    letterSpacing: "-5%",
+    textTransform: "uppercase",
+    fontSize: "12px",
+    fontWeight: "semi-bold",
+    lineHeight: "130%",
+    use: "project hero labels",
+  },
+  {
+    cls: "type-body",
+    letterSpacing: "0%",
+    textTransform: "none",
+    fontSize: "16px",
+    fontWeight: "medium",
+    lineHeight: "110%",
+    use: "body copy",
+  },
+  {
+    cls: "type-h3",
+    letterSpacing: "-1%",
+    textTransform: "uppercase",
+    fontSize: "18px (<810), 23px (810 - 1199), 29px (1200 - 1399), 36px (1400>)",
+    fontWeight: "medium",
+    lineHeight: "100% (<810), 90% (810>)",
+    use: "sub-headings",
+  },
+  {
+    cls: "type-stat",
+    letterSpacing: "-5%",
+    textTransform: "none",
+    fontSize: "18px (<810), 23px (810 - 1199), 29px (1200 - 1399), 36px (1400>)",
+    fontWeight: "medium",
+    lineHeight: "80%",
+    use: "stat figures",
+  },
+  {
+    cls: "type-display",
+    letterSpacing: "-1%",
+    textTransform: "uppercase",
+    fontSize: "48px",
+    fontWeight: "medium",
+    lineHeight: "120%",
+    use: "hero titles, open mobile nav",
+  },
+  {
+    cls: "type-h2",
+    letterSpacing: "-4%",
+    textTransform: "uppercase",
+    fontSize: "41px (<1200), 51px (1200 - 1439), 64px (1440>)",
+    fontWeight: "medium",
+    lineHeight: "100%",
+    use: "section headlines",
+  },
 ];
 
 const spacingSteps = [0, 2, 4, 8, 12, 16, 20, 24, 32, 36, 44, 56, 64, 76, 96, 104, 152, 176, 216];
@@ -68,8 +127,11 @@ const spacingSteps = [0, 2, 4, 8, 12, 16, 20, 24, 32, 36, 44, 56, 64, 76, 96, 10
 const IMAGE_PLACEHOLDER = "/images/imgplaceholder.jpg";
 
 const layoutUtils = [
-  { cls: "site-main", use: "page column, max 3840, 96px between sections" },
-  { cls: "section-wrap", use: "section column, max 1920, 12px side padding" },
+  { cls: "page-inset", use: "global side padding (12px ≤1200, 24px above), max 3840 centred" },
+  { cls: "page-main", use: "main column — gap-96 between top-level page children; each direct child gets the 1920 inner column (same as section-wrap) except footer-bleed and data-page-bleed; first child gets 216px top unless data-skip-page-top" },
+  { cls: "page top padding", use: "216px — CSS utility maps to --spacing-page-top; usually automatic on page-main’s first child" },
+  { cls: "section-wrap", use: "explicit 1920 cap — nav bar row, footer inner; section components rely on page-main instead" },
+  { cls: "data-page-bleed", use: "opt out of page-main inner column when a block must span the full page-inset width" },
   { cls: "ruled-row", use: "row with a top rule" },
   { cls: "stack-front", use: "sits above sticky bands" },
   { cls: "z-nav / z-stack / z-lift", use: "nav, overlays, lifted media" },
@@ -89,15 +151,23 @@ const atoms: Entry[] = [
   { name: "NavClock", note: "Time and location. Shown from tablet, 810px." },
   {
     name: "WorkCard",
-    note: "Height: auto, width: fill. Video: square, align top. Hover scale: 110% / 1.4s. Hover: [VIEW] pointer.",
+    note: "Height: auto, width: fill. Video: square, align top. Hover scale: 104% / 0.5s, ease-in. The image turns grayscale in 0.2s. Hover: [VIEW] pointer. Pass `dither` to fade a Bayer dither of ink, muted, and paper over the whole image on hover. The zoom and [view] pointer stay. `caption=\"above\"` stacks the number, then a 2px gap, then the project name, both on the left, then the image. `description` can add that project's description under the name.",
   },
   {
     name: "ImageFrame",
-    note: "Max height 700. Fill: no side or top padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set (any CSS color; bare hex is accepted). Background: image behind. Solid and background padding is inside the frame, equal on all sides: 64px in a 1-column or 2-column image row, 36px in a 3-column row. A frame outside a row uses 64px. Stacked rows stay 24px apart; this padding does not add to that gap. Optional description sits 8px under the frame, type-label in muted. Images stay in the format they were added as.",
+    note: "Max height 700. Fill: no padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set. Background: image behind. Solid and background padding is equal on all sides, inside the frame: 1-column 24px / 56px (below / from tablet 810); 2-column 24px / 44px; 3-column 24px / 44px. Default `columns` is 1 outside a row. Stacked rows stay 24px apart; padding does not add to that gap. Optional description 8px under, type-label muted.",
   },
   { name: "SectionHeading", note: "Section title. 41px, 51px from desktop 1200, 64px from 1440." },
   { name: "NavLink", note: "Leader on hover and current page. Open menu uses display type, below tablet only." },
   { name: "LabelRoll", note: "Text rolls up on hover." },
+  {
+    name: "ViewCursor",
+    note: "Fixed [view] label on the pointer. Brackets and the word use the button gap, 4px, with no roll. The frame is 4px of paper at full opacity. Hides the site dot. Shown while hovering a WorkCard, and while hovering the NextProject image.",
+  },
+  {
+    name: "DitherOverlay",
+    note: "Bayer dither, 2px blocks, using ink, muted, and paper in equal steps. Fades over the whole image on hover of the parent group in 0.5s, ease-in, the same curve as the 104% zoom, in and out. Pointer events pass through, so a [view] cursor can sit above it. Used on WorksGrid images and the NextProject image.",
+  },
 ];
 
 const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
@@ -134,11 +204,24 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
     </div>
   ),
   SectionHeading: <SectionHeading>LATEST WORK</SectionHeading>,
-  NavLink: <NavLink href="/works" label="works" count={projects.length} active />,
+  NavLink: <NavLink href="/" label="works" count={projects.length} active />,
   LabelRoll: (
     <span className="type-label inline-flex hover:[&_.label-roll-track]:-translate-y-1/2">
       <LabelRoll>view</LabelRoll>
     </span>
+  ),
+  ViewCursor: <ViewCursor inline />,
+  DitherOverlay: (
+    <div className="group relative max-w-[390px]">
+      <Image
+        src={projects[0].image}
+        alt={projects[0].title}
+        width={372}
+        height={projects[0].imageH}
+        className="block h-auto w-full"
+      />
+      <DitherOverlay src={projects[0].image} />
+    </div>
   ),
 };
 
@@ -146,17 +229,17 @@ const sections: Entry[] = [
   { name: "Hero", note: "Full height. From tablet 810: frame is 60vw, labels sit on the sides." },
   {
     name: "Hero2",
-    note: "Same labels and scroll button as Hero. The ring is an isometric lift carousel: portrait cards stand on a tilted row and the selected card widens and lifts. Uses the hero ring images except the 1st, 4th, 6th, 11th, and last. Stage is transparent so the page color shows. No prev, dots, or next bar.",
+    note: "Same labels and scroll button as Hero. Cards lie flat in one row, each skewed 10° so the side edges stay vertical and the top and bottom slope down to the right. Each card is centered vertically in the row. Horizontal overlap is -64px and each card sits 44px higher than the one before it. The leftmost card paints on top; each card to the right sits underneath the one before it. Hover does not change that order. The stack hugs those cards and stays centered in the viewport on both axes, including when it is wider than the screen. Hover ends when the pointer leaves that card, including into the empty space around the stack. Every card's width is clamp(100px, 12vw, 140px) and its height follows that file's own ratio. Hover lifts that card 80px straight up on a spring with a 1.3s period and 0.25 bounce, without resizing it or moving the others. Leaving it, or hovering another, puts the previous card back on the same spring. Uses the hero ring images except the 1st, 4th, 6th, 11th, and last. Shown order, by source image, is 5, 7, 3, 13, 8, 9, 2, 10, 12. Stage is transparent so the page color shows. No prev, dots, or next bar.",
   },
   {
-    name: "WorksDisplay",
-    note: "Grid by default. Column gap 64px on every viewport. List stacks below desktop; side by side from 1200, with view project. Image strip is 4-up and 176px tall from tablet 810.",
+    name: "WorksGrid",
+    note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, top-aligned, 12px apart; the toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the number and the project name with a 2px gap, both on the left, then the image, 12px apart. List stacks below desktop; side by side from 1200, with view project. The list shows the project description in muted type-body. Image strip is 4-up and 176px tall from tablet 810. Grid hover keeps the [view] pointer, turns the image grayscale in 0.2s, zooms to 104% in 0.5s ease-in, and fades a Bayer dither of ink, muted, and paper (2px blocks) over the whole image on that same 0.5s ease-in.",
   },
   { name: "Services", note: "Rows stack below tablet. 50/50 from 810. Title sits in the right half from desktop 1200." },
-  { name: "WhatIDo", note: "Tag row, then heading." },
+  { name: "WhatIDo", note: "Tag row, then heading — gap-36 between them (same headline-to-body step as Services)." },
   {
     name: "Chapter",
-    note: "Stacks below tablet. Two columns from 810. A subsection can include an image in the right column, fill unless a variant is set. The image is the same width as the subsection text, with 36px above it.",
+    note: "Stacks below tablet. Two columns from 810. Body paragraphs use gap-12. A subsection can include an image in the right column, fill unless a variant is set. The image is the same width as the subsection text, with 36px above it.",
   },
   {
     name: "CredentialSection",
@@ -164,7 +247,7 @@ const sections: Entry[] = [
   },
   {
     name: "ImageRow",
-    note: "1–3 frames. Columns from tablet 810. Solid and background frames use 64px padding in 1 and 2 columns, and 36px in 3, on all sides.",
+    note: "1–3 frames. Columns from tablet 810. Solid and background padding follows ImageFrame (24px below tablet; from tablet: 56px / 44px / 44px for 1 / 2 / 3 columns). In 2- and 3-column rows, grid cells stretch to the tallest frame and media is vertically centered inside the padded frame; 1-column rows keep media top-aligned.",
   },
   { name: "ChapterBlock", note: "Chapter copy, then image rows." },
   {
@@ -178,15 +261,15 @@ const sections: Entry[] = [
 ];
 
 const shell: Entry[] = [
-  { name: "SiteLayout", note: "Cursor, nav, page, footer." },
-  { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard." },
+  { name: "SiteLayout", note: "Cursor, nav, page-inset + page-main (gap-96), footer. Side padding lives only on page-inset. page-main caps each direct child at 1920 centred — section components do not repeat section-wrap. Footer ink uses footer-bleed (excluded from that cap); footer content uses page-inset + section-wrap." },
+  { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard or the NextProject image, where the [view] label is the cursor." },
   {
     name: "Nav",
-    note: "Fixed. Menu below tablet 810. From tablet, the right half is 3 equal columns with gap-12: works and about, playground, clock. The clock lines up with the third meta column in ProjectHero.",
+    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). Home is the logo, colored with the nav text, max height 28px, vertically centered in the bar. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, playground, and the time. Row two is about and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page.",
   },
   {
     name: "Footer",
-    note: "Flips to ink near the bottom of the page. 104px of page color sits above the ink band. 104px between the link row and the wordmark. Wordmark stacks below tablet; SVG from tablet. Columns swap at desktop 1200.",
+    note: "Flips to ink near the bottom of the page. footer-bleed paints edge-to-edge; vertical spacing comes from page-main gap-96 above the band and py-96 inside. Content uses page-inset + section-wrap. 96px gap between the link row and the wordmark. Wordmark stacks below tablet; SVG from tablet. Columns swap at desktop 1200.",
   },
   { name: "SmoothScroll", note: "Smooth scroll and in-view reveals." },
 ];
@@ -194,9 +277,12 @@ const shell: Entry[] = [
 const work: Entry[] = [
   {
     name: "ProjectHero",
-    note: "Title is full width below desktop, half width from 1200. About and meta are two columns from tablet 810. About and meta labels use type-label-medium. Values stay type-label. Image is one column, solid unless a variant is passed. `color` sets the solid fill.",
+    note: "Title is full width below desktop, half width from 1200. About and meta are two columns from tablet 810 with gap-12. About column uses desktop:pr-152. About and meta labels use type-label-medium. Values stay type-label. Image is one column, solid unless a variant is passed. `color` sets the solid fill.",
   },
-  { name: "NextProject", note: "Image zooms to 125% on hover. Title and button centered." },
+  {
+    name: "NextProject",
+    note: "Case-study footer: bracket label above the project name, both centered on the image. Image hover matches WorksGrid: grayscale in 0.2s, 104% zoom in 0.5s ease-in, Bayer dither fade, and the [view] pointer.",
+  },
 ];
 
 /* ── page ───────────────────────────────────────────────────────────── */
@@ -204,7 +290,7 @@ const work: Entry[] = [
 const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   Hero: <Hero />,
   Hero2: <Hero2 />,
-  WorksDisplay: <WorksDisplay />,
+  WorksGrid: <WorksGrid />,
   Services: <Services />,
   WhatIDo: <WhatIDo />,
   CredentialSection: (
@@ -299,7 +385,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="flex scroll-mt-104 flex-col gap-16">
+    <section id={id} className="flex scroll-mt-96 flex-col gap-16">
       <div className="flex flex-col gap-4">
         <h2 className={DOC_TITLE}>{title}</h2>
         {lede ? <p className={DOC}>{lede}</p> : null}
@@ -325,7 +411,7 @@ function Row({
   children?: React.ReactNode;
 }) {
   return (
-    <div id={entry.name} className="flex scroll-mt-104 flex-col gap-12">
+    <div id={entry.name} className="flex scroll-mt-96 flex-col gap-12">
       <h3 className={DOC_TITLE}>{entry.name}</h3>
       {entry.note ? <p className={`${DOC} max-w-[680px]`}>{entry.note}</p> : null}
       {children}
@@ -358,7 +444,7 @@ export default function DesignSystemPage() {
   ];
 
   return (
-    <main className="section-wrap flex flex-col gap-96 pt-216 pb-96">
+    <>
       <header className="flex flex-col gap-16">
         <p className={DOC_DIM}>internal — not linked, not indexed</p>
         <h1 className={`${DOC_TITLE} text-[24px]`}>Design system</h1>
@@ -408,10 +494,11 @@ export default function DesignSystemPage() {
         <div className="flex flex-col gap-24">
           {typeLevels.map((t) => (
             <div key={t.cls} className="flex flex-col gap-8">
-              <p className={`${DOC} flex flex-wrap items-baseline gap-x-12 gap-y-2`}>
-                <span className={DOC_TITLE}>{t.cls}</span>
-                <span className={DOC_DIM}>{t.spec}</span>
-                <span>used for: {t.use}</span>
+              <p className={DOC_TITLE}>{t.cls}</p>
+              <p className={DOC}>
+                {t.fontSize}, Weight: {t.fontWeight}, Spacing: {t.letterSpacing}, Line height: {t.lineHeight}
+                {t.textTransform === "none" ? "" : `, Transform: ${t.textTransform}`}
+                <span className={DOC_DIM}>. Used for: {t.use}</span>
               </p>
               <p className={t.cls}>The quick brown fox jumps over the lazy dog</p>
             </div>
@@ -467,6 +554,6 @@ export default function DesignSystemPage() {
           ))}
         </div>
       </Section>
-    </main>
+    </>
   );
 }

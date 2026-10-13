@@ -145,7 +145,7 @@ const entries = [
   },
   {
     file: "weld-digital-presence.svg",
-    title: "Weld Digital Presence",
+    title: "Weld Digital Experience",
     slug: "weld",
     listFolder: "weld-digital-presence",
     client: "Weld",
@@ -161,7 +161,7 @@ const entries = [
   },
   {
     file: "eat-grim-brand-identity.jpg",
-    title: "Eat Grim Brand Identity",
+    title: "Eat Grim Brand",
     slug: "eatgrim",
     listFolder: "eat-grim-brand-identity",
     client: "Eat Grim",

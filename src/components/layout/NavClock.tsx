@@ -25,10 +25,12 @@ export function NavClock({ className }: { className?: string }) {
     return () => clearInterval(id);
   }, []);
 
+  const line = "type-label h-[1.3em] overflow-hidden leading-[1.3em] whitespace-nowrap";
+
   return (
-    <div className={cn("type-label flex flex-col gap-2 whitespace-nowrap", className)}>
-      <p>{time}</p>
-      <p>{site.clockLabel}</p>
+    <div className={className}>
+      <p className={cn(line, "tablet:col-start-3 tablet:row-start-1")}>{time}</p>
+      <p className={cn(line, "tablet:col-start-3 tablet:row-start-2")}>{site.clockLabel}</p>
     </div>
   );
 }

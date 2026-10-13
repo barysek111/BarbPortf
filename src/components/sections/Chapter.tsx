@@ -1,6 +1,5 @@
 import { ImageFrame, type ImageFrameProps } from "@/components/ui/ImageFrame";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { cn } from "@/lib/cn";
 
 /** One right-column block: sub-headline plus body paragraphs (gap-12) and optional images. */
 export type ChapterSection = {
@@ -12,7 +11,7 @@ export type ChapterSection = {
 
 /**
  * Two-column chapter: headline left (max 70% of that column), stacked sub-sections right.
- * Between-section rhythm comes from site-main gap-96.
+ * Between-section rhythm comes from page-main gap-96.
  */
 export function Chapter({
   headline,
@@ -28,7 +27,7 @@ export function Chapter({
   id?: string;
 }) {
   return (
-    <section id={id} className={cn("section-wrap", className)} data-name="Section - Chapter">
+    <section id={id} className={className} data-name="Section - Chapter">
       <div className="grid grid-cols-1 items-start gap-36 tablet:grid-cols-2 tablet:gap-12">
         <SectionHeading as={headingLevel} className="max-w-[70%]">
           {headline}
@@ -39,7 +38,7 @@ export function Chapter({
               <p className="type-label appear" data-appear="20">
                 <span>{section.label}</span>
               </p>
-              <div className="flex flex-col gap-[1.1em]">
+              <div className="flex flex-col gap-12">
                 {section.paragraphs.map((paragraph, paragraphIndex) => (
                   <p
                     key={paragraphIndex}

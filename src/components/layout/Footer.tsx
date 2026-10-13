@@ -35,18 +35,15 @@ export function Footer() {
   useLenis(syncInk);
 
   return (
-    <div className="-mt-96 flex w-full flex-col">
-      <div className="h-96 w-full shrink-0 bg-paper" aria-hidden />
-
-      <div className="pt-104">
-        <footer
-          ref={footerRef}
-          className={cn(
-            "footer-bleed relative z-[var(--z-index-stack)] transition-colors duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
-            ink ? "bg-ink text-paper" : "bg-paper text-ink",
-          )}
-        >
-          <div className="section-wrap flex flex-col gap-104 pt-104 pb-44">
+    <footer
+      ref={footerRef}
+      className={cn(
+        "footer-bleed relative z-[var(--z-index-stack)] transition-colors duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
+        ink ? "bg-ink text-paper" : "bg-paper text-ink",
+      )}
+    >
+      <div className="page-inset">
+        <div className="section-wrap flex w-full flex-col gap-96 py-96">
           <div className="grid grid-cols-1 items-start gap-24 tablet:grid-cols-2 tablet:gap-12">
             <div className="order-2 flex min-w-0 flex-col items-start gap-2 text-left tablet:order-2 tablet:items-end tablet:text-right desktop:order-1 desktop:items-start desktop:text-left">
               <p className="type-label">for all enquiries please contact</p>
@@ -86,9 +83,8 @@ export function Footer() {
               />
             </span>
           </Link>
-          </div>
-        </footer>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 }

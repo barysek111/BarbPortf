@@ -10,6 +10,7 @@ export function NavLink({
   active,
   open,
   onClick,
+  className,
 }: {
   href: string;
   label: string;
@@ -17,6 +18,7 @@ export function NavLink({
   active?: boolean;
   open?: boolean;
   onClick?: () => void;
+  className?: string;
 }) {
   return (
     <Link
@@ -24,6 +26,7 @@ export function NavLink({
       onClick={onClick}
       className={cn(
         "group relative flex w-max items-center leading-[1.3em]",
+        className,
         "hover:[&_.label-roll-track]:-translate-y-1/2 focus-visible:[&_.label-roll-track]:-translate-y-1/2",
         count != null && "gap-2",
         open

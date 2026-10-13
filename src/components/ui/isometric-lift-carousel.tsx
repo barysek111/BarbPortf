@@ -21,6 +21,8 @@ export type IsometricLiftItem = {
   /** Image URL. Without one the card is a soft gradient. */
   src?: string
   alt?: string
+  /** Intrinsic width ÷ height. The card keeps this ratio and uses the shared width. */
+  ratio?: number
 }
 
 export type IsometricLiftCarouselProps = {
@@ -33,11 +35,21 @@ export type IsometricLiftCarouselProps = {
   activeWidth?: string
   /** How far the chosen card rises, px. */
   lift?: number
-  /** Gap between cards, px. */
+  /** Gap between cards, px. In a flat skewed row this is the vertical step. */
   gap?: number
-  /** Tilt of the whole row, degrees. */
+  /** Horizontal overlap in a flat skewed row, px. Defaults to `gap`. */
+  gapX?: number
+  /** How far each card sits forward of the next, px. */
+  depth?: number
+  /** Tilt of the whole row, degrees. Ignored when `skew` is set. */
   tiltX?: number
   rotateY?: number
+  /**
+   * Flat row: no row rotation. Each card is skewed by this many degrees
+   * (vertical edges stay vertical). `gap` is the vertical step and `gapX` the
+   * horizontal overlap. The leftmost card paints on top.
+   */
+  skew?: number
   /** Card corner radius in px. */
   radius?: number
   /** Spring bounce, 0 (none) to about 0.5. */
@@ -60,6 +72,8 @@ export type IsometricLiftCarouselProps = {
   onIndexChange?: (index: number) => void
   /** Clicking the card that's already lifted. */
   onSelect?: (item: IsometricLiftItem, index: number) => void
+  /** No card is lifted until one is hovered. Leaving the row drops it back. */
+  activateOnHover?: boolean
   ariaLabel?: string
   className?: string
 }
@@ -86,12 +100,12 @@ export function settleTime(bounce: number, duration: number): number {
 }
 
 /** The spring as a CSS easing: `linear(...)` sampled over its settle time. */
-export function springEasing(bounce: number, duration: number, samples = 48): { easing: string; ms: number } {
+export function springEasing(bounce: number, duration: number, samples = 96): { easing: string; ms: number } {
   const T = settleTime(bounce, duration)
   const pts: string[] = []
   for (let k = 0; k <= samples; k++) {
     const v = k === samples ? 1 : springAt((k / samples) * T, bounce, duration)
-    pts.push(+v.toFixed(4) + "")
+    pts.push(+v.toFixed(5) + "")
   }
   return { easing: "linear(" + pts.join(", ") + ")", ms: Math.round(T * 1000) }
 }
@@ -107,16 +121,22 @@ const CSS =
   "outline:none;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}" +
   ".ilc-root:focus-visible{box-shadow:inset 0 0 0 2px var(--color-primary,#171717)}" +
   ".ilc-center{width:0;display:flex;justify-content:center}" +
+  ".ilc-flat-root .ilc-center{width:0;height:auto}" +
   ".ilc-row{flex-shrink:0;height:400px;padding-bottom:80px;display:flex;justify-content:center;align-items:flex-end;" +
   "transform-style:preserve-3d}" +
+  ".ilc-row.ilc-flat{transform:none;transform-style:flat;align-items:center;height:auto;width:max-content;padding-bottom:0;pointer-events:none}" +
+  ".ilc-flat .ilc-card{pointer-events:auto}" +
   ".ilc-slot{height:0;margin-bottom:80px;flex-shrink:0;perspective:1200px;transform-style:preserve-3d;" +
-  "display:flex;align-items:center;justify-content:center}" +
-  ".ilc-card{position:relative;display:block;margin:0;padding:0;border:0;aspect-ratio:3/4;overflow:hidden;" +
-  "cursor:pointer;transform-style:preserve-3d;background:color-mix(in oklab,currentColor 10%,transparent);" +
+  "display:flex;align-items:flex-end;justify-content:center}" +
+  ".ilc-flat .ilc-slot{height:auto;margin-bottom:0;perspective:none;transform-style:flat;align-items:center}" +
+  ".ilc-card{position:relative;display:block;margin:0;padding:0;border:0;aspect-ratio:3/4;overflow:visible;" +
+  "cursor:pointer;background:transparent;box-shadow:none;filter:none;-webkit-filter:none;" +
   "-webkit-tap-highlight-color:transparent}" +
   ".ilc-card:focus-visible{outline:2px solid currentColor;outline-offset:3px}" +
-  ".ilc-card>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;display:block;object-fit:cover;" +
-  "pointer-events:none}" +
+  ".ilc-clip{position:absolute;inset:0;overflow:hidden;border-radius:inherit;transform:none;" +
+  "box-shadow:none;filter:none;-webkit-filter:none}" +
+  ".ilc-clip>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;display:block;object-fit:cover;" +
+  "object-position:center;pointer-events:none;box-shadow:none;filter:none;-webkit-filter:none}" +
   ".ilc-title{position:absolute;left:50%;bottom:76px;transform:translateX(-50%);white-space:nowrap;" +
   "font-size:13px;line-height:18px;letter-spacing:.01em;pointer-events:none;" +
   "color:color-mix(in oklab,currentColor 75%,transparent)}" +
@@ -167,8 +187,11 @@ export default function IsometricLiftCarousel({
   activeWidth = "clamp(120px, 15vw, 180px)",
   lift = 150,
   gap = 12,
+  gapX,
+  depth = 20,
   tiltX = -10,
   rotateY = 50,
+  skew,
   radius = 0,
   bounce = 0.25,
   duration = 0.6,
@@ -182,12 +205,14 @@ export default function IsometricLiftCarousel({
   defaultIndex = 2,
   onIndexChange,
   onSelect,
+  activateOnHover = false,
   ariaLabel = "Photo carousel",
   className = "",
 }: IsometricLiftCarouselProps) {
   const n = items.length
   const [inner, setInner] = React.useState(clampIndex(index ?? defaultIndex, n))
-  const active = index == null ? clampIndex(inner, n) : clampIndex(index, n)
+  const [hovered, setHovered] = React.useState<number | null>(null)
+  const active = activateOnHover ? hovered : index == null ? clampIndex(inner, n) : clampIndex(index, n)
   const spring = React.useMemo(() => springEasing(bounce, duration), [bounce, duration])
   const swipe = React.useRef({ id: -1, x: 0, done: false })
 
@@ -212,14 +237,17 @@ export default function IsometricLiftCarousel({
   }, [fontHref])
 
   const onKeyDown = (e: React.KeyboardEvent) => {
+    if (activateOnHover && (e.key === "Escape" || e.key === "Tab")) return
+    const base = active ?? -1
     let to = -1
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") to = active + 1
-    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") to = active - 1
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") to = base + 1
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") to = base - 1
     else if (e.key === "Home") to = 0
     else if (e.key === "End") to = n - 1
     else return
     e.preventDefault()
-    go(to)
+    if (activateOnHover) setHovered(clampIndex(to, n))
+    else go(to)
   }
 
   // A sideways swipe steps once; a tap falls through to the card's click.
@@ -232,7 +260,7 @@ export default function IsometricLiftCarousel({
     const dx = e.clientX - s.x
     if (Math.abs(dx) > 40) {
       s.done = true
-      go(active + (dx < 0 ? 1 : -1))
+      if (!activateOnHover) go((active ?? 0) + (dx < 0 ? 1 : -1))
     }
   }
   const onPointerEnd = () => {
@@ -245,11 +273,31 @@ export default function IsometricLiftCarousel({
 
   const transition =
     "width " + spring.ms + "ms " + spring.easing + ", transform " + spring.ms + "ms " + spring.easing
-  const current = items[active]
+  const current = active == null ? undefined : items[active]
+  // Flat stack: the upward steps and the skew sit outside the cards' layout
+  // boxes. Pad the row by exactly that overflow so the box hugs the paint,
+  // and the centered root can put that box in the middle of the viewport.
+  const flatPad =
+    skew == null
+      ? null
+      : (() => {
+          const step = Math.abs(gap)
+          const ratios = items.map((item) => item.ratio ?? 4 / 3)
+          const maxRatio = Math.max(...ratios, 0)
+          const rises = ratios.map(
+            (ratio, i) =>
+              "calc(" + i * step + "px - " + (maxRatio - ratio) / 2 + " * (" + cardWidth + "))",
+          )
+          const shear = "calc(tan(" + skew + "deg) * (" + cardWidth + ") / 2)"
+          return {
+            paddingTop: "calc(max(0px, " + rises.join(", ") + ") + " + shear + ")",
+            paddingBottom: shear,
+          }
+        })()
 
   return (
     <div
-      className={"ilc-root " + className}
+      className={"ilc-root" + (skew == null ? "" : " ilc-flat-root") + (className ? " " + className : "")}
       style={{ height, background, color, fontFamily }}
       role="region"
       aria-roledescription="carousel"
@@ -265,7 +313,22 @@ export default function IsometricLiftCarousel({
 
       {/* zero-width, so a row wider than the screen overflows both sides evenly */}
       <div className="ilc-center">
-        <div className="ilc-row" style={{ gap, transform: "rotateX(" + tiltX + "deg) rotateY(" + rotateY + "deg)" }}>
+        <div
+          className={"ilc-row" + (skew == null ? "" : " ilc-flat")}
+          style={{
+            gap: skew == null ? gap : 0,
+            transform: skew == null ? "rotateX(" + tiltX + "deg) rotateY(" + rotateY + "deg)" : "none",
+            ...flatPad,
+          }}
+          onMouseLeave={() => {
+            if (activateOnHover) setHovered(null)
+          }}
+          onBlur={(e) => {
+            if (!activateOnHover) return
+            const next = e.relatedTarget
+            if (!(next instanceof Node) || !e.currentTarget.contains(next)) setHovered(null)
+          }}
+        >
           {items.map((item, i) => {
             const isActive = i === active
             return (
@@ -273,29 +336,61 @@ export default function IsometricLiftCarousel({
                 key={i}
                 className="ilc-slot"
                 // pushing each slot forward keeps the left edge of every card clickable
-                style={{ transform: "translateZ(" + (n - i) * 20 + "px) translateX(-150px)" }}
+                style={{
+                  transform:
+                    skew == null
+                      ? "translateZ(" + (n - i) * depth + "px) translateX(-150px)"
+                      : "translateY(" + i * gap + "px)",
+                  marginLeft: skew != null && i > 0 ? (gapX ?? gap) : undefined,
+                  zIndex: skew == null ? (isActive ? n + 1 : i) : n - i,
+                }}
               >
                 <button
                   type="button"
                   className="ilc-card"
                   aria-label={i + 1 + " of " + n + ": " + item.title}
                   aria-current={isActive ? "true" : undefined}
-                  tabIndex={isActive ? 0 : -1}
+                  tabIndex={activateOnHover || isActive ? 0 : -1}
+                  onMouseEnter={() => {
+                    if (activateOnHover) setHovered(i)
+                  }}
+                  onMouseLeave={() => {
+                    if (!activateOnHover) return
+                    setHovered((current) => (current === i ? null : current))
+                  }}
+                  onFocus={() => {
+                    if (activateOnHover) setHovered(i)
+                  }}
                   onClick={() => {
                     if (swipe.current.done) return
+                    if (activateOnHover) {
+                      onSelect?.(item, i)
+                      return
+                    }
                     if (isActive) onSelect?.(item, i)
                     else go(i)
                   }}
                   style={{
-                    width: isActive ? activeWidth : cardWidth,
+                    ...(item.ratio
+                      ? {
+                          width: cardWidth,
+                          height: "auto",
+                          aspectRatio: String(item.ratio),
+                        }
+                      : { width: activateOnHover || !isActive ? cardWidth : activeWidth }),
                     borderRadius: radius,
-                    transform: "rotateY(-90deg) translateY(" + (isActive ? -lift : 0) + "px)",
+                    transform:
+                      skew == null
+                        ? "rotateY(-90deg) translateY(" + (isActive ? -lift : 0) + "px)"
+                        : "translateY(" + (isActive ? -lift : 0) + "px) skewY(" + skew + "deg)",
                     transition,
                     background: item.src ? undefined : blank(i),
                   }}
                 >
                   {item.src ? (
-                    <img src={item.src} alt={item.alt ?? item.title} draggable={false} decoding="async" width={360} height={480} style={{ maxWidth: "none" }} />
+                    <span className="ilc-clip">
+                      <img src={item.src} alt={item.alt ?? item.title} draggable={false} decoding="async" width={360} height={480} style={{ maxWidth: "none" }} />
+                    </span>
                   ) : null}
                 </button>
               </div>
@@ -312,13 +407,13 @@ export default function IsometricLiftCarousel({
 
       {controls && n > 1 ? (
         <div className="ilc-controls" onPointerDown={(e) => e.stopPropagation()}>
-          <button type="button" className="ilc-btn" aria-label="Previous slide" disabled={active <= 0} onClick={() => go(active - 1)}>
+          <button type="button" className="ilc-btn" aria-label="Previous slide" disabled={(active ?? 0) <= 0} onClick={() => go((active ?? 0) - 1)}>
             <Chevron dir={-1} />
           </button>
           <div className="ilc-dots">
             {n > 14 ? (
               <span className="ilc-count">
-                {pad(active + 1)} / {pad(n)}
+                {pad((active ?? 0) + 1)} / {pad(n)}
               </span>
             ) : (
               items.map((item, i) => (
@@ -333,7 +428,7 @@ export default function IsometricLiftCarousel({
               ))
             )}
           </div>
-          <button type="button" className="ilc-btn" aria-label="Next slide" disabled={active >= n - 1} onClick={() => go(active + 1)}>
+          <button type="button" className="ilc-btn" aria-label="Next slide" disabled={(active ?? 0) >= n - 1} onClick={() => go((active ?? 0) + 1)}>
             <Chevron dir={1} />
           </button>
         </div>

@@ -160,23 +160,6 @@ export const agerasCaseStudy = {
         row(1, [{ ...solid("pricing.svg", "Pricing page"), color: "002E33" }]),
       ],
     },
-    {
-      headline: "Implementation",
-      sections: [
-        {
-          label: "Handover",
-          paragraphs: [
-            "Transitioning from prototype to production, I provided detailed specs, asset exports, documentation. In this stage, I did daily check-ins with the developers and used Linear for a status overview and feedback loop, as I was the one responsible for quality control and approval of the final interface.",
-          ],
-        },
-        {
-          label: "Learnings",
-          paragraphs: [
-            "This project reinforced how a robust, modular design system is essential for supporting product evolution and consistent user experiences across markets. Continuous collaboration with all teams created a shared ownership of quality and set a foundation for scaling.",
-          ],
-        },
-      ],
-    },
   ],
   meta: [
     {

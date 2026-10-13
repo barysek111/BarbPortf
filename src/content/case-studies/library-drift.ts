@@ -82,15 +82,15 @@ export const libraryDriftCaseStudy = {
           ],
         },
         {
-          label: "What You Get",
+          label: "Issue Types & Visibility",
           paragraphs: [
-            "When the scan finishes, you see a list of all the issues. Each one shows the component name, its state, what file it's in, and where to find it on canvas. You can jump straight to the broken instance and fix it, or export the list to share with your team.",
+            "The color coding helps users scan fast. Red components are critical, they're completely gone. Yellow variants can still work through the library, just not in their original form. The badges make it obvious which files have which problems.",
           ],
         },
         {
-          label: "Why It's Different",
+          label: "Find on Canvas",
           paragraphs: [
-            "Most tools just say something is broken. Library Drift tells you why it's broken and where it is. That's the difference between knowing you have a problem and knowing how to fix it.",
+            "One click in the results table and Figma jumps you to the broken instance. No hunting. That single feature saves more time than anything else in the tool.",
           ],
         },
       ],
@@ -109,31 +109,6 @@ export const libraryDriftCaseStudy = {
             ),
           ],
         },
-      ],
-    },
-    {
-      headline: "Design",
-      sections: [
-        {
-          label: "Plugin Interface",
-          paragraphs: [
-            "The UI needed to be lean. Scan button, token field, results table. Three scanning states: getting started, scanning in progress, and results loaded. Each state is clear about what's happening and what to do next.",
-          ],
-        },
-        {
-          label: "Issue Types & Visibility",
-          paragraphs: [
-            "The color coding helps users scan fast. Red components are critical, they're completely gone. Yellow variants can still work through the library, just not in their original form. The badges make it obvious which files have which problems.",
-          ],
-        },
-        {
-          label: "Find on Canvas",
-          paragraphs: [
-            "One click in the results table and Figma jumps you to the broken instance. No hunting. That single feature saves more time than anything else in the tool.",
-          ],
-        },
-      ],
-      imageRows: [
         {
           columns: 3,
           frames: [
@@ -153,19 +128,6 @@ export const libraryDriftCaseStudy = {
     {
       headline: "Adoption",
       sections: [
-        {
-          label: "Team Response",
-          paragraphs: [
-            "After we published it in the Org, designers started using it immediately. It's become part of the cleanup workflow whenever we deprecate a component. Instead of one person manually tracking down broken links, the team can see everything at once.",
-          ],
-        },
-        {
-          label: "What We Learned",
-          paragraphs: [
-            "Performance matters. On complex files, the scan takes time. We added a recommendation in the plugin to use it on selected frames or smaller sections instead of scanning the whole 1284-instance file at once. That one change made it actually usable.",
-            "We also learned that teams don't just need the list. They need a way to find the broken thing fast. The \"Find on canvas\" button turned out to be more useful than the detailed issue list.",
-          ],
-        },
         {
           label: "What's Next",
           paragraphs: [

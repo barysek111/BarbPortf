@@ -4,7 +4,7 @@ import { whatIDo } from "@/content/home";
 export function WhatIDo() {
   return (
     <section
-      className="section-wrap flex flex-col gap-12 overflow-clip bg-paper"
+      className="flex flex-col gap-36 overflow-clip bg-paper"
       data-name="Section - What I Do"
     >
       <div className="flex w-full items-center justify-between">

@@ -13,7 +13,6 @@ export default function AboutPage() {
       <Chapter
         id="about"
         headingLevel="h1"
-        className="pt-216"
         headline={about.headline}
         sections={[
           { label: about.thinking.label, paragraphs: [about.thinking.text] },

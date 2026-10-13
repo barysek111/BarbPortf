@@ -19,15 +19,12 @@ const imageSizes: Record<ImageRowColumns, string> = {
 export function ImageRow({
   columns,
   frames,
-  /** Set when nested inside ProjectHero so horizontal padding is not doubled. */
-  embedded,
 }: {
   columns: ImageRowColumns;
   frames: ImageFrameProps[];
-  embedded?: boolean;
 }) {
   return (
-    <section className={cn(embedded ? "w-full" : "section-wrap")} data-name="Section - Image Row">
+    <section className="w-full" data-name="Section - Image Row">
       <div className={cn("grid items-stretch gap-12", columnClass[columns])}>
         {frames.map((frame, index) => (
           <ImageFrame

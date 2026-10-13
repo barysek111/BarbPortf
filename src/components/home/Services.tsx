@@ -5,7 +5,7 @@ import { ruledRowClass } from "@/lib/ruled-row";
 
 export function Services() {
   return (
-    <section className="section-wrap flex flex-col gap-36" data-name="Section - Services">
+    <section className="flex flex-col gap-36" data-name="Section - Services">
       <div className="desktop:grid desktop:grid-cols-2 desktop:gap-12">
         <div className="hidden min-w-0 desktop:block" aria-hidden="true" />
         <SectionHeading className="min-w-0 max-w-none">SERVICES</SectionHeading>

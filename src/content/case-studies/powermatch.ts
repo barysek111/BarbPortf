@@ -1,12 +1,11 @@
 import powermatchChapters from "./generated/powermatch.json";
-import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy, CaseStudyChapter } from "./types";
 
 const media = "/images/works/powermatch";
 
-function solid(file: string, alt: string) {
+function solid(file: string, alt: string, description?: string, color?: string) {
   const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "solid" as const, src, alt };
+  return { variant: "solid" as const, src, alt, description, color };
 }
 
 function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
@@ -14,44 +13,58 @@ function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
 }
 
 function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
-  if (chapter.headline === "Research") {
-    return {
-      ...chapter,
-      imageRows: [row(1, [solid("competitor-analysis.png", "Competitor analysis")])],
-    };
-  }
-
   if (chapter.headline === "Direction") {
     return {
       ...chapter,
-      imageRows: [row(1, [solid("invoices-tab.png", "Invoices tab, V1 scope")])],
+      imageRows: [
+        row(1, [
+          solid(
+            "pmflow.svg",
+            "Invoice matching user flow",
+            "Flow mapping the main common path to matching an invoice. The journey was designed to be possible to complete without leaving the invoices page.",
+          ),
+        ]),
+      ],
     };
   }
 
   if (chapter.headline === "Design") {
-    const layoutIndex = chapter.sections.findIndex((section) => section.label === "Layout exploration");
-    const sections =
-      layoutIndex === -1
-        ? [...chapter.sections, { label: "Wireframes", paragraphs: [] }]
-        : [
-            ...chapter.sections.slice(0, layoutIndex + 1),
-            { label: "Wireframes", paragraphs: [] },
-            ...chapter.sections.slice(layoutIndex + 1),
-          ];
-
     return {
       ...chapter,
-      sections,
       imageRows: [
-        row(1, [solid("nav-exploration.png", "Navigation structure")]),
-        row(1, [solid("layout-exploration.png", "Layout exploration")]),
-        row(1, [solid("Powermatch-userflow.svg", "User flow")]),
-        row(1, [solid("recon-tab-large.png", "Reconciliation tab")]),
-        row(1, [solid("recon-tab-choose-company.png", "Choose company")]),
-        row(1, [solid("recon-tab-pending-approval.png", "Pending approval")]),
-        row(1, [solid("recon-invoice-partial-match.png", "Partial match")]),
-        row(1, [solid("invoices-tab.png", "Invoices tab")]),
-        row(1, [solid("invoice-detail-auto-matched.png", "Invoice detail, auto-matched")]),
+        row(3, [
+          solid("details.svg", "Invoice detail view"),
+          solid("activitynew.svg", "Activity log"),
+          solid("activity.svg", "Reconciliation states"),
+        ]),
+        row(2, [
+          solid(
+            "group-427323310.png",
+            "Navigating to Invoice Reconciliation and company focus",
+            "Navigating to Invoice Reconciliation & Company focus",
+            "2F2F2F",
+          ),
+          solid(
+            "group-427323311.png",
+            "Choose company and overview",
+            "Choose company & overview",
+            "2F2F2F",
+          ),
+        ]),
+        row(2, [
+          solid(
+            "group-427323312.png",
+            "Invoice details auto-matched and partially matched",
+            "Invoice Details (Auto-matched & Partially Matched)",
+            "2F2F2F",
+          ),
+          solid(
+            "group-427323313.png",
+            "Invoice page and activity log",
+            "Invoice page & activity log",
+            "2F2F2F",
+          ),
+        ]),
       ],
     };
   }
@@ -74,19 +87,41 @@ export const powermatchCaseStudy = {
     { label: "year", value: "2025" },
   ],
   heroImage: {
-    src: "/images/works/powermatch/pw1hero.jpg",
+    src: "/images/works/powermatch/pmhero.jpg",
     alt: "Powermatch reconciliation overview",
+    variant: "fill",
   },
   chapters: [
-    buildScopeChapter(
-        "Powermatch is a Danish B2B staffing platform that manages the full lifecycle between companies and their contractors — from recruitment and matching to timesheets and invoicing. An internal finance team handles all billing between Powermatch and the companies it works with. Bank reconciliation — verifying that every issued invoice has a matching bank payment — was a critical daily task with no in-platform support.",
-        "Three tools, no sync, no shared logic. The finance team was manually cross-referencing Powermatch, the e-conomic accounting platform, and a manually-refreshed Google Sheet to reconcile invoices and payments — with no support for edge cases and no record of who made any change.",
-        [
-          "Match invoices to bank payments across two external tools — with no in-platform support and no real-time sync",
-          "Handle complex scenarios like partial payments and company balance surplus with no system logic — resolved manually every time",
-          "Maintain no shared history of who confirmed, changed, or rejected any invoice-payment match",
-        ],
-    ),
+    {
+      headline: "SCOPE",
+      sections: [
+        {
+          label: "PROBLEM TO SOLVE",
+          paragraphs: [
+            "An internal finance team handles all billing between Powermatch and the companies it works with. Bank reconciliation was a critical daily task with no in-platform support.",
+            "Previous workflow required 3 tools to verify matching payments. The finance team was manually cross-referencing Powermatch, an accounting platform and a spreadsheet to reconcile payments.",
+          ],
+        },
+        {
+          label: "01",
+          paragraphs: [
+            "Match invoices to bank payments across two external tools with no in-platform support and no real-time sync",
+          ],
+        },
+        {
+          label: "02",
+          paragraphs: [
+            "Handle complex scenarios like partial payments and company balance surplus with no system logic — resolved manually every time",
+          ],
+        },
+        {
+          label: "03",
+          paragraphs: [
+            "Maintain no shared history of who confirmed, changed, or rejected any invoice-payment match",
+          ],
+        },
+      ],
+    },
     ...powermatchChapters.map(withImageRows),
   ],
 } satisfies CaseStudy;

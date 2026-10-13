@@ -5,16 +5,29 @@ import { heroRing } from "@/content/hero-ring";
 const omitted = new Set([0, 3, 5, 10, heroRing.length - 1]);
 
 const heroItems = heroRing.flatMap((item, i) =>
-  omitted.has(i) ? [] : [{ title: `Work ${String(i + 1).padStart(2, "0")}`, src: item.src, alt: item.alt }],
+  omitted.has(i)
+    ? []
+    : [{ title: `Work ${String(i + 1).padStart(2, "0")}`, src: item.src, alt: item.alt, ratio: item.w / item.h }],
 );
+const lastHeroItem = heroItems.pop();
+if (lastHeroItem) heroItems.splice(4, 0, lastHeroItem);
+const [firstHeroItem, , thirdHeroItem] = heroItems;
+const heroRest = heroItems.filter((_, index) => index !== 0 && index !== 2);
+heroRest.unshift(thirdHeroItem);
+heroRest.splice(4, 0, firstHeroItem);
+heroItems.splice(0, heroItems.length, ...heroRest);
+[heroItems[1], heroItems[2]] = [heroItems[2], heroItems[1]];
+[heroItems[4], heroItems[5]] = [heroItems[5], heroItems[4]];
+[heroItems[5], heroItems[6]] = [heroItems[6], heroItems[5]];
 
 export function Hero2() {
   return (
     <section
-      className="section-wrap relative h-svh overflow-clip"
+      className="relative h-svh"
       data-name="Section - Hero 2"
+      data-skip-page-top
     >
-      <div className="absolute inset-0">
+      <div className="absolute top-0 left-1/2 h-full w-screen -translate-x-1/2 overflow-hidden">
         <IsometricLiftCarousel
           items={heroItems}
           height="100%"
@@ -22,7 +35,14 @@ export function Hero2() {
           fontFamily="inherit"
           titles={false}
           controls={false}
-          defaultIndex={4}
+          activateOnHover
+          lift={80}
+          bounce={0.25}
+          duration={1.3}
+          cardWidth="clamp(100px, 12vw, 140px)"
+          skew={10}
+          gap={-44}
+          gapX={-64}
           ariaLabel="Latest work"
         />
       </div>

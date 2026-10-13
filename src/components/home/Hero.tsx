@@ -4,7 +4,7 @@ import { HeroRing } from "@/components/home/HeroRing";
 export function Hero() {
   return (
     <section
-      className="section-wrap relative flex h-svh items-center overflow-clip"
+      className="relative flex h-svh items-center overflow-clip"
       data-name="Section - Hero"
     >
       <div className="relative h-full w-full">

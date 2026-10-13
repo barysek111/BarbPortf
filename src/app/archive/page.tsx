@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { ChapterBlock } from "@/components/sections/ChapterBlock";
+import { NextProjectCanvas } from "@/components/work/NextProjectCanvas";
 import { cocoCareArchivedChapters } from "@/content/case-studies/coco-care";
 import type { CaseStudyChapter } from "@/content/case-studies/types";
 
@@ -21,6 +23,13 @@ type ArchivedBlock = {
   chapter: CaseStudyChapter;
 };
 
+type ArchivedComponent = {
+  id: string;
+  name: string;
+  note: string;
+  preview: ReactNode;
+};
+
 function archivedChapter(headline: string): CaseStudyChapter {
   const chapter = cocoCareArchivedChapters.find((item) => item.headline === headline);
   if (!chapter) throw new Error(`Archived chapter missing: ${headline}`);
@@ -39,7 +48,14 @@ const blocks: ArchivedBlock[] = [
 ];
 
 /** Components taken off the live site. Add the next one here. */
-const components: { id: string; name: string; note: string }[] = [];
+const components: ArchivedComponent[] = [
+  {
+    id: "next-project-canvas",
+    name: "NextProjectCanvas",
+    note: "Scatter canvas next-project footer (scroll parallax). Live case studies use NextProject instead.",
+    preview: <NextProjectCanvas slug="ageras" />,
+  },
+];
 
 export default function ArchivePage() {
   const toc = [
@@ -50,8 +66,8 @@ export default function ArchivePage() {
   ];
 
   return (
-    <main className="flex flex-col gap-96 pt-216 pb-96">
-      <header className="section-wrap flex flex-col gap-16">
+    <>
+      <header className="flex flex-col gap-16">
         <p className={DOC_DIM}>internal — not linked, not indexed</p>
         <h1 className={`${DOC_TITLE} text-[24px]`}>Archive</h1>
         <p className={`${DOC} max-w-[680px]`}>
@@ -71,9 +87,19 @@ export default function ArchivePage() {
         </nav>
       </header>
 
+      {components.map((item) => (
+        <section key={item.id} id={item.id} className="flex scroll-mt-96 flex-col gap-16">
+          <div className="flex flex-col gap-4">
+            <h2 className={DOC_TITLE}>{item.name}</h2>
+            <p className={DOC}>{item.note}</p>
+          </div>
+          {item.preview}
+        </section>
+      ))}
+
       {blocks.map((block) => (
-        <section key={block.id} id={block.id} className="flex scroll-mt-104 flex-col gap-16">
-          <div className="section-wrap flex flex-col gap-4">
+        <section key={block.id} id={block.id} className="flex scroll-mt-96 flex-col gap-16">
+          <div className="flex flex-col gap-4">
             <h2 className={DOC_TITLE}>{block.name}</h2>
             <p className={DOC}>
               <span className={DOC_DIM}>{block.from}. </span>
@@ -87,6 +113,6 @@ export default function ArchivePage() {
           />
         </section>
       ))}
-    </main>
+    </>
   );
 }

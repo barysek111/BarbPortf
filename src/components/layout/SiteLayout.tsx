@@ -9,10 +9,12 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       <SiteCursor />
       <SmoothScroll>
         <Nav />
-        <main className="site-main">
-          {children}
-          <Footer />
-        </main>
+        <div className="page-inset">
+          <main className="page-main">
+            {children}
+            <Footer />
+          </main>
+        </div>
       </SmoothScroll>
     </>
   );

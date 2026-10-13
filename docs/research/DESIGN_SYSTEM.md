@@ -69,14 +69,13 @@ Common rhythm:
 
 | Utility | px | Role |
 |---|---|---|
-| `gap-12` / `p-12` | 12 | `section-wrap` horizontal padding, grid gutters |
-| `gap-36` | 36 | Section headline → content (Services, CredentialSection, Chapter stack) |
-| `gap-56` | 56 | ProjectHero copy stacks |
-| `gap-96` | 96 | `site-main` / case-study `article` between sections; large in-section steps |
-| `pt-216` | 216 | Page top below fixed nav |
-| `pt-104` | 104 | NextProject top band |
-| `pt-176` | 176 | Footer top band |
-| `pb-96` | 96 | NextProject bottom — pairs with case-study `article` gap-96 above |
+| `gap-12` / `p-12` | 12 | Grid gutters; Chapter body paragraphs; `page-inline` at ≤1200 |
+| `gap-36` | 36 | Section headline → content (Services, WhatIDo, CredentialSection, Chapter stack) |
+| `gap-56` | 56 | ProjectHero copy stacks (legacy note — hero meta grid uses gap-12) |
+| `gap-96` | 96 | `page-main` between top-level page children; footer link row → wordmark |
+| `py-96` | 96 | Footer band vertical padding |
+| `pt-page-top` / `--spacing-page-top` | 216 | First `page-main` child below fixed nav (unless `data-skip-page-top`) |
+| `scroll-mt-96` | 96 | In-page anchor offset (design-system, archive) |
 
 Framer source used a different px rhythm (often 10px gutters in extract); the live
 app standardises on the table above.
@@ -85,14 +84,17 @@ app standardises on the table above.
 
 | Primitive | Role |
 |---|---|
-| `site-main` | 3840 cap, centred column, **`gap-96`** between direct children |
-| `section-wrap` | 1920 cap, **`padding-inline: 12px`** |
+| `page-inset` | Site column cap (3840), centred, **`padding-inline`** 12px ≤1200 / 24px above — nav, scroll column, footer inner |
+| `page-main` | Flex column, **`gap-96`** between direct children; each child gets the **1920** inner column (same rules as `section-wrap`) except **`footer-bleed`** and **`data-page-bleed`**; first child gets **`pt-page-top`** unless `data-skip-page-top` |
+| `section-wrap` | Explicit **1920** cap — **nav** bar row and **footer** inner content; live section components omit it |
+| `data-page-bleed` | Opt out of the automatic `page-main` inner column when a block must use the full `page-inset` width |
+| `footer-bleed` | Full-bleed footer background; pair with `page-inset` on inner content |
 | `works-grid` | 2 col → 4 col @810 |
 
 ## Nav & footer (live app)
 
 - **Nav:** Menu overlay **&lt;810px** only. From 810px: inline **Works**, **About**, **NavClock** (no Home link). Logo → home.
-- **Footer:** **`gap-24`** between stack blocks at all widths. Contact always visible: left-aligned &lt;810, right-aligned ≥810. Meta grid: 2 col → 4 col @810.
+- **Footer:** **`py-96`** on the band; **`gap-96`** between link row and wordmark. No extra top margin — spacing from **`page-main` gap-96** only. Contact left-aligned &lt;810, right-aligned ≥810 on tablet; columns swap at desktop 1200.
 
 ## Radii
 

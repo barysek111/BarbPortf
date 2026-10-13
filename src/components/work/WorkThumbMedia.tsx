@@ -1,7 +1,10 @@
 import Image from "next/image";
 
-const HOVER_ZOOM =
-  "origin-center scale-100 transform-gpu transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-focus-visible:scale-110";
+export const WORK_THUMB_HOVER_ZOOM =
+  "origin-center scale-100 transform-gpu transition-transform duration-[500ms] ease-in group-hover:scale-[1.04] group-focus-visible:scale-[1.04]";
+
+export const WORK_THUMB_HOVER_GRAY =
+  "grayscale-0 transition-[filter] duration-[200ms] ease-in group-hover:grayscale group-focus-visible:grayscale motion-reduce:transition-none";
 
 export function isWorkVideo(src: string) {
   return src.endsWith(".mp4") || src.endsWith(".webm");
@@ -18,32 +21,37 @@ export function WorkThumbMedia({
   height: number;
   hoverZoom?: boolean;
 }) {
-  const motion = hoverZoom ? HOVER_ZOOM : "";
+  const motion = hoverZoom ? WORK_THUMB_HOVER_ZOOM : "";
+  const gray = hoverZoom ? WORK_THUMB_HOVER_GRAY : "";
 
   if (isWorkVideo(src)) {
     return (
       <div className="relative aspect-square w-full overflow-hidden">
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-label={alt}
-          className={`absolute inset-0 h-full w-full object-cover object-top ${motion}`}
-        />
+        <div className={`relative h-full w-full ${motion}`}>
+          <video
+            src={src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-label={alt}
+            className={`absolute inset-0 h-full w-full object-cover object-top ${gray}`}
+          />
+        </div>
       </div>
     );
   }
 
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={372}
-      height={height}
-      sizes="(max-width: 809px) 50vw, 25vw"
-      className={`block h-auto w-full rounded-none ${motion}`}
-    />
+    <div className={motion}>
+      <Image
+        src={src}
+        alt={alt}
+        width={372}
+        height={height}
+        sizes="(max-width: 809px) 50vw, 25vw"
+        className={`block h-auto w-full rounded-none ${gray}`}
+      />
+    </div>
   );
 }

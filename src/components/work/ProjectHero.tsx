@@ -33,15 +33,15 @@ export function ProjectHero({
 }) {
   return (
     <section
-      className="section-wrap flex flex-col gap-96 pt-216"
+      className="flex flex-col gap-96"
       data-name="Section - About the Project"
     >
       <div className="flex flex-col gap-56">
         <SectionHeading as="h1" className="w-full desktop:max-w-1/2">
           {title}
         </SectionHeading>
-        <div className="flex flex-col gap-16 tablet:grid tablet:grid-cols-2 tablet:gap-12">
-          <div className="flex flex-col gap-12 tablet:pr-56 desktop:pr-[160px]">
+        <div className="flex flex-col gap-12 tablet:grid tablet:grid-cols-2 tablet:gap-12">
+          <div className="flex flex-col gap-12 tablet:pr-56 desktop:pr-152">
             <p className="type-label-medium appear" data-appear="20">
               <span>{aboutLabel}</span>
             </p>
@@ -64,7 +64,6 @@ export function ProjectHero({
         </div>
       </div>
       <ImageRow
-        embedded
         columns={1}
         frames={[
           {

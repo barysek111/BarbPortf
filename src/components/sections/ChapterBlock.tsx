@@ -31,7 +31,7 @@ export function ChapterBlock({
         className={className}
       />
       {imageRows && imageRows.length > 0 ? (
-        <ImageRowStack padLast={false}>
+        <ImageRowStack>
           {imageRows.map((row, index) => (
             <ImageRow key={`${headline}-row-${index}`} columns={row.columns} frames={[...row.frames]} />
           ))}

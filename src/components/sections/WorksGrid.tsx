@@ -19,11 +19,11 @@ const ModeContext = createContext<{
 
 function useMode() {
   const ctx = useContext(ModeContext);
-  if (!ctx) throw new Error("WorksDisplay requires mode provider");
+  if (!ctx) throw new Error("WorksGrid requires mode provider");
   return ctx;
 }
 
-function WorksDisplayModeProvider({ children }: { children: ReactNode }) {
+function WorksGridModeProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<Mode>("grid");
   return (
     <ModeContext.Provider value={{ mode, setMode }}>
@@ -32,10 +32,10 @@ function WorksDisplayModeProvider({ children }: { children: ReactNode }) {
   );
 }
 
-function WorksDisplayModeSwitch({ className }: { className?: string }) {
+function WorksGridModeSwitch({ className }: { className?: string }) {
   const { mode, setMode } = useMode();
   return (
-    <div className={cn("type-label flex gap-2", className)}>
+    <div className={cn("type-label flex shrink-0 flex-col gap-2", className)}>
       <Button
         pressed={mode === "grid"}
         aria-pressed={mode === "grid"}
@@ -66,14 +66,14 @@ const LIST_IMAGES =
   "tablet:h-176 tablet:shrink-0 tablet:grid-cols-4 " +
   "desktop:min-h-176 desktop:flex-1";
 
-function WorksDisplayProjectList() {
+function WorksGridProjectList() {
   const { mode } = useMode();
 
   if (mode === "grid") {
     return (
-      <div className="works-grid">
+      <div className="works-grid items-start">
         {projects.map((project, i) => (
-          <WorkCard key={project.slug} project={project} index={i} />
+          <WorkCard key={project.slug} project={project} index={i} dither caption="above" />
         ))}
       </div>
     );
@@ -94,7 +94,7 @@ function WorksDisplayProjectList() {
                 <p className="type-label reveal-clip">
                   <span>{project.title}</span>
                 </p>
-                <p className="type-body reveal-clip w-full text-ink tablet:w-[60%] tablet:max-w-[60%]">
+                <p className="type-body reveal-clip w-full text-muted tablet:w-[60%] tablet:max-w-[60%]">
                   <span>{project.description}</span>
                 </p>
                 <p className="type-label reveal-clip tablet:hidden">
@@ -127,31 +127,28 @@ function WorksDisplayProjectList() {
 
 /**
  * The single way projects are displayed. Grid by default, with a grid/list toggle.
- * Must stay a direct child of site-main.
+ * Must stay a direct child of page-main.
  */
-export function WorksDisplay({
-  title = "LATEST WORK",
-  headingLevel = "h2",
-  className,
-}: {
+export type WorksGridProps = {
   title?: string;
   headingLevel?: "h1" | "h2";
   className?: string;
-}) {
+};
+
+export function WorksGrid({
+  title = "LATEST WORK",
+  headingLevel = "h2",
+  className,
+}: WorksGridProps) {
   return (
-    <section id="latest" className={cn("section-wrap", className)} data-name="Section - Works Display">
-      <WorksDisplayModeProvider>
-        <div className="flex flex-col gap-12">
-          <div className="flex min-w-0 items-start gap-8">
-            <SectionHeading as={headingLevel}>{title}</SectionHeading>
-            <p className="type-label appear pt-8" data-appear="20">
-              <span>[{projects.length}]</span>
-            </p>
-          </div>
-          <WorksDisplayModeSwitch className="flex-row" />
+    <section id="latest" className={className} data-name="Section - Works Grid">
+      <WorksGridModeProvider>
+        <div className="flex min-w-0 items-start gap-12">
+          <SectionHeading as={headingLevel}>{title}</SectionHeading>
+          <WorksGridModeSwitch />
         </div>
-        <WorksDisplayProjectList />
-      </WorksDisplayModeProvider>
+        <WorksGridProjectList />
+      </WorksGridModeProvider>
     </section>
   );
 }

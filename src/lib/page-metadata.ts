@@ -30,11 +30,6 @@ export const homeMetadata: Metadata = pageMetadata({
   absoluteTitle: true,
 });
 
-export const worksMetadata: Metadata = pageMetadata({
-  title: "Works",
-  description: `Selected product design work — ${site.description}`,
-});
-
 export const aboutMetadata: Metadata = pageMetadata({
   title: "About",
   description: aboutDescription(),

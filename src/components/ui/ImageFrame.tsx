@@ -23,18 +23,18 @@ export type ImageFrameProps = {
   sizes?: string;
 };
 
-/** Equal padding on solid and background frames. Padding is inside the frame; it does not add to the 24px between rows. */
+/** Equal padding on solid and background frames (all sides). Inside the frame; does not add to row gap. */
 const ROW_PAD = {
-  1: "p-64",
-  2: "p-64",
-  3: "p-36",
+  1: "p-24 tablet:p-56",
+  2: "p-24 tablet:p-44",
+  3: "p-24 tablet:p-44",
 } as const;
 
 /** Image max height so padding stays inside the 700px frame cap. */
 const IMAGE_MAX = {
-  1: "max-h-[572px]",
-  2: "max-h-[572px]",
-  3: "max-h-[628px]",
+  1: "max-h-[652px] tablet:max-h-[588px]",
+  2: "max-h-[652px] tablet:max-h-[612px]",
+  3: "max-h-[652px] tablet:max-h-[612px]",
 } as const;
 
 /** Case-study frame height cap (ImageRow row height follows tallest frame, max this). */
@@ -107,6 +107,8 @@ export function ImageFrame({
 }: ImageFrameProps) {
   const pad = ROW_PAD[columns];
   const imageMax = IMAGE_MAX[columns];
+  const mediaAlign = columns === 1 ? "items-start" : "items-center";
+  const mediaWrap = cn("flex w-full min-w-0 flex-1 justify-center", mediaAlign);
   const frame =
     variant === "fill" ? (
       <div className={FRAME} data-name="Image Frame — fill">
@@ -125,7 +127,7 @@ export function ImageFrame({
             className="object-cover"
           />
         ) : null}
-        <div className="relative z-lift flex w-full min-w-0 items-start justify-center">
+        <div className={cn("relative z-lift", mediaWrap)}>
           <ContainedImage src={src} alt={alt} maxClass={imageMax} />
         </div>
       </div>
@@ -135,7 +137,7 @@ export function ImageFrame({
         style={color ? { backgroundColor: cssColor(color) } : undefined}
         data-name="Image Frame — solid"
       >
-        <div className="flex w-full min-w-0 items-start justify-center">
+        <div className={mediaWrap}>
           <ContainedImage src={src} alt={alt} maxClass={imageMax} />
         </div>
       </div>
