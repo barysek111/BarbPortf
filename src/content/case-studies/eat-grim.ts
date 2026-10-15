@@ -1,5 +1,4 @@
 import eatGrimChapters from "./generated/eatgrim.json";
-import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy, CaseStudyChapter } from "./types";
 
 const media = "/images/works/eatgrim";
@@ -17,7 +16,7 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
   if (chapter.headline === "Research") {
     return {
       ...chapter,
-      imageRows: [row(1, [solid("Competitive-maket-analysis-2.jpg", "Competitive market analysis")])],
+      imageRows: [row(1, [solid("grimanalysis.png", "Competitive market analysis")])],
     };
   }
 
@@ -140,7 +139,7 @@ export const eatGrimCaseStudy = {
   title: "Eat Grim Brand",
   aboutLabel: "about the project",
   description:
-    "Eat Grim changes the way people think about food by celebrating diversity in shape, size, and colour — creating real impact for farmers, consumers, and the planet.",
+    "Eat Grim changes how people think about food by celebrating diversity in shape, size, and color.",
   meta: [
     {
       label: "My role",
@@ -151,19 +150,40 @@ export const eatGrimCaseStudy = {
     { label: "year", value: "2019" },
   ],
   heroImage: {
-    src: "/images/works/eatgrim/eatgrimpagethumbnail-1.jpg",
+    src: "/images/works/eatgrim/grimhero.png",
     alt: "Eat Grim brand overview",
+    variant: "fill",
   },
   chapters: [
-    buildScopeChapter(
-      "Eat Grim is a Copenhagen-based startup dedicated to fighting food waste by rescuing 'ugly' and surplus fruits and vegetables — produce that would otherwise be discarded because of appearance or overproduction. Through a box subscription model, Eat Grim delivers fresh, organic produce directly from European farms to people's doors, making it easy to eat more sustainably.",
-      "As Brand Designer, illustrator, and photographer, I shaped Eat Grim's visual identity and voice across every touchpoint — from logo and packaging to emails, website, and merchandise. The goal was to:",
-      [
-        "Create a brand that not only stood out but sparked real conversations about food waste and sustainability.",
-        "Build a cohesive visual language across packaging, photography, digital, and physical collateral.",
-        "Grow a passionate subscriber community — over the two-year collaboration, Eat Grim reached 2,500+ regular subscribers.",
+    {
+      headline: "SCOPE",
+      sections: [
+        {
+          label: "BACKGROUND and goals",
+          paragraphs: [
+            "Eat Grim is a Copenhagen startup that fights food waste by rescuing 'ugly' and surplus fruit and vegetables with a subscription box delivered to people's doors. As brand designer, illustrator, and photographer, I shaped the visual identity and voice, from the logo and packaging to emails, the website, and merchandise. The goal was to:",
+          ],
+        },
+        {
+          label: "01",
+          paragraphs: [
+            "Create a brand that stood out and got people talking about food waste.",
+          ],
+        },
+        {
+          label: "02",
+          paragraphs: [
+            "Build one visual language across packaging, photography, digital, and print.",
+          ],
+        },
+        {
+          label: "03",
+          paragraphs: [
+            "Grow the subscriber community. Over two years, Eat Grim reached 2,500 regular subscribers.",
+          ],
+        },
       ],
-    ),
+    },
     ...eatGrimChapters.map(withImageRows),
   ],
 } satisfies CaseStudy;

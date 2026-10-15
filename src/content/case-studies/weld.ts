@@ -30,6 +30,9 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
           solid("direction-shape-6207.svg", "Weld brand language", undefined, "var(--color-ink)"),
           solid("direction-shape-6208.svg", "Weld brand language", undefined, "var(--color-ink)"),
         ]),
+        row(1, [
+          solid("weld-website-screens.png", "Weld website screens", undefined, "var(--color-ink)"),
+        ]),
         row(1, [solid("weldiconpack.svg", "Weld icon pack")]),
       ],
     };
@@ -107,7 +110,7 @@ export const weldCaseStudy = {
         {
           label: "The challenge",
           paragraphs: [
-            "Weld needed to stand out in for new customers in the competitor landscape and evolve from startup aesthetics to a trusted brand. My role was to:",
+            "Weld needed to stand out to new customers and move from startup aesthetics to a brand people could trust. My role was to:",
           ],
         },
         {
