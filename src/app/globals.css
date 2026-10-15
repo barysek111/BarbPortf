@@ -31,7 +31,7 @@
 @theme {
   /* -- Colour tokens (the three --token-* custom props on the source body) -- */
   --color-*: initial;
-  --color-ink: #000;
+  --color-ink: #1c1c1c;
   --color-paper: #fff;
   --color-muted: #a7a7a7;
   --color-surface: #f0f0f0;
@@ -194,7 +194,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 1.3em;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.003em;
   text-transform: uppercase;
 }
 
@@ -204,7 +204,7 @@
   font-size: 12px;
   font-weight: 600;
   line-height: 1.3em;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.003em;
   text-transform: uppercase;
 }
 
@@ -305,9 +305,13 @@
 @utility page-main {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-96);
+  gap: var(--spacing-56);
   width: 100%;
   min-width: 0;
+
+  @media (width >= 810px) {
+    gap: var(--spacing-96);
+  }
 }
 
 /* First page block clears fixed nav (216px). Full-viewport heroes set data-skip-page-top. */

@@ -22,7 +22,7 @@ export function ChapterBlock({
   className?: string;
 }) {
   return (
-    <div className="flex w-full flex-col gap-96">
+    <div className="flex w-full flex-col gap-36 tablet:gap-96">
       <Chapter
         headline={headline}
         sections={sections}

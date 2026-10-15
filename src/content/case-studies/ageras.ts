@@ -22,16 +22,27 @@ export const agerasCaseStudy = {
       headline: "SCOPE",
       sections: [
         {
-          label: "PROJECT BACKGROUND",
+          label: "BACKGROUND AND GOALS",
           paragraphs: [
-            "Ageras is a fintech SaaS provider delivering a suite of digital tools designed to empower small business owners with financial management, invoicing, and accounting solutions. With offerings available in multiple regions, I was brought in to consolidate and evolve the digital experience into a single, coherent system.",
+            "Ageras is a fintech SaaS provider with a suite of digital tools for small business owners to handle their financial management, invoicing, and accounting. The task was to consolidate a diverse set of websites for different products, to reflect the transition into one brand and one product.",
           ],
         },
         {
-          label: "The challenge",
+          label: "01",
           paragraphs: [
-            "The task was to consolidate a diverse set of websites for different products, to reflect the transition into one brand and one product. I created one cohesive interface, while ensuring an intuitive, streamlined experience for small business customers of varying tech backgrounds. This meant rethinking:",
-            "1. Navigation patterns and content strategy for clarity and guidance.\n2. UI patterns that scale across regional product variants.\n3. A design system flexible enough to support Ageras's continued growth.",
+            "Navigation patterns and content strategy for clarity and guidance.",
+          ],
+        },
+        {
+          label: "02",
+          paragraphs: [
+            "UI patterns that scale across regional product variants.",
+          ],
+        },
+        {
+          label: "03",
+          paragraphs: [
+            "A design system flexible enough to support Ageras's continued growth.",
           ],
         },
       ],

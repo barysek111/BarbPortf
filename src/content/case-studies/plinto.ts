@@ -3,9 +3,9 @@ import type { CaseStudy, CaseStudyChapter } from "./types";
 
 const media = "/images/works/plinto";
 
-function solid(file: string, alt: string, description?: string) {
+function solid(file: string, alt: string, description?: string, color?: string) {
   const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "solid" as const, src, alt, description };
+  return { variant: "solid" as const, src, alt, description, color };
 }
 
 function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
@@ -21,17 +21,20 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
           solid(
             "wireframe-conversational-ease.svg",
             "Wireframe, conversational ease",
-            "Conversational: Chat-forward layout with copilot dominant",
+            "Dominant chat: prompting conversation",
+            "var(--color-ink)",
           ),
           solid(
             "wireframe-control-room.svg",
             "Wireframe, control room",
-            "Dashboard: layout with KPIs, filter and batch overview",
+            "Dashboard: Quick KPIs, batch overview",
+            "var(--color-ink)",
           ),
           solid(
             "wireframe-decision-card.svg",
             "Wireframe, decision card",
-            "Decision card: Clean queue and focused decision card",
+            "Decision card: priority queue, prompted action for each invoice",
+            "var(--color-ink)",
           ),
         ]),
       ],
@@ -43,12 +46,12 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
       ...chapter,
       imageRows: [
         row(2, [
-          solid("screens exports/Auto-matched invoice.jpg", "Auto-matched invoice"),
-          solid("screens exports/Needs review invoice.jpg", "Needs review invoice"),
+          solid("automatched.png", "Auto-matched invoice"),
+          solid("needsreview.png", "Needs review invoice"),
         ]),
         row(2, [
-          solid("screens exports/Blocked invoice.jpg", "Blocked invoice"),
-          solid("screens exports/ai chat screens.jpg", "Copilot chat"),
+          solid("blocked.png", "Blocked invoice"),
+          solid("aichatwindows.png", "AI assistant chat"),
         ]),
       ],
     };
@@ -60,16 +63,16 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
 export const plintoCaseStudy = {
   slug: "plinto",
   title: "Plinto: Designing an AI Invoice Approval Interface",
-  aboutLabel: "about the project",
+  aboutLabel: "ABOUT THE PROJECT",
   description:
-    "A Round 3 design task for a Copenhagen fintech startup. I designed the invoice approval workspace where finance operators review AI recommendations, act through a split view and copilot chat, and move invoices across three clear states: Auto-matched, Needs review, and Blocked.",
+    "A Round 3 design task for a Copenhagen fintech startup. I designed the invoice approval workspace where finance operators review AI recommendations, act through a split view and AI assistant chat, and move invoices across three clear states: Auto-matched, Needs review, and Blocked.",
   meta: [
     {
-      label: "My role",
+      label: "MY ROLE",
       value: "UX Research\nInteraction Design\nUI Design\nPrototyping",
     },
-    { label: "client", value: "Plinto" },
-    { label: "year", value: "2026" },
+    { label: "CLIENT", value: "Plinto" },
+    { label: "YEAR", value: "2026" },
   ],
   heroImage: {
     src: "/images/works/plinto/plinto-hero.jpg",
@@ -83,7 +86,7 @@ export const plintoCaseStudy = {
         {
           label: "PROJECT BACKGROUND",
           paragraphs: [
-            "Plinto is an early stage startup building an AI virtual controller. This case study covers a product design task focused on the approval moment: after the AI has parsed an invoice, matched it against purchase orders, and assigned a status, the user needs to understand status and next steps.",
+            "Plinto is an early stage startup building an AI assistant. This case study covers a product design task focused on the approval moment: after the AI has parsed an invoice, matched it against purchase orders, and assigned a status, the user needs to understand status and next steps.",
           ],
         },
         {
@@ -95,13 +98,13 @@ export const plintoCaseStudy = {
         {
           label: "GOAL 02",
           paragraphs: [
-            "Make AI reasoning visible in the copilot pane so operators can trust good matches and challenge weak ones.",
+            "Make AI reasoning visible in the AI assistant pane so operators can trust good matches and challenge weak ones.",
           ],
         },
         {
           label: "GOAL 03",
           paragraphs: [
-            "Design for speed on Auto-matched invoices while making Blocked cases structurally hard to bypass.",
+            "Design for speed on Auto-matched invoices while making Blocked cases hard to approve by mistake.",
           ],
         },
       ],

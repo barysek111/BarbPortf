@@ -1,15 +1,22 @@
 import rokokoBrandChapters from "./generated/rokokobrand.json";
-import { buildScopeChapter } from "./parse-refined-md";
 import type { CaseStudy, CaseStudyChapter } from "./types";
 
 const media = "/images/works/rokokobrand";
 
-function solid(file: string, alt: string) {
+function solid(file: string, alt: string, color?: string) {
   const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "solid" as const, src, alt };
+  return { variant: "solid" as const, src, alt, color };
 }
 
-function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
+function fill(file: string, alt: string) {
+  const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
+  return { variant: "fill" as const, src, alt };
+}
+
+function row(
+  columns: 1 | 2 | 3,
+  frames: Array<ReturnType<typeof solid> | ReturnType<typeof fill>>,
+) {
   return { columns, frames };
 }
 
@@ -18,50 +25,35 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     return {
       ...chapter,
       imageRows: [
-        row(2, [
-          solid("logo-placement-example1.svg", "Logo placement"),
-          solid("logo-placement-example2.svg", "Logo placement"),
+        row(3, [
+          fill("logo-placement-example1.svg", "Logo placement"),
+          fill("logo-placement-example2.svg", "Logo placement"),
+          fill("logo-placement-example2-1.svg", "Logo placement"),
         ]),
-        row(1, [solid("logo-placement-example2-1.svg", "Logo placement")]),
-        row(1, [solid("logos-2.svg", "Logo variations")]),
-        row(1, [solid("colors-1.svg", "Colour palette")]),
       ],
     };
   }
 
-  if (chapter.headline === "Design") {
+  if (chapter.headline === "Principles and assets") {
     return {
       ...chapter,
       imageRows: [
+        row(1, [solid("principles-slides-1.png", "Deck template", "var(--color-ink)")]),
+        row(1, [solid("principles-slides-2.png", "Deck template", "var(--color-ink)")]),
         row(2, [
-          solid("slides1-1-scaled.jpg", "Deck template"),
-          solid("slides2-scaled.jpg", "Deck template"),
+          fill("principles-some-1.jpg", "Social media branding"),
+          fill("principles-some-2.jpg", "Social media branding"),
         ]),
         row(2, [
-          solid("some1-scaled.jpg", "Social media branding"),
-          solid("some2-scaled.jpg", "Social media branding"),
+          solid("principles-jobads.svg", "Job listings", "var(--color-ink)"),
+          solid("principles-postss.png", "Social posts", "var(--color-ink)"),
         ]),
-        row(2, [
-          solid("joblistingsrokoko.svg", "Job listings"),
-          solid("someprofiles-scaled.jpg", "Social profiles"),
-        ]),
-        row(2, [
-          solid("someposts3-1-scaled.jpg", "Social posts"),
-          solid("youtubethumbnails-scaled.jpg", "YouTube thumbnails"),
-        ]),
-        row(1, [solid("emailcommunication-1.jpg", "Email communication")]),
+        row(1, [solid("principles-emails.png", "Email communication", "var(--color-ink)")]),
         row(3, [
-          solid("Headrig_20-copy.jpg", "Headrig packaging"),
-          solid("Headrig_21-copy.jpg", "Headrig packaging"),
-          solid("Headrig_23-copy.jpg", "Headrig packaging"),
+          fill("Headrig_20-copy.jpg", "Headrig packaging"),
+          fill("Headrig_21-copy.jpg", "Headrig packaging"),
+          fill("Headrig_23-copy.jpg", "Headrig packaging"),
         ]),
-        row(1, [solid("Headrig_19-copy.jpg", "Headrig packaging")]),
-        row(3, [
-          solid("20231011_123048.jpg", "Merchandise"),
-          solid("20231011_123339-1.jpg", "Merchandise"),
-          solid("IMG_8484-1.jpg", "Merchandise"),
-        ]),
-        row(1, [solid("Frame-427322101-1.jpg", "Merchandise")]),
       ],
     };
   }
@@ -85,19 +77,40 @@ export const rokokoBrandCaseStudy = {
     { label: "year", value: "2022" },
   ],
   heroImage: {
-    src: "/images/works/rokokobrand/rokokobrandthumbnailprojectpage.jpg",
+    src: "/images/works/rokokobrand/herororkoko.png",
     alt: "Rokoko brand overview",
+    variant: "fill",
   },
   chapters: [
-    buildScopeChapter(
-      "Rokoko is a motion capture company providing hardware and software for animators and creators globally. In 2022, they partnered with E-types for a complete rebrand redefining their visual language across all platforms. My focus was translating the new direction into everyday brand assets, building consistency across packaging, print, digital templates, and merchandising.",
-      "The task was to unify all of Rokoko's brand touchpoints under the new identity and bring clarity and cohesion to all brand communication. Deliverables needed to:",
-      [
-        "Demonstrate visual distinctiveness and reflect Rokoko's position as a creative leader.",
-        "Support fast-paced tech environments with adaptable, scalable templates.",
-        "Reinforce consistency across packaging, print, digital, and merchandising.",
+    {
+      headline: "SCOPE",
+      sections: [
+        {
+          label: "BACKGROUND AND GOALS",
+          paragraphs: [
+            "In 2022 Rokoko partnered with E-types for a complete rebrand redefining their visual language across all platforms. My focus was translating the new direction into everyday brand assets, unify all touchpoints under the new identity and bring clarity to all brand communication.",
+          ],
+        },
+        {
+          label: "01",
+          paragraphs: [
+            "Demonstrate visual distinctiveness and reflect Rokoko's position as a creative leader.",
+          ],
+        },
+        {
+          label: "02",
+          paragraphs: [
+            "Support fast-paced tech environments with adaptable, scalable templates.",
+          ],
+        },
+        {
+          label: "03",
+          paragraphs: [
+            "Reinforce consistency across packaging, print, digital, and merchandising.",
+          ],
+        },
       ],
-    ),
+    },
     ...rokokoBrandChapters.map(withImageRows),
   ],
 } satisfies CaseStudy;

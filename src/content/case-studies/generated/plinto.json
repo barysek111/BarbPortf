@@ -3,21 +3,21 @@
     "headline": "Mapping three operator states",
     "sections": [
       {
-        "label": "01 — Auto-matched",
+        "label": "01 Auto-matched",
         "paragraphs": [
-          "PO, vendor, and amount align within policy. The operator confirms quickly. Primary action is approve with minimal friction and optional copilot summary."
+          "PO, vendor, and amount align within policy. The operator confirms quickly. Primary action is approve swiftly and have AI summary available."
         ]
       },
       {
-        "label": "02 — Needs Review",
+        "label": "02 Needs Review",
         "paragraphs": [
           "Human judgement required. Covers variance, first time vendors, policy edge cases, and other exceptions. The UI surfaces the specific issue, suggested next steps, and may require a reason or checklist before approval."
         ]
       },
       {
-        "label": "03 — Blocked",
+        "label": "03 Blocked",
         "paragraphs": [
-          "Hard stop. Duplicate suspicion, no PO match, or other conditions that should not proceed on a single click. Resolution options stay explicit and the copilot explains why approval is unavailable."
+          "Hard stop. Duplicate suspicion, no PO match, or other conditions that should not proceed on a single click. Resolution options stay explicit and the AI assistant explains why approval is unavailable."
         ]
       }
     ]
@@ -28,13 +28,13 @@
       {
         "label": "Layout options",
         "paragraphs": [
-          "I tested three layout directions. Chat-forward with the copilot dominant. Dashboard-first with KPI strip and invoice table. Minimal decision card with compact facts. The control room layout with queue plus split view won because it matched how people actually worked."
+          "I tested three layout directions. Chat-forward with the AI assistant dominant. Dashboard-first with KPI strip and invoice table. Minimal decision card with compact facts. The control room layout with queue plus split view won because it matched how people actually worked."
         ]
       },
       {
         "label": "Interaction pattern",
         "paragraphs": [
-          "Selecting an invoice opens the copilot pane with context loaded. Quick actions in chat trigger typed replies, a brief thinking state, and AI confirmation. The action footer updates so approval shows as completed in place."
+          "Selecting an invoice opens the AI assistant pane with context loaded. Quick actions in chat trigger typed replies, a brief thinking state, and AI confirmation. The action footer updates so approval shows as completed in place."
         ]
       }
     ]
@@ -54,7 +54,7 @@
     "headline": "Next steps",
     "sections": [
       {
-        "label": "What i would test",
+        "label": "What I would test",
         "paragraphs": [
           "Do AI replies feel faster than form buttons, or does it add uncertainty? When an invoice is Blocked, can operators find the right resolution without support?"
         ]

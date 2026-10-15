@@ -55,34 +55,5 @@
         ]
       }
     ]
-  },
-  {
-    "headline": "Outcomes",
-    "sections": [
-      {
-        "label": "Cohesive multi-experience platform",
-        "paragraphs": [
-          "After launch, the site felt like one coherent platform even though it was actually three different experiences. Load times stayed fast. New pages shipped faster because the template system meant less custom design work."
-        ]
-      },
-      {
-        "label": "Removing friction",
-        "paragraphs": [
-          "The biggest win was removing friction across use cases. A creator could find product info and user stories. A studio could find case studies and technical specs. An educator could find curriculum resources. They all arrived at the same site and found what they needed."
-        ]
-      },
-      {
-        "label": "Future-proofing",
-        "paragraphs": [
-          "The modular design system meant Rokoko could keep the site fresh as their product line evolved. New products, new case studies, new features all fit into the existing templates without rebuilding the site."
-        ]
-      },
-      {
-        "label": "Key insight",
-        "paragraphs": [
-          "Information architecture is critical to user experience. No amount of beautiful visual design fixes a confusing site structure. Get the structure right first, then make it beautiful."
-        ]
-      }
-    ]
   }
 ]

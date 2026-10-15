@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { LabelRoll } from "@/components/ui/LabelRoll";
 import { NavLink } from "@/components/layout/NavLink";
@@ -38,10 +39,31 @@ const DOC = "font-display text-[13px] leading-[1.6] tracking-normal normal-case"
 const DOC_DIM = `${DOC} text-muted`;
 const DOC_TITLE = "font-display text-[15px] leading-[1.4] tracking-normal normal-case";
 
+const notesPagesDone = new Set([
+  "plinto",
+  "powermatch",
+  "ageras",
+  "cococare",
+  "rokokobrand",
+  "rokokoweb",
+  "weld",
+]);
+
+const notesPages: { href: string; note?: string }[] = [
+  { href: "/" },
+  { href: "/about" },
+  { href: "/playground" },
+  { href: "/archive" },
+  ...projects.map((project) => ({
+    href: `/${project.slug}`,
+    note: notesPagesDone.has(project.slug) ? "done" : undefined,
+  })),
+];
+
 /* ── tokens ─────────────────────────────────────────────────────────── */
 
 const colors = [
-  { name: "ink", value: "#000", use: "type, rules" },
+  { name: "ink", value: "#1c1c1c", use: "type, rules" },
   { name: "paper", value: "#fff", use: "page background" },
   { name: "muted", value: "#a7a7a7", use: "inactive, secondary" },
   { name: "surface", value: "#f0f0f0", use: "solid image fill" },
@@ -58,7 +80,7 @@ const breakpoints = [
 const typeLevels = [
   {
     cls: "type-label",
-    letterSpacing: "-5%",
+    letterSpacing: "-0.3%",
     textTransform: "uppercase",
     fontSize: "12px",
     fontWeight: "regular",
@@ -67,7 +89,7 @@ const typeLevels = [
   },
   {
     cls: "type-label-medium",
-    letterSpacing: "-5%",
+    letterSpacing: "-0.3%",
     textTransform: "uppercase",
     fontSize: "12px",
     fontWeight: "semi-bold",
@@ -128,7 +150,7 @@ const IMAGE_PLACEHOLDER = "/images/imgplaceholder.jpg";
 
 const layoutUtils = [
   { cls: "page-inset", use: "global side padding (12px ≤1200, 24px above), max 3840 centred" },
-  { cls: "page-main", use: "main column — gap-96 between top-level page children; each direct child gets the 1920 inner column (same as section-wrap) except footer-bleed and data-page-bleed; first child gets 216px top unless data-skip-page-top" },
+  { cls: "page-main", use: "main column — gap-56 between top-level page children below 810px, gap-96 from tablet; each direct child gets the 1920 inner column (same as section-wrap) except footer-bleed and data-page-bleed; first child gets 216px top unless data-skip-page-top" },
   { cls: "page top padding", use: "216px — CSS utility maps to --spacing-page-top; usually automatic on page-main’s first child" },
   { cls: "section-wrap", use: "explicit 1920 cap — nav bar row, footer inner; section components rely on page-main instead" },
   { cls: "data-page-bleed", use: "opt out of page-main inner column when a block must span the full page-inset width" },
@@ -155,7 +177,7 @@ const atoms: Entry[] = [
   },
   {
     name: "ImageFrame",
-    note: "Max height 700. Fill: no padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set. Background: image behind. Solid and background padding is equal on all sides, inside the frame: 1-column 24px / 56px (below / from tablet 810); 2-column 24px / 44px; 3-column 24px / 44px. Default `columns` is 1 outside a row. Stacked rows stay 24px apart; padding does not add to that gap. Optional description 8px under, type-label muted.",
+    note: "Max height 700. Fill: no padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set. Background: image behind. Solid and background padding is equal on all sides, inside the frame: 1-column 24px / 64px (below / from tablet 810); 2-column 24px / 56px; 3-column 24px / 56px. Default `columns` is 1 outside a row. Optional description 8px under the frame, type-label muted. Stacked rows use ImageRowStack (24px below 810, 44px from tablet); padding does not add to stack gap.",
   },
   { name: "SectionHeading", note: "Section title. 41px, 51px from desktop 1200, 64px from 1440." },
   { name: "NavLink", note: "Leader on hover and current page. Open menu uses display type, below tablet only." },
@@ -233,13 +255,13 @@ const sections: Entry[] = [
   },
   {
     name: "WorksGrid",
-    note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, top-aligned, 12px apart; the toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the number and the project name with a 2px gap, both on the left, then the image, 12px apart. List stacks below desktop; side by side from 1200, with view project. The list shows the project description in muted type-body. Image strip is 4-up and 176px tall from tablet 810. Grid hover keeps the [view] pointer, turns the image grayscale in 0.2s, zooms to 104% in 0.5s ease-in, and fades a Bayer dither of ink, muted, and paper (2px blocks) over the whole image on that same 0.5s ease-in.",
+    note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, 12px apart. The toggle column has 4px top padding, 8px from 1440, so the first toggle's brackets meet the heading caps. The toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the number and the project name with a 2px gap, both on the left, then the image, 12px apart. List stacks below desktop; side by side from 1200, with view project. The list shows the project description in muted type-body. Image strip is 4-up and 176px tall from tablet 810. Grid hover keeps the [view] pointer, turns the image grayscale in 0.2s, zooms to 104% in 0.5s ease-in, and fades a Bayer dither of ink, muted, and paper (2px blocks) over the whole image on that same 0.5s ease-in.",
   },
   { name: "Services", note: "Rows stack below tablet. 50/50 from 810. Title sits in the right half from desktop 1200." },
   { name: "WhatIDo", note: "Tag row, then heading — gap-36 between them (same headline-to-body step as Services)." },
   {
     name: "Chapter",
-    note: "Stacks below tablet. Two columns from 810. Body paragraphs use gap-12. A subsection can include an image in the right column, fill unless a variant is set. The image is the same width as the subsection text, with 36px above it.",
+    note: "Stacks below tablet; chapter headline is full width under 810px, then max 70% of the left column from tablet. Two columns from 810. Right column subsections use gap-24 below 810px, gap-36 from tablet. Body paragraphs use gap-12. A subsection can include an image in the right column, fill unless a variant is set. The image is the same width as the subsection text, with 36px above it.",
   },
   {
     name: "CredentialSection",
@@ -247,12 +269,12 @@ const sections: Entry[] = [
   },
   {
     name: "ImageRow",
-    note: "1–3 frames. Columns from tablet 810. Solid and background padding follows ImageFrame (24px below tablet; from tablet: 56px / 44px / 44px for 1 / 2 / 3 columns). In 2- and 3-column rows, grid cells stretch to the tallest frame and media is vertically centered inside the padded frame; 1-column rows keep media top-aligned.",
+    note: "1–3 frames. gap-12 between grid cells on all viewports. Below 810px: 1-column rows stay one column; 2-column rows stay two columns side by side; 3-column rows use a 2×2 grid (two on the first row, third bottom-left, bottom-right empty). From tablet 810: 1, 2, or 3 equal columns. Solid and background padding follows ImageFrame (24px below tablet on all column counts; from tablet: 64px / 56px / 56px for 1 / 2 / 3 columns). Each cell is frame plus optional caption (8px gap). From tablet, when any frame has a caption in a 2- or 3-column row, equal-height frames then top-aligned captions. Captions are type-label muted. Media is vertically centered inside the padded frame on multi-column rows. 1-column rows hug the image and keep media top-aligned.",
   },
-  { name: "ChapterBlock", note: "Chapter copy, then image rows." },
+  { name: "ChapterBlock", note: "Chapter copy, then image rows. gap-36 between them below 810px, gap-96 from tablet." },
   {
     name: "ImageRowStack",
-    note: "24px between row frames. Solid and background padding is inside the frame and does not add to that gap.",
+    note: "Single-column grid, 24px between stacked image rows below 810px, 44px from tablet. In-row cell gap is on ImageRow (12px). Solid and background padding is inside the frame and does not add to the stack gap.",
   },
   {
     name: "PlaygroundGrid",
@@ -261,11 +283,11 @@ const sections: Entry[] = [
 ];
 
 const shell: Entry[] = [
-  { name: "SiteLayout", note: "Cursor, nav, page-inset + page-main (gap-96), footer. Side padding lives only on page-inset. page-main caps each direct child at 1920 centred — section components do not repeat section-wrap. Footer ink uses footer-bleed (excluded from that cap); footer content uses page-inset + section-wrap." },
+  { name: "SiteLayout", note: "Cursor, nav, page-inset + page-main (gap-56 below 810px, gap-96 from tablet), footer. Side padding lives only on page-inset. page-main caps each direct child at 1920 centred — section components do not repeat section-wrap. Footer ink uses footer-bleed (excluded from that cap); footer content uses page-inset + section-wrap." },
   { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard or the NextProject image, where the [view] label is the cursor." },
   {
     name: "Nav",
-    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). Home is the logo, colored with the nav text, max height 28px, vertically centered in the bar. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, playground, and the time. Row two is about and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page.",
+    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). Home is the logo, colored with the nav text, max height 28px, vertically centered in the bar. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page.",
   },
   {
     name: "Footer",
@@ -277,11 +299,11 @@ const shell: Entry[] = [
 const work: Entry[] = [
   {
     name: "ProjectHero",
-    note: "Title is full width below desktop, half width from 1200. About and meta are two columns from tablet 810 with gap-12. About column uses desktop:pr-152. About and meta labels use type-label-medium. Values stay type-label. Image is one column, solid unless a variant is passed. `color` sets the solid fill.",
+    note: "Title is full width below 810px, max 70% of the container from tablet. gap-36 between title and about/meta below 810px, gap-56 from tablet. About and meta stack below 810 with gap-24 between blocks; two columns from tablet 810 with gap-12. Each meta block uses gap-12 between label and value. About column uses desktop:pr-152. About and meta labels use type-label-medium. Values stay type-label. gap-36 between the copy block and hero image below 810px, gap-96 from tablet. Image is one column, solid unless a variant is passed. `color` sets the solid fill.",
   },
   {
     name: "NextProject",
-    note: "Case-study footer: bracket label above the project name, both centered on the image. Image hover matches WorksGrid: grayscale in 0.2s, 104% zoom in 0.5s ease-in, Bayer dither fade, and the [view] pointer.",
+    note: "Case-study footer: py-96 inside the section. Bracket label above the project name, both centered on the image. Image hover matches WorksGrid: grayscale in 0.2s, 104% zoom in 0.5s ease-in, Bayer dither fade, and the [view] pointer.",
   },
 ];
 
@@ -306,7 +328,7 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   ),
   ImageRow: (
     <div className="flex flex-col gap-32">
-      {([1, 2, 3] as const).map((columns) => (
+      {([2, 1] as const).map((columns) => (
         <div key={columns} className="flex flex-col gap-8">
           <p className={DOC_TITLE}>
             ImageRow — {columns} {columns === 1 ? "column" : "columns"}
@@ -428,6 +450,10 @@ export default function DesignSystemPage() {
   const hosts = getComponentHosts();
   const toc = [
     {
+      label: "Notes",
+      links: [{ id: "notes", label: "Notes" }],
+    },
+    {
       label: "Tokens",
       links: [
         { id: "colour", label: "Colour" },
@@ -450,6 +476,19 @@ export default function DesignSystemPage() {
         <h1 className={`${DOC_TITLE} text-[24px]`}>Design system</h1>
         <Toc groups={toc} />
       </header>
+
+      <Section id="notes" title="NOTES">
+        <ul className={`${DOC} flex list-disc flex-col gap-4 pl-20`}>
+          {notesPages.map((page) => (
+            <li key={page.href}>
+              <Link href={page.href} className="underline-offset-2 hover:underline">
+                {page.href}
+              </Link>
+              {page.note ? <span className={DOC_DIM}> {page.note}</span> : null}
+            </li>
+          ))}
+        </ul>
+      </Section>
 
       <Section id="colour" title="Colour">
         <ul className="flex flex-col gap-8">

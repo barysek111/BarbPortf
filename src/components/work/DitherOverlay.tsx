@@ -20,7 +20,7 @@ const LUMA_B = 0.0722;
 
 /** Dark to light. Values are the live tokens, with the system hex as a fallback. */
 const PALETTE = [
-  { token: "--color-ink", fallback: "#000000" },
+  { token: "--color-ink", fallback: "#1c1c1c" },
   { token: "--color-muted", fallback: "#a7a7a7" },
   { token: "--color-paper", fallback: "#ffffff" },
 ] as const;

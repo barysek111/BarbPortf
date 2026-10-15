@@ -21,26 +21,29 @@ export type ImageFrameProps = {
   columns?: 1 | 2 | 3;
   /** Responsive width hint for the optimizer. Image rows set this from the column count. */
   sizes?: string;
+  /** Set by ImageRow when the row uses a shared caption track (tablet, multi-column). */
+  captionedRow?: boolean;
 };
 
 /** Equal padding on solid and background frames (all sides). Inside the frame; does not add to row gap. */
 const ROW_PAD = {
-  1: "p-24 tablet:p-56",
-  2: "p-24 tablet:p-44",
-  3: "p-24 tablet:p-44",
+  1: "p-24 tablet:p-64",
+  2: "p-24 tablet:p-56",
+  3: "p-24 tablet:p-56",
 } as const;
 
 /** Image max height so padding stays inside the 700px frame cap. */
 const IMAGE_MAX = {
-  1: "max-h-[652px] tablet:max-h-[588px]",
-  2: "max-h-[652px] tablet:max-h-[612px]",
-  3: "max-h-[652px] tablet:max-h-[612px]",
+  1: "max-h-[652px] tablet:max-h-[572px]",
+  2: "max-h-[652px] tablet:max-h-[588px]",
+  3: "max-h-[652px] tablet:max-h-[588px]",
 } as const;
 
 /** Case-study frame height cap (ImageRow row height follows tallest frame, max this). */
 export const IMAGE_FRAME_MAX_H_PX = 700;
 
-const FRAME = "relative flex h-full w-full max-h-[700px] flex-col overflow-hidden";
+const FRAME =
+  "relative grid h-full w-full max-h-[700px] min-h-0 grid-cols-1 grid-rows-1 overflow-hidden";
 
 /** GIFs stay animated, and SVGs are not an allowed optimizer type. */
 function skipOptimizer(src: string) {
@@ -104,11 +107,14 @@ export function ImageFrame({
   color,
   columns = 1,
   sizes = "100vw",
+  captionedRow = false,
 }: ImageFrameProps) {
   const pad = ROW_PAD[columns];
   const imageMax = IMAGE_MAX[columns];
-  const mediaAlign = columns === 1 ? "items-start" : "items-center";
-  const mediaWrap = cn("flex w-full min-w-0 flex-1 justify-center", mediaAlign);
+  const mediaWrap = cn(
+    "grid min-h-0 min-w-0 w-full grid-cols-1",
+    columns === 1 ? "content-start justify-items-center" : "place-content-center",
+  );
   const frame =
     variant === "fill" ? (
       <div className={FRAME} data-name="Image Frame — fill">
@@ -143,12 +149,35 @@ export function ImageFrame({
       </div>
     );
 
-  if (!description) return frame;
+  const frameSlot = (
+    <div className={cn(captionedRow && "tablet:row-start-1 tablet:h-full tablet:min-h-0")}>
+      {frame}
+    </div>
+  );
+
+  if (!description) {
+    if (!captionedRow) return frame;
+    return (
+      <div className="tablet:row-span-2 tablet:grid tablet:grid-rows-subgrid">{frameSlot}</div>
+    );
+  }
 
   return (
-    <div className="flex h-full w-full flex-col gap-8">
-      {frame}
-      <p className="type-label text-muted">{description}</p>
+    <div
+      className={cn(
+        "grid w-full grid-cols-1 gap-y-8",
+        captionedRow && "tablet:row-span-2 tablet:grid-rows-subgrid tablet:gap-y-0",
+      )}
+    >
+      {frameSlot}
+      <p
+        className={cn(
+          "type-label text-muted",
+          captionedRow && "tablet:row-start-2 tablet:mt-8 tablet:self-start",
+        )}
+      >
+        {description}
+      </p>
     </div>
   );
 }

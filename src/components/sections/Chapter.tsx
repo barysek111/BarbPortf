@@ -10,7 +10,7 @@ export type ChapterSection = {
 };
 
 /**
- * Two-column chapter: headline left (max 70% of that column), stacked sub-sections right.
+ * Two-column chapter: headline full width below tablet; from 810px, left column headline max 70%. Sub-sections stack on the right.
  * Between-section rhythm comes from page-main gap-96.
  */
 export function Chapter({
@@ -29,10 +29,10 @@ export function Chapter({
   return (
     <section id={id} className={className} data-name="Section - Chapter">
       <div className="grid grid-cols-1 items-start gap-36 tablet:grid-cols-2 tablet:gap-12">
-        <SectionHeading as={headingLevel} className="max-w-[70%]">
+        <SectionHeading as={headingLevel} className="w-full max-w-none tablet:max-w-[70%]">
           {headline}
         </SectionHeading>
-        <div className="flex w-full max-w-[500px] flex-col gap-36 justify-self-start">
+        <div className="flex w-full max-w-[500px] flex-col gap-24 tablet:gap-36 justify-self-start">
           {sections.flatMap((section, sectionIndex) => [
             <div key={`${section.label}-${sectionIndex}`} className="flex flex-col gap-12">
               <p className="type-label appear" data-appear="20">

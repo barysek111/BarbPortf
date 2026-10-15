@@ -56,7 +56,7 @@ const entries = [
     client: "Plinto",
     services: "Product Design",
     summary:
-      "Designing the human-AI handoff moment for an invoice approval workflow. A single decision component that adapts its interface, gating logic, and visual hierarchy to four risk levels.",
+      "Invoice approval workspace for a fintech startup: split view, AI assistant chat, and three states (Auto-matched, Needs review, and Blocked).",
     year: "2026",
     location: "Copenhagen, Denmark",
     w: 1080,

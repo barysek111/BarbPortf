@@ -3,9 +3,9 @@ import type { CaseStudy, CaseStudyChapter } from "./types";
 
 const media = "/images/works/cococare";
 
-function solid(file: string, alt: string, description?: string) {
+function solid(file: string, alt: string, description?: string, color?: string) {
   const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "solid" as const, src, alt, description };
+  return { variant: "solid" as const, src, alt, description, color };
 }
 
 function fill(file: string, alt: string) {
@@ -56,23 +56,62 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     };
   }
 
-  if (chapter.headline === "Implementation") {
+  if (chapter.headline === "Design") {
     return {
       ...chapter,
       imageRows: [
-        row(1, [solid("hi-fidelity-mobilescreens6-new.svg", "Settings flow", "Settings")]),
         row(3, [
-          solid("cococare-screens-mobile-1.svg", "Coco Care mobile screens", "Program activity"),
-          solid("cococare-screens-mobile-2.svg", "Coco Care mobile screens", "Program activity"),
-          solid("cococare-screens-mobile-3.svg", "Coco Care mobile screens", "Info screens"),
+          solid("design-r-fe.png", "Coco Care design screen", undefined, "EFEAE1"),
+          solid("design-r-frame-6187.svg", "Coco Care design screen", undefined, "2A2A2A"),
+          solid("design-r-frame-427321985.svg", "Coco Care design screen", undefined, "FFBC9B"),
         ]),
         row(2, [
-          solid("hi-fidelity-portalscreen2-1.svg", "Patient page", "patient page"),
-          solid("hi-fidelity-portalscreen3-2.svg", "Program builder", "program builder"),
+          solid(
+            "implementation-frame-6178.svg",
+            "Coco Care portal patient overview",
+            "Portal patient overview table",
+          ),
+          solid(
+            "app-home-dashboard.png",
+            "Coco Care app home dashboard",
+            "App home dashboard",
+          ),
         ]),
         row(2, [
-          solid("hi-fidelity-portalscreen4-1.svg", "Active program", "active program"),
-          solid("hi-fidelity-portalscreen5-1.svg", "Goals", "setting goals"),
+          solid("design-portal-1.png", "Coco Care pre-training flow", "PRE-TRAINING FLOW"),
+          solid("design-portal-2.png", "Coco Care training flow", "TRAINING FLOW"),
+        ]),
+        row(2, [
+          solid(
+            "design-portal-3.png",
+            "Coco Care post-training flow",
+            "POST-TRAINING FLOW AND profile",
+          ),
+          solid("design-portal-4.png", "Coco Care utility pages", "SELECTION OF UTILITY PAGES"),
+        ]),
+        row(2, [
+          solid(
+            "design-patient.png",
+            "Coco Care patient page",
+            "Overview of compliance, SMART goal, pain development, activity history",
+          ),
+          solid(
+            "design-portal-program-builder.png",
+            "Coco Care program builder",
+            "Create a program for patient in drag and drop editor",
+          ),
+        ]),
+        row(2, [
+          solid(
+            "design-portal-active-program.png",
+            "Coco Care active program",
+            "Frequency, Note, current exercises",
+          ),
+          solid(
+            "design-portal-smart-score.png",
+            "Coco Care goals",
+            "patient's progress, history and setting a new goal",
+          ),
         ]),
       ],
     };
@@ -83,9 +122,9 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
       ...chapter,
       imageRows: [
         row(3, [
-          fill("revision1.svg", "Testing revision one"),
-          fill("revision2.svg", "Testing revision two"),
-          fill("revision3.svg", "Testing revision three"),
+          solid("testing-edit-6197.svg", "Coco Care testing revision"),
+          solid("testing-edit-6198.svg", "Coco Care testing revision"),
+          solid("testing-edit-6199.svg", "Coco Care testing revision"),
         ]),
       ],
     };
@@ -116,8 +155,8 @@ export const cocoCareCaseStudy = {
   heroImage: {
     src: "/images/works/cococare/cococarenewhero.svg",
     alt: "Coco Care product overview",
-    variant: "background",
-    backgroundSrc: "/images/works/cococare/cococareheroimgfillbackground.jpg",
+    variant: "solid",
+    color: "FFBC9B",
   },
   chapters: [
     {

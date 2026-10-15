@@ -97,17 +97,17 @@ export function Nav() {
               )}
             />
             <NavLink
-              href="/about"
-              label="About"
-              active={pathname === "/about"}
+              href="/playground"
+              label="Playground"
+              active={pathname === "/playground"}
               open={open}
               onClick={close}
               className={cn("tablet:col-start-1 tablet:row-start-2 tablet:h-[1.3em]", open && "w-full")}
             />
             <NavLink
-              href="/playground"
-              label="Playground"
-              active={pathname === "/playground"}
+              href="/about"
+              label="About"
+              active={pathname === "/about"}
               open={open}
               onClick={close}
               className="tablet:col-start-2 tablet:row-start-1 tablet:h-[1.3em]"

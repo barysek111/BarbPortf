@@ -33,14 +33,14 @@ export function ProjectHero({
 }) {
   return (
     <section
-      className="flex flex-col gap-96"
+      className="flex flex-col gap-36 tablet:gap-96"
       data-name="Section - About the Project"
     >
-      <div className="flex flex-col gap-56">
-        <SectionHeading as="h1" className="w-full desktop:max-w-1/2">
+      <div className="flex flex-col gap-36 tablet:gap-56">
+        <SectionHeading as="h1" className="w-full max-w-none tablet:max-w-[70%]">
           {title}
         </SectionHeading>
-        <div className="flex flex-col gap-12 tablet:grid tablet:grid-cols-2 tablet:gap-12">
+        <div className="flex flex-col gap-24 tablet:grid tablet:grid-cols-2 tablet:gap-12">
           <div className="flex flex-col gap-12 tablet:pr-56 desktop:pr-152">
             <p className="type-label-medium appear" data-appear="20">
               <span>{aboutLabel}</span>

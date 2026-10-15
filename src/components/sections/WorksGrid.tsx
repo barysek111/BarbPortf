@@ -35,7 +35,7 @@ function WorksGridModeProvider({ children }: { children: ReactNode }) {
 function WorksGridModeSwitch({ className }: { className?: string }) {
   const { mode, setMode } = useMode();
   return (
-    <div className={cn("type-label flex shrink-0 flex-col gap-2", className)}>
+    <div className={cn("type-label flex shrink-0 flex-col gap-2 pt-4 max:pt-8", className)}>
       <Button
         pressed={mode === "grid"}
         aria-pressed={mode === "grid"}

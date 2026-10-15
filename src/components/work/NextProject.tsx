@@ -43,8 +43,8 @@ export function NextProject(
   const video = imageSrc ? isWorkVideo(imageSrc) : false;
 
   return (
-    <section data-name="Section - Next Project">
-      <div className="grid w-full place-items-center">
+    <section className="py-96" data-name="Section - Next Project">
+      <div className="grid w-full min-w-0 place-items-center">
         {imageSrc ? (
           <Link
             href={href}
@@ -85,12 +85,12 @@ export function NextProject(
             <DitherOverlay src={imageSrc} fit={video ? "cover" : "fill"} position={video ? "top" : "center"} />
           </Link>
         ) : null}
-        <div className="pointer-events-none z-lift col-start-1 row-start-1 flex w-max max-w-full flex-col items-center justify-center gap-12 text-center">
+        <div className="pointer-events-none z-lift col-start-1 row-start-1 flex w-full min-w-0 max-w-full flex-col items-center justify-center gap-12 px-12 text-center">
           <Button href={href} className="pointer-events-auto">
             {label}
           </Button>
           <Link href={href} className="pointer-events-auto">
-            <h3 className="type-h3 appear" data-appear="60">
+            <h3 className="type-h3 appear min-w-0 break-words" data-appear="60">
               <span>{title}</span>
             </h3>
           </Link>
