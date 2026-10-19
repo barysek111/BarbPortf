@@ -13,7 +13,7 @@ function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
 
 export const agerasCaseStudy = {
   slug: "ageras",
-  title: "Ageras Website UI/UX Consolidation",
+  title: "Ageras Web UI/UX Consolidation",
   aboutLabel: "about the project",
   description:
     "A new web interface, and one UI/UX system, for a fintech SaaS suite used by small business owners.",
