@@ -25,15 +25,12 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     return {
       ...chapter,
       imageRows: [
+        row(1, [solid("weldsitemap.svg", "Weld sitemap")]),
         row(3, [
           solid("direction-shape-6206.svg", "Weld brand language", undefined, "var(--color-ink)"),
           solid("direction-shape-6207.svg", "Weld brand language", undefined, "var(--color-ink)"),
           solid("direction-shape-6208.svg", "Weld brand language", undefined, "var(--color-ink)"),
         ]),
-        row(1, [
-          solid("weld-website-screens.png", "Weld website screens", undefined, "var(--color-ink)"),
-        ]),
-        row(1, [solid("weldiconpack.svg", "Weld icon pack")]),
       ],
     };
   }
@@ -42,6 +39,11 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     return {
       ...chapter,
       imageRows: [
+        row(1, [
+          solid("weld-website-screens.png", "Weld website screens", undefined, "var(--color-ink)"),
+        ]),
+        row(1, [solid("weldscreens.png", "Weld website screens", undefined, "var(--color-ink)")]),
+        row(1, [solid("weldiconsss.svg", "Weld icon pack", "Custom icon pack", "var(--color-ink)")]),
         row(2, [
           solid(
             "weld-website-components1.svg",

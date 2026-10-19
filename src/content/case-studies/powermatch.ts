@@ -77,7 +77,7 @@ export const powermatchCaseStudy = {
   title: "Powermatch: Designing an Invoice Reconciliation feature",
   aboutLabel: "about the project",
   description:
-    "Designing an invoice reconciliation feature for Powermatch's internal finance team to replace an error-prone cross-tool workflow with a single interface for matching payments to invoices, handling edge cases, and maintaining a full audit trail.",
+    "An invoice reconciliation feature for Powermatch's internal finance team. It replaces an error-prone workflow across tools with one interface for matching payments to invoices, handling edge cases, and keeping a full audit trail.",
   meta: [
     {
       label: "My role",
@@ -99,7 +99,7 @@ export const powermatchCaseStudy = {
           label: "PROBLEM TO SOLVE",
           paragraphs: [
             "An internal finance team handles all billing between Powermatch and the companies it works with. Bank reconciliation was a critical daily task with no in-platform support.",
-            "Previous workflow required 3 tools to verify matching payments. The finance team was manually cross-referencing Powermatch, an accounting platform and a spreadsheet to reconcile payments.",
+            "The previous workflow needed three tools to check that payments matched. The finance team cross-referenced Powermatch, an accounting platform, and a spreadsheet by hand.",
           ],
         },
         {

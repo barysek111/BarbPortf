@@ -86,13 +86,13 @@ export const plintoCaseStudy = {
         {
           label: "PROJECT BACKGROUND",
           paragraphs: [
-            "Plinto is an early stage startup building an AI assistant. This case study covers a product design task focused on the approval moment: after the AI has parsed an invoice, matched it against purchase orders, and assigned a status, the user needs to understand status and next steps.",
+            "Plinto is an early-stage startup building an AI assistant. This case study covers a product design task focused on the approval moment. After the AI has parsed an invoice, matched it to purchase orders, and assigned a status, the user needs to understand that status and what to do next.",
           ],
         },
         {
           label: "GOAL 01",
           paragraphs: [
-            "Collapse complex backend logic into three operator facing states without hiding the nuance inside each state.",
+            "Collapse complex backend logic into three operator-facing states, without hiding the nuance inside each state.",
           ],
         },
         {

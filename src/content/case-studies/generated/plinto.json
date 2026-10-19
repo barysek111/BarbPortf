@@ -11,7 +11,7 @@
       {
         "label": "02 Needs Review",
         "paragraphs": [
-          "Human judgement required. Covers variance, first time vendors, policy edge cases, and other exceptions. The UI surfaces the specific issue, suggested next steps, and may require a reason or checklist before approval."
+          "A person has to judge. That covers variance, first-time vendors, policy edge cases, and other exceptions. The UI shows the specific issue and suggested next steps, and may ask for a reason or checklist before approval."
         ]
       },
       {
@@ -56,7 +56,7 @@
       {
         "label": "What I would test",
         "paragraphs": [
-          "Do AI replies feel faster than form buttons, or does it add uncertainty? When an invoice is Blocked, can operators find the right resolution without support?"
+          "Do AI replies feel faster than form buttons, or do they add uncertainty? When an invoice is Blocked, can operators find the right resolution without support?"
         ]
       },
       {

@@ -49,21 +49,20 @@
         ]
       },
       {
-        "label": "Visual content",
-        "paragraphs": [
-          "Photography and illustration treated imperfect produce as the hero. Social posts, newsletters, and campaigns paired those images with behind-the-scenes stories."
-        ]
-      },
-      {
         "label": "Digital presence",
         "paragraphs": [
           "The website made signing up straightforward while explaining why the produce mattered."
         ]
-      },
+      }
+    ]
+  },
+  {
+    "headline": "Content",
+    "sections": [
       {
-        "label": "Extended brand presence",
+        "label": "Visual content",
         "paragraphs": [
-          "Tote bags, t-shirts, posters, stickers, and email templates carried the same playful energy. Over two years, the brand showed up beyond the box."
+          "Photography and illustration treated imperfect produce as the hero. Social posts, newsletters, and campaigns paired those images with behind-the-scenes stories."
         ]
       }
     ]
@@ -86,7 +85,7 @@
       {
         "label": "Long-term impact",
         "paragraphs": [
-          "Curious customers started telling their friends. What began as a mission became a brand people kept choosing."
+          "Curious customers started telling their friends, and they kept choosing Eat Grim."
         ]
       }
     ]

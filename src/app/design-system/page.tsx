@@ -26,8 +26,9 @@ import { about } from "@/content/about";
 import { projects } from "@/content/projects";
 import { agerasCaseStudy } from "@/content/case-studies/ageras";
 import { getComponentHosts } from "@/lib/component-usage";
+import { hideInternalPage } from "@/lib/internal-page";
 
-// Internal reference page. Kept out of the nav and out of search results.
+// Internal catalogue, same as /archive. Not in the nav. 404 when published.
 export const metadata: Metadata = {
   title: "Design system — internal",
   robots: { index: false, follow: false, nocache: true },
@@ -447,6 +448,8 @@ function linksFor(entries: Entry[]) {
 }
 
 export default function DesignSystemPage() {
+  hideInternalPage();
+
   const hosts = getComponentHosts();
   const toc = [
     {

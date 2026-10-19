@@ -16,7 +16,7 @@ export const agerasCaseStudy = {
   title: "Ageras Website UI/UX Consolidation",
   aboutLabel: "about the project",
   description:
-    "Reinventing the approach to web interface and consolidating digital UI/UX for a fintech SaaS suite catering to small business owners.",
+    "A new web interface, and one UI/UX system, for a fintech SaaS suite used by small business owners.",
   chapters: [
     {
       headline: "SCOPE",
@@ -24,7 +24,7 @@ export const agerasCaseStudy = {
         {
           label: "BACKGROUND AND GOALS",
           paragraphs: [
-            "Ageras is a fintech SaaS provider with a suite of digital tools for small business owners to handle their financial management, invoicing, and accounting. The task was to consolidate a diverse set of websites for different products, to reflect the transition into one brand and one product.",
+            "Ageras is a fintech SaaS provider. Small business owners use its tools for finances, invoicing, and accounting. The task was to bring a set of product websites into one brand and one product.",
           ],
         },
         {
@@ -59,19 +59,19 @@ export const agerasCaseStudy = {
         {
           label: "Custom iconography and illustration",
           paragraphs: [
-            "Develop a custom iconography and illustration style, as well as image style, to clarify complex content and boost brand recognition.",
+            "Develop a custom icon, illustration, and image style to explain complex content and make the brand recognizable.",
           ],
         },
         {
           label: "New UI and UX for the website",
           paragraphs: [
-            "Reimagine the website's UI and UX for seamless task completion and easy product discovery.",
+            "Reimagine the website UI and UX so tasks are easy to finish and products are easy to find.",
           ],
         },
         {
           label: "Scalable design system for web",
           paragraphs: [
-            "Build a scalable design system, making it effortless to expand and customize the suite as Ageras grows into new markets and product areas.",
+            "Build a design system the team can extend and customize as Ageras grows into new markets and product areas.",
           ],
         },
       ],
@@ -124,7 +124,7 @@ export const agerasCaseStudy = {
         {
           label: "Documentation",
           paragraphs: [
-            "Detailed documentation was created for every component and interaction pattern, providing clear usage guidelines and best practices. This ensures maintainability and knowledge transfer as the team grows.",
+            "I wrote documentation for every component and interaction pattern, with usage guidelines and practices, so the team can maintain the system and hand it on.",
           ],
         },
       ],
@@ -156,13 +156,13 @@ export const agerasCaseStudy = {
         {
           label: "Landing page templates",
           paragraphs: [
-            "Each template adapts key messaging, value propositions, and calls to action to the needs of specific user segments and regions, as well as keeping conversion and best marketing practices for landing pages as a top priority.",
+            "Each template adapts the message, value proposition, and call to action for that user segment and region. Conversion and landing-page practice stay the priority.",
           ],
         },
         {
           label: "High fidelity screens and component library ready to ship",
           paragraphs: [
-            "These screens helped align stakeholders and gave the engineering team the precise details needed for development",
+            "These screens helped align stakeholders and gave engineering the details they needed to build.",
           ],
         },
       ],

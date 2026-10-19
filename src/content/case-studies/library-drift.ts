@@ -1,17 +1,11 @@
 import type { CaseStudy } from "./types";
 
-const PLACEHOLDER = "/images/imgplaceholder.jpg";
-
-function frame(description: string) {
-  return { variant: "solid" as const, src: PLACEHOLDER, alt: "", description };
-}
-
 export const libraryDriftCaseStudy = {
   slug: "library-drift",
-  title: "Library Drift: Design System Auditor Plugin",
+  title: "Library Drift Design System Plugin",
   aboutLabel: "about the project",
   description:
-    "A Figma plugin that scans design files to detect broken links to deleted components and deprecated variants. Solves a real problem for teams working with complex, evolving design systems.",
+    "A Figma plugin that scans design files for broken links to deleted components and deprecated variants. It solves a real problem for teams with complex, evolving design systems.",
   meta: [
     {
       label: "My role",
@@ -21,8 +15,10 @@ export const libraryDriftCaseStudy = {
     { label: "year", value: "2026" },
   ],
   heroImage: {
-    src: "/images/works/library-drift.jpg",
+    src: "/images/works/librarydrifther.png",
     alt: "Library Drift Figma plugin",
+    variant: "background",
+    backgroundSrc: "/images/works/herobackgrunddd.png",
   },
   chapters: [
     {
@@ -41,36 +37,6 @@ export const libraryDriftCaseStudy = {
           ],
         },
       ],
-      imageRows: [
-        {
-          columns: 2,
-          frames: [
-            frame(
-              '(HERE ADD SCREENSHOT OF PLUGIN SCANNING UI - showing the scan interface with buttons and API token setup). What to show: The initial plugin UI with the Scan button, token field, and "How to" instructions visible',
-            ),
-            frame(
-              '(HERE ADD SCREENSHOT OF PLUGIN SCANNING UI - showing the scan interface with buttons and API token setup). What to show: The initial plugin UI with the Scan button, token field, and "How to" instructions visible',
-            ),
-          ],
-        },
-      ],
-    },
-    {
-      headline: "Problem",
-      sections: [
-        {
-          label: "What's Broken",
-          paragraphs: [
-            "When we delete or deprecate a component, instances still exist in older files pointing to something that no longer exists. Designers see a broken link icon but don't know why, what to replace it with, or how many files are affected. Manual hunting takes time and is error-prone.",
-          ],
-        },
-        {
-          label: "Why It Matters",
-          paragraphs: [
-            "Broken links mess with our workflow. Design consistency suffers. Teams waste time troubleshooting instead of designing. The more we evolve the system, the bigger the problem gets.",
-          ],
-        },
-      ],
     },
     {
       headline: "Solution",
@@ -78,61 +44,55 @@ export const libraryDriftCaseStudy = {
         {
           label: "How It Works",
           paragraphs: [
-            "Library Drift scans a file or selection and catalogs every component instance. It compares each instance to the current library state. If a component is deleted, deprecated, or the variant no longer exists, it flags it with a color-coded badge. Red for deleted. Yellow for deprecated. Orange for variants that went away.",
+            "Library Drift scans a file or selection and catalogs every component instance. It compares each instance to the current library state. Each result uses badges for where it lives, what it is, and what's wrong. Library or Local. Component in blue, or Variant in purple. Deleted in black. Deprecated in gray.",
           ],
         },
         {
           label: "Issue Types & Visibility",
           paragraphs: [
-            "The color coding helps users scan fast. Red components are critical, they're completely gone. Yellow variants can still work through the library, just not in their original form. The badges make it obvious which files have which problems.",
+            "The badges are there so a result can be read at a glance. Deleted means it's gone. Deprecated means it still exists in the library, just not in that form. Library versus Local, and Component versus Variant, say what you're looking at before you jump to it.",
           ],
         },
         {
           label: "Find on Canvas",
           paragraphs: [
-            "One click in the results table and Figma jumps you to the broken instance. No hunting. That single feature saves more time than anything else in the tool.",
+            "One click on Find on canvas and Figma jumps you to the broken instance. No hunting. That single feature saves more time than anything else in the tool.",
           ],
         },
       ],
       imageRows: [
         {
-          columns: 3,
+          columns: 2,
           frames: [
-            frame(
-              "HERE ADD SCREENSHOTS OF PLUGIN UI STATES - showing the results panel with different issue types: deleted, deprecated, variant deleted, etc. What to show: Multiple screenshots of the results panel showing the color-coded badges (red for deleted, yellow for deprecated, orange for variant deleted)",
-            ),
-            frame(
-              "HERE ADD SCREENSHOTS OF PLUGIN UI STATES - showing the results panel with different issue types: deleted, deprecated, variant deleted, etc. What to show: Multiple screenshots of the results panel showing the color-coded badges (red for deleted, yellow for deprecated, orange for variant deleted)",
-            ),
-            frame(
-              "HERE ADD SCREENSHOTS OF PLUGIN UI STATES - showing the results panel with different issue types: deleted, deprecated, variant deleted, etc. What to show: Multiple screenshots of the results panel showing the color-coded badges (red for deleted, yellow for deprecated, orange for variant deleted)",
-            ),
+            {
+              variant: "solid",
+              src: "/images/works/library-drift/group-10.svg",
+              alt: "Library Drift scan results",
+              color: "var(--color-ink)",
+            },
+            {
+              variant: "solid",
+              src: "/images/works/library-drift/group-11.svg",
+              alt: "Library Drift scan results",
+              color: "var(--color-ink)",
+            },
           ],
         },
         {
-          columns: 3,
+          columns: 2,
           frames: [
-            frame(
-              'HERE ADD SCREENSHOTS OF INTERACTIVE STATES - showing the scanning progress, the results list, and the "find on canvas" functionality. What to show: Three states — scanning in progress (with progress bar), completed results list, and/or the "Find on canvas" action',
-            ),
-            frame(
-              'HERE ADD SCREENSHOTS OF INTERACTIVE STATES - showing the scanning progress, the results list, and the "find on canvas" functionality. What to show: Three states — scanning in progress (with progress bar), completed results list, and/or the "Find on canvas" action',
-            ),
-            frame(
-              'HERE ADD SCREENSHOTS OF INTERACTIVE STATES - showing the scanning progress, the results list, and the "find on canvas" functionality. What to show: Three states — scanning in progress (with progress bar), completed results list, and/or the "Find on canvas" action',
-            ),
-          ],
-        },
-      ],
-    },
-    {
-      headline: "Adoption",
-      sections: [
-        {
-          label: "What's Next",
-          paragraphs: [
-            "More teams at Saxo asked for it after our design team started using it. It's proven valuable enough that it's now part of how we manage our design system. Future improvements would be batch fixes, direct variant suggestions, and maybe a command to apply a fix across multiple instances at once.",
-            "This project proved that small, focused tools can have big impact. It wasn't a flashy product redesign or a new feature. It was solving one specific pain point really well.",
+            {
+              variant: "solid",
+              src: "/images/works/library-drift/1111.svg",
+              alt: "Library Drift scan results",
+              color: "var(--color-ink)",
+            },
+            {
+              variant: "solid",
+              src: "/images/works/library-drift/2222.svg",
+              alt: "Library Drift scan results",
+              color: "var(--color-ink)",
+            },
           ],
         },
       ],

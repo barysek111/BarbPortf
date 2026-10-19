@@ -34,7 +34,7 @@
       {
         "label": "01",
         "paragraphs": [
-          "Enable physiotherapists to quickly assign, monitor, and adjust treatment plans for multiple patients with ease and in bulk."
+          "Let physiotherapists assign, monitor, and adjust plans for many patients at once, including in bulk."
         ]
       },
       {
@@ -57,25 +57,25 @@
       {
         "label": "Onboarding",
         "paragraphs": [
-          "Ensure smooth introduction to the program and allow daily tasks to be completed without outside help by users across age and tech-literacy levels."
+          "Get people into the program smoothly, and let them finish daily tasks without help, across ages and levels of comfort with tech."
         ]
       },
       {
         "label": "Guidance",
         "paragraphs": [
-          "Make exercise flows Painless even for limited accessibility needs users, as well as keeping tone of voice and visual language positive, encouraging and personal."
+          "Make exercise flows painless, including for people with limited accessibility needs. Keep the tone and visual language positive, encouraging, and personal."
         ]
       },
       {
         "label": "Insights & Data",
         "paragraphs": [
-          "Provide physios with actionable data and easy navigation throughout different task flows to help with fast, and informed decisions."
+          "Give physios actionable data and clear navigation across task flows, so they can make fast, informed decisions."
         ]
       },
       {
         "label": "Reassurance",
         "paragraphs": [
-          "Deliver feedback, reminders, and support in the channels each user prefers. Also providing a direct physio chat and providing a helping hand."
+          "Deliver feedback, reminders, and support in the channels each person prefers, including a direct physio chat."
         ]
       }
     ]
@@ -109,13 +109,13 @@
       {
         "label": "Design system",
         "paragraphs": [
-          "I created unified UI language and consistent patterns across the platform. Using reusable modules, hierarchies, and interactions to support usability, accessibility and trust The foundation allowed rapid prototyping and collaboration through the roadmap."
+          "I set a shared UI language and consistent patterns across the platform: reusable modules, hierarchies, and interactions. That supports usability, accessibility, and trust. It also let us prototype quickly and work together through the roadmap."
         ]
       },
       {
         "label": "Functional Prototype",
         "paragraphs": [
-          "I quickly created semi-polished prototype, and and teste a staging version of selected flows. That allowed key feedback to be implemented before launch."
+          "I made a semi-polished prototype and tested a staging version of selected flows. That let us apply the important feedback before launch."
         ]
       }
     ]
@@ -143,7 +143,7 @@
       {
         "label": "Impressions and ease",
         "paragraphs": [
-          "Feedback was positive across both groups, with users especially appreciating clear instructions and intuitive navigation. Some requested even more dashboard visual cues and reminders, which were incorporated into the next design iteration to further boost compliance and satisfaction."
+          "Feedback was positive in both groups. People liked the clear instructions and the navigation. Some asked for more visual cues and reminders on the dashboard. Those went into the next iteration, to raise compliance and satisfaction."
         ]
       },
       {

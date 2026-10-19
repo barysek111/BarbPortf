@@ -20,15 +20,15 @@
     "headline": "Direction",
     "sections": [
       {
-        "label": "Brand refresh",
-        "paragraphs": [
-          "I refreshed the visual identity with a bold palette and clean typography. The logo stayed. Everything around it got tighter, and custom icons and illustration added character without losing credibility."
-        ]
-      },
-      {
         "label": "Website clarity",
         "paragraphs": [
           "The priority was clarity: what Weld does, who it's for, and why they should care. Each page had one job, whether that was explaining features, showing pricing, or getting people to sign up."
+        ]
+      },
+      {
+        "label": "Brand refresh",
+        "paragraphs": [
+          "I refreshed the visual identity with a bold palette and clean typography. The logo stayed. Everything around it got tighter, and custom icons and illustration added character without losing credibility."
         ]
       }
     ]

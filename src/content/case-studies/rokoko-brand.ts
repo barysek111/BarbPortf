@@ -66,7 +66,7 @@ export const rokokoBrandCaseStudy = {
   title: "Rokoko Brand Identity",
   aboutLabel: "about the project",
   description:
-    "Rokoko empowers creators with innovative motion capture technology, enabling artists to bring animated characters to life with intuitive, real-time tools. This project documents the rollout of a revitalized brand identity.",
+    "Rokoko builds intuitive, real-time motion-capture tools so artists can bring animated characters to life. This project is the rollout of the new brand identity.",
   meta: [
     {
       label: "My role",
@@ -88,7 +88,7 @@ export const rokokoBrandCaseStudy = {
         {
           label: "BACKGROUND AND GOALS",
           paragraphs: [
-            "In 2022 Rokoko partnered with E-types for a complete rebrand redefining their visual language across all platforms. My focus was translating the new direction into everyday brand assets, unify all touchpoints under the new identity and bring clarity to all brand communication.",
+            "In 2022, Rokoko partnered with E-types on a full rebrand, redefining the visual language across platforms. I turned that direction into everyday brand assets, unified the touchpoints under the new identity, and made brand communication clearer.",
           ],
         },
         {

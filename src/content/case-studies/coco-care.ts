@@ -67,12 +67,12 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
         ]),
         row(2, [
           solid(
-            "implementation-frame-6178.svg",
+            "portal-patient-overview-table.svg",
             "Coco Care portal patient overview",
             "Portal patient overview table",
           ),
           solid(
-            "app-home-dashboard.png",
+            "app-home-dashboard.svg",
             "Coco Care app home dashboard",
             "App home dashboard",
           ),
@@ -85,7 +85,7 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
           solid(
             "design-portal-3.png",
             "Coco Care post-training flow",
-            "POST-TRAINING FLOW AND profile",
+            "POST-TRAINING FLOW AND PROFILE",
           ),
           solid("design-portal-4.png", "Coco Care utility pages", "SELECTION OF UTILITY PAGES"),
         ]),
@@ -98,7 +98,7 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
           solid(
             "design-portal-program-builder.png",
             "Coco Care program builder",
-            "Create a program for patient in drag and drop editor",
+            "Create a program for a patient in the drag-and-drop editor",
           ),
         ]),
         row(2, [
@@ -143,7 +143,7 @@ export const cocoCareCaseStudy = {
   title: "Coco Care Interface Design",
   aboutLabel: "about the project",
   description:
-    "Designing user interface for Coco Care web app and mobile app, an AI-driven motion capture tool for physio rehabilitation.",
+    "Designing the interface for the Coco Care web app and mobile app, an AI motion-capture tool for physio rehabilitation.",
   meta: [
     {
       label: "My role",
@@ -163,9 +163,9 @@ export const cocoCareCaseStudy = {
       headline: "SCOPE",
       sections: [
         {
-          label: "BACKGROUND and challenge:",
+          label: "BACKGROUND and challenge",
           paragraphs: [
-            "Coco Care is a digital physiotherapy solution that helps patients access personalized, evidence-based rehabilitation at home through an intuitive app. I designed the patient and physio experience and set the foundation for scheduling, exercise tracking and many more functions to boost engagement, compliance, and recovery outcomes.",
+            "Coco Care helps patients do personalized, evidence-based rehabilitation at home in an app. I designed the patient and physio experience, and the foundation for scheduling, exercise tracking, and other functions that support engagement, compliance, and recovery.",
           ],
         },
       ],

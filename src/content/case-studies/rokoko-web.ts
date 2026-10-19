@@ -66,7 +66,6 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
           fill("rokokoweb4.jpg", "Marketing website"),
           fill("rokokoweb5.jpg", "Marketing website"),
         ]),
-        row(1, [fill("rokokoweb6.jpg", "Marketing website")]),
         row(3, [
           fill("rokokoweb10.jpg", "Knowledge base"),
           fill("rokokoweb8.jpg", "Knowledge base"),
@@ -77,7 +76,6 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
           fill("rokokoweb12.jpg", "Webshop"),
           fill("rokokoweb13-1.jpg", "Webshop"),
         ]),
-        row(1, [fill("rokokoweb14.jpg", "Webshop")]),
       ],
     };
   }
@@ -90,7 +88,7 @@ export const rokokoWebCaseStudy = {
   title: "Rokoko Website Revamp",
   aboutLabel: "about the project",
   description:
-    "Rokoko is a motion capture software and hardware company with products that allow their users to breathe life into animated characters with intuitive real-time full body motion capture system.",
+    "Rokoko makes motion-capture software and hardware. The products let people bring animated characters to life with an intuitive, real-time, full-body system.",
   meta: [
     {
       label: "My role",
@@ -112,8 +110,8 @@ export const rokokoWebCaseStudy = {
         {
           label: "The challenge",
           paragraphs: [
-            "The website redesign had to address a complex set of needs and audiences while staying true to Rokoko's new brand vision. As the product line expanded and the user base became more global, it was essential to:",
-            "1. Create a site that balanced clarity, scalability, and consistent storytelling.\n2. Build an adaptable framework for marketing, seamless navigation to support and e-commerce.\n3. Develop a design system that would keep everything cohesive as features and content evolved.",
+            "The product line was expanding, and the audience was becoming more global. The redesign still had to cover a complex set of needs and stay true to Rokoko's new brand.",
+            "1. Make a site that stays clear, can grow, and tells a consistent story.\n2. Build an adaptable framework for marketing, and clear navigation between support and e-commerce.\n3. Develop a design system that stays coherent as features and content change.",
           ],
         },
       ],

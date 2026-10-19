@@ -4,8 +4,9 @@ import { ChapterBlock } from "@/components/sections/ChapterBlock";
 import { NextProjectCanvas } from "@/components/work/NextProjectCanvas";
 import { cocoCareArchivedChapters } from "@/content/case-studies/coco-care";
 import type { CaseStudyChapter } from "@/content/case-studies/types";
+import { hideInternalPage } from "@/lib/internal-page";
 
-// Internal reference page. Kept out of the nav and out of search results.
+// Internal catalogue, same as /design-system. Not in the nav. 404 when published.
 export const metadata: Metadata = {
   title: "Archive — internal",
   robots: { index: false, follow: false, nocache: true },
@@ -58,6 +59,8 @@ const components: ArchivedComponent[] = [
 ];
 
 export default function ArchivePage() {
+  hideInternalPage();
+
   const toc = [
     ...(components.length
       ? [{ label: "Components", links: components.map((item) => ({ id: item.id, label: item.name })) }]

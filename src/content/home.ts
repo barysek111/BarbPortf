@@ -46,5 +46,5 @@ export const services = [
 export const whatIDo = {
   tags: ["what i do"],
   body:
-    "A UX/UI Designer with experience crafting intuitive interfaces that solve complex business challenges and make people's lives easier. Skilled in prototyping, with a strong focus on accessibility and user engagement.",
+    "I'm a UX/UI designer. I design interfaces for complex business problems and make them easier to live with. I prototype, and I keep accessibility and how people use the product in the work.",
 };

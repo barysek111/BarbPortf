@@ -33,18 +33,18 @@ function cardHeight(width: number, height: number) {
  */
 const entries = [
   {
-    file: "library-drift.jpg",
+    file: "library-drift-thumb.png",
     title: "Library Drift Figma Plugin",
     slug: "library-drift",
     listFolder: "library-drift",
     client: "Saxo Bank",
     services: "Plugin Design",
     summary:
-      "A Figma plugin that scans design files to detect broken links to deleted components and deprecated variants. Solves a real problem for teams working with complex, evolving design systems.",
+      "A Figma plugin that scans design files for broken links to deleted components and deprecated variants. It solves a real problem for teams with complex, evolving design systems.",
     year: "2026",
     location: "Copenhagen, Denmark",
-    w: 2250,
-    h: 1620,
+    w: 1220,
+    h: 1220,
     masonryY: 93,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
@@ -72,7 +72,7 @@ const entries = [
     client: "Powermatch",
     services: "Product Design",
     summary:
-      "Designing an invoice reconciliation feature. Replacing a fragmented cross-tool workflow with a flow for matching payments to invoices.",
+      "An invoice reconciliation feature that replaces a fragmented cross-tool workflow with one flow for matching payments to invoices.",
     year: "2025",
     location: "Copenhagen, Denmark",
     w: 1350,
@@ -88,7 +88,7 @@ const entries = [
     client: "Ageras",
     services: "UX/UI Design",
     summary:
-      "End-to-end website redesign across four markets, from wireframes and sitemaps to a final UI. Building the foundation for a comprehensive, responsive and scalable design system.",
+      "End-to-end website redesign across four markets, from wireframes and sitemaps to final UI, and the foundation for a responsive, scalable design system.",
     year: "2025",
     location: "Copenhagen, Denmark",
     w: 1080,
@@ -120,7 +120,7 @@ const entries = [
     client: "Rokoko",
     services: "Brand Identity",
     summary:
-      "Rebrand of everything from digital experience, SoMe campaigns, email templates, internal branding to print.",
+      "Rebrand across digital, social campaigns, email templates, internal branding, and print.",
     year: "2022",
     location: "Copenhagen, Denmark",
     w: 1080,
@@ -129,7 +129,7 @@ const entries = [
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
   {
-    file: "rokoko-website-revamp.mp4",
+    file: "rokokowebthumb.png",
     title: "Rokoko Website Revamp",
     slug: "rokokoweb",
     listFolder: "rokoko-website-revamp",
@@ -138,8 +138,8 @@ const entries = [
     summary: "Redesign of the company's main marketing website, webshop and a helpdesk site.",
     year: "2023",
     location: "Copenhagen, Denmark",
-    w: 720,
-    h: 720,
+    w: 1080,
+    h: 1350,
     masonryY: 707,
     showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   },
