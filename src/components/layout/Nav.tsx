@@ -32,8 +32,8 @@ export function Nav() {
       className={cn(
         "fixed inset-x-0 top-0 z-nav w-full",
         open
-          ? "min-h-svh bg-paper text-ink"
-          : "text-ink tablet:text-paper tablet:mix-blend-difference",
+          ? "pointer-events-auto min-h-svh bg-paper text-ink"
+          : "pointer-events-none text-ink tablet:text-paper tablet:mix-blend-difference",
       )}
     >
       <nav
@@ -57,16 +57,16 @@ export function Nav() {
               open && "pb-12",
             )}
           >
-            <Link href="/" aria-label={`${site.name} home`} onClick={close} className="flex w-max min-w-0 max-w-full items-center self-center">
-              <span
-                aria-hidden
-                className="block max-h-[28px] max-w-full bg-current [mask-image:url('/images/shared/logo.svg')] [mask-position:left_center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:url('/images/shared/logo.svg')] [-webkit-mask-position:left_center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
-                style={{ height: "28px", aspectRatio: "3733 / 300" }}
-              />
-            </Link>
+            <Link
+              href="/"
+              aria-label={`${site.name} home`}
+              onClick={close}
+              className="pointer-events-auto relative z-10 inline-block h-[28px] max-w-full shrink-0 self-center bg-current [mask-image:url('/images/shared/logo.svg')] [mask-position:left_center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:url('/images/shared/logo.svg')] [-webkit-mask-position:left_center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
+              style={{ aspectRatio: "3733 / 300" }}
+            />
             <Button
               type="button"
-              className="relative z-lift touch-manipulation whitespace-nowrap tablet:hidden"
+              className="pointer-events-auto relative z-lift touch-manipulation whitespace-nowrap tablet:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -77,7 +77,7 @@ export function Nav() {
 
           <div
             className={cn(
-              "flex-col items-start justify-start gap-0 py-56",
+              "pointer-events-auto flex-col items-start justify-start gap-0 py-56",
               open ? "flex" : "hidden",
               "tablet:grid tablet:min-w-0 tablet:flex-1 tablet:grid-cols-3 tablet:grid-rows-[1.3em_1.3em] tablet:items-center tablet:justify-items-start tablet:gap-x-12 tablet:gap-y-2 tablet:py-0",
             )}

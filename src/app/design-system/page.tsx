@@ -288,7 +288,7 @@ const shell: Entry[] = [
   { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard or the NextProject image, where the [view] label is the cursor." },
   {
     name: "Nav",
-    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). Home is the logo, colored with the nav text, max height 28px, vertically centered in the bar. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page.",
+    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). The logo links to the homepage. It is colored with the nav text, max height 28px, vertically centered in the bar. Empty bar space lets clicks through to the page. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page.",
   },
   {
     name: "Footer",
