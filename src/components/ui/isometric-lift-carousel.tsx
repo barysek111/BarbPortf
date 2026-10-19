@@ -435,7 +435,7 @@ export default function IsometricLiftCarousel({
       ) : null}
 
       <div className="ilc-sr" aria-live="polite" aria-atomic="true">
-        {current ? "Slide " + (active + 1) + " of " + n + ": " + current.title : ""}
+        {current ? "Slide " + ((active ?? 0) + 1) + " of " + n + ": " + current.title : ""}
       </div>
     </div>
   )

@@ -2,9 +2,9 @@ import type { CaseStudy } from "./types";
 
 const media = "/images/works/ageras";
 
-function solid(file: string, alt: string, description?: string) {
+function solid(file: string, alt: string, description?: string, color?: string) {
   const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "solid" as const, src, alt, description };
+  return { variant: "solid" as const, src, alt, description, color };
 }
 
 function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
@@ -139,10 +139,7 @@ export const agerasCaseStudy = {
           solid("icons-use.png", "Custom brand icon pack", "Custom brand icon pack"),
         ]),
         row(1, [
-          {
-            ...solid("newagerasimgs.png", "Website content library", "Website content library"),
-            color: "007751",
-          },
+          solid("newagerasimgs.png", "Website content library", "Website content library", "007751"),
         ]),
         row(2, [
           solid("component-docs-cards.png", "Documentation and specs", "Documentation and specs"),
@@ -168,7 +165,7 @@ export const agerasCaseStudy = {
       ],
       imageRows: [
         row(1, [solid("newwscreens.png", "Page screens")]),
-        row(1, [{ ...solid("pricing.svg", "Pricing page"), color: "002E33" }]),
+        row(1, [solid("pricing.svg", "Pricing page", undefined, "002E33")]),
       ],
     },
   ],
