@@ -23,11 +23,12 @@ heroItems.splice(0, heroItems.length, ...heroRest);
 export function Hero2() {
   return (
     <section
-      className="relative h-svh"
+      className="relative h-svh text-paper"
       data-name="Section - Hero 2"
+      data-nav-ink
       data-skip-page-top
     >
-      <div className="absolute top-0 left-1/2 h-full w-screen -translate-x-1/2 overflow-hidden">
+      <div className="absolute top-0 left-1/2 h-full w-screen -translate-x-1/2 overflow-hidden bg-ink">
         <IsometricLiftCarousel
           items={heroItems}
           height="100%"

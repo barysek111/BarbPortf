@@ -10,11 +10,13 @@ import { cn } from "@/lib/cn";
 
 const INK_WHEN_VISIBLE = 0.5;
 
-export function Footer() {
+export function Footer({ tone = "paper" }: { tone?: "paper" | "ink" }) {
   const footerRef = useRef<HTMLElement>(null);
   const [ink, setInk] = useState(false);
+  const solid = tone === "ink";
 
   const syncInk = useCallback(() => {
+    if (solid) return;
     const el = footerRef.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -24,13 +26,14 @@ export function Footer() {
       Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0),
     );
     setInk(visible / r.height >= INK_WHEN_VISIBLE);
-  }, []);
+  }, [solid]);
 
   useLayoutEffect(() => {
+    if (solid) return;
     syncInk();
     window.addEventListener("resize", syncInk);
     return () => window.removeEventListener("resize", syncInk);
-  }, [syncInk]);
+  }, [syncInk, solid]);
 
   useLenis(syncInk);
 
@@ -38,8 +41,13 @@ export function Footer() {
     <footer
       ref={footerRef}
       className={cn(
-        "footer-bleed relative z-[var(--z-index-stack)] transition-colors duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
-        ink ? "bg-ink text-paper" : "bg-paper text-ink",
+        "footer-bleed relative z-[var(--z-index-stack)]",
+        solid
+          ? "bg-ink text-paper"
+          : cn(
+              "transition-colors duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
+              ink ? "bg-ink text-paper" : "bg-paper text-ink",
+            ),
       )}
     >
       <div className="page-inset">
@@ -77,8 +85,13 @@ export function Footer() {
                 fill
                 sizes="100vw"
                 className={cn(
-                  "object-contain object-left transition-[filter] duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
-                  ink && "invert",
+                  "object-contain object-left",
+                  solid
+                    ? "invert"
+                    : cn(
+                        "transition-[filter] duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
+                        ink && "invert",
+                      ),
                 )}
               />
             </span>

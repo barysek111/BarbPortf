@@ -10,7 +10,7 @@ import {
   type NextProjectCanvasFrame,
 } from "@/content/next-project-canvas-layout";
 import { getProjectNeighbor, type Project } from "@/content/projects";
-import { isWorkVideo } from "@/components/work/WorkThumbMedia";
+import { isWorkVideo, WorkVideo } from "@/components/work/WorkThumbMedia";
 import { useNextProjectCanvasPan } from "@/components/work/use-next-project-canvas-pan";
 import { cn } from "@/lib/cn";
 
@@ -56,15 +56,10 @@ function CanvasFrame({
       }}
     >
       {video ? (
-        <video
+        <WorkVideo
           src={src}
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden
+          hidden
           className={cn(thumbMediaClass, "w-full")}
-          style={{ width: NEXT_PROJECT_CANVAS_THUMB_MAX_WIDTH }}
         />
       ) : (
         <img

@@ -4,18 +4,6 @@ import { ReactLenis, useLenis } from "lenis/react";
 import { usePathname } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 
-function ScrollReset() {
-  const pathname = usePathname();
-  const lenis = useLenis();
-
-  useEffect(() => {
-    lenis?.scrollTo(0, { immediate: true });
-    window.scrollTo(0, 0);
-  }, [pathname, lenis]);
-
-  return null;
-}
-
 function revealVisibleAppears() {
   document.querySelectorAll("[data-appear]:not(.is-in)").forEach((node) => {
     const r = node.getBoundingClientRect();
@@ -84,7 +72,6 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
   return (
     <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
-      <ScrollReset />
       <AppearOnScroll />
       {children}
     </ReactLenis>

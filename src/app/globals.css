@@ -150,6 +150,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Playground only. SiteLayout adds this class on that route and removes it on every other route. */
+  html.theme-ink,
+  html.theme-ink body {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
   ::selection {
     background: var(--color-selection);
     color: var(--color-paper);

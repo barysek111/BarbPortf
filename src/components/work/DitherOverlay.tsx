@@ -177,10 +177,10 @@ export function DitherOverlay({
       }
     };
 
-    const video = isWorkVideo(src) ? root.parentElement?.querySelector("video") : null;
     const image = isWorkVideo(src) ? null : new Image();
 
     const paintCurrent = () => {
+      const video = isWorkVideo(src) ? root.parentElement?.querySelector("video") : null;
       if (video && video.readyState >= 2 && video.videoWidth) {
         paint(video, video.videoWidth, video.videoHeight);
         return;
@@ -196,10 +196,11 @@ export function DitherOverlay({
       image.src = src;
     }
 
-    video?.addEventListener("loadeddata", paintCurrent);
+    const motionVideo = isWorkVideo(src) ? root.parentElement?.querySelector("video") : null;
+    motionVideo?.addEventListener("loadeddata", paintCurrent);
     const link = root.closest("a");
     const onEnter = () => {
-      if (video) paintCurrent();
+      if (isWorkVideo(src)) paintCurrent();
     };
     link?.addEventListener("mouseenter", onEnter);
 
@@ -211,7 +212,7 @@ export function DitherOverlay({
       cancelled = true;
       readyRef.current = false;
       observer.disconnect();
-      video?.removeEventListener("loadeddata", paintCurrent);
+      motionVideo?.removeEventListener("loadeddata", paintCurrent);
       link?.removeEventListener("mouseenter", onEnter);
       if (image) {
         image.onload = null;

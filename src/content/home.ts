@@ -8,9 +8,9 @@ export const services = [
   },
   {
     index: "[02]",
-    title: "Product Design",
+    title: "Design ops and management",
     description:
-      "I take projects from early brief to shipped feature, working closely with PMs and engineers along the way so what gets built is something that genuinely solves the right problem.",
+      "Complex things get simpler when someone takes the time to tidy them up. I streamline workflows, build systems that scale, and share what I learn so the whole team benefits.",
     icon: "/images/services/product-design.svg",
   },
   {
@@ -36,9 +36,9 @@ export const services = [
   },
   {
     index: "[06]",
-    title: "Design Systems",
+    title: "Craft and consistency",
     description:
-      "I build component libraries that give teams a shared language to work from. The goal is always something consistent and scalable that people actually enjoy using.",
+      "I raise the bar on design standards: quality, usability, and decisions I can explain. The details matter. They usually decide whether something feels right.",
     icon: "/images/services/design-systems.svg",
   },
 ];
@@ -46,5 +46,5 @@ export const services = [
 export const whatIDo = {
   tags: ["what i do"],
   body:
-    "I'm a UX/UI designer. I design interfaces for complex business problems and make them easier to live with. I prototype, and I keep accessibility and how people use the product in the work.",
+    "I'm a designer with a lot of opinions and questions about interfaces. Curiosity keeps me prototyping and asking exploring solutions. Detail oriented, amateur nail tech, dog lover.",
 };

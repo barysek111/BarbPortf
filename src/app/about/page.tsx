@@ -1,4 +1,5 @@
 import { Services } from "@/components/home/Services";
+import { WhatIDo } from "@/components/home/WhatIDo";
 import { Chapter } from "@/components/sections/Chapter";
 import { CredentialSection } from "@/components/sections/CredentialSection";
 import { about } from "@/content/about";
@@ -10,10 +11,9 @@ export const metadata = aboutMetadata;
 export default function AboutPage() {
   return (
     <>
+      <WhatIDo />
       <Chapter
         id="about"
-        headingLevel="h1"
-        headline={about.headline}
         sections={[
           { label: about.thinking.label, paragraphs: [about.thinking.text] },
           {

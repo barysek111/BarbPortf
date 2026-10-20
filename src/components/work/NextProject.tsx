@@ -6,7 +6,13 @@ import { Button } from "@/components/ui/Button";
 import { getProjectNeighbor } from "@/content/projects";
 import { DitherOverlay } from "@/components/work/DitherOverlay";
 import { useViewCursor, ViewCursor } from "@/components/work/ViewCursor";
-import { isWorkVideo, WORK_THUMB_HOVER_GRAY, WORK_THUMB_HOVER_ZOOM } from "@/components/work/WorkThumbMedia";
+import {
+  isWorkVideo,
+  WorkVideo,
+  WORK_THUMB_HOVER_GRAY,
+  WORK_THUMB_HOVER_ZOOM,
+  WORK_VIDEO_HOVER_ZOOM,
+} from "@/components/work/WorkThumbMedia";
 import { cn } from "@/lib/cn";
 
 export function NextProject(
@@ -58,18 +64,12 @@ export function NextProject(
               video ? "aspect-square w-[50vw]" : "w-[50vw]",
             )}
           >
-            {video ? (
-              <div className={`absolute inset-0 ${WORK_THUMB_HOVER_ZOOM}`}>
-                <video
-                  src={imageSrc}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  aria-hidden
-                  className={`h-full w-full object-cover object-top ${WORK_THUMB_HOVER_GRAY}`}
-                />
-              </div>
+            {video && imageSrc ? (
+              <WorkVideo
+                src={imageSrc}
+                hidden
+                className={`h-full w-full object-cover object-top ${WORK_VIDEO_HOVER_ZOOM} ${WORK_THUMB_HOVER_GRAY}`}
+              />
             ) : (
               <div className={WORK_THUMB_HOVER_ZOOM}>
                 <Image
