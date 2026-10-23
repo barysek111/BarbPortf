@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { global } from "@/copy-database/global";
 import { getProjectNeighbor } from "@/content/projects";
 import { DitherOverlay } from "@/components/work/DitherOverlay";
 import { useViewCursor, ViewCursor } from "@/components/work/ViewCursor";
@@ -74,7 +75,7 @@ export function NextProject(
               <div className={WORK_THUMB_HOVER_ZOOM}>
                 <Image
                   src={imageSrc}
-                  alt=""
+                  alt={global.nextProject.imageAlt}
                   width={372}
                   height={imageHeight ?? 372}
                   sizes="(max-width: 809px) 50vw, 25vw"

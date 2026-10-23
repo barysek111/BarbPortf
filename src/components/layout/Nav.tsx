@@ -7,7 +7,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { NavLink } from "@/components/layout/NavLink";
 import { Button } from "@/components/ui/Button";
 import { NavClock } from "@/components/layout/NavClock";
-import { site } from "@/content/site";
+import { global } from "@/copy-database/global";
 import { projects } from "@/content/projects";
 import { cn } from "@/lib/cn";
 
@@ -110,7 +110,7 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
       style={overHero && !open ? { color: navInkColor(cover) } : undefined}
     >
       <nav
-        aria-label="Primary"
+        aria-label={global.nav.ariaLabel}
         className={cn(
           "page-inset relative z-nav overflow-clip py-12",
           open || inkTone || overHero ? "mix-blend-normal" : "mix-blend-normal tablet:mix-blend-exclusion",
@@ -132,7 +132,7 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
           >
             <Link
               href="/"
-              aria-label={`${site.name} home`}
+              aria-label={`${global.site.name} ${global.nav.homeLinkSuffix}`}
               onClick={close}
               className="pointer-events-auto relative z-10 inline-block h-[28px] max-w-full shrink-0 self-center bg-current [mask-image:url('/images/shared/logo.svg')] [mask-position:left_center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:url('/images/shared/logo.svg')] [-webkit-mask-position:left_center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
               style={{ aspectRatio: "3733 / 300" }}
@@ -140,11 +140,11 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
             <Button
               type="button"
               className="pointer-events-auto relative z-lift touch-manipulation whitespace-nowrap tablet:hidden"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={open ? global.nav.closeMenu : global.nav.openMenu}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
             >
-              {open ? "close" : "menu"}
+              {open ? global.nav.close : global.nav.menu}
             </Button>
           </div>
 
@@ -157,7 +157,7 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
           >
             <NavLink
               href="/"
-              label="Works"
+              label={global.nav.works}
               count={projects.length}
               active={
                 pathname === "/" || projects.some((project) => pathname === `/${project.slug}`)
@@ -171,7 +171,7 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
             />
             <NavLink
               href="/playground"
-              label="Playground"
+              label={global.nav.playground}
               active={pathname === "/playground"}
               open={open}
               onClick={close}
@@ -179,7 +179,7 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
             />
             <NavLink
               href="/about"
-              label="About"
+              label={global.nav.about}
               active={pathname === "/about"}
               open={open}
               onClick={close}

@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ChapterBlock } from "@/components/sections/ChapterBlock";
 import { NextProjectCanvas } from "@/components/work/NextProjectCanvas";
-import { cocoCareArchivedChapters } from "@/content/case-studies/coco-care";
+import { archive } from "@/copy-database/archive";
+import { cococareArchivedChapters } from "@/copy-database/project-cococare";
 import type { CaseStudyChapter } from "@/content/case-studies/types";
 import { hideInternalPage } from "@/lib/internal-page";
 
 // Internal catalogue, same as /design-system. Not in the nav. 404 when published.
 export const metadata: Metadata = {
-  title: "Archive — internal",
+  title: archive.metaTitle,
   robots: { index: false, follow: false, nocache: true },
 };
 
@@ -32,7 +33,7 @@ type ArchivedComponent = {
 };
 
 function archivedChapter(headline: string): CaseStudyChapter {
-  const chapter = cocoCareArchivedChapters.find((item) => item.headline === headline);
+  const chapter = cococareArchivedChapters.find((item) => item.headline === headline);
   if (!chapter) throw new Error(`Archived chapter missing: ${headline}`);
   return chapter;
 }
@@ -40,20 +41,20 @@ function archivedChapter(headline: string): CaseStudyChapter {
 /** Case-study chapters hidden from their pages. Add the next one here. */
 const blocks: ArchivedBlock[] = [
   {
-    id: "focus-areas",
-    name: "Focus areas",
-    from: "Coco Care",
-    note: "Hidden from /cococare. Consistency, Transparency, Speed, and Reminders.",
-    chapter: archivedChapter("focus areas"),
+    id: archive.focusAreas.id,
+    name: archive.focusAreas.name,
+    from: archive.focusAreas.from,
+    note: archive.focusAreas.note,
+    chapter: archivedChapter(archive.focusAreas.headline),
   },
 ];
 
 /** Components taken off the live site. Add the next one here. */
 const components: ArchivedComponent[] = [
   {
-    id: "next-project-canvas",
-    name: "NextProjectCanvas",
-    note: "Scatter canvas next-project footer (scroll parallax). Live case studies use NextProject instead.",
+    id: archive.nextProjectCanvas.id,
+    name: archive.nextProjectCanvas.name,
+    note: archive.nextProjectCanvas.note,
     preview: <NextProjectCanvas slug="ageras" />,
   },
 ];
@@ -63,20 +64,18 @@ export default function ArchivePage() {
 
   const toc = [
     ...(components.length
-      ? [{ label: "Components", links: components.map((item) => ({ id: item.id, label: item.name })) }]
+      ? [{ label: archive.componentsLabel, links: components.map((item) => ({ id: item.id, label: item.name })) }]
       : []),
-    { label: "Blocks", links: blocks.map((item) => ({ id: item.id, label: item.name })) },
+    { label: archive.blocksLabel, links: blocks.map((item) => ({ id: item.id, label: item.name })) },
   ];
 
   return (
     <>
       <header className="flex flex-col gap-16">
-        <p className={DOC_DIM}>internal — not linked, not indexed</p>
-        <h1 className={`${DOC_TITLE} text-[24px]`}>Archive</h1>
-        <p className={`${DOC} max-w-[680px]`}>
-          Components and case-study blocks taken off the live site. The copy stays here.
-        </p>
-        <nav aria-label="Contents" className="flex flex-col gap-8">
+        <p className={DOC_DIM}>{archive.eyebrow}</p>
+        <h1 className={`${DOC_TITLE} text-[24px]`}>{archive.title}</h1>
+        <p className={`${DOC} max-w-[680px]`}>{archive.intro}</p>
+        <nav aria-label={archive.contentsLabel} className="flex flex-col gap-8">
           {toc.map((group) => (
             <div key={group.label} className={`${DOC} flex flex-wrap items-baseline gap-x-12 gap-y-2`}>
               <span className="text-muted">{group.label}</span>

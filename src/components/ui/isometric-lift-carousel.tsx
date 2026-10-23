@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { global } from "@/copy-database/global"
 
 /**
  * Isometric Lift Carousel — a row of portrait photos standing on edge, seen
@@ -12,8 +13,6 @@ import * as React from "react"
  * in the line so the left edge of every card stays clickable. The lift and the
  * widening ride a spring baked into a CSS `linear()` easing, so nothing runs
  * per frame in JavaScript.
- *
- * React is the only import.
  */
 
 export type IsometricLiftItem = {
@@ -206,7 +205,7 @@ export default function IsometricLiftCarousel({
   onIndexChange,
   onSelect,
   activateOnHover = false,
-  ariaLabel = "Photo carousel",
+  ariaLabel = global.carousel.defaultLabel,
   className = "",
 }: IsometricLiftCarouselProps) {
   const n = items.length
@@ -300,7 +299,7 @@ export default function IsometricLiftCarousel({
       className={"ilc-root" + (skew == null ? "" : " ilc-flat-root") + (className ? " " + className : "")}
       style={{ height, background, color, fontFamily }}
       role="region"
-      aria-roledescription="carousel"
+      aria-roledescription={global.carousel.roleDescription}
       aria-label={ariaLabel}
       tabIndex={0}
       onKeyDown={onKeyDown}
@@ -348,7 +347,7 @@ export default function IsometricLiftCarousel({
                 <button
                   type="button"
                   className="ilc-card"
-                  aria-label={i + 1 + " of " + n + ": " + item.title}
+                  aria-label={i + 1 + global.carousel.of + n + global.carousel.colon + item.title}
                   aria-current={isActive ? "true" : undefined}
                   tabIndex={activateOnHover || isActive ? 0 : -1}
                   onMouseEnter={() => {
@@ -407,7 +406,7 @@ export default function IsometricLiftCarousel({
 
       {controls && n > 1 ? (
         <div className="ilc-controls" onPointerDown={(e) => e.stopPropagation()}>
-          <button type="button" className="ilc-btn" aria-label="Previous slide" disabled={(active ?? 0) <= 0} onClick={() => go((active ?? 0) - 1)}>
+          <button type="button" className="ilc-btn" aria-label={global.carousel.previous} disabled={(active ?? 0) <= 0} onClick={() => go((active ?? 0) - 1)}>
             <Chevron dir={-1} />
           </button>
           <div className="ilc-dots">
@@ -421,21 +420,21 @@ export default function IsometricLiftCarousel({
                   key={i}
                   type="button"
                   className="ilc-dot"
-                  aria-label={"Go to slide " + (i + 1) + ": " + item.title}
+                  aria-label={global.carousel.goTo + (i + 1) + global.carousel.colon + item.title}
                   aria-current={i === active ? "true" : undefined}
                   onClick={() => go(i)}
                 />
               ))
             )}
           </div>
-          <button type="button" className="ilc-btn" aria-label="Next slide" disabled={(active ?? 0) >= n - 1} onClick={() => go((active ?? 0) + 1)}>
+          <button type="button" className="ilc-btn" aria-label={global.carousel.next} disabled={(active ?? 0) >= n - 1} onClick={() => go((active ?? 0) + 1)}>
             <Chevron dir={1} />
           </button>
         </div>
       ) : null}
 
       <div className="ilc-sr" aria-live="polite" aria-atomic="true">
-        {current ? "Slide " + ((active ?? 0) + 1) + " of " + n + ": " + current.title : ""}
+        {current ? global.carousel.liveBefore + ((active ?? 0) + 1) + global.carousel.of + n + global.carousel.colon + current.title : ""}
       </div>
     </div>
   )

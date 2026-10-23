@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { heroRing } from "@/content/hero-ring";
+import { home } from "@/copy-database/home";
+
+const heroRing = home.hero.images;
 
 /**
  * Hero ring: cards distributed around a tilted circle, seen in perspective.

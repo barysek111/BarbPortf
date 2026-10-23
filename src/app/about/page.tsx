@@ -2,8 +2,7 @@ import { Services } from "@/components/home/Services";
 import { WhatIDo } from "@/components/home/WhatIDo";
 import { Chapter } from "@/components/sections/Chapter";
 import { CredentialSection } from "@/components/sections/CredentialSection";
-import { about } from "@/content/about";
-import { education } from "@/content/education";
+import { about } from "@/copy-database/about";
 import { aboutMetadata } from "@/lib/page-metadata";
 
 export const metadata = aboutMetadata;
@@ -19,7 +18,7 @@ export default function AboutPage() {
           {
             label: about.making.label,
             paragraphs: [about.making.text],
-            images: [{ src: about.making.image, variant: "fill" }],
+            images: [{ src: about.making.image, alt: about.making.imageAlt, variant: "fill" }],
           },
         ]}
       />
@@ -33,7 +32,7 @@ export default function AboutPage() {
           year: job.period,
         }))}
       />
-      <CredentialSection name="Section - Education" title={education.title} rows={education.items} />
+      <CredentialSection name="Section - Education" title={about.education.title} rows={about.education.items} />
     </>
   );
 }

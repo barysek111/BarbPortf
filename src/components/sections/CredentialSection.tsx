@@ -29,7 +29,7 @@ export function CredentialSection({
 }: {
   label?: string;
   title: string;
-  rows: CredentialRow[];
+  rows: readonly CredentialRow[];
   name: string;
 }) {
   return (

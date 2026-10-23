@@ -6,6 +6,7 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { WorkCard } from "@/components/work/WorkCard";
+import { works } from "@/copy-database/works";
 import { projects } from "@/content/projects";
 import { cn } from "@/lib/cn";
 import { ruledRowClass } from "@/lib/ruled-row";
@@ -42,7 +43,7 @@ function WorksGridModeSwitch({ className }: { className?: string }) {
         muted={mode !== "grid"}
         onClick={() => setMode("grid")}
       >
-        grid
+        {works.grid}
       </Button>
       <Button
         pressed={mode === "list"}
@@ -50,7 +51,7 @@ function WorksGridModeSwitch({ className }: { className?: string }) {
         muted={mode !== "list"}
         onClick={() => setMode("list")}
       >
-        list
+        {works.list}
       </Button>
     </div>
   );
@@ -101,7 +102,7 @@ function WorksGridProjectList() {
                   <span>{project.year}</span>
                 </p>
                 <div className="hidden desktop:block">
-                  <Button href={`/${project.slug}`}>view project</Button>
+                  <Button href={`/${project.slug}`}>{works.viewProject}</Button>
                 </div>
               </div>
               <p className="type-label reveal-clip hidden shrink-0 tablet:block">
@@ -115,7 +116,7 @@ function WorksGridProjectList() {
                 key={`${project.slug}-${imageIndex}`}
                 className="relative min-h-0 w-full below-tablet:aspect-[4/3] tablet:h-full"
               >
-                <Image src={image.src} alt="" fill sizes={`${image.w}px`} className="object-cover" />
+                <Image src={image.src} alt={works.listImageAlt} fill sizes={`${image.w}px`} className="object-cover" />
               </div>
             ))}
           </div>
@@ -136,7 +137,7 @@ export type WorksGridProps = {
 };
 
 export function WorksGrid({
-  title = "LATEST WORK",
+  title = works.heading,
   headingLevel = "h2",
   className,
 }: WorksGridProps) {

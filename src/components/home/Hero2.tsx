@@ -1,13 +1,20 @@
 import { Button } from "@/components/ui/Button";
 import IsometricLiftCarousel from "@/components/ui/isometric-lift-carousel";
-import { heroRing } from "@/content/hero-ring";
+import { home } from "@/copy-database/home";
+
+const heroRing = home.hero.images;
 
 const omitted = new Set([0, 3, 5, 10, heroRing.length - 1]);
 
 const heroItems = heroRing.flatMap((item, i) =>
   omitted.has(i)
     ? []
-    : [{ title: `Work ${String(i + 1).padStart(2, "0")}`, src: item.src, alt: item.alt, ratio: item.w / item.h }],
+    : [{
+        title: `${home.hero.slideTitlePrefix}${String(i + 1).padStart(2, "0")}`,
+        src: item.src,
+        alt: item.alt,
+        ratio: item.w / item.h,
+      }],
 );
 const lastHeroItem = heroItems.pop();
 if (lastHeroItem) heroItems.splice(4, 0, lastHeroItem);
@@ -44,19 +51,19 @@ export function Hero2() {
           skew={10}
           gap={-44}
           gapX={-64}
-          ariaLabel="Latest work"
+          ariaLabel={home.hero.carouselLabel}
         />
       </div>
 
       <p className="type-label pointer-events-none absolute top-1/2 left-0 z-stack hidden -translate-y-1/2 tablet:block">
-        latest work
+        {home.hero.latestWork}
       </p>
       <p className="type-label pointer-events-none absolute top-1/2 left-1/2 z-stack -translate-x-1/2 -translate-y-1/2 text-center tablet:left-auto tablet:right-0 tablet:translate-x-0">
-        product designer
+        {home.hero.role}
       </p>
 
       <div className="absolute bottom-12 left-1/2 z-stack -translate-x-1/2">
-        <Button href="#latest">scroll down</Button>
+        <Button href="#latest">{home.hero.scrollDown}</Button>
       </div>
     </section>
   );

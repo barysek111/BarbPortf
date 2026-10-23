@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { services } from "@/content/home";
+import { home } from "@/copy-database/home";
 import { cn } from "@/lib/cn";
 import { ruledRowClass } from "@/lib/ruled-row";
 
@@ -8,10 +8,10 @@ export function Services() {
     <section className="flex flex-col gap-36" data-name="Section - Services">
       <div className="desktop:grid desktop:grid-cols-2 desktop:gap-12">
         <div className="hidden min-w-0 desktop:block" aria-hidden="true" />
-        <SectionHeading className="min-w-0 max-w-none">SERVICES</SectionHeading>
+        <SectionHeading className="min-w-0 max-w-none">{home.servicesHeading}</SectionHeading>
       </div>
       <div>
-        {services.map((service) => (
+        {home.services.map((service) => (
           <div
             key={service.index}
             className={cn(
@@ -22,7 +22,7 @@ export function Services() {
             <div className="flex min-w-0 flex-row items-start gap-12 tablet:grid tablet:grid-cols-2">
               <img
                 src={service.icon}
-                alt=""
+                alt={home.servicesIconAlt}
                 width={48}
                 height={48}
                 className="order-1 h-[48px] w-[48px] shrink-0 text-ink tablet:col-start-2 tablet:row-start-1 tablet:justify-self-start"

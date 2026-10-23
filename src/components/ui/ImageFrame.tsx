@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { global } from "@/copy-database/global";
 import { cn } from "@/lib/cn";
 
 export type ImageFrameVariant = "fill" | "solid" | "background";
@@ -106,7 +107,7 @@ function FillImage({ src, alt }: { src: string; alt: string }) {
 export function ImageFrame({
   variant = "solid",
   src,
-  alt = "",
+  alt = global.decorativeImageAlt,
   backgroundSrc,
   description,
   color,
@@ -131,7 +132,7 @@ export function ImageFrame({
         {backgroundSrc ? (
           <Image
             src={backgroundSrc}
-            alt=""
+            alt={global.decorativeImageAlt}
             fill
             sizes={sizes}
             quality={90}

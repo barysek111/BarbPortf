@@ -7,3 +7,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Copy
+
+All user-facing text lives in `src/copy-database/`. Do not hardcode visible text, alt text, aria-labels, or page titles in components. Read it from that folder. Slug lookup stays in `src/content/projects.ts` and `src/content/case-studies/index.ts`.
+
