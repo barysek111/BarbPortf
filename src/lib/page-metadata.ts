@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { site } from "@/content/site";
+import { about } from "@/copy-database/about";
+import { global } from "@/copy-database/global";
+
+const site = global.site;
 
 /** Shared Open Graph defaults for public routes. */
 export function pageMetadata({
@@ -12,7 +15,7 @@ export function pageMetadata({
   description?: string;
   absoluteTitle?: boolean;
 }): Metadata {
-  const documentTitle = absoluteTitle ? title : `${title} — ${site.name}`;
+  const documentTitle = absoluteTitle ? title : `${title}${global.titleSeparator}${site.name}`;
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
@@ -31,12 +34,12 @@ export const homeMetadata: Metadata = pageMetadata({
 });
 
 export const aboutMetadata: Metadata = pageMetadata({
-  title: "About",
+  title: global.nav.about,
   description: aboutDescription(),
 });
 
 function aboutDescription() {
-  return `${site.description} Background in branding, UX, and product design.`;
+  return `${site.description}${about.metaDescriptionExtra}`;
 }
 
 export function projectMetadata(project: {
@@ -46,6 +49,6 @@ export function projectMetadata(project: {
 }): Metadata {
   return pageMetadata({
     title: project.title,
-    description: `${project.description} Client: ${project.client}.`,
+    description: `${project.description}${global.meta.projectClientLeadIn}${project.client}${global.meta.projectClientEnd}`,
   });
 }

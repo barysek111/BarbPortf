@@ -1,3 +1,6 @@
+import { global } from "@/copy-database/global";
+import { works } from "@/copy-database/works";
+
 export type Thumb = { src: string; w: 160 | 320 };
 
 export type Project = {
@@ -14,9 +17,9 @@ export type Project = {
   masonryY: number;
 };
 
-function listThumbs(slug: string, files: readonly string[]): Thumb[] {
+function listThumbs(folder: string, files: readonly string[]): Thumb[] {
   return files.map((file, index) => ({
-    src: `/images/works/list/${slug}/${file}`,
+    src: `/images/works/list/${folder}/${file}`,
     w: index === 2 ? 320 : 160,
   }));
 }
@@ -26,191 +29,42 @@ function cardHeight(width: number, height: number) {
   return Math.round((372 * height) / width);
 }
 
-/**
- * Grid card image is `file` under public/images/works/.
- * `listFolder` names public/images/works/list/{listFolder}/ for list-mode thumbs only —
- * it may differ from `slug` when the asset folder predates short routes.
- */
-const entries = [
-  {
-    file: "library-drift-thumb.png",
-    title: "Library Drift Figma Plugin",
-    slug: "library-drift",
-    listFolder: "library-drift",
-    client: "Saxo Bank",
-    services: "Plugin Design",
-    summary:
-      "A Figma plugin that scans design files for broken links to deleted components and deprecated variants. It solves a real problem for teams with complex, evolving design systems.",
-    year: "2026",
-    location: "Copenhagen, Denmark",
-    w: 1220,
-    h: 1220,
-    masonryY: 93,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-  {
-    file: "plinto-ai-invoicing.jpg",
-    title: "Plinto AI Invoicing",
-    slug: "plinto",
-    listFolder: "plinto-ai-invoicing",
-    client: "Plinto",
-    services: "Product Design",
-    summary:
-      "Invoice approval workspace for a fintech startup: split view, AI assistant chat, and three states (Auto-matched, Needs review, and Blocked).",
-    year: "2026",
-    location: "Copenhagen, Denmark",
-    w: 1080,
-    h: 1350,
-    masonryY: 93,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-  {
-    file: "powermatch-invoice-reconciliation.jpg",
-    title: "Powermatch Invoice Reconciliation",
-    slug: "powermatch",
-    listFolder: "powermatch-invoice-reconciliation",
-    client: "Powermatch",
-    services: "Product Design",
-    summary:
-      "An invoice reconciliation feature that replaces a fragmented cross-tool workflow with one flow for matching payments to invoices.",
-    year: "2025",
-    location: "Copenhagen, Denmark",
-    w: 1350,
-    h: 1080,
-    masonryY: 326,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-  {
-    file: "ageras-web-ux-ui.jpg",
-    title: "Ageras Web UX&UI",
-    slug: "ageras",
-    listFolder: "ageras",
-    client: "Ageras",
-    services: "UX/UI Design",
-    summary:
-      "End-to-end website redesign across four markets, from wireframes and sitemaps to final UI, and the foundation for a responsive, scalable design system.",
-    year: "2025",
-    location: "Copenhagen, Denmark",
-    w: 1080,
-    h: 1500,
-    masonryY: 93,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-  {
-    file: "coco-care-app.jpg",
-    title: "Coco Care App",
-    slug: "cococare",
-    listFolder: "coco-care-app",
-    client: "Coco Care",
-    services: "Product Design",
-    summary:
-      "A digital physiotherapy platform designed to help patients recover at home and enable physiotherapists to track progress. I designed both the mobile app and web portal from user flows to interface details.",
-    year: "2024",
-    location: "Copenhagen, Denmark",
-    w: 1080,
-    h: 1350,
-    masonryY: 303,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-  {
-    file: "rokoko-brand-identity.jpg",
-    title: "Rokoko Brand Identity",
-    slug: "rokokobrand",
-    listFolder: "rokoko-brand-identity",
-    client: "Rokoko",
-    services: "Brand Identity",
-    summary:
-      "Rebrand across digital, social campaigns, email templates, internal branding, and print.",
-    year: "2022",
-    location: "Copenhagen, Denmark",
-    w: 1080,
-    h: 1500,
-    masonryY: 93,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-  {
-    file: "rokokowebthumb.png",
-    title: "Rokoko Website Revamp",
-    slug: "rokokoweb",
-    listFolder: "rokoko-website-revamp",
-    client: "Rokoko",
-    services: "Web Design",
-    summary: "Redesign of the company's main marketing website, webshop and a helpdesk site.",
-    year: "2023",
-    location: "Copenhagen, Denmark",
-    w: 1080,
-    h: 1350,
-    masonryY: 707,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-  {
-    file: "weld-digital-presence.svg",
-    title: "Weld Digital Experience",
-    slug: "weld",
-    listFolder: "weld-digital-presence",
-    client: "Weld",
-    services: "Digital Design",
-    summary:
-      "Website information architecture, wireframing, visual identity and illustration for a data SaaS company.",
-    year: "2021",
-    location: "Copenhagen, Denmark",
-    w: 560,
-    h: 560,
-    masonryY: 0,
-    showcase: ["01.svg", "02.png", "03.svg", "04.jpg"],
-  },
-  {
-    file: "eat-grim-brand-identity.jpg",
-    title: "Eat Grim Brand",
-    slug: "eatgrim",
-    listFolder: "eat-grim-brand-identity",
-    client: "Eat Grim",
-    services: "Brand Identity",
-    summary:
-      "Brand guidelines and digital+print B2B and B2C presence for a sustainable subscription-based startup.",
-    year: "2019",
-    location: "Copenhagen, Denmark",
-    w: 946,
-    h: 1147,
-    masonryY: 707,
-    showcase: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
-  },
-] as const;
-
-export const projects: Project[] = entries.map((entry) => {
-  const image = `/images/works/${entry.file}`;
-
-  return {
-    slug: entry.slug,
-    title: entry.title,
-    description: entry.summary,
-    client: entry.client,
-    services: entry.services,
-    year: entry.year,
-    location: entry.location,
-    image,
-    imageH: cardHeight(entry.w, entry.h),
-    masonryY: entry.masonryY,
-    listImages: listThumbs(entry.listFolder, entry.showcase),
-  };
-});
+export const projects: Project[] = works.projects.map((entry) => ({
+  slug: entry.slug,
+  title: entry.title,
+  description: entry.description,
+  client: entry.client,
+  services: entry.services,
+  year: entry.year,
+  location: entry.location,
+  image: entry.image,
+  imageH: cardHeight(entry.imageWidth, entry.imageHeight),
+  masonryY: entry.masonryY,
+  listImages: listThumbs(entry.listFolder, entry.listFiles),
+}));
 
 export function formatIndex(index: number) {
   return String(index + 1).padStart(3, "0");
 }
 
 export function getProject(slug: string) {
-  return projects.find((p) => p.slug === slug);
+  return projects.find((project) => project.slug === slug);
 }
 
 /** Next project in list order. The last project points at the one before it. */
 export function getProjectNeighbor(slug: string):
-  | { project: Project; label: "next project" | "previous project" }
+  | {
+      project: Project;
+      label: typeof global.nextProject.next | typeof global.nextProject.previous;
+    }
   | undefined {
   const index = projects.findIndex((project) => project.slug === slug);
   if (index < 0) return undefined;
   const isLast = index === projects.length - 1;
   const project = projects[isLast ? index - 1 : index + 1];
   if (!project) return undefined;
-  return { project, label: isLast ? "previous project" : "next project" };
+  return {
+    project,
+    label: isLast ? global.nextProject.previous : global.nextProject.next,
+  };
 }

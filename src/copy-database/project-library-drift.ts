@@ -1,26 +1,65 @@
-import type { CaseStudy } from "./types";
+/**
+ * HOW TO EDIT THIS FILE
+ * - Change the words inside the quotes. Leave the quotes in place.
+ * - Apostrophes are safe inside these quotes, like I'm and don't.
+ * - Keep commas between items, and keep the brackets [ ] and braces { }.
+ * - To add a paragraph, copy one quoted line inside "paragraphs" and change the words.
+ * - To add or remove a chapter, copy or delete one whole chapter block.
+ * - To change a picture, replace the "src" path. The file must already be in the public folder.
+ * - Do not change the "slug" line. The web address depends on it.
+ * - Do not rename the labels on the left (slug, title, paragraphs, and so on).
+ */
 
-export const libraryDriftCaseStudy = {
+import type { CaseStudy } from "@/content/case-studies/types";
+
+// This file is the text for one project page.
+//
+// Contents:
+// - Title, intro, and project facts
+// - Hero image
+// - Chapter: Scope
+// - Chapter: Solution
+export const libraryDrift = {
   slug: "library-drift",
   title: "Library Drift Design System Plugin",
   aboutLabel: "about the project",
-  description:
-    "A Figma plugin that scans design files for broken links to deleted components and deprecated variants. It solves a real problem for teams with complex, evolving design systems.",
+  description: "A Figma plugin that scans design files for broken links to deleted components and deprecated variants. It solves a real problem for teams with complex, evolving design systems.",
+
+  // =====================================================
+  // PROJECT FACTS (role, client, year)
+  // =====================================================
   meta: [
     {
       label: "My role",
       value: "Plugin UI\nInteraction Design\nVibecoding\nProduction",
     },
-    { label: "Tools", value: "Figma\nCursor" },
-    { label: "year", value: "2026" },
+    {
+      label: "Tools",
+      value: "Figma\nCursor",
+    },
+    {
+      label: "year",
+      value: "2026",
+    },
   ],
+
+  // =====================================================
+  // HERO IMAGE
+  // =====================================================
   heroImage: {
     src: "/images/works/librarydrifther.png",
     alt: "Library Drift Figma plugin",
     variant: "background",
     backgroundSrc: "/images/works/herobackgrunddd.png",
   },
+
+  // =====================================================
+  // CHAPTERS, IN THE ORDER THEY APPEAR ON THE PAGE
+  // =====================================================
   chapters: [
+    // =====================================================
+    // CHAPTER: Scope
+    // =====================================================
     {
       headline: "Scope",
       sections: [
@@ -38,6 +77,9 @@ export const libraryDriftCaseStudy = {
         },
       ],
     },
+    // =====================================================
+    // CHAPTER: Solution
+    // =====================================================
     {
       headline: "Solution",
       sections: [

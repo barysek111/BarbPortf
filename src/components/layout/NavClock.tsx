@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { site } from "@/content/site";
+import { global } from "@/copy-database/global";
 import { cn } from "@/lib/cn";
 
 export function NavClock({ className }: { className?: string }) {
@@ -11,7 +11,7 @@ export function NavClock({ className }: { className?: string }) {
     const tick = () => {
       setTime(
         new Intl.DateTimeFormat("en-GB", {
-          timeZone: site.timezone,
+          timeZone: global.site.timezone,
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
@@ -30,7 +30,7 @@ export function NavClock({ className }: { className?: string }) {
   return (
     <div className={className}>
       <p className={cn(line, "tablet:col-start-3 tablet:row-start-1")}>{time}</p>
-      <p className={cn(line, "tablet:col-start-3 tablet:row-start-2")}>{site.clockLabel}</p>
+      <p className={cn(line, "tablet:col-start-3 tablet:row-start-2")}>{global.site.clockLabel}</p>
     </div>
   );
 }

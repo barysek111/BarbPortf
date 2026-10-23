@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createPortal } from "react-dom";
+import { global } from "@/copy-database/global";
 
 export function useViewCursor() {
   const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
@@ -18,9 +19,9 @@ export function useViewCursor() {
 function ViewCursorLabel() {
   return (
     <span className="type-label inline-flex items-center gap-4 bg-paper p-4 text-ink">
-      <span aria-hidden="true">[</span>
-      <span>view</span>
-      <span aria-hidden="true">]</span>
+      <span aria-hidden="true">{global.brackets.open}</span>
+      <span>{global.cursor.view}</span>
+      <span aria-hidden="true">{global.brackets.close}</span>
     </span>
   );
 }

@@ -1,3 +1,4 @@
+import { global } from "@/copy-database/global";
 import Link from "next/link";
 import { LabelRoll } from "@/components/ui/LabelRoll";
 import { markLeaderPressedClass } from "@/lib/mark-leader";
@@ -38,9 +39,9 @@ export function Button({
 }) {
   const inner = (
     <>
-      <span aria-hidden="true">[</span>
+      <span aria-hidden="true">{global.brackets.open}</span>
       <LabelRoll>{children}</LabelRoll>
-      <span aria-hidden="true">]</span>
+      <span aria-hidden="true">{global.brackets.close}</span>
     </>
   );
 

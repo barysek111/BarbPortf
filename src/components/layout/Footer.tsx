@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useLenis } from "lenis/react";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { site } from "@/content/site";
+import { global } from "@/copy-database/global";
 import { cn } from "@/lib/cn";
 
 const INK_WHEN_VISIBLE = 0.5;
@@ -54,33 +54,33 @@ export function Footer({ tone = "paper" }: { tone?: "paper" | "ink" }) {
         <div className="section-wrap flex w-full flex-col gap-96 py-96">
           <div className="grid grid-cols-1 items-start gap-24 tablet:grid-cols-2 tablet:gap-12">
             <div className="order-2 flex min-w-0 flex-col items-start gap-2 text-left tablet:order-2 tablet:items-end tablet:text-right desktop:order-1 desktop:items-start desktop:text-left">
-              <p className="type-label">for all enquiries please contact</p>
-              <Button href={`mailto:${site.email}`}>{site.email}</Button>
+              <p className="type-label">{global.footer.enquiry}</p>
+              <Button href={`mailto:${global.site.email}`}>{global.site.email}</Button>
             </div>
 
             <div className="order-1 flex flex-col items-start gap-2 tablet:order-1 desktop:order-2 desktop:items-end">
-              <Button href={site.links.resume} target="_blank" rel="noreferrer">
-                view resume
+              <Button href={global.site.links.resume} target="_blank" rel="noreferrer">
+                {global.footer.resume}
               </Button>
-              <Button href={site.links.linkedin} target="_blank" rel="noreferrer">
-                linkedin
+              <Button href={global.site.links.linkedin} target="_blank" rel="noreferrer">
+                {global.footer.linkedin}
               </Button>
             </div>
           </div>
 
           <Link
             href="/"
-            aria-label={`${site.name} home`}
+            aria-label={`${global.site.name} ${global.nav.homeLinkSuffix}`}
             className="block w-full max-w-none"
           >
             <span className="footer-wordmark-mobile tablet:hidden">
-              <span className="footer-wordmark-mobile-line">BARB</span>
-              <span className="footer-wordmark-mobile-line">G.</span>
+              <span className="footer-wordmark-mobile-line">{global.footer.wordmarkLine1}</span>
+              <span className="footer-wordmark-mobile-line">{global.footer.wordmarkLine2}</span>
             </span>
             <span className="relative hidden aspect-[1445/217] w-full tablet:block">
               <Image
                 src="/images/shared/wordmark.svg"
-                alt=""
+                alt={global.footer.wordmarkAlt}
                 aria-hidden
                 fill
                 sizes="100vw"

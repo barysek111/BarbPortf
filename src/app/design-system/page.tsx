@@ -22,9 +22,9 @@ import { ButtonToggleDemo } from "@/app/design-system/ButtonToggleDemo";
 import { NextProject } from "@/components/work/NextProject";
 import { ViewCursor } from "@/components/work/ViewCursor";
 import { ProjectHero } from "@/components/work/ProjectHero";
-import { about } from "@/content/about";
+import { about } from "@/copy-database/about";
 import { projects } from "@/content/projects";
-import { agerasCaseStudy } from "@/content/case-studies/ageras";
+import { ageras as agerasCaseStudy } from "@/copy-database/project-ageras";
 import { getComponentHosts } from "@/lib/component-usage";
 import { hideInternalPage } from "@/lib/internal-page";
 
@@ -349,7 +349,6 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   ),
   Chapter: (
     <Chapter
-      headline={about.headline}
       sections={[
         { label: about.thinking.label, paragraphs: [about.thinking.text] },
         {
