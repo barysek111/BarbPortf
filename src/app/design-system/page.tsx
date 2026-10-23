@@ -178,7 +178,7 @@ const atoms: Entry[] = [
   },
   {
     name: "ImageFrame",
-    note: "Max height 700. Fill: no padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set. Background: image behind. Solid and background padding is equal on all sides, inside the frame: 1-column 24px / 64px (below / from tablet 810); 2-column 24px / 56px; 3-column 24px / 56px. Default `columns` is 1 outside a row. Optional description 8px under the frame, type-label muted. Stacked rows use ImageRowStack (24px below 810, 44px from tablet); padding does not add to stack gap.",
+    note: "Max height 700. Fill: no padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set. Background: image behind. Solid and background padding is equal on all sides, inside the frame: 24px below tablet 810, 56px from tablet, on every column count. Default `columns` is 1 outside a row. Optional `maxHeight` (px) caps the image inside a solid or background frame; omitted frames keep the column max. Optional description 8px under the frame, type-label muted. Stacked rows use ImageRowStack (24px below 810, 44px from tablet); padding does not add to stack gap.",
   },
   { name: "SectionHeading", note: "Section title. 41px, 51px from desktop 1200, 64px from 1440." },
   { name: "NavLink", note: "Leader on hover and current page. Open menu uses display type, below tablet only." },
@@ -262,7 +262,7 @@ const sections: Entry[] = [
   { name: "WhatIDo", note: "Tag row, then heading — gap-36 between them (same headline-to-body step as Services)." },
   {
     name: "Chapter",
-    note: "Stacks below tablet; chapter headline is full width under 810px, then max 70% of the left column from tablet. Omit `headline` to drop the left title; from tablet the subsections stay in the right column. Two columns from 810. Right column subsections use gap-24 below 810px, gap-36 from tablet. Body paragraphs use gap-12. A subsection can include an image in the right column, fill unless a variant is set. The image is the same width as the subsection text, with 36px above it.",
+    note: "Stacks below tablet; chapter headline is full width under 810px, then max 70% of the left column from tablet. Omit `headline` to drop the left title; from tablet the subsections stay in the right column. Two columns from 810. Right column subsections use gap-24 below 810px, gap-36 from tablet. Body paragraphs use gap-12. A subsection can include an image in the right column, fill unless a variant is set. The image is the same width as the subsection text, with 36px above it. Solid and background frames use the 1-column inset: 24px below 810, 56px from tablet.",
   },
   {
     name: "CredentialSection",
@@ -270,7 +270,7 @@ const sections: Entry[] = [
   },
   {
     name: "ImageRow",
-    note: "1–3 frames. gap-12 between grid cells on all viewports. Below 810px: 1-column rows stay one column; 2-column rows stay two columns side by side; 3-column rows use a 2×2 grid (two on the first row, third bottom-left, bottom-right empty). From tablet 810: 1, 2, or 3 equal columns. Solid and background padding follows ImageFrame (24px below tablet on all column counts; from tablet: 64px / 56px / 56px for 1 / 2 / 3 columns). Each cell is frame plus optional caption (8px gap). From tablet, when any frame has a caption in a 2- or 3-column row, equal-height frames then top-aligned captions. Captions are type-label muted. Media is vertically centered inside the padded frame on multi-column rows. 1-column rows hug the image and keep media top-aligned.",
+    note: "1–3 frames. gap-12 between grid cells on all viewports. Below 810px: 1-column rows stay one column; 2-column rows stay two columns side by side; 3-column rows use a 2×2 grid (two on the first row, third bottom-left, bottom-right empty). From tablet 810: 1, 2, or 3 equal columns. Solid and background padding follows ImageFrame (24px below tablet, 56px from tablet, on every column count). Each cell is frame plus optional caption (8px gap). From tablet, when any frame has a caption in a 2- or 3-column row, equal-height frames then top-aligned captions. Captions are type-label muted. Media is vertically centered inside the padded frame on multi-column rows. 1-column rows hug the image and keep media top-aligned.",
   },
   { name: "ChapterBlock", note: "Chapter copy, then image rows. gap-36 between them below 810px, gap-96 from tablet." },
   {
@@ -301,7 +301,7 @@ const shell: Entry[] = [
 const work: Entry[] = [
   {
     name: "ProjectHero",
-    note: "Title is full width below 810px, max 70% of the container from tablet. gap-36 between title and about/meta below 810px, gap-56 from tablet. About and meta stack below 810 with gap-24 between blocks; two columns from tablet 810 with gap-12. Each meta block uses gap-12 between label and value. About column uses desktop:pr-152. About and meta labels use type-label-medium. Values stay type-label. gap-36 between the copy block and hero image below 810px, gap-96 from tablet. Image is one column, solid unless a variant is passed. `color` sets the solid fill.",
+    note: "Title is full width below 810px, max 70% of the container from tablet. gap-36 between title and about/meta below 810px, gap-56 from tablet. About and meta stack below 810 with gap-24 between blocks; two columns from tablet 810 with gap-12. Each meta block uses gap-12 between label and value. About column uses desktop:pr-152. About and meta labels use type-label-medium. Values stay type-label. gap-36 between the copy block and hero image below 810px, gap-96 from tablet. Image is one column, solid unless a variant is passed. `color` sets the solid fill. Background uses `imageBackgroundSrc` behind the image.",
   },
   {
     name: "NextProject",
@@ -369,6 +369,7 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
       imageSrc={agerasCaseStudy.heroImage?.src}
       imageAlt={agerasCaseStudy.heroImage?.alt}
       imageVariant={agerasCaseStudy.heroImage?.variant}
+      imageBackgroundSrc={agerasCaseStudy.heroImage?.backgroundSrc}
       imageColor={agerasCaseStudy.heroImage?.color}
     />
   ),

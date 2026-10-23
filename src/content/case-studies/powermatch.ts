@@ -19,6 +19,13 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
       imageRows: [
         row(1, [
           solid(
+            "powermatch-diagram.svg",
+            "The four features that replaced the three-tool workflow",
+            "The four features that replaced the three-tool workflow. Analytics, bulk actions and cross-company views were left for V2.",
+          ),
+        ]),
+        row(1, [
+          solid(
             "pmflow.svg",
             "Invoice matching user flow",
             "Flow mapping the main common path to matching an invoice. The journey was designed to be possible to complete without leaving the invoices page.",

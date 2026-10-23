@@ -13,6 +13,23 @@ function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
 }
 
 function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
+  if (chapter.headline === "Mapping three operator states") {
+    const last = chapter.sections.length - 1;
+    return {
+      ...chapter,
+      sections: chapter.sections.map((section, index) =>
+        index === last
+          ? {
+              ...section,
+              images: [
+                solid("plinto-diagram.svg", "Three operator states: Auto-matched, Needs review, and Blocked"),
+              ],
+            }
+          : section,
+      ),
+    };
+  }
+
   if (chapter.headline === "Design") {
     return {
       ...chapter,

@@ -23,18 +23,20 @@ export type ImageFrameProps = {
   sizes?: string;
   /** Set by ImageRow when the row uses a shared caption track (tablet, multi-column). */
   captionedRow?: boolean;
+  /** Caps the contained image in solid and background frames, in px. Omitted frames use the column max. */
+  maxHeight?: number;
 };
 
 /** Equal padding on solid and background frames (all sides). Inside the frame; does not add to row gap. */
 const ROW_PAD = {
-  1: "p-24 tablet:p-64",
+  1: "p-24 tablet:p-56",
   2: "p-24 tablet:p-56",
   3: "p-24 tablet:p-56",
 } as const;
 
 /** Image max height so padding stays inside the 700px frame cap. */
 const IMAGE_MAX = {
-  1: "max-h-[652px] tablet:max-h-[572px]",
+  1: "max-h-[652px] tablet:max-h-[588px]",
   2: "max-h-[652px] tablet:max-h-[588px]",
   3: "max-h-[652px] tablet:max-h-[588px]",
 } as const;
@@ -61,10 +63,12 @@ function ContainedImage({
   src,
   alt,
   maxClass,
+  maxHeight,
 }: {
   src: string;
   alt: string;
   maxClass: string;
+  maxHeight?: number;
 }) {
   const [portrait, setPortrait] = useState(false);
 
@@ -79,6 +83,7 @@ function ContainedImage({
         setPortrait(img.naturalHeight > img.naturalWidth);
       }}
       className={cn("block h-auto max-w-full object-contain object-top", maxClass, portrait ? "w-auto" : "w-full")}
+      style={maxHeight ? { maxHeight } : undefined}
     />
   );
 }
@@ -108,6 +113,7 @@ export function ImageFrame({
   columns = 1,
   sizes = "100vw",
   captionedRow = false,
+  maxHeight,
 }: ImageFrameProps) {
   const pad = ROW_PAD[columns];
   const imageMax = IMAGE_MAX[columns];
@@ -134,7 +140,7 @@ export function ImageFrame({
           />
         ) : null}
         <div className={cn("relative z-lift", mediaWrap)}>
-          <ContainedImage src={src} alt={alt} maxClass={imageMax} />
+          <ContainedImage src={src} alt={alt} maxClass={imageMax} maxHeight={maxHeight} />
         </div>
       </div>
     ) : (
@@ -144,7 +150,7 @@ export function ImageFrame({
         data-name="Image Frame — solid"
       >
         <div className={mediaWrap}>
-          <ContainedImage src={src} alt={alt} maxClass={imageMax} />
+          <ContainedImage src={src} alt={alt} maxClass={imageMax} maxHeight={maxHeight} />
         </div>
       </div>
     );

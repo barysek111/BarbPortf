@@ -62,6 +62,17 @@ export const libraryDriftCaseStudy = {
       ],
       imageRows: [
         {
+          columns: 1,
+          frames: [
+            {
+              variant: "solid",
+              src: "/images/works/library-drift/libdrift-diagram.svg",
+              alt: "Three steps: scan the file, compare instances to the library, and summarize issues.",
+              maxHeight: 400,
+            },
+          ],
+        },
+        {
           columns: 2,
           frames: [
             {

@@ -2,12 +2,25 @@ import type { CaseStudy } from "./types";
 
 const media = "/images/works/ageras";
 
-function solid(file: string, alt: string, description?: string, color?: string) {
-  const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "solid" as const, src, alt, description, color };
+function mediaSrc(file: string) {
+  return `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
 }
 
-function row(columns: 1 | 2 | 3, frames: ReturnType<typeof solid>[]) {
+function solid(file: string, alt: string, description?: string, color?: string) {
+  return { variant: "solid" as const, src: mediaSrc(file), alt, description, color };
+}
+
+function background(file: string, backgroundFile: string, alt: string, description?: string) {
+  return {
+    variant: "background" as const,
+    src: mediaSrc(file),
+    backgroundSrc: mediaSrc(backgroundFile),
+    alt,
+    description,
+  };
+}
+
+function row(columns: 1 | 2 | 3, frames: readonly (ReturnType<typeof solid> | ReturnType<typeof background>)[]) {
   return { columns, frames };
 }
 
@@ -95,8 +108,8 @@ export const agerasCaseStudy = {
       imageRows: [
         row(1, [solid("sitemap-dk.svg", "Sitemap DK", "Sitemap DK")]),
         row(2, [
-          solid("flooood.png", "Login and signup flow", "login & signup flow"),
-          solid("ssss.svg", "Regions and services overview", "Regions and services overview"),
+          solid("login-signup-flow.png", "Login and signup flow", "login & signup flow"),
+          solid("regions-and-services-overview.svg", "Regions and services overview", "Regions and services overview"),
         ]),
       ],
     },
@@ -129,14 +142,17 @@ export const agerasCaseStudy = {
         },
       ],
       imageRows: [
-        row(3, [
+        row(1, [solid("diagram-ageras.svg", "Ageras design system")]),
+        row(2, [
           solid(
-            "breakpoints.png",
+            "layout-settings.png",
             "Global layout settings for responsiveness and rhythm",
             "Global layout settings for responsiveness and rhythm",
           ),
-          solid("buttons-filters.png", "Base components", "Base components"),
-          solid("icons-use.png", "Custom brand icon pack", "Custom brand icon pack"),
+          solid("base-components.svg", "Base components", "Base components"),
+        ]),
+        row(1, [
+          background("icon-pack.svg", "icons-background.png", "Custom brand icon pack", "Custom brand icon pack"),
         ]),
         row(1, [
           solid("newagerasimgs.png", "Website content library", "Website content library", "007751"),
@@ -179,9 +195,9 @@ export const agerasCaseStudy = {
     { label: "year", value: "2025" },
   ],
   heroImage: {
-    src: "/images/works/ageras/agerasthumbnailprojectpage.jpg",
-    alt: "Ageras website and mobile product screens",
-    variant: "solid",
-    color: "222222",
+    src: "/images/works/ageras/ageras-hero.png",
+    alt: "Ageras quote screen, expense chart, and logo",
+    variant: "background",
+    backgroundSrc: "/images/works/ageras/ageras-hero-background.png",
   },
 } satisfies CaseStudy;

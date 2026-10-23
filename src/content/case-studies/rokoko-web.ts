@@ -3,19 +3,27 @@ import type { CaseStudy, CaseStudyChapter } from "./types";
 
 const media = "/images/works/rokokoweb";
 
-function solid(file: string, alt: string, description?: string) {
-  const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "solid" as const, src, alt, description };
+function mediaSrc(file: string) {
+  return `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
 }
 
-function fill(file: string, alt: string, description?: string) {
-  const src = `${media}/${file.split("/").map(encodeURIComponent).join("/")}`;
-  return { variant: "fill" as const, src, alt, description };
+function solid(file: string, alt: string, description?: string) {
+  return { variant: "solid" as const, src: mediaSrc(file), alt, description };
+}
+
+function background(file: string, backgroundFile: string, alt: string, description?: string) {
+  return {
+    variant: "background" as const,
+    src: mediaSrc(file),
+    backgroundSrc: mediaSrc(backgroundFile),
+    alt,
+    description,
+  };
 }
 
 function row(
   columns: 1 | 2 | 3,
-  frames: Array<ReturnType<typeof solid> | ReturnType<typeof fill>>,
+  frames: readonly (ReturnType<typeof solid> | ReturnType<typeof background>)[],
 ) {
   return { columns, frames };
 }
@@ -56,26 +64,11 @@ function withImageRows(chapter: CaseStudyChapter): CaseStudyChapter {
     return {
       ...chapter,
       imageRows: [
-        row(3, [
-          fill("rokokoweb1-1.jpg", "Marketing website"),
-          fill("rokokoweb2-1.jpg", "Marketing website"),
-          fill("rokokoweb7.jpg", "Marketing website"),
-        ]),
-        row(3, [
-          fill("rokokoweb3-1.jpg", "Marketing website"),
-          fill("rokokoweb4.jpg", "Marketing website"),
-          fill("rokokoweb5.jpg", "Marketing website"),
-        ]),
-        row(3, [
-          fill("rokokoweb10.jpg", "Knowledge base"),
-          fill("rokokoweb8.jpg", "Knowledge base"),
-          fill("rokokoweb9.jpg", "Knowledge base"),
-        ]),
-        row(3, [
-          fill("rokokoweb11.jpg", "Webshop"),
-          fill("rokokoweb12.jpg", "Webshop"),
-          fill("rokokoweb13-1.jpg", "Webshop"),
-        ]),
+        row(2, [solid("screens/1.png", "Rokoko website"), solid("screens/2.png", "Rokoko website")]),
+        row(2, [solid("screens/3.png", "Rokoko website"), solid("screens/4.png", "Rokoko website")]),
+        row(2, [solid("screens/5.png", "Rokoko website"), solid("screens/6.png", "Rokoko website")]),
+        row(1, [background("screens/mobile.png", "fillllbckgr.png", "Rokoko website on mobile")]),
+        row(2, [solid("screens/7.png", "Rokoko website"), solid("screens/8.png", "Rokoko website")]),
       ],
     };
   }
