@@ -370,7 +370,13 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
       imageAlt={agerasCaseStudy.heroImage?.alt}
       imageVariant={agerasCaseStudy.heroImage?.variant}
       imageBackgroundSrc={agerasCaseStudy.heroImage?.backgroundSrc}
-      imageColor={agerasCaseStudy.heroImage?.color}
+      imageColor={
+        agerasCaseStudy.heroImage &&
+        "color" in agerasCaseStudy.heroImage &&
+        typeof agerasCaseStudy.heroImage.color === "string"
+          ? agerasCaseStudy.heroImage.color
+          : undefined
+      }
     />
   ),
   NextProject: <NextProject slug="ageras" />,
