@@ -25,22 +25,26 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
   const livePath = usePathname();
   const pathname = path ?? livePath;
   const inkTone = tone === "ink";
-  const heroInk = pathname === "/" && !inkTone;
+  const heroInk = !inkTone;
   const headerRef = useRef<HTMLElement>(null);
-  const coverRef = useRef(heroInk ? 1 : 0);
+  const coverRef = useRef(0);
   const blendTimer = useRef(0);
-  const [cover, setCover] = useState(heroInk ? 1 : 0);
-  const [blendOn, setBlendOn] = useState(!heroInk);
+  const [cover, setCover] = useState(0);
+  const [blendOn, setBlendOn] = useState(true);
 
   const syncHero = useCallback(() => {
     if (!heroInk) return;
-    const hero = document.querySelector("[data-nav-ink]");
     const header = headerRef.current;
-    if (!hero || !header) return;
-    const navBottom = header.getBoundingClientRect().bottom;
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    const next =
-      navBottom <= 0 ? 0 : heroBottom >= navBottom ? 1 : Math.min(1, Math.max(0, heroBottom / navBottom));
+    const navBottom = header?.getBoundingClientRect().bottom ?? 0;
+    let next = 0;
+    if (header && navBottom > 0) {
+      document.querySelectorAll("[data-nav-ink]").forEach((hero) => {
+        const box = hero.getBoundingClientRect();
+        const overlap = Math.min(navBottom, box.bottom) - Math.max(0, box.top);
+        if (overlap > 0) next = Math.max(next, overlap / navBottom);
+      });
+    }
+    next = Math.min(1, next);
     if (Math.abs(coverRef.current - next) > 0.01) {
       coverRef.current = next;
       setCover(next);
@@ -61,7 +65,6 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
       setBlendOn(true);
       return;
     }
-    setBlendOn(false);
     syncHero();
     window.addEventListener("resize", syncHero);
     window.addEventListener("scroll", syncHero, { passive: true });
@@ -134,7 +137,7 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
               href="/"
               aria-label={`${global.site.name} ${global.nav.homeLinkSuffix}`}
               onClick={close}
-              className="pointer-events-auto relative z-10 inline-block h-[28px] max-w-full shrink-0 self-center bg-current [mask-image:url('/images/shared/logo.svg')] [mask-position:left_center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:url('/images/shared/logo.svg')] [-webkit-mask-position:left_center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
+              className="pointer-events-auto relative z-10 inline-block h-[28px] max-w-1/2 shrink-0 self-center bg-current [mask-image:url('/images/shared/logo.svg')] [mask-position:left_center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:url('/images/shared/logo.svg')] [-webkit-mask-position:left_center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain] tablet:max-w-full"
               style={{ aspectRatio: "3733 / 300" }}
             />
             <Button

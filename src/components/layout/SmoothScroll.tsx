@@ -71,7 +71,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
   }, [pathname]);
 
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
+    <ReactLenis root options={{ lerp: 0.1, duration: 1.2, anchors: true }}>
       <AppearOnScroll />
       {children}
     </ReactLenis>

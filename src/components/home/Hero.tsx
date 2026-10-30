@@ -7,6 +7,7 @@ export function Hero() {
     <section
       className="relative flex h-svh items-center overflow-clip"
       data-name="Section - Hero"
+      data-skip-page-top
     >
       <div className="relative h-full w-full">
         <p className="type-label absolute top-1/2 left-0 z-stack hidden -translate-y-1/2 tablet:block">

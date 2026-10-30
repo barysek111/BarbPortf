@@ -141,8 +141,14 @@ export function PageFade({
   }, []);
 
   useLayoutEffect(() => {
-    lenisRef.current?.scrollTo(0, { immediate: true });
-    window.scrollTo(0, 0);
+    const hash = window.location.hash;
+    const id = hash.length > 1 ? decodeURIComponent(hash.slice(1)) : "";
+    if (id && document.getElementById(id)) {
+      lenisRef.current?.scrollTo(hash, { immediate: true });
+    } else {
+      lenisRef.current?.scrollTo(0, { immediate: true });
+      window.scrollTo(0, 0);
+    }
     fadeSnapshot(() => onShowRef.current(pathname));
   }, [pathname]);
 

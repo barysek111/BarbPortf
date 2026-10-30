@@ -15,7 +15,8 @@ const heroRing = home.hero.images;
  * pause or flip.
  *
  * Fills its parent — `hero-frame` supplies the 60vw width; this stage owns
- * the 5:4 height. Layout projects locally, then scales the oval to the stage.
+ * the 5:4 height. `ground` paints that stage paper (default) or ink.
+ * Layout projects locally, then scales the oval to the stage.
  */
 
 const CARD_W = 140;
@@ -104,7 +105,7 @@ function layout(count: number, width: number, height: number, turnDeg: number): 
   }));
 }
 
-export function HeroRing() {
+export function HeroRing({ ground = "paper" }: { ground?: "paper" | "ink" } = {}) {
   const stageRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const turnRef = useRef(0);
@@ -158,7 +159,7 @@ export function HeroRing() {
     <div
       ref={stageRef}
       // Full width of the parent; height from 5:4. hero-frame supplies 60vw.
-      className="relative aspect-[5/4] w-full overflow-hidden bg-paper"
+      className={`relative aspect-[5/4] w-full overflow-hidden ${ground === "ink" ? "bg-ink" : "bg-paper"}`}
     >
       {heroRing.map((item, i) => (
         <div

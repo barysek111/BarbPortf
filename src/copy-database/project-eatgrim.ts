@@ -19,7 +19,7 @@ import type { CaseStudy } from "@/content/case-studies/types";
 // - Hero image
 // - Chapter: SCOPE
 // - Chapter: Research
-// - Chapter: Direction
+// - Chapter: brand guidelines
 // - Chapter: Design
 // - Chapter: Content
 // - Chapter: Outcomes
@@ -125,27 +125,15 @@ export const eatgrim = {
       ],
     },
     // =====================================================
-    // CHAPTER: Direction
+    // CHAPTER: brand guidelines
     // =====================================================
     {
-      headline: "Direction",
+      headline: "brand guidelines",
       sections: [
-        {
-          label: "Visual approach",
-          paragraphs: [
-            "The brand needed to be playful and bold, with colors that made wonky vegetables look exciting. Illustrations stayed hand-drawn and warm, not corporate.",
-          ],
-        },
-        {
-          label: "Unboxing experience",
-          paragraphs: [
-            "Opening a box should feel like more than receiving groceries.",
-          ],
-        },
         {
           label: "Creating consistency",
           paragraphs: [
-            "The toolkit held the logo, typeface, color palette, and a recognizable wonky-fruit symbol. People could spot Eat Grim on Instagram, in the mailbox, or on a sticker.",
+            "The brand needed to be playful and bold, hand-drawn and personal Illustrations. The brand manual introduces the logo, typeface, color palette and more concrete guidelines for external and internal use.",
           ],
         },
       ],
@@ -155,38 +143,18 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/asset-10.jpg",
-              alt: "Brand asset",
+              src: "/images/works/eatgrim/eatgrim-brandmanual-images1.png",
+              alt: "Eat Grim logotype",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/asset-9.jpg",
-              alt: "Brand asset",
+              src: "/images/works/eatgrim/eatgrim-brandmanual-images2.png",
+              alt: "Eat Grim logotype use",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/asset-8.jpg",
-              alt: "Brand asset",
-            },
-          ],
-        },
-        {
-          columns: 3,
-          frames: [
-            {
-              variant: "fill",
-              src: "/images/works/eatgrim/asset-14.jpg",
-              alt: "Brand asset",
-            },
-            {
-              variant: "fill",
-              src: "/images/works/eatgrim/asset-12.jpg",
-              alt: "Brand asset",
-            },
-            {
-              variant: "fill",
-              src: "/images/works/eatgrim/Untitled-3-07.jpg",
-              alt: "Packaging design",
+              src: "/images/works/eatgrim/eatgrim-brandmanual-images3.png",
+              alt: "Eat Grim colour system",
             },
           ],
         },
@@ -195,18 +163,18 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/Untitled-3-08.jpg",
-              alt: "Packaging design",
+              src: "/images/works/eatgrim/eatgrim-brandmanual-images4.png",
+              alt: "Eat Grim typography hierarchy",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/Untitled-3-10.jpg",
-              alt: "Packaging design",
+              src: "/images/works/eatgrim/eatgrim-brandmanual-images5.png",
+              alt: "Eat Grim primary typeface Rubik",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/Group-427323113.jpg",
-              alt: "Packaging lineup",
+              src: "/images/works/eatgrim/eatgrim-brandmanual-images6.png",
+              alt: "Eat Grim body typeface Roboto",
             },
           ],
         },
@@ -222,6 +190,12 @@ export const eatgrim = {
           label: "Packaging as storytelling",
           paragraphs: [
             "Each box size used bold visuals, short notes, and a friendly tone to say where the food came from and why it mattered.",
+          ],
+        },
+        {
+          label: "Unboxing experience",
+          paragraphs: [
+            "Opening a box should feel like more than receiving groceries.",
           ],
         },
         {

@@ -12,7 +12,8 @@ import { NavClock } from "@/components/layout/NavClock";
 import { DitherOverlay } from "@/components/work/DitherOverlay";
 import { WorkCard } from "@/components/work/WorkCard";
 import { Hero } from "@/components/home/Hero";
-import { Hero2 } from "@/components/home/Hero2";
+import { HeroLetter } from "@/components/home/HeroLetter";
+import { SplineSquare } from "@/components/spline/SplineSquare";
 import { WorksGrid } from "@/components/sections/WorksGrid";
 import { Services } from "@/components/home/Services";
 import { WhatIDo } from "@/components/home/WhatIDo";
@@ -27,6 +28,7 @@ import { projects } from "@/content/projects";
 import { ageras as agerasCaseStudy } from "@/copy-database/project-ageras";
 import { getComponentHosts } from "@/lib/component-usage";
 import { hideInternalPage } from "@/lib/internal-page";
+import { Toc } from "@/app/design-system/Toc";
 
 // Internal catalogue, same as /archive. Not in the nav. 404 when published.
 export const metadata: Metadata = {
@@ -188,6 +190,10 @@ const atoms: Entry[] = [
     note: "Fixed [view] label on the pointer. Brackets and the word use the button gap, 4px, with no roll. The frame is 4px of paper at full opacity. Hides the site dot. Shown while hovering a WorkCard, and while hovering the NextProject image.",
   },
   {
+    name: "SplineSquare",
+    note: "Square block, not a page section. Height is 50vh below desktop 1200 and 80vh from 1200. Width follows the square. The React export of the interactive letter is /spline-square.splinecode. It is drawn near the size of the block, capped at 1280px and 1.5× the screen density, then scaled to fill the frame so the picture is not cropped. Rendering pauses while the block is off screen. A failed graphics context does not raise a page error. If the browser cannot create a rendering context the block stays empty.",
+  },
+  {
     name: "DitherOverlay",
     note: "Bayer dither, 2px blocks, using ink, muted, and paper in equal steps. Fades over the whole image on hover of the parent group in 0.5s, ease-in, the same curve as the 104% zoom, in and out. Pointer events pass through, so a [view] cursor can sit above it. Used on WorksGrid images and the NextProject image.",
   },
@@ -234,6 +240,7 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
     </span>
   ),
   ViewCursor: <ViewCursor inline />,
+  SplineSquare: <SplineSquare />,
   DitherOverlay: (
     <div className="group relative max-w-[390px]">
       <Image
@@ -249,11 +256,8 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
 };
 
 const sections: Entry[] = [
-  { name: "Hero", note: "Full height. From tablet 810: frame is 60vw, labels sit on the sides." },
-  {
-    name: "Hero2",
-    note: "Same labels and scroll button as Hero. Cards lie flat in one row, each skewed 10° so the side edges stay vertical and the top and bottom slope down to the right. Each card is centered vertically in the row. Horizontal overlap is -64px and each card sits 44px higher than the one before it. The leftmost card paints on top; each card to the right sits underneath the one before it. Hover does not change that order. The stack hugs those cards and stays centered in the viewport on both axes, including when it is wider than the screen. Hover ends when the pointer leaves that card, including into the empty space around the stack. Every card's width is clamp(100px, 12vw, 140px) and its height follows that file's own ratio. Hover lifts that card 80px straight up on a spring with a 1.3s period and 0.25 bounce, without resizing it or moving the others. Leaving it, or hovering another, puts the previous card back on the same spring. Uses the hero ring images except the 1st, 4th, 6th, 11th, and last. Shown order, by source image, is 5, 7, 3, 13, 8, 9, 2, 10, 12. Stage is ink, edge to edge, for this section only; labels and the scroll button are paper. data-nav-ink marks it so the homepage nav stays paper while the section is behind the bar, then eases back to the default nav once the section has passed above the bar. No prev, dots, or next bar.",
-  },
+  { name: "Hero", note: "Full viewport height, no page-top padding, so the ring is centered in the viewport. From tablet 810: frame is 60vw, labels sit on the sides." },
+  { name: "HeroLetter", note: "Same layout as Hero. Ink background bleeds edge to edge, like the footer. Labels and the scroll button stay in the page column (page-inset + section-wrap) and are paper. The center frame holds SplineSquare, centered horizontally and vertically. data-nav-ink: while this section overlaps the bar, the closed nav uses paper text with no blend. Once it no longer covers the bar, the nav returns to its default treatment." },
   {
     name: "WorksGrid",
     note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, 12px apart. The toggle column has 4px top padding, 8px from 1440, so the first toggle's brackets meet the heading caps. The toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the number and the project name with a 2px gap, both on the left, then the image, 12px apart. List stacks below desktop; side by side from 1200, with view project. The list shows the project description in muted type-body. Image strip is 4-up and 176px tall from tablet 810. Grid hover keeps the [view] pointer, turns the image grayscale in 0.2s, zooms to 104% in 0.5s ease-in, and fades a Bayer dither of ink, muted, and paper (2px blocks) over the whole image on that same 0.5s ease-in.",
@@ -285,17 +289,17 @@ const sections: Entry[] = [
 
 const shell: Entry[] = [
   { name: "SiteLayout", note: "Cursor, nav, page-inset + page-main (gap-56 below 810px, gap-96 from tablet), footer. Side padding lives only on page-inset. page-main caps each direct child at 1920 centred — section components do not repeat section-wrap. Footer ink uses footer-bleed (excluded from that cap); footer content uses page-inset + section-wrap. On /playground only, adds html.theme-ink (ink background, paper text) and passes tone=\"ink\" to Nav and Footer. The class and tone come off on every other route, which stay paper. Route changes fade the outgoing page out, then fade the next page in (400ms each). The nav keeps the outgoing route until the incoming fade starts. Playground theme follows the live route so the incoming page is already ink or paper. Reduced motion skips the fade." },
-  { name: "PageFade", note: "Wraps the main column. On an in-site link click, the current page is snapshotted, fades out, then the next page fades in. Each step is 400ms, ease 0.45, 0, 0.55, 1. The snapshot sits under the nav. `onShow` runs when the outgoing fade ends and the incoming fade starts. Same-page hashes, new tabs, and external links do not fade. First load does not fade. Reduced motion swaps with no fade." },
+  { name: "PageFade", note: "Wraps the main column. On an in-site link click, the current page is snapshotted, fades out, then the next page fades in. Each step is 400ms, ease 0.45, 0, 0.55, 1. The snapshot sits under the nav. `onShow` runs when the outgoing fade ends and the incoming fade starts. Same-page hashes, new tabs, and external links do not fade. A route change starts at the top, unless the url hash matches an element on the page. First load does not fade. Reduced motion swaps with no fade." },
   { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard or the NextProject image, where the [view] label is the cursor." },
   {
     name: "Nav",
-    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). The logo links to the homepage. It is colored with the nav text, max height 28px, vertically centered in the bar. Empty bar space lets clicks through to the page. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page. tone=\"paper\" (default) is ink text below tablet and paper text with difference/exclusion blend from tablet; the open menu is paper with ink text. tone=\"ink\" is solid paper text with no blend, and the open menu is ink with paper text. On the homepage, while a [data-nav-ink] section still covers the bar, the closed nav eases between paper and ink over 700ms with no blend. Once that section has cleared the bar, the default blend returns. `path` overrides the route used for the active mark and the homepage ink shift. The menu closes from the live route.",
+    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). The logo links to the homepage. It is colored with the nav text, max height 28px, vertically centered in the bar. Below tablet 810 it is at most half the page column. Empty bar space lets clicks through to the page. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page. tone=\"paper\" (default) is ink text below tablet and paper text with difference/exclusion blend from tablet; the open menu is paper with ink text. tone=\"ink\" is solid paper text with no blend, and the open menu is ink with paper text. While any [data-nav-ink] section overlaps the bar, the closed nav eases between paper and ink over 700ms with no blend, including a section that is not at the top of the page. Once no ink section covers the bar, the default blend returns. `path` overrides the route used for the active mark. The menu closes from the live route.",
   },
   {
     name: "Footer",
     note: "tone=\"paper\" (default) flips to ink near the bottom of the page, with a 1s color and wordmark-filter transition. tone=\"ink\" stays solid ink and paper text, wordmark inverted, with no scroll listener and no transition. footer-bleed paints edge-to-edge; vertical spacing comes from page-main gap-96 above the band and py-96 inside. Content uses page-inset + section-wrap. 96px gap between the link row and the wordmark. Wordmark stacks below tablet; SVG from tablet. Columns swap at desktop 1200.",
   },
-  { name: "SmoothScroll", note: "Smooth scroll and in-view reveals." },
+  { name: "SmoothScroll", note: "Smooth scroll and in-view reveals. Same-page hash links scroll to that id, keeping its scroll-margin, including while a smooth scroll is already moving." },
 ];
 
 const work: Entry[] = [
@@ -313,7 +317,7 @@ const work: Entry[] = [
 
 const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   Hero: <Hero />,
-  Hero2: <Hero2 />,
+  HeroLetter: <HeroLetter />,
   WorksGrid: <WorksGrid />,
   Services: <Services />,
   WhatIDo: <WhatIDo />,
@@ -381,27 +385,6 @@ const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
   NextProject: <NextProject slug="ageras" />,
   PlaygroundGrid: <PlaygroundGrid />,
 };
-
-function Toc({
-  groups,
-}: {
-  groups: { label: string; links: { id: string; label: string }[] }[];
-}) {
-  return (
-    <nav aria-label="Contents" className="flex flex-col gap-8">
-      {groups.map((group) => (
-        <div key={group.label} className={`${DOC} flex flex-wrap items-baseline gap-x-12 gap-y-2`}>
-          <span className="text-muted">{group.label}</span>
-          {group.links.map((link) => (
-            <a key={link.id} href={`#${link.id}`} className="underline">
-              {link.label}
-            </a>
-          ))}
-        </div>
-      ))}
-    </nav>
-  );
-}
 
 function Section({
   id,
@@ -484,7 +467,7 @@ export default function DesignSystemPage() {
       <header className="flex flex-col gap-16">
         <p className={DOC_DIM}>internal — not linked, not indexed</p>
         <h1 className={`${DOC_TITLE} text-[24px]`}>Design system</h1>
-        <Toc groups={toc} />
+        <Toc groups={toc} rowClassName={`${DOC} flex flex-wrap items-baseline gap-x-12 gap-y-2`} />
       </header>
 
       <Section id="notes" title="NOTES">

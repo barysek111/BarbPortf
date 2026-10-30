@@ -395,6 +395,48 @@
   }
 }
 
+/* Square spline block. Height is 50vh below desktop 1200, 80vh from 1200. Width matches, so the square follows. */
+.spline-square {
+  position: relative;
+  align-self: center;
+  width: 50vh;
+  height: 50vh;
+  aspect-ratio: 1;
+  overflow: hidden;
+  --spline-square-draw: 2250px;
+  --spline-square-scale: 1;
+}
+
+@media (width >= 1200px) {
+  .spline-square {
+    width: 80vh;
+    height: 80vh;
+  }
+}
+
+.spline-square-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--spline-square-draw);
+  height: var(--spline-square-draw);
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+
+.spline-square-stage.is-fit {
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(var(--spline-square-scale));
+}
+
+.spline-square canvas {
+  width: var(--spline-square-draw) !important;
+  height: var(--spline-square-draw) !important;
+  max-width: none;
+  display: block;
+}
+
 /* Sections that must paint over the pinned/sticky bands behind them. */
 @utility stack-front {
   position: relative;

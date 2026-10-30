@@ -49,7 +49,7 @@ export const powermatch = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/powermatch/pmhero.jpg",
+    src: "/images/works/powermatch/pmhero.png",
     alt: "Powermatch reconciliation overview",
     variant: "fill",
   },
