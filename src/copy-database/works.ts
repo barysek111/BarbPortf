@@ -5,8 +5,10 @@
  * - Keep commas between items, and keep the brackets [ ] and braces { }.
  * - To add or remove a project card, copy or delete one whole block.
  * - Each project also needs a matching file in this folder named project- and then the slug.
- * - To change the card picture, replace "image". To change the list pictures, replace the names in "listFiles".
+ * - To change the card picture, replace "image". List view uses that same picture.
+ * - A project with "listImage" uses that picture in the list row instead.
  * - imageWidth and imageHeight are the picture's real pixel size. Update them if you replace the picture.
+ * - listImageWidth and listImageHeight are that row picture's real pixel size.
  * - Do not change "slug". The web address depends on it.
  */
 
@@ -25,8 +27,9 @@ export type WorkCardCopy = {
   image: string;
   imageWidth: number;
   imageHeight: number;
-  listFolder: string;
-  listFiles: readonly string[];
+  listImage?: string;
+  listImageWidth?: number;
+  listImageHeight?: number;
   masonryY: number;
 };
 
@@ -37,7 +40,6 @@ export const works = {
   heading: "LATEST WORK",
   grid: "grid",
   list: "list",
-  viewProject: "view project",
   listImageAlt: "",
 
   // =====================================================
@@ -54,8 +56,9 @@ export const works = {
   image: "/images/works/library-drift-thumb.png",
   imageWidth: 1220,
   imageHeight: 1220,
-  listFolder: "library-drift",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
+  listImage: "/images/works/library-drift/rowthumblbrary.png",
+  listImageWidth: 877,
+  listImageHeight: 877,
   masonryY: 93,
 }, {
   slug: "plinto",
@@ -68,8 +71,9 @@ export const works = {
   image: "/images/works/plinto-ai-invoicing.jpg",
   imageWidth: 1080,
   imageHeight: 1350,
-  listFolder: "plinto-ai-invoicing",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
+  listImage: "/images/works/plinto-ai-invoicing copy.jpg",
+  listImageWidth: 974,
+  listImageHeight: 974,
   masonryY: 93,
 }, {
   slug: "powermatch",
@@ -82,8 +86,9 @@ export const works = {
   image: "/images/works/powermatch-invoice-reconciliation.jpg",
   imageWidth: 1350,
   imageHeight: 1080,
-  listFolder: "powermatch-invoice-reconciliation",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
+  listImage: "/images/works/powermatch/Screenshot 2026-11-03 at 04.33.14.png",
+  listImageWidth: 1324,
+  listImageHeight: 1488,
   masonryY: 326,
 }, {
   slug: "ageras",
@@ -96,8 +101,9 @@ export const works = {
   image: "/images/works/ageras-web-ux-ui.jpg",
   imageWidth: 1080,
   imageHeight: 1500,
-  listFolder: "ageras",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
+  listImage: "/images/works/ageras/Screenshot 2026-11-03 at 04.34.04.png",
+  listImageWidth: 1058,
+  listImageHeight: 1170,
   masonryY: 93,
 }, {
   slug: "cococare",
@@ -110,8 +116,6 @@ export const works = {
   image: "/images/works/coco-care-app.jpg",
   imageWidth: 1080,
   imageHeight: 1350,
-  listFolder: "coco-care-app",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   masonryY: 303,
 }, {
   slug: "rokokobrand",
@@ -124,8 +128,9 @@ export const works = {
   image: "/images/works/rokoko-brand-identity.jpg",
   imageWidth: 1080,
   imageHeight: 1500,
-  listFolder: "rokoko-brand-identity",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
+  listImage: "/images/works/rokokobrand/kokosmallthumbnail.png",
+  listImageWidth: 1884,
+  listImageHeight: 1884,
   masonryY: 93,
 }, {
   slug: "rokokoweb",
@@ -138,8 +143,6 @@ export const works = {
   image: "/images/works/rokokowebthumb.png",
   imageWidth: 1080,
   imageHeight: 1350,
-  listFolder: "rokoko-website-revamp",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   masonryY: 707,
 }, {
   slug: "weld",
@@ -152,8 +155,6 @@ export const works = {
   image: "/images/works/weld-digital-presence.svg",
   imageWidth: 560,
   imageHeight: 560,
-  listFolder: "weld-digital-presence",
-  listFiles: ["01.svg", "02.png", "03.svg", "04.jpg"],
   masonryY: 0,
 }, {
   slug: "eatgrim",
@@ -166,8 +167,6 @@ export const works = {
   image: "/images/works/eat-grim-brand-identity.jpg",
   imageWidth: 946,
   imageHeight: 1147,
-  listFolder: "eat-grim-brand-identity",
-  listFiles: ["01.jpg", "02.jpg", "03.jpg", "04.jpg"],
   masonryY: 707,
 }] satisfies readonly WorkCardCopy[],
 } as const;

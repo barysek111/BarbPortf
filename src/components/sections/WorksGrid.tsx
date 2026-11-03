@@ -6,10 +6,10 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { WorkCard } from "@/components/work/WorkCard";
+import { useViewCursor, ViewCursor } from "@/components/work/ViewCursor";
 import { works } from "@/copy-database/works";
-import { projects } from "@/content/projects";
+import { projects, type Project } from "@/content/projects";
 import { cn } from "@/lib/cn";
-import { ruledRowClass } from "@/lib/ruled-row";
 
 type Mode = "grid" | "list";
 
@@ -58,14 +58,50 @@ function WorksGridModeSwitch({ className }: { className?: string }) {
 }
 
 const LIST_ROW =
-  "relative flex flex-col items-start gap-12 " +
-  "desktop:flex-row desktop:gap-12";
+  "grid w-full grid-cols-1 items-stretch gap-24 border-t border-ink px-12 py-24 tablet:h-176 tablet:grid-cols-2 tablet:gap-12";
 
-const LIST_IMAGES =
-  "grid min-w-0 gap-4 overflow-hidden " +
-  "below-tablet:grid-cols-2 below-tablet:grid-rows-2 below-tablet:h-auto " +
-  "tablet:h-176 tablet:shrink-0 tablet:grid-cols-4 " +
-  "desktop:min-h-176 desktop:flex-1";
+function WorksListRow({ project }: { project: Project }) {
+  const { cursor, bind } = useViewCursor();
+  const image = project.listImage;
+
+  return (
+    <>
+      <Link
+        href={`/${project.slug}`}
+        aria-label={project.title}
+        data-hide-site-cursor=""
+        onMouseMove={bind.onMouseMove}
+        onMouseLeave={bind.onMouseLeave}
+        className={cn(LIST_ROW, "cursor-none")}
+      >
+        <div className="grid h-auto min-h-0 min-w-0 grid-cols-2 gap-12 tablet:h-full tablet:grid-cols-3">
+          {image ? (
+            <div className="hidden min-h-0 min-w-0 tablet:block tablet:h-full">
+              <Image
+                src={image.src}
+                alt={works.listImageAlt}
+                width={image.w}
+                height={image.h}
+                sizes="176px"
+                className="block h-full w-full min-h-0 object-contain object-left-top"
+              />
+            </div>
+          ) : null}
+          <p className="type-label reveal-clip min-w-0 desktop:pr-32">
+            <span>{project.title}</span>
+          </p>
+          <p className="type-label reveal-clip min-w-0">
+            <span>{project.year}</span>
+          </p>
+        </div>
+        <p className="type-body min-w-0 max-w-[500px]">
+          <span>{project.description}</span>
+        </p>
+      </Link>
+      <ViewCursor cursor={cursor} />
+    </>
+  );
+}
 
 function WorksGridProjectList() {
   const { mode } = useMode();
@@ -83,44 +119,7 @@ function WorksGridProjectList() {
   return (
     <div className="flex flex-col">
       {projects.map((project) => (
-        <div key={project.slug} className={cn(ruledRowClass, LIST_ROW)}>
-          <Link
-            href={`/${project.slug}`}
-            aria-label={project.title}
-            className="absolute inset-0 z-lift desktop:hidden"
-          />
-          <div className="flex min-w-0 flex-1 flex-col">
-            <div className="flex tablet:flex-row tablet:items-start tablet:justify-between tablet:gap-12">
-              <div className="flex min-w-0 flex-col gap-8">
-                <p className="type-label reveal-clip">
-                  <span>{project.title}</span>
-                </p>
-                <p className="type-body reveal-clip w-full text-muted tablet:w-[60%] tablet:max-w-[60%]">
-                  <span>{project.description}</span>
-                </p>
-                <p className="type-label reveal-clip tablet:hidden">
-                  <span>{project.year}</span>
-                </p>
-                <div className="hidden desktop:block">
-                  <Button href={`/${project.slug}`}>{works.viewProject}</Button>
-                </div>
-              </div>
-              <p className="type-label reveal-clip hidden shrink-0 tablet:block">
-                <span>{project.year}</span>
-              </p>
-            </div>
-          </div>
-          <div className={LIST_IMAGES}>
-            {project.listImages.slice(0, 4).map((image, imageIndex) => (
-              <div
-                key={`${project.slug}-${imageIndex}`}
-                className="relative min-h-0 w-full below-tablet:aspect-[4/3] tablet:h-full"
-              >
-                <Image src={image.src} alt={works.listImageAlt} fill sizes={`${image.w}px`} className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
+        <WorksListRow key={project.slug} project={project} />
       ))}
     </div>
   );

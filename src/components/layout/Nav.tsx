@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLenis } from "lenis/react";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink } from "@/components/layout/NavLink";
 import { Button } from "@/components/ui/Button";
 import { NavClock } from "@/components/layout/NavClock";
@@ -11,151 +10,127 @@ import { global } from "@/copy-database/global";
 import { projects } from "@/content/projects";
 import { cn } from "@/lib/cn";
 
-const NAV_TONE_MS = 700;
+const MENU_MS = 400;
+const MENU_EASE = "cubic-bezier(0.45, 0, 0.55, 1)";
 
-/** Paper at t=1, ink at t=0. Concrete rgb so the color transition can interpolate. */
-function navInkColor(cover: number) {
-  const t = Math.min(1, Math.max(0, cover));
-  const v = Math.round(0x1c + (0xff - 0x1c) * t);
-  return `rgb(${v} ${v} ${v})`;
-}
-
-export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: string }) {
+export function Nav({ path }: { path?: string }) {
   const [open, setOpen] = useState(false);
+  const [present, setPresent] = useState(false);
+  const desired = useRef(false);
+  const closeTimer = useRef(0);
+  const openFrame = useRef(0);
   const livePath = usePathname();
   const pathname = path ?? livePath;
-  const inkTone = tone === "ink";
-  const heroInk = !inkTone;
-  const headerRef = useRef<HTMLElement>(null);
-  const coverRef = useRef(0);
-  const blendTimer = useRef(0);
-  const [cover, setCover] = useState(0);
-  const [blendOn, setBlendOn] = useState(true);
 
-  const syncHero = useCallback(() => {
-    if (!heroInk) return;
-    const header = headerRef.current;
-    const navBottom = header?.getBoundingClientRect().bottom ?? 0;
-    let next = 0;
-    if (header && navBottom > 0) {
-      document.querySelectorAll("[data-nav-ink]").forEach((hero) => {
-        const box = hero.getBoundingClientRect();
-        const overlap = Math.min(navBottom, box.bottom) - Math.max(0, box.top);
-        if (overlap > 0) next = Math.max(next, overlap / navBottom);
+  const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const openMenu = useCallback(() => {
+    desired.current = true;
+    window.clearTimeout(closeTimer.current);
+    window.cancelAnimationFrame(openFrame.current);
+    setPresent(true);
+    if (reducedMotion()) {
+      setOpen(true);
+      return;
+    }
+    openFrame.current = requestAnimationFrame(() => {
+      openFrame.current = requestAnimationFrame(() => {
+        if (desired.current) setOpen(true);
       });
-    }
-    next = Math.min(1, next);
-    if (Math.abs(coverRef.current - next) > 0.01) {
-      coverRef.current = next;
-      setCover(next);
-    }
-    window.clearTimeout(blendTimer.current);
-    if (next > 0) {
-      setBlendOn(false);
-      return;
-    }
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : NAV_TONE_MS;
-    blendTimer.current = window.setTimeout(() => setBlendOn(true), delay);
-  }, [heroInk]);
+    });
+  }, []);
 
-  useLayoutEffect(() => {
-    if (!heroInk) {
-      coverRef.current = 0;
-      setCover(0);
-      setBlendOn(true);
-      return;
-    }
-    syncHero();
-    window.addEventListener("resize", syncHero);
-    window.addEventListener("scroll", syncHero, { passive: true });
-    return () => {
-      window.removeEventListener("resize", syncHero);
-      window.removeEventListener("scroll", syncHero);
-      window.clearTimeout(blendTimer.current);
-    };
-  }, [heroInk, syncHero]);
+  const closeMenu = useCallback(() => {
+    desired.current = false;
+    window.cancelAnimationFrame(openFrame.current);
+    setOpen(false);
+    window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setPresent(false), reducedMotion() ? 0 : MENU_MS);
+  }, []);
 
-  useLenis(syncHero);
-
-  const overHero = heroInk && !blendOn;
+  const closeRef = useRef(closeMenu);
+  closeRef.current = closeMenu;
 
   useEffect(() => {
-    setOpen(false);
+    return () => {
+      window.clearTimeout(closeTimer.current);
+      window.cancelAnimationFrame(openFrame.current);
+    };
+  }, []);
+
+  const pathRef = useRef(livePath);
+  useEffect(() => {
+    if (pathRef.current === livePath) return;
+    pathRef.current = livePath;
+    closeRef.current();
   }, [livePath]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = present ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
-
-  const close = () => setOpen(false);
+  }, [present]);
 
   return (
-    <header
-      ref={headerRef}
+    <>
+    <div
+      aria-hidden
+      data-nav-overlay=""
       className={cn(
-        "fixed inset-x-0 top-0 z-nav w-full",
-        overHero &&
-          "transition-colors duration-700 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
-        open
-          ? cn(
-              "pointer-events-auto min-h-svh",
-              inkTone ? "bg-ink text-paper" : "bg-paper text-ink",
-            )
-          : inkTone
-            ? "pointer-events-none text-paper"
-            : overHero
-              ? "pointer-events-none"
-              : "pointer-events-none text-ink tablet:text-paper tablet:mix-blend-difference",
+        "pointer-events-none fixed inset-0 z-nav bg-paper tablet:hidden",
+        "transition-opacity duration-[400ms] ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
+        open ? "opacity-100" : "opacity-0",
       )}
-      style={overHero && !open ? { color: navInkColor(cover) } : undefined}
+    />
+    <header
+      className={cn(
+        "pointer-events-none fixed inset-x-0 top-0 z-nav w-full mix-blend-difference text-paper",
+        present && "below-tablet:pointer-events-auto below-tablet:min-h-svh",
+      )}
     >
-      <nav
-        aria-label={global.nav.ariaLabel}
-        className={cn(
-          "page-inset relative z-nav overflow-clip py-12",
-          open || inkTone || overHero ? "mix-blend-normal" : "mix-blend-normal tablet:mix-blend-exclusion",
-        )}
-      >
+      <nav aria-label={global.nav.ariaLabel} className="page-inset relative overflow-clip pt-24 pb-12">
         <div className="section-wrap w-full">
           <div
             className={cn(
               "flex flex-col items-stretch",
-              open ? "gap-0" : "gap-24",
+              present ? "gap-0" : "gap-24",
               "tablet:flex-row tablet:items-center tablet:justify-between tablet:gap-12",
             )}
           >
           <div
             className={cn(
               "flex w-full items-center justify-between tablet:w-auto tablet:min-w-0 tablet:flex-1 tablet:self-center",
-              open && "pb-12",
+              present && "pb-12",
             )}
           >
             <Link
               href="/"
               aria-label={`${global.site.name} ${global.nav.homeLinkSuffix}`}
-              onClick={close}
-              className="pointer-events-auto relative z-10 inline-block h-[28px] max-w-1/2 shrink-0 self-center bg-current [mask-image:url('/images/shared/logo.svg')] [mask-position:left_center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:url('/images/shared/logo.svg')] [-webkit-mask-position:left_center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain] tablet:max-w-full"
-              style={{ aspectRatio: "3733 / 300" }}
-            />
+              onClick={closeMenu}
+              className="type-h3 pointer-events-auto relative z-10 self-center whitespace-nowrap"
+            >
+              <span className="tablet:hidden">{global.nav.nameShort}</span>
+              <span className="hidden tablet:inline">{global.site.name}</span>
+            </Link>
             <Button
               type="button"
               className="pointer-events-auto relative z-lift touch-manipulation whitespace-nowrap tablet:hidden"
-              aria-label={open ? global.nav.closeMenu : global.nav.openMenu}
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
+              aria-label={present ? global.nav.closeMenu : global.nav.openMenu}
+              aria-expanded={present}
+              onClick={() => (open ? closeMenu() : openMenu())}
             >
-              {open ? global.nav.close : global.nav.menu}
+              {present ? global.nav.close : global.nav.menu}
             </Button>
           </div>
 
           <div
             className={cn(
               "pointer-events-auto flex-col items-start justify-start gap-0 py-56",
-              open ? "flex" : "hidden",
-              "tablet:grid tablet:min-w-0 tablet:flex-1 tablet:grid-cols-3 tablet:grid-rows-[1.3em_1.3em] tablet:items-center tablet:justify-items-start tablet:gap-x-12 tablet:gap-y-2 tablet:py-0",
+              "transition-opacity duration-[400ms] ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
+              present ? "flex" : "hidden",
+              open ? "opacity-100" : "opacity-0",
+              "tablet:grid tablet:min-w-0 tablet:flex-1 tablet:grid-cols-3 tablet:grid-rows-[1.3em_1.3em] tablet:items-center tablet:justify-items-start tablet:gap-x-12 tablet:gap-y-2 tablet:py-0 tablet:opacity-100 tablet:transition-none",
             )}
           >
             <NavLink
@@ -165,27 +140,27 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
               active={
                 pathname === "/" || projects.some((project) => pathname === `/${project.slug}`)
               }
-              open={open}
-              onClick={close}
+              open={present}
+              onClick={closeMenu}
               className={cn(
                 "tablet:col-start-1 tablet:row-start-1 tablet:h-[1.3em]",
-                open && "below-tablet:mb-2 w-full",
+                present && "below-tablet:mb-2 w-full",
               )}
             />
             <NavLink
               href="/playground"
               label={global.nav.playground}
               active={pathname === "/playground"}
-              open={open}
-              onClick={close}
-              className={cn("tablet:col-start-1 tablet:row-start-2 tablet:h-[1.3em]", open && "w-full")}
+              open={present}
+              onClick={closeMenu}
+              className={cn("tablet:col-start-1 tablet:row-start-2 tablet:h-[1.3em]", present && "w-full")}
             />
             <NavLink
               href="/about"
               label={global.nav.about}
               active={pathname === "/about"}
-              open={open}
-              onClick={close}
+              open={present}
+              onClick={closeMenu}
               className="tablet:col-start-2 tablet:row-start-1 tablet:h-[1.3em]"
             />
             <NavClock className="hidden tablet:contents" />
@@ -194,5 +169,6 @@ export function Nav({ tone = "paper", path }: { tone?: "paper" | "ink"; path?: s
         </div>
       </nav>
     </header>
+    </>
   );
 }

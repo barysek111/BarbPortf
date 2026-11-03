@@ -31,7 +31,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       ) : null}
       <SiteCursor />
       <SmoothScroll>
-        <Nav tone={navPath === "/playground" ? "ink" : "paper"} path={navPath} />
+        <Nav path={navPath} />
         <div className="page-inset">
           <PageFade onShow={onShow}>
             <main className="page-main">

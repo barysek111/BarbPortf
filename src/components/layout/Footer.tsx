@@ -74,8 +74,7 @@ export function Footer({ tone = "paper" }: { tone?: "paper" | "ink" }) {
             className="block w-full max-w-none"
           >
             <span className="footer-wordmark-mobile tablet:hidden">
-              <span className="footer-wordmark-mobile-line">{global.footer.wordmarkLine1}</span>
-              <span className="footer-wordmark-mobile-line">{global.footer.wordmarkLine2}</span>
+              <span className="footer-wordmark-mobile-line">{global.footer.wordmark}</span>
             </span>
             <span className="relative hidden aspect-[1445/217] w-full tablet:block">
               <Image

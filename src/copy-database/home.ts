@@ -5,43 +5,24 @@
  * - Keep commas between items, and keep the brackets [ ] and braces { }.
  * - To add or remove a service, copy or delete one whole block in "services".
  * - To change a service icon, replace the "icon" path.
- * - The hero pictures are in order. Do not reorder them unless you mean to change the carousel.
+ * - The HeroLetter left label cycles every line in "letterLabel". Add or remove a line to change the morph.
  * - "What I do" also appears on the About page. Editing it here changes both pages.
  */
 
 // Contents:
-// - Hero (top of the home page)
-// - Hero pictures
+// - HeroLetter (top of the home page)
 // - Services
 // - What I do
 
 export const home = {
   // =====================================================
-  // HERO SECTION (top of the home page)
+  // HERO LETTER (top of the home page)
   // =====================================================
   hero: {
-    latestWork: "latest work",
-    role: "product designer",
+    /** HeroLetter left label. Morphs in this order. The first phrase is the still state. */
+    letterLabel: ["product", "experience", "ux", "interface"],
+    role: "designer",
     scrollDown: "scroll down",
-    carouselLabel: "Latest work",
-    /** Screen-reader name of each hero picture. A two-digit number is added, like "Work 05". */
-    slideTitlePrefix: "Work ",
-    images: [
-      { src: "/images/hero/ring-01.jpg", alt: "", w: 1061, h: 1500 },
-      { src: "/images/hero/ring-02.jpg", alt: "", w: 1154, h: 1154 },
-      { src: "/images/hero/ring-03.png", alt: "", w: 1462, h: 1458 },
-      { src: "/images/hero/ring-04.png", alt: "", w: 1408, h: 1434 },
-      { src: "/images/hero/ring-05.jpg", alt: "", w: 941, h: 1123 },
-      { src: "/images/hero/ring-06.jpg", alt: "", w: 2384, h: 2383 },
-      { src: "/images/hero/ring-07.jpg", alt: "", w: 1036, h: 1352 },
-      { src: "/images/hero/ring-08.jpg", alt: "", w: 1009, h: 1310 },
-      { src: "/images/hero/ring-09.svg", alt: "", w: 560, h: 560 },
-      { src: "/images/hero/ring-10.jpg", alt: "", w: 787, h: 1070 },
-      { src: "/images/hero/ring-11.jpg", alt: "", w: 787, h: 1009 },
-      { src: "/images/hero/ring-12.jpg", alt: "", w: 787, h: 787 },
-      { src: "/images/hero/ring-13.jpg", alt: "", w: 1292, h: 1720 },
-      { src: "/images/hero/ring-14.jpg", alt: "", w: 946, h: 1147 },
-    ],
   },
 
   // =====================================================

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { TextMorphing } from "@/components/ui/TextMorphing";
+import { MorphingLabel } from "@/components/ui/MorphingLabel";
 import { LabelRoll } from "@/components/ui/LabelRoll";
 import { NavLink } from "@/components/layout/NavLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -11,7 +13,6 @@ import { PlaygroundGrid } from "@/components/sections/PlaygroundGrid";
 import { NavClock } from "@/components/layout/NavClock";
 import { DitherOverlay } from "@/components/work/DitherOverlay";
 import { WorkCard } from "@/components/work/WorkCard";
-import { Hero } from "@/components/home/Hero";
 import { HeroLetter } from "@/components/home/HeroLetter";
 import { SplineSquare } from "@/components/spline/SplineSquare";
 import { WorksGrid } from "@/components/sections/WorksGrid";
@@ -24,13 +25,14 @@ import { NextProject } from "@/components/work/NextProject";
 import { ViewCursor } from "@/components/work/ViewCursor";
 import { ProjectHero } from "@/components/work/ProjectHero";
 import { about } from "@/copy-database/about";
+import { home } from "@/copy-database/home";
 import { projects } from "@/content/projects";
 import { ageras as agerasCaseStudy } from "@/copy-database/project-ageras";
 import { getComponentHosts } from "@/lib/component-usage";
 import { hideInternalPage } from "@/lib/internal-page";
 import { Toc } from "@/app/design-system/Toc";
 
-// Internal catalogue, same as /archive. Not in the nav. 404 when published.
+// Internal catalogue. Not in the nav. 404 when published.
 export const metadata: Metadata = {
   title: "Design system — internal",
   robots: { index: false, follow: false, nocache: true },
@@ -56,7 +58,6 @@ const notesPages: { href: string; note?: string }[] = [
   { href: "/" },
   { href: "/about" },
   { href: "/playground" },
-  { href: "/archive" },
   ...projects.map((project) => ({
     href: `/${project.slug}`,
     note: notesPagesDone.has(project.slug) ? "done" : undefined,
@@ -75,8 +76,8 @@ const colors = [
 
 const breakpoints = [
   { name: "tablet", value: "810px", use: "nav inline, clock, 4-up grid, two-column splits" },
-  { name: "desktop", value: "1200px", use: "works list side by side, view project, larger headings" },
-  { name: "wide", value: "1400px", use: "type-h3 and type-stat at 36px" },
+  { name: "desktop", value: "1200px", use: "works list side by side, larger headings" },
+  { name: "wide", value: "1400px", use: "type-stat at 36px" },
   { name: "max", value: "1440px", use: "type-h2 at 64px" },
 ];
 
@@ -112,7 +113,7 @@ const typeLevels = [
     cls: "type-h3",
     letterSpacing: "-1%",
     textTransform: "uppercase",
-    fontSize: "18px (<810), 23px (810 - 1199), 29px (1200 - 1399), 36px (1400>)",
+    fontSize: "23px (<810), 36px (810>)",
     fontWeight: "medium",
     lineHeight: "100% (<810), 90% (810>)",
     use: "sub-headings",
@@ -183,8 +184,16 @@ const atoms: Entry[] = [
     note: "Max height 700. Fill: no padding, image edge to edge. Solid: surface fill (#f0f0f0) unless `color` is set. Background: image behind. Solid and background padding is equal on all sides, inside the frame: 24px below tablet 810, 56px from tablet, on every column count. Default `columns` is 1 outside a row. Optional `maxHeight` (px) caps the image inside a solid or background frame; omitted frames keep the column max. Optional description 8px under the frame, type-label muted. Stacked rows use ImageRowStack (24px below 810, 44px from tablet); padding does not add to stack gap.",
   },
   { name: "SectionHeading", note: "Section title. 41px, 51px from desktop 1200, 64px from 1440." },
-  { name: "NavLink", note: "Leader on hover and current page. Open menu uses display type, below tablet only." },
+  { name: "NavLink", note: "One link for both bars. Below tablet the overlay label is plain type-display text, with no roll and no leader. From tablet it is type-label, the text rolls on hover, and the leader shows on hover and the current page." },
   { name: "LabelRoll", note: "Text rolls up on hover." },
+  {
+    name: "TextMorphing",
+    note: "Blur crossfade between phrases, with a threshold dissolve. Pass any number of phrases through texts, at least two. Does not set a font, size, weight, or color — pass a type class on className. Width hugs the longest phrase. The blur distance scales with the font size. Reduced motion shows the first phrase, still.",
+  },
+  {
+    name: "MorphingLabel",
+    note: "type-label morph used in HeroLetter. Phrases are home.hero.letterLabel, in order. Add a line there to add a word. Width hugs the longest phrase. Placement is className. Reduced motion shows the first phrase, still.",
+  },
   {
     name: "ViewCursor",
     note: "Fixed [view] label on the pointer. Brackets and the word use the button gap, 4px, with no roll. The frame is 4px of paper at full opacity. Hides the site dot. Shown while hovering a WorkCard, and while hovering the NextProject image.",
@@ -239,6 +248,8 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
       <LabelRoll>view</LabelRoll>
     </span>
   ),
+  TextMorphing: <TextMorphing className="type-label" texts={home.hero.letterLabel} />,
+  MorphingLabel: <MorphingLabel />,
   ViewCursor: <ViewCursor inline />,
   SplineSquare: <SplineSquare />,
   DitherOverlay: (
@@ -256,11 +267,10 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
 };
 
 const sections: Entry[] = [
-  { name: "Hero", note: "Full viewport height, no page-top padding, so the ring is centered in the viewport. From tablet 810: frame is 60vw, labels sit on the sides." },
-  { name: "HeroLetter", note: "Same layout as Hero. Ink background bleeds edge to edge, like the footer. Labels and the scroll button stay in the page column (page-inset + section-wrap) and are paper. The center frame holds SplineSquare, centered horizontally and vertically. data-nav-ink: while this section overlaps the bar, the closed nav uses paper text with no blend. Once it no longer covers the bar, the nav returns to its default treatment." },
+  { name: "HeroLetter", note: "Ink background bleeds edge to edge, like the footer. Labels and the scroll button stay in the page column (page-inset + section-wrap) and are paper. Below tablet 810 the MorphingLabel sits centered on the top edge of the Spline square and the role sits centered on the bottom edge, with no gap. From tablet the MorphingLabel is on the left and the role is on the right, both vertically centered in the column. The scroll button sits 24px above the bottom of the full-viewport section. The center frame holds SplineSquare, centered horizontally and vertically. The nav reads it through its own invert, with no separate ink treatment on this section." },
   {
     name: "WorksGrid",
-    note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, 12px apart. The toggle column has 4px top padding, 8px from 1440, so the first toggle's brackets meet the heading caps. The toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the number and the project name with a 2px gap, both on the left, then the image, 12px apart. List stacks below desktop; side by side from 1200, with view project. The list shows the project description in muted type-body. Image strip is 4-up and 176px tall from tablet 810. Grid hover keeps the [view] pointer, turns the image grayscale in 0.2s, zooms to 104% in 0.5s ease-in, and fades a Bayer dither of ink, muted, and paper (2px blocks) over the whole image on that same 0.5s ease-in.",
+    note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, 12px apart. The toggle column has 4px top padding, 8px from 1440, so the first toggle's brackets meet the heading caps. The toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the number, formatted [01], and the project name with a 2px gap, both on the left, then the image, 12px apart. Each list row has 24px padding above and below, like a Services row. Below tablet 810 the two columns stack with a 24px gap and the row grows with the content. From tablet the row is 176px tall and the two columns sit side by side, equal width, with a 12px gap. Below tablet the left column is two equal columns with a 12px gap: the name, then the year, and the picture is not shown. From tablet the left column is three equal columns with a 12px gap: the grid thumbnail, or that project's own row picture when one is set, then the name, with 32px of padding on the right of that column from 1200px, then the year. That picture fills the column as far as its aspect ratio allows, aligned left, and scales down to stay inside the column width, with no crop or stretch. The right column is only the description in type-body, max 500px. Each list row is one link and uses the same [view] pointer as the grid. Grid hover keeps the [view] pointer, turns the image grayscale in 0.2s, zooms to 104% in 0.5s ease-in, and fades a Bayer dither of ink, muted, and paper (2px blocks) over the whole image on that same 0.5s ease-in.",
   },
   { name: "Services", note: "Rows stack below tablet. 50/50 from 810. Title sits in the right half from desktop 1200." },
   { name: "WhatIDo", note: "Tag row, then heading — gap-36 between them (same headline-to-body step as Services)." },
@@ -288,16 +298,16 @@ const sections: Entry[] = [
 ];
 
 const shell: Entry[] = [
-  { name: "SiteLayout", note: "Cursor, nav, page-inset + page-main (gap-56 below 810px, gap-96 from tablet), footer. Side padding lives only on page-inset. page-main caps each direct child at 1920 centred — section components do not repeat section-wrap. Footer ink uses footer-bleed (excluded from that cap); footer content uses page-inset + section-wrap. On /playground only, adds html.theme-ink (ink background, paper text) and passes tone=\"ink\" to Nav and Footer. The class and tone come off on every other route, which stay paper. Route changes fade the outgoing page out, then fade the next page in (400ms each). The nav keeps the outgoing route until the incoming fade starts. Playground theme follows the live route so the incoming page is already ink or paper. Reduced motion skips the fade." },
+  { name: "SiteLayout", note: "Cursor, nav, page-inset + page-main (gap-56 below 810px, gap-96 from tablet), footer. Side padding lives only on page-inset. page-main caps each direct child at 1920 centred — section components do not repeat section-wrap. Footer ink uses footer-bleed (excluded from that cap); footer content uses page-inset + section-wrap. On /playground only, adds html.theme-ink (ink background, paper text) and passes tone=\"ink\" to Footer. The nav does not take a tone. The class and tone come off on every other route, which stay paper. Route changes fade the outgoing page out, then fade the next page in (400ms each). The nav keeps the outgoing route until the incoming fade starts. Playground theme follows the live route so the incoming page is already ink or paper. Reduced motion skips the fade." },
   { name: "PageFade", note: "Wraps the main column. On an in-site link click, the current page is snapshotted, fades out, then the next page fades in. Each step is 400ms, ease 0.45, 0, 0.55, 1. The snapshot sits under the nav. `onShow` runs when the outgoing fade ends and the incoming fade starts. Same-page hashes, new tabs, and external links do not fade. A route change starts at the top, unless the url hash matches an element on the page. First load does not fade. Reduced motion swaps with no fade." },
   { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard or the NextProject image, where the [view] label is the cursor." },
   {
     name: "Nav",
-    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). The logo links to the homepage. It is colored with the nav text, max height 28px, vertically centered in the bar. Below tablet 810 it is at most half the page column. Empty bar space lets clicks through to the page. Menu below tablet 810. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page. tone=\"paper\" (default) is ink text below tablet and paper text with difference/exclusion blend from tablet; the open menu is paper with ink text. tone=\"ink\" is solid paper text with no blend, and the open menu is ink with paper text. While any [data-nav-ink] section overlaps the bar, the closed nav eases between paper and ink over 700ms with no blend, including a section that is not at the top of the page. Once no ink section covers the bar, the default blend returns. `path` overrides the route used for the active mark. The menu closes from the live route.",
+    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). The bar has 24px padding above the name and 12px below it. The name links to the homepage. It is the site name, set in type-h3, one line, vertically centered in the bar. Below tablet 810 it shows the short name. Empty bar space lets clicks through to the page. Menu below tablet 810. The sheet and the links fade over 400ms, ease 0.45, 0, 0.55, 1, on open and on close, including when a link navigates. Reduced motion snaps. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page. The bar has no fill. Its text is paper with mix-blend-difference, so it turns dark on a light page and light on a dark page, including photos. That is the only place this blend is used. The open menu sheet below tablet is solid paper and sits behind the bar, so the same blend reads as ink text on that sheet. `path` overrides the route used for the active mark. The menu closes from the live route.",
   },
   {
     name: "Footer",
-    note: "tone=\"paper\" (default) flips to ink near the bottom of the page, with a 1s color and wordmark-filter transition. tone=\"ink\" stays solid ink and paper text, wordmark inverted, with no scroll listener and no transition. footer-bleed paints edge-to-edge; vertical spacing comes from page-main gap-96 above the band and py-96 inside. Content uses page-inset + section-wrap. 96px gap between the link row and the wordmark. Wordmark stacks below tablet; SVG from tablet. Columns swap at desktop 1200.",
+    note: "tone=\"paper\" (default) flips to ink near the bottom of the page, with a 1s color and wordmark-filter transition. tone=\"ink\" stays solid ink and paper text, wordmark inverted, with no scroll listener and no transition. footer-bleed paints edge-to-edge; vertical spacing comes from page-main gap-96 above the band and py-96 inside. Content uses page-inset + section-wrap. 96px gap between the link row and the wordmark. Wordmark is one line, BARB G., below tablet; SVG from tablet. Columns swap at desktop 1200.",
   },
   { name: "SmoothScroll", note: "Smooth scroll and in-view reveals. Same-page hash links scroll to that id, keeping its scroll-margin, including while a smooth scroll is already moving." },
 ];
@@ -309,14 +319,13 @@ const work: Entry[] = [
   },
   {
     name: "NextProject",
-    note: "Case-study footer: py-96 inside the section. Bracket label above the project name, both centered on the image. Image hover matches WorksGrid: grayscale in 0.2s, 104% zoom in 0.5s ease-in, Bayer dither fade, and the [view] pointer.",
+    note: "Case-study footer: py-96 inside the section. Bracket label above the project name, both centered on the image. The image has a 20% paper overlay. Image hover matches WorksGrid: grayscale in 0.2s, 104% zoom in 0.5s ease-in, Bayer dither fade, and the [view] pointer.",
   },
 ];
 
 /* ── page ───────────────────────────────────────────────────────────── */
 
 const SECTION_PREVIEWS: Record<string, React.ReactNode> = {
-  Hero: <Hero />,
   HeroLetter: <HeroLetter />,
   WorksGrid: <WorksGrid />,
   Services: <Services />,

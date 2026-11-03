@@ -48,6 +48,8 @@ export const global = {
     close: "close",
     openMenu: "Open menu",
     closeMenu: "Close menu",
+    /** Nav name below tablet 810. The full site name shows from 810. */
+    nameShort: "BARBORA G.",
     /** Spoken after the site name on the logo link, for screen readers. */
     homeLinkSuffix: "home",
   },
@@ -59,8 +61,8 @@ export const global = {
     enquiry: "for all enquiries please contact",
     resume: "view resume",
     linkedin: "linkedin",
-    wordmarkLine1: "BARB",
-    wordmarkLine2: "G.",
+    /** Single line below tablet 810. The SVG wordmark shows from 810. */
+    wordmark: "BARB G.",
     wordmarkAlt: "",
   },
 

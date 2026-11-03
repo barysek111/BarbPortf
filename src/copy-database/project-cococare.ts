@@ -10,7 +10,7 @@
  * - Do not rename the labels on the left (slug, title, paragraphs, and so on).
  */
 
-import type { CaseStudy, CaseStudyChapter } from "@/content/case-studies/types";
+import type { CaseStudy } from "@/content/case-studies/types";
 
 // This file is the text for one project page.
 //
@@ -412,43 +412,3 @@ export const cococare = {
     },
   ],
 } satisfies CaseStudy;
-
-// =====================================================
-// ARCHIVED CHAPTERS
-// These are not shown on the live project page.
-// The internal archive page still uses them.
-// =====================================================
-export const cococareArchivedChapters = [
-  // =====================================================
-  // CHAPTER: focus areas
-  // =====================================================
-  {
-    headline: "focus areas",
-    sections: [
-      {
-        label: "Consistency",
-        paragraphs: [
-          "Patients forget their exercises or are unsure if they're doing them correctly.",
-        ],
-      },
-      {
-        label: "Transparency",
-        paragraphs: [
-          "Progress tracking is unclear or missing, lowering motivation.",
-        ],
-      },
-      {
-        label: "Speed",
-        paragraphs: [
-          "Physios want more efficient ways to assign, update, and monitor training plans.",
-        ],
-      },
-      {
-        label: "Reminders",
-        paragraphs: [
-          "Both groups requested better reminders and feedback loops.",
-        ],
-      },
-    ],
-  },
-] satisfies readonly CaseStudyChapter[];

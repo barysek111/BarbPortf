@@ -8,8 +8,8 @@ import { join, resolve } from "node:path";
 const SRC = resolve(process.cwd(), "src");
 
 /** Internal catalogues. Kept out of "used on" so the list is live site usage. */
-const CATALOGUE_DIRS = ["design-system", "archive"].map((dir) => join(SRC, "app", dir));
-const CATALOGUE_ROUTES = new Set(["/design-system", "/archive"]);
+const CATALOGUE_DIRS = ["design-system"].map((dir) => join(SRC, "app", dir));
+const CATALOGUE_ROUTES = new Set(["/design-system"]);
 
 function isCatalogueFile(file: string) {
   return CATALOGUE_DIRS.some((dir) => file === dir || file.startsWith(`${dir}/`));

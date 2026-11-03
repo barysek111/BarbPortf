@@ -83,6 +83,7 @@ export function NextProject(
                 />
               </div>
             )}
+            <div aria-hidden className="pointer-events-none absolute inset-0 bg-paper/20" />
             <DitherOverlay src={imageSrc} fit={video ? "cover" : "fill"} position={video ? "top" : "center"} />
           </Link>
         ) : null}

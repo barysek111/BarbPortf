@@ -225,24 +225,18 @@
   text-transform: none;
 }
 
-/* preset jskmgv — h3 and stat figures. Note the 1400px switch. */
+/* preset jskmgv — h3. Stat figures keep their own size ramp. */
 @utility type-h3 {
   font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 23px;
   line-height: 1em;
 
   @media (width >= 810px) {
-    font-size: 23px;
-    line-height: 0.9em;
-  }
-  @media (width >= 1200px) {
-    font-size: 29px;
-  }
-  @media (width >= 1400px) {
     font-size: 36px;
+    line-height: 0.9em;
   }
 }
 
@@ -378,9 +372,8 @@
 
 /* ---------------------------------------------------------------------------
    Hero frame
-   Centres the hero stage and sets its width only: 100vw on phone, 60vw from
-   810px. Height comes from the child (HeroRing’s 5:4), same as the design-
-   system preview where HeroRing sits without a frame.
+   Centres the HeroLetter stage and sets its width only: 100vw on phone, 60vw
+   from 810px. Height comes from the child.
 --------------------------------------------------------------------------- */
 @utility hero-frame {
   position: absolute;
@@ -451,7 +444,7 @@
   margin-inline: calc(50% - 50vw);
 }
 
-/* Footer wordmark below tablet: BARB / G. — scale so BARB spans content width. */
+/* Footer wordmark below tablet: one line, scaled to span the content width. */
 @utility footer-wordmark-mobile {
   container-type: inline-size;
   display: flex;
@@ -480,7 +473,7 @@
   max-width: 100%;
   overflow-x: clip;
   font-family: var(--font-display);
-  font-size: 39.5cqw;
+  font-size: 27.3cqw;
   font-weight: 500;
   line-height: 0.88;
   letter-spacing: -0.02em;

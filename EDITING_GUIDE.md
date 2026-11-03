@@ -15,12 +15,11 @@ Edit those files, then commit and push. Cloudflare publishes the site from GitHu
 | `works.ts` | The works heading, the grid/list labels, and every project card (title, short description, client, services, year, place, pictures) |
 | `about.ts` | The About page, including jobs and education |
 | `playground.ts` | The Playground headline and the experiment pictures |
-| `archive.ts` | The internal archive page only. It is not on the public site. |
 | `project-library-drift.ts` | The Library Drift project page |
 | `project-plinto.ts` | The Plinto project page |
 | `project-powermatch.ts` | The Powermatch project page |
 | `project-ageras.ts` | The Ageras project page |
-| `project-cococare.ts` | The Coco Care project page. It also keeps one old chapter that is hidden from that page. |
+| `project-cococare.ts` | The Coco Care project page |
 | `project-rokokobrand.ts` | The Rokoko brand project page |
 | `project-rokokoweb.ts` | The Rokoko website project page |
 | `project-weld.ts` | The Weld project page |

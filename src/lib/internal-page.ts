@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 /**
- * Design system and archive are local catalogues.
+ * The design system is a local catalogue.
  * `next dev` still serves them. A published build returns 404.
  */
 export function hideInternalPage() {

@@ -1,34 +1,5 @@
 [
   {
-    "headline": "focus areas",
-    "sections": [
-      {
-        "label": "Consistency",
-        "paragraphs": [
-          "Patients forget their exercises or are unsure if they're doing them correctly."
-        ]
-      },
-      {
-        "label": "Transparency",
-        "paragraphs": [
-          "Progress tracking is unclear or missing, lowering motivation."
-        ]
-      },
-      {
-        "label": "Speed",
-        "paragraphs": [
-          "Physios want more efficient ways to assign, update, and monitor training plans."
-        ]
-      },
-      {
-        "label": "Reminders",
-        "paragraphs": [
-          "Both groups requested better reminders and feedback loops."
-        ]
-      }
-    ]
-  },
-  {
     "headline": "Key user needs",
     "sections": [
       {

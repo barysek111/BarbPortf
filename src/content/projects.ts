@@ -1,7 +1,7 @@
 import { global } from "@/copy-database/global";
 import { works } from "@/copy-database/works";
 
-export type Thumb = { src: string; w: 160 | 320 };
+export type Thumb = { src: string; w: number; h: number };
 
 export type Project = {
   slug: string;
@@ -13,15 +13,16 @@ export type Project = {
   location: string;
   image: string;
   imageH: number;
-  listImages: Thumb[];
+  listImage: Thumb;
   masonryY: number;
 };
 
-function listThumbs(folder: string, files: readonly string[]): Thumb[] {
-  return files.map((file, index) => ({
-    src: `/images/works/list/${folder}/${file}`,
-    w: index === 2 ? 320 : 160,
-  }));
+/** List row picture. A project with listImage uses that; every other project uses the grid thumbnail. */
+function listThumb(entry: (typeof works.projects)[number]): Thumb {
+  if (entry.listImage && entry.listImageWidth && entry.listImageHeight) {
+    return { src: entry.listImage, w: entry.listImageWidth, h: entry.listImageHeight };
+  }
+  return { src: entry.image, w: entry.imageWidth, h: entry.imageHeight };
 }
 
 /** Display height at 372px card width, from intrinsic dimensions. */
@@ -40,11 +41,12 @@ export const projects: Project[] = works.projects.map((entry) => ({
   image: entry.image,
   imageH: cardHeight(entry.imageWidth, entry.imageHeight),
   masonryY: entry.masonryY,
-  listImages: listThumbs(entry.listFolder, entry.listFiles),
+  listImage: listThumb(entry),
 }));
 
 export function formatIndex(index: number) {
-  return String(index + 1).padStart(3, "0");
+  const digits = String(index + 1).padStart(2, "0");
+  return `${global.brackets.open}${digits}${global.brackets.close}`;
 }
 
 export function getProject(slug: string) {
