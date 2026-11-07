@@ -1,23 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { formatIndex, type Project } from "@/content/projects";
+import { formatYear, type Project } from "@/content/projects";
 import { DitherOverlay } from "@/components/work/DitherOverlay";
 import { useViewCursor, ViewCursor } from "@/components/work/ViewCursor";
 import { isWorkVideo, WorkThumbMedia } from "@/components/work/WorkThumbMedia";
 
 export function WorkCard({
   project,
-  index,
   dither = false,
   caption = "below",
   description,
 }: {
   project: Project;
-  index: number;
   /** Bayer dither fades over the whole image on hover. Zoom and the [view] pointer stay. */
   dither?: boolean;
-  /** `below`: image, then number and title. `above`: number, then title, then image. */
+  /** `below`: image, then year and title. `above`: year, then title, then image. */
   caption?: "below" | "above";
   /** Body line under the title when `caption` is `above`. Same string as the list view. */
   description?: string;
@@ -45,12 +43,12 @@ export function WorkCard({
     >
       {caption === "above" ? (
         <>
-          <span className="text-muted">{formatIndex(index)}</span>
+          <span className="text-muted">{formatYear(project.year)}</span>
           <span className="min-w-0">{project.title}</span>
         </>
       ) : (
         <>
-          <span className="text-muted">{formatIndex(index)}</span>
+          <span className="text-muted">{formatYear(project.year)}</span>
           <span className="min-w-0 text-right">{project.title}</span>
         </>
       )}
@@ -61,21 +59,26 @@ export function WorkCard({
     <>
       <Link
         href={`/${project.slug}`}
-        className={
-          caption === "above"
-            ? "group relative flex min-w-0 cursor-none flex-col gap-12"
-            : "group relative flex min-w-0 cursor-none flex-col"
-        }
+        className="appear group relative block w-full min-w-0 cursor-none"
+        data-appear="20"
         data-hide-site-cursor=""
         onMouseMove={bind.onMouseMove}
         onMouseLeave={bind.onMouseLeave}
       >
-        {caption === "above" ? meta : null}
-        {caption === "above" && description ? (
-          <p className="type-body pr-32 text-muted">{description}</p>
-        ) : null}
-        <div className="overflow-hidden">{media}</div>
-        {caption === "above" ? null : meta}
+        <div
+          className={
+            caption === "above"
+              ? "appear-body flex min-w-0 flex-col gap-12"
+              : "appear-body flex min-w-0 flex-col"
+          }
+        >
+          {caption === "above" ? meta : null}
+          {caption === "above" && description ? (
+            <p className="type-body pr-32 text-muted">{description}</p>
+          ) : null}
+          <div className="overflow-hidden">{media}</div>
+          {caption === "above" ? null : meta}
+        </div>
       </Link>
       <ViewCursor cursor={cursor} />
     </>

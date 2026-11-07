@@ -47,7 +47,8 @@ export function CredentialSection({
       </div>
       <div className="flex flex-col">
         {rows.map((row) => (
-          <div key={`${row.title}-${row.year}`} className={cn(ruledRowClass, ROW)}>
+          <div key={`${row.title}-${row.year}`} className={cn(ruledRowClass, "appear")} data-appear="20">
+            <div className={cn("appear-body", ROW)}>
             <p className="type-label reveal-clip col-start-1 row-start-1 min-w-0">
               <span>{row.title}</span>
             </p>
@@ -58,6 +59,7 @@ export function CredentialSection({
               <p className="type-label reveal-clip col-start-2 row-start-1 shrink-0 justify-self-end self-start text-right tablet:col-start-2 tablet:row-start-1">
                 <span>{row.year}</span>
               </p>
+            </div>
             </div>
           </div>
         ))}

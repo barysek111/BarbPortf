@@ -50,7 +50,7 @@ export const plinto = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/plinto/plinto-hero.jpg",
+    src: "/images/works/plinto/barboragadlinova-plinto-hero.jpg",
     alt: "Plinto invoice approval overview",
     variant: "fill",
   },
@@ -117,7 +117,7 @@ export const plinto = {
           images: [
             {
               variant: "solid",
-              src: "/images/works/plinto/plinto-diagram.svg",
+              src: "/images/works/plinto/barboragadlinova-plinto-states.svg",
               alt: "Three operator states: Auto-matched, Needs review, and Blocked",
             },
           ],
@@ -149,21 +149,21 @@ export const plinto = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/plinto/wireframe-conversational-ease.svg",
+              src: "/images/works/plinto/barboragadlinova-plinto-wireframe-chat.svg",
               alt: "Wireframe, conversational ease",
               description: "Dominant chat: prompting conversation",
               color: "var(--color-ink)",
             },
             {
               variant: "solid",
-              src: "/images/works/plinto/wireframe-control-room.svg",
+              src: "/images/works/plinto/barboragadlinova-plinto-wireframe-dashboard.svg",
               alt: "Wireframe, control room",
               description: "Dashboard: Quick KPIs, batch overview",
               color: "var(--color-ink)",
             },
             {
               variant: "solid",
-              src: "/images/works/plinto/wireframe-decision-card.svg",
+              src: "/images/works/plinto/barboragadlinova-plinto-wireframe-card.svg",
               alt: "Wireframe, decision card",
               description: "Decision card: priority queue, prompted action for each invoice",
               color: "var(--color-ink)",
@@ -191,12 +191,12 @@ export const plinto = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/plinto/automatched.png",
+              src: "/images/works/plinto/barboragadlinova-plinto-auto-matched.png",
               alt: "Auto-matched invoice",
             },
             {
               variant: "solid",
-              src: "/images/works/plinto/needsreview.png",
+              src: "/images/works/plinto/barboragadlinova-plinto-needs-review.png",
               alt: "Needs review invoice",
             },
           ],
@@ -206,12 +206,12 @@ export const plinto = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/plinto/blocked.png",
+              src: "/images/works/plinto/barboragadlinova-plinto-blocked.png",
               alt: "Blocked invoice",
             },
             {
               variant: "solid",
-              src: "/images/works/plinto/aichatwindows.png",
+              src: "/images/works/plinto/barboragadlinova-plinto-ai-chat.png",
               alt: "AI assistant chat",
             },
           ],

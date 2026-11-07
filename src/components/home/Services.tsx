@@ -14,32 +14,42 @@ export function Services() {
         {home.services.map((service) => (
           <div
             key={service.index}
-            className={cn(
-              ruledRowClass,
-              "grid grid-cols-1 items-start gap-24 tablet:grid-cols-2 tablet:gap-12",
-            )}
+            className={cn(ruledRowClass, "appear")}
+            data-appear="20"
           >
-            <div className="flex min-w-0 flex-row items-start gap-12 tablet:grid tablet:grid-cols-2">
-              <img
-                src={service.icon}
-                alt={home.servicesIconAlt}
-                width={48}
-                height={48}
-                className="order-1 h-[48px] w-[48px] shrink-0 text-ink tablet:col-start-2 tablet:row-start-1 tablet:justify-self-start"
-                aria-hidden="true"
-              />
-              <div className="order-2 flex min-w-0 flex-row flex-wrap items-start gap-12 tablet:col-start-1 tablet:row-start-1">
-                <p className="type-label reveal-clip min-w-0">
-                  <span>{service.index}</span>
-                </p>
-                <p className="type-label reveal-clip min-w-0">
-                  <span>{service.title}</span>
+            <div className="appear-body grid grid-cols-[56px_minmax(0,1fr)] items-start gap-12 tablet:grid-cols-2">
+              <div className="col-start-1 row-start-1 w-[56px] tablet:grid tablet:w-auto tablet:min-w-0 tablet:grid-cols-2 tablet:items-start tablet:gap-12">
+                <div className="hidden min-w-0 flex-row items-start gap-12 tablet:flex">
+                  <p className="type-label reveal-clip shrink-0 text-muted">
+                    <span>{service.index}</span>
+                  </p>
+                  <p className="type-label reveal-clip min-w-0">
+                    <span>{service.title}</span>
+                  </p>
+                </div>
+                <img
+                  src={service.icon}
+                  alt={home.servicesIconAlt}
+                  width={56}
+                  height={56}
+                  className="h-[56px] w-[56px] shrink-0 text-ink tablet:col-start-2 tablet:row-start-1 tablet:justify-self-start"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="col-start-2 row-start-1 flex min-w-0 flex-col gap-12 tablet:contents">
+                <div className="flex min-w-0 flex-col items-start gap-12 tablet:hidden">
+                  <p className="type-label reveal-clip shrink-0 text-muted">
+                    <span>{service.index}</span>
+                  </p>
+                  <p className="type-label reveal-clip min-w-0">
+                    <span>{service.title}</span>
+                  </p>
+                </div>
+                <p className="type-body min-w-0 max-w-[500px] tablet:col-start-2 tablet:row-start-1">
+                  <span>{service.description}</span>
                 </p>
               </div>
             </div>
-            <p className="type-body appear max-w-[500px]" data-appear="60">
-              <span>{service.description}</span>
-            </p>
           </div>
         ))}
       </div>

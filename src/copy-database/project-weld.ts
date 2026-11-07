@@ -50,7 +50,7 @@ export const weld = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/weld/weldhero.png",
+    src: "/images/works/weld/barboragadlinova-weld-hero.png",
     alt: "Weld website overview",
     variant: "fill",
   },
@@ -136,7 +136,7 @@ export const weld = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/weld/weldsitemap.svg",
+              src: "/images/works/weld/barboragadlinova-weld-sitemap.svg",
               alt: "Weld sitemap",
             },
           ],
@@ -146,19 +146,19 @@ export const weld = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/weld/direction-shape-6206.svg",
+              src: "/images/works/weld/barboragadlinova-weld-brand-shape-1.svg",
               alt: "Weld brand language",
               color: "var(--color-ink)",
             },
             {
               variant: "solid",
-              src: "/images/works/weld/direction-shape-6207.svg",
+              src: "/images/works/weld/barboragadlinova-weld-brand-shape-2.svg",
               alt: "Weld brand language",
               color: "var(--color-ink)",
             },
             {
               variant: "solid",
-              src: "/images/works/weld/direction-shape-6208.svg",
+              src: "/images/works/weld/barboragadlinova-weld-brand-shape-3.svg",
               alt: "Weld brand language",
               color: "var(--color-ink)",
             },
@@ -197,7 +197,7 @@ export const weld = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/weld/weld-website-screens.png",
+              src: "/images/works/weld/barboragadlinova-weld-screens-wide.png",
               alt: "Weld website screens",
               color: "var(--color-ink)",
             },
@@ -208,7 +208,7 @@ export const weld = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/weld/weldscreens.png",
+              src: "/images/works/weld/barboragadlinova-weld-screens.png",
               alt: "Weld website screens",
               color: "var(--color-ink)",
             },
@@ -219,7 +219,7 @@ export const weld = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/weld/weldiconsss.svg",
+              src: "/images/works/weld/barboragadlinova-weld-icons.svg",
               alt: "Weld icon pack",
               description: "Custom icon pack",
               color: "var(--color-ink)",
@@ -231,14 +231,14 @@ export const weld = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/weld/weld-website-components1.svg",
+              src: "/images/works/weld/barboragadlinova-weld-components-1.svg",
               alt: "Website components",
               description: "modular website components with theme switching",
               color: "E6E6E6",
             },
             {
               variant: "solid",
-              src: "/images/works/weld/weld-website-components2.svg",
+              src: "/images/works/weld/barboragadlinova-weld-components-2.svg",
               alt: "Website components",
               description: "modular website components with theme switching",
               color: "E6E6E6",
@@ -250,37 +250,17 @@ export const weld = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13358-1.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-1.svg",
               alt: "Website illustration",
             },
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13589.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-2.svg",
               alt: "Website illustration",
             },
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13540.svg",
-              alt: "Website illustration",
-            },
-          ],
-        },
-        {
-          columns: 3,
-          frames: [
-            {
-              variant: "fill",
-              src: "/images/works/weld/Group-13359.svg",
-              alt: "Website illustration",
-            },
-            {
-              variant: "fill",
-              src: "/images/works/weld/Group-13358-2.svg",
-              alt: "Website illustration",
-            },
-            {
-              variant: "fill",
-              src: "/images/works/weld/Group-13357-2.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-3.svg",
               alt: "Website illustration",
             },
           ],
@@ -290,17 +270,17 @@ export const weld = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13360.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-4.svg",
               alt: "Website illustration",
             },
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13486.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-5.svg",
               alt: "Website illustration",
             },
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13982.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-6.svg",
               alt: "Website illustration",
             },
           ],
@@ -310,17 +290,37 @@ export const weld = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13357-1.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-7.svg",
               alt: "Website illustration",
             },
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13478-1.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-8.svg",
               alt: "Website illustration",
             },
             {
               variant: "fill",
-              src: "/images/works/weld/Group-13358.svg",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-9.svg",
+              alt: "Website illustration",
+            },
+          ],
+        },
+        {
+          columns: 3,
+          frames: [
+            {
+              variant: "fill",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-10.svg",
+              alt: "Website illustration",
+            },
+            {
+              variant: "fill",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-11.svg",
+              alt: "Website illustration",
+            },
+            {
+              variant: "fill",
+              src: "/images/works/weld/barboragadlinova-weld-illustration-12.svg",
               alt: "Website illustration",
             },
           ],
@@ -330,7 +330,7 @@ export const weld = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/weld/weld-meta-images.png",
+              src: "/images/works/weld/barboragadlinova-weld-meta-images.png",
               alt: "Weld meta images",
               color: "E6E6E6",
             },

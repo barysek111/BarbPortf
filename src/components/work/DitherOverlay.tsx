@@ -5,7 +5,7 @@ import { isWorkVideo, WORK_THUMB_HOVER_ZOOM } from "@/components/work/WorkThumbM
 import { cn } from "@/lib/cn";
 
 type Rgb = [number, number, number];
-type Fit = "fill" | "cover";
+type Fit = "fill" | "cover" | "contain";
 type Position = "center" | "top";
 
 const PIXEL_SIZE = 2;
@@ -82,6 +82,28 @@ const applyRamp = (data: Uint8ClampedArray, quantised: Uint8Array, ramp: Rgb[]) 
   }
 };
 
+/** Destination box for object-contain. Left edge stays put; vertical placement follows `position`. */
+const containDest = (
+  srcW: number,
+  srcH: number,
+  dstW: number,
+  dstH: number,
+  position: Position,
+) => {
+  const srcAspect = srcW / srcH;
+  const dstAspect = dstW / dstH;
+  let dw = dstW;
+  let dh = dstH;
+  if (srcAspect > dstAspect) dh = dstW / srcAspect;
+  else dw = dstH * srcAspect;
+  return {
+    dx: 0,
+    dy: position === "top" ? 0 : (dstH - dh) / 2,
+    dw,
+    dh,
+  };
+};
+
 const sourceCrop = (
   srcW: number,
   srcH: number,
@@ -152,8 +174,13 @@ export function DitherOverlay({
       gridContext.imageSmoothingEnabled = true;
       gridContext.clearRect(0, 0, gridWidth, gridHeight);
 
-      const crop = sourceCrop(srcW, srcH, gridWidth, gridHeight, fit, position);
-      gridContext.drawImage(source, crop.sx, crop.sy, crop.sw, crop.sh, 0, 0, gridWidth, gridHeight);
+      if (fit === "contain") {
+        const box = containDest(srcW, srcH, gridWidth, gridHeight, position);
+        gridContext.drawImage(source, 0, 0, srcW, srcH, box.dx, box.dy, box.dw, box.dh);
+      } else {
+        const crop = sourceCrop(srcW, srcH, gridWidth, gridHeight, fit, position);
+        gridContext.drawImage(source, crop.sx, crop.sy, crop.sw, crop.sh, 0, 0, gridWidth, gridHeight);
+      }
 
       let frame: ImageData;
       try {

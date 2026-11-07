@@ -119,6 +119,16 @@ const typeLevels = [
     use: "sub-headings",
   },
   {
+    cls: "type-h3-mono",
+    font: "Martian Mono",
+    letterSpacing: "-3%",
+    textTransform: "uppercase",
+    fontSize: "23px (<810), 36px (810>)",
+    fontWeight: "regular",
+    lineHeight: "130%",
+    use: "top nav name",
+  },
+  {
     cls: "type-stat",
     letterSpacing: "-5%",
     textTransform: "none",
@@ -164,7 +174,7 @@ const layoutUtils = [
   { cls: "label-roll", use: "text rolls on hover" },
   { cls: "mark-leader-before", use: "8px square left of a label" },
   { cls: "below-tablet", use: "styles under 810px" },
-  { cls: "appear", use: "fades in on scroll" },
+  { cls: "appear", use: "slides up 20px in 0.8s on scroll. Text uses a child span. A whole row uses one child with appear-body" },
   { cls: "reveal-clip", use: "clips text, no slide" },
 ];
 
@@ -177,7 +187,7 @@ const atoms: Entry[] = [
   { name: "NavClock", note: "Time and location. Shown from tablet, 810px." },
   {
     name: "WorkCard",
-    note: "Height: auto, width: fill. Video: square, align top. Hover scale: 104% / 0.5s, ease-in. The image turns grayscale in 0.2s. Hover: [VIEW] pointer. Pass `dither` to fade a Bayer dither of ink, muted, and paper over the whole image on hover. The zoom and [view] pointer stay. `caption=\"above\"` stacks the number, then a 2px gap, then the project name, both on the left, then the image. `description` can add that project's description under the name.",
+    note: "Height: auto, width: fill. Video: square, align top. Hover scale: 104% / 0.5s, ease-in. The image turns grayscale in 0.2s. Hover: [VIEW] pointer. Pass `dither` to fade a Bayer dither of ink, muted, and paper over the whole image on hover. The zoom and [view] pointer stay. `caption=\"above\"` stacks the year, formatted [2026] in muted, then a 2px gap, then the project name, both on the left, then the image. `description` can add that project's description under the name.",
   },
   {
     name: "ImageFrame",
@@ -218,7 +228,7 @@ const ATOM_PREVIEWS: Record<string, React.ReactNode> = {
   NavClock: <NavClock />,
   WorkCard: (
     <div className="max-w-[390px]">
-      <WorkCard project={projects[0]} index={0} />
+      <WorkCard project={projects[0]} />
     </div>
   ),
   ImageFrame: (
@@ -270,9 +280,9 @@ const sections: Entry[] = [
   { name: "HeroLetter", note: "Ink background bleeds edge to edge, like the footer. Labels and the scroll button stay in the page column (page-inset + section-wrap) and are paper. Below tablet 810 the MorphingLabel sits centered on the top edge of the Spline square and the role sits centered on the bottom edge, with no gap. From tablet the MorphingLabel is on the left and the role is on the right, both vertically centered in the column. The scroll button sits 24px above the bottom of the full-viewport section. The center frame holds SplineSquare, centered horizontally and vertically. The nav reads it through its own invert, with no separate ink treatment on this section." },
   {
     name: "WorksGrid",
-    note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, 12px apart. The toggle column has 4px top padding, 8px from 1440, so the first toggle's brackets meet the heading caps. The toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the number, formatted [01], and the project name with a 2px gap, both on the left, then the image, 12px apart. Each list row has 24px padding above and below, like a Services row. Below tablet 810 the two columns stack with a 24px gap and the row grows with the content. From tablet the row is 176px tall and the two columns sit side by side, equal width, with a 12px gap. Below tablet the left column is two equal columns with a 12px gap: the name, then the year, and the picture is not shown. From tablet the left column is three equal columns with a 12px gap: the grid thumbnail, or that project's own row picture when one is set, then the name, with 32px of padding on the right of that column from 1200px, then the year. That picture fills the column as far as its aspect ratio allows, aligned left, and scales down to stay inside the column width, with no crop or stretch. The right column is only the description in type-body, max 500px. Each list row is one link and uses the same [view] pointer as the grid. Grid hover keeps the [view] pointer, turns the image grayscale in 0.2s, zooms to 104% in 0.5s ease-in, and fades a Bayer dither of ink, muted, and paper (2px blocks) over the whole image on that same 0.5s ease-in.",
+    note: "Grid by default. The heading and a stacked grid and list toggle sit on one row, 12px apart. The toggle column has 4px top padding, 8px from 1440, so the first toggle's brackets meet the heading caps. The toggles have 2px between them and replace the project count. 2 columns below tablet 810, 4 from tablet. Column gap 12px on every viewport. Cells align to the top of the row. Each cell stacks the year, formatted [2026] in muted, and the project name with a 2px gap, both on the left, then the image, 12px apart. Each list row uses the Services row structure. 24px padding above and below, a top rule, and the row grows with its content. Below tablet 810 the picture is 128px wide, with height from its aspect ratio, and 12px between it and the text. The right column stacks two blocks with 12px between them: the year and project name, then the description. Below tablet the year sits above the project name with 12px between them. From tablet the year and name stay on one row, aligned to the top, and a long name wraps beside the year. The year is the project year in brackets, like [2026], in muted. From tablet the row is two equal halves with a 12px gap, the same halfway split as the nav, so the description lines up with the nav's right half. The left half is two equal subcolumns with a 12px gap: the year and name, aligned to the top, then the picture aligned to the left of its subcolumn. The picture is 128px tall, contained, and scales down to stay inside that subcolumn. The right half is the description in type-body, max 500px. Each list row is one link and uses the same [view] pointer as the grid. Hover on a grid cell, or anywhere on a list row, keeps the [view] pointer and runs the same image treatment: grayscale in 0.2s, zoom to 104% in 0.5s ease-in, and a Bayer dither of ink, muted, and paper (2px blocks) fading over the picture on that same 0.5s ease-in. In the list the dither follows the contained picture, aligned top left, and the zoom is clipped to the picture. Each grid card and each list row uses appear, rising 20px in 0.8s when it scrolls into view.",
   },
-  { name: "Services", note: "Rows stack below tablet. 50/50 from 810. Title sits in the right half from desktop 1200." },
+  { name: "Services", note: "The heading sits in the right half from desktop 1200. Below tablet 810 each row is two columns with 12px between them: the 56px icon on the left, and on the right the number, in muted, stacked above the name with 12px between them, then the description 12px below that pair. From tablet 810 the row is two equal halves with a 12px gap. The left half is two equal subcolumns: the number, in muted, and the name on one row, aligned to the top, with a long name wrapping beside the number, and the icon in the right subcolumn. The right half is the description, max 500px. Each row uses appear, rising 20px in 0.8s when it scrolls into view." },
   { name: "WhatIDo", note: "Tag row, then heading — gap-36 between them (same headline-to-body step as Services)." },
   {
     name: "Chapter",
@@ -280,7 +290,7 @@ const sections: Entry[] = [
   },
   {
     name: "CredentialSection",
-    note: "Title and year on one line, meta below. 50/50 from tablet 810. Title offsets to the right half from desktop 1200.",
+    note: "Title and year on one line, meta below. 50/50 from tablet 810. Title offsets to the right half from desktop 1200. Each row uses appear, rising 20px in 0.8s when it scrolls into view.",
   },
   {
     name: "ImageRow",
@@ -303,11 +313,11 @@ const shell: Entry[] = [
   { name: "SiteCursor", note: "16px dot on fine pointers, placed on the pointer with no follow delay. Hidden while hovering a WorkCard or the NextProject image, where the [view] label is the cursor." },
   {
     name: "Nav",
-    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). The bar has 24px padding above the name and 12px below it. The name links to the homepage. It is the site name, set in type-h3, one line, vertically centered in the bar. Below tablet 810 it shows the short name. Empty bar space lets clicks through to the page. Menu below tablet 810. The sheet and the links fade over 400ms, ease 0.45, 0, 0.55, 1, on open and on close, including when a link navigates. Reduced motion snaps. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page. The bar has no fill. Its text is paper with mix-blend-difference, so it turns dark on a light page and light on a dark page, including photos. That is the only place this blend is used. The open menu sheet below tablet is solid paper and sits behind the bar, so the same blend reads as ink text on that sheet. `path` overrides the route used for the active mark. The menu closes from the live route.",
+    note: "Fixed, full width, same side padding as the page shell (12px at 1200px and below, 24px above). The bar uses appear, rising 20px in 0.8s when it loads. The bar has 24px padding above the name and 12px below it. The name links to the homepage. It is the site name, set in type-h3-mono, one line, vertically centered in the bar. Below tablet 810 it shows the short name. Empty bar space lets clicks through to the page. Menu below tablet 810. The sheet and the links fade over 400ms, ease 0.45, 0, 0.55, 1, on open and on close, including when a link navigates. Reduced motion snaps. From tablet, the right half is 3 columns and 2 rows with 12px between columns and 2px between rows. Row one is works, about, and the time. Row two is playground and the place. Each row is one 1.3em line, so the clock shares the same lines as the links. The clock column lines up with the third meta column in ProjectHero. Works links to the homepage and shows the active mark there and on a project page. The bar has no fill. Its text is paper with mix-blend-difference, so it turns dark on a light page and light on a dark page, including photos. That is the only place this blend is used. The open menu sheet below tablet is solid paper and sits behind the bar, so the same blend reads as ink text on that sheet. `path` overrides the route used for the active mark. The menu closes from the live route.",
   },
   {
     name: "Footer",
-    note: "tone=\"paper\" (default) flips to ink near the bottom of the page, with a 1s color and wordmark-filter transition. tone=\"ink\" stays solid ink and paper text, wordmark inverted, with no scroll listener and no transition. footer-bleed paints edge-to-edge; vertical spacing comes from page-main gap-96 above the band and py-96 inside. Content uses page-inset + section-wrap. 96px gap between the link row and the wordmark. Wordmark is one line, BARB G., below tablet; SVG from tablet. Columns swap at desktop 1200.",
+    note: "tone=\"paper\" (default) flips to ink near the bottom of the page, with a 1s color and wordmark-filter transition. tone=\"ink\" stays solid ink and paper text, wordmark inverted, with no scroll listener and no transition. footer-bleed paints edge-to-edge; vertical spacing comes from page-main gap-96 above the band and py-96 inside. Content uses page-inset + section-wrap. 96px gap between the link row and the wordmark. Wordmark is an SVG that fills the content width on every breakpoint. Below tablet 810 it is the short wordmark; from tablet it is the full wordmark. Columns swap at desktop 1200.",
   },
   { name: "SmoothScroll", note: "Smooth scroll and in-view reveals. Same-page hash links scroll to that id, keeping its scroll-margin, including while a smooth scroll is already moving." },
 ];
@@ -537,6 +547,7 @@ export default function DesignSystemPage() {
             <div key={t.cls} className="flex flex-col gap-8">
               <p className={DOC_TITLE}>{t.cls}</p>
               <p className={DOC}>
+                {"font" in t ? `Font: ${t.font}, ` : ""}
                 {t.fontSize}, Weight: {t.fontWeight}, Spacing: {t.letterSpacing}, Line height: {t.lineHeight}
                 {t.textTransform === "none" ? "" : `, Transform: ${t.textTransform}`}
                 <span className={DOC_DIM}>. Used for: {t.use}</span>

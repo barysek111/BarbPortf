@@ -49,7 +49,7 @@ export const powermatch = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/powermatch/pmhero.png",
+    src: "/images/works/powermatch/barboragadlinova-powermatch-hero.png",
     alt: "Powermatch reconciliation overview",
     variant: "fill",
   },
@@ -130,7 +130,7 @@ export const powermatch = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/powermatch/powermatch-diagram.svg",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-features.svg",
               alt: "The four features that replaced the three-tool workflow",
               description: "The four features that replaced the three-tool workflow. Analytics, bulk actions and cross-company views were left for V2.",
             },
@@ -141,7 +141,7 @@ export const powermatch = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/powermatch/pmflow.svg",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-flow.svg",
               alt: "Invoice matching user flow",
               description: "Flow mapping the main common path to matching an invoice. The journey was designed to be possible to complete without leaving the invoices page.",
             },
@@ -168,17 +168,17 @@ export const powermatch = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/powermatch/details.svg",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-invoice-detail.svg",
               alt: "Invoice detail view",
             },
             {
               variant: "solid",
-              src: "/images/works/powermatch/activitynew.svg",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-activity-log.svg",
               alt: "Activity log",
             },
             {
               variant: "solid",
-              src: "/images/works/powermatch/activity.svg",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-states.svg",
               alt: "Reconciliation states",
             },
           ],
@@ -188,14 +188,14 @@ export const powermatch = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/powermatch/group-427323310.png",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-company-focus.png",
               alt: "Navigating to Invoice Reconciliation and company focus",
               description: "Navigating to Invoice Reconciliation & Company focus",
               color: "2F2F2F",
             },
             {
               variant: "solid",
-              src: "/images/works/powermatch/group-427323311.png",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-company-overview.png",
               alt: "Choose company and overview",
               description: "Choose company & overview",
               color: "2F2F2F",
@@ -207,14 +207,14 @@ export const powermatch = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/powermatch/group-427323312.png",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-invoice-match.png",
               alt: "Invoice details auto-matched and partially matched",
               description: "Invoice Details (Auto-matched & Partially Matched)",
               color: "2F2F2F",
             },
             {
               variant: "solid",
-              src: "/images/works/powermatch/group-427323313.png",
+              src: "/images/works/powermatch/barboragadlinova-powermatch-invoice-activity.png",
               alt: "Invoice page and activity log",
               description: "Invoice page & activity log",
               color: "2F2F2F",

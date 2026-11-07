@@ -32,7 +32,7 @@ export const about = {
   making: {
     label: "ALWAYS FIGURING THINGS OUT",
     text: "I often take projects from first discovery all the way through to launch. Still, what I enjoy most is turning an idea into something people can see and use. I am happiest somewhere between thinking and making, whether that means exploring a new concept, prototyping an interaction, or bringing order to a growing design system.",
-    image: "/images/about/photo-1.jpg",
+    image: "/images/about/barboragadlinova-about-portrait.jpg",
     imageAlt: "",
   },
 

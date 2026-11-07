@@ -89,8 +89,12 @@ export function Nav({ path }: { path?: string }) {
         present && "below-tablet:pointer-events-auto below-tablet:min-h-svh",
       )}
     >
-      <nav aria-label={global.nav.ariaLabel} className="page-inset relative overflow-clip pt-24 pb-12">
-        <div className="section-wrap w-full">
+      <nav
+        aria-label={global.nav.ariaLabel}
+        className="appear page-inset relative overflow-clip pt-24 pb-12"
+        data-appear="20"
+      >
+        <div className="section-wrap appear-body w-full">
           <div
             className={cn(
               "flex flex-col items-stretch",
@@ -108,7 +112,7 @@ export function Nav({ path }: { path?: string }) {
               href="/"
               aria-label={`${global.site.name} ${global.nav.homeLinkSuffix}`}
               onClick={closeMenu}
-              className="type-h3 pointer-events-auto relative z-10 self-center whitespace-nowrap"
+              className="type-h3-mono pointer-events-auto relative z-10 self-center whitespace-nowrap"
             >
               <span className="tablet:hidden">{global.nav.nameShort}</span>
               <span className="hidden tablet:inline">{global.site.name}</span>

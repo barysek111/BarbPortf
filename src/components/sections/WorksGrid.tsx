@@ -5,11 +5,14 @@ import Link from "next/link";
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { DitherOverlay } from "@/components/work/DitherOverlay";
 import { WorkCard } from "@/components/work/WorkCard";
 import { useViewCursor, ViewCursor } from "@/components/work/ViewCursor";
+import { WORK_THUMB_HOVER_GRAY, WORK_THUMB_HOVER_ZOOM } from "@/components/work/WorkThumbMedia";
 import { works } from "@/copy-database/works";
-import { projects, type Project } from "@/content/projects";
+import { formatYear, projects, type Project } from "@/content/projects";
 import { cn } from "@/lib/cn";
+import { ruledRowClass } from "@/lib/ruled-row";
 
 type Mode = "grid" | "list";
 
@@ -57,8 +60,18 @@ function WorksGridModeSwitch({ className }: { className?: string }) {
   );
 }
 
-const LIST_ROW =
-  "grid w-full grid-cols-1 items-stretch gap-24 border-t border-ink px-12 py-24 tablet:h-176 tablet:grid-cols-2 tablet:gap-12";
+function WorksListYearName({ project, stacked = false }: { project: Project; stacked?: boolean }) {
+  return (
+    <div className={cn("flex min-w-0 items-start gap-12", stacked ? "flex-col" : "flex-row")}>
+      <p className="type-label reveal-clip shrink-0 text-muted">
+        <span>{formatYear(project.year)}</span>
+      </p>
+      <p className="type-label reveal-clip min-w-0">
+        <span>{project.title}</span>
+      </p>
+    </div>
+  );
+}
 
 function WorksListRow({ project }: { project: Project }) {
   const { cursor, bind } = useViewCursor();
@@ -72,31 +85,42 @@ function WorksListRow({ project }: { project: Project }) {
         data-hide-site-cursor=""
         onMouseMove={bind.onMouseMove}
         onMouseLeave={bind.onMouseLeave}
-        className={cn(LIST_ROW, "cursor-none")}
+        className={cn(ruledRowClass, "appear group block w-full cursor-none")}
+        data-appear="20"
       >
-        <div className="grid h-auto min-h-0 min-w-0 grid-cols-2 gap-12 tablet:h-full tablet:grid-cols-3">
+        <div className="appear-body grid grid-cols-[128px_minmax(0,1fr)] items-start gap-12 tablet:grid-cols-2">
+        <div className="col-start-1 row-start-1 w-[128px] tablet:col-start-1 tablet:grid tablet:w-auto tablet:min-w-0 tablet:grid-cols-2 tablet:items-start tablet:gap-12">
+          <div className="hidden min-w-0 tablet:block">
+            <WorksListYearName project={project} />
+          </div>
           {image ? (
-            <div className="hidden min-h-0 min-w-0 tablet:block tablet:h-full">
+            <div className="relative w-[128px] overflow-hidden tablet:col-start-2 tablet:h-[128px] tablet:w-max tablet:max-w-full tablet:justify-self-start">
               <Image
                 src={image.src}
                 alt={works.listImageAlt}
                 width={image.w}
                 height={image.h}
-                sizes="176px"
-                className="block h-full w-full min-h-0 object-contain object-left-top"
+                sizes="128px"
+                className={cn(
+                  "block h-auto w-[128px] object-contain object-left-top",
+                  "tablet:h-full tablet:w-auto tablet:max-w-full",
+                  WORK_THUMB_HOVER_GRAY,
+                  WORK_THUMB_HOVER_ZOOM,
+                )}
               />
+              <DitherOverlay src={image.src} fit="contain" position="top" />
             </div>
           ) : null}
-          <p className="type-label reveal-clip min-w-0 desktop:pr-32">
-            <span>{project.title}</span>
-          </p>
-          <p className="type-label reveal-clip min-w-0">
-            <span>{project.year}</span>
+        </div>
+        <div className="col-start-2 row-start-1 flex min-w-0 flex-col gap-12 tablet:contents">
+          <div className="tablet:hidden">
+            <WorksListYearName project={project} stacked />
+          </div>
+          <p className="type-body min-w-0 max-w-[500px] tablet:col-start-2 tablet:row-start-1">
+            <span>{project.description}</span>
           </p>
         </div>
-        <p className="type-body min-w-0 max-w-[500px]">
-          <span>{project.description}</span>
-        </p>
+        </div>
       </Link>
       <ViewCursor cursor={cursor} />
     </>
@@ -109,8 +133,8 @@ function WorksGridProjectList() {
   if (mode === "grid") {
     return (
       <div className="works-grid items-start">
-        {projects.map((project, i) => (
-          <WorkCard key={project.slug} project={project} index={i} dither caption="above" />
+        {projects.map((project) => (
+          <WorkCard key={project.slug} project={project} dither caption="above" />
         ))}
       </div>
     );

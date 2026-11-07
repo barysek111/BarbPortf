@@ -51,7 +51,7 @@ export const eatgrim = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/eatgrim/grimhero.png",
+    src: "/images/works/eatgrim/barboragadlinova-eatgrim-hero.png",
     alt: "Eat Grim brand overview",
     variant: "fill",
   },
@@ -117,7 +117,7 @@ export const eatgrim = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/eatgrim/grimanalysis.svg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-market-analysis.svg",
               alt: "Competitive market analysis",
             },
           ],
@@ -143,17 +143,17 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/eatgrim-brandmanual-images1.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-logo.png",
               alt: "Eat Grim logotype",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/eatgrim-brandmanual-images2.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-logo-use.png",
               alt: "Eat Grim logotype use",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/eatgrim-brandmanual-images3.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-colours.png",
               alt: "Eat Grim colour system",
             },
           ],
@@ -163,17 +163,17 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/eatgrim-brandmanual-images4.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-type-hierarchy.png",
               alt: "Eat Grim typography hierarchy",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/eatgrim-brandmanual-images5.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-typeface-rubik.png",
               alt: "Eat Grim primary typeface Rubik",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/eatgrim-brandmanual-images6.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-typeface-roboto.png",
               alt: "Eat Grim body typeface Roboto",
             },
           ],
@@ -211,17 +211,17 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/packing-action123.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-packing-1.jpg",
               alt: "Packing photography",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/hero-with-hand-on-beige-2-copy.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-produce-hand.jpg",
               alt: "Produce in hand",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/packing-action124-1.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-packing-2.jpg",
               alt: "Packing photography",
             },
           ],
@@ -231,7 +231,7 @@ export const eatgrim = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/eatgrim/grimscreens1.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-website-1.png",
               alt: "Eat Grim website screens",
               color: "var(--color-ink)",
             },
@@ -242,7 +242,7 @@ export const eatgrim = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/eatgrim/grimscreenssss.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-website-2.png",
               alt: "Eat Grim website screens",
               color: "var(--color-ink)",
             },
@@ -269,17 +269,17 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/aubergine-on-yellow.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-aubergine.jpg",
               alt: "Aubergine on yellow",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/carrot-pepper-orange-on-blue-vertical-1.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-carrot-pepper.jpg",
               alt: "Carrot and pepper on blue",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/halloween-2020-51-1.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-halloween-1.jpg",
               alt: "Halloween campaign",
             },
           ],
@@ -289,17 +289,17 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/easter-2021-112-1.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-easter.jpg",
               alt: "Easter campaign",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/halloween-2020-63.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-halloween-2.jpg",
               alt: "Halloween campaign",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/merch-screenshot3.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-merch-1.jpg",
               alt: "Merchandise",
             },
           ],
@@ -309,17 +309,17 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/merch-screenshot4.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-merch-2.jpg",
               alt: "Merchandise",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/merch-screenshot5.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-merch-3.jpg",
               alt: "Merchandise",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/merch-screenshot7.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-merch-4.jpg",
               alt: "Merchandise",
             },
           ],
@@ -329,17 +329,17 @@ export const eatgrim = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/eatgrim/animation1.gif",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-merch-animation-1.gif",
               alt: "Merchandise animation",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/IMG_2884.jpg",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-merch-photo.jpg",
               alt: "Merchandise photograph",
             },
             {
               variant: "fill",
-              src: "/images/works/eatgrim/animation2.gif",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-merch-animation-2.gif",
               alt: "Merchandise animation",
             },
           ],
@@ -377,7 +377,7 @@ export const eatgrim = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/eatgrim/grimsome.png",
+              src: "/images/works/eatgrim/barboragadlinova-eatgrim-outcomes.png",
               alt: "Eat Grim outcomes",
               color: "var(--color-ink)",
             },

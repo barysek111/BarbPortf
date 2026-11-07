@@ -240,6 +240,20 @@
   }
 }
 
+/* Same size ramp as type-h3. Martian Mono, regular, for the nav name only. */
+@utility type-h3-mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-size: 23px;
+  line-height: 1.3em;
+
+  @media (width >= 810px) {
+    font-size: 36px;
+  }
+}
+
 /* Stat figures. Shares the jskmgv size ramp but overrides line-height, tracking
    and case, so it is its own level rather than a variant of type-h3.
    The tight 0.8em line box is what lets the figure roll on hover. */
@@ -444,16 +458,6 @@
   margin-inline: calc(50% - 50vw);
 }
 
-/* Footer wordmark below tablet: one line, scaled to span the content width. */
-@utility footer-wordmark-mobile {
-  container-type: inline-size;
-  display: flex;
-  width: 100%;
-  max-width: 100%;
-  flex-direction: column;
-  color: inherit;
-}
-
 @utility site-cursor {
   position: fixed;
   top: 0;
@@ -465,20 +469,6 @@
   z-index: var(--z-index-cursor);
   opacity: 0;
   will-change: transform;
-}
-
-@utility footer-wordmark-mobile-line {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: clip;
-  font-family: var(--font-display);
-  font-size: 27.3cqw;
-  font-weight: 500;
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 /* 8px square to the left of labels / links (12px offset). */
@@ -519,13 +509,20 @@
     transform: translateY(20px);
     transition: transform 0.8s ease;
   }
-  &[data-appear="30"] > span {
+  & > .appear-body {
+    transform: translateY(20px);
+    transition: transform 0.8s ease;
+  }
+  &[data-appear="30"] > span,
+  &[data-appear="30"] > .appear-body {
     transform: translateY(30px);
   }
-  &[data-appear="60"] > span {
+  &[data-appear="60"] > span,
+  &[data-appear="60"] > .appear-body {
     transform: translateY(60px);
   }
-  &.is-in > span {
+  &.is-in > span,
+  &.is-in > .appear-body {
     transform: translateY(0);
   }
   &.split-appear > span {

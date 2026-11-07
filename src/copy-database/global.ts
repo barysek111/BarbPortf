@@ -61,9 +61,6 @@ export const global = {
     enquiry: "for all enquiries please contact",
     resume: "view resume",
     linkedin: "linkedin",
-    /** Single line below tablet 810. The SVG wordmark shows from 810. */
-    wordmark: "BARB G.",
-    wordmarkAlt: "",
   },
 
   // =====================================================

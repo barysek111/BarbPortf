@@ -14,6 +14,15 @@ export function Footer({ tone = "paper" }: { tone?: "paper" | "ink" }) {
   const footerRef = useRef<HTMLElement>(null);
   const [ink, setInk] = useState(false);
   const solid = tone === "ink";
+  const wordmarkClass = cn(
+    "object-contain object-left",
+    solid
+      ? "invert"
+      : cn(
+          "transition-[filter] duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
+          ink && "invert",
+        ),
+  );
 
   const syncInk = useCallback(() => {
     if (solid) return;
@@ -73,25 +82,24 @@ export function Footer({ tone = "paper" }: { tone?: "paper" | "ink" }) {
             aria-label={`${global.site.name} ${global.nav.homeLinkSuffix}`}
             className="block w-full max-w-none"
           >
-            <span className="footer-wordmark-mobile tablet:hidden">
-              <span className="footer-wordmark-mobile-line">{global.footer.wordmark}</span>
-            </span>
-            <span className="relative hidden aspect-[1445/217] w-full tablet:block">
+            <span className="relative block aspect-[932/217] w-full tablet:hidden">
               <Image
-                src="/images/shared/wordmark.svg"
-                alt={global.footer.wordmarkAlt}
+                src="/images/shared/barboragadlinova-footer-wordmark-small.svg"
+                alt=""
                 aria-hidden
                 fill
                 sizes="100vw"
-                className={cn(
-                  "object-contain object-left",
-                  solid
-                    ? "invert"
-                    : cn(
-                        "transition-[filter] duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] motion-reduce:transition-none",
-                        ink && "invert",
-                      ),
-                )}
+                className={wordmarkClass}
+              />
+            </span>
+            <span className="relative hidden aspect-[1445/217] w-full tablet:block">
+              <Image
+                src="/images/shared/barboragadlinova-footer-wordmark.svg"
+                alt=""
+                aria-hidden
+                fill
+                sizes="100vw"
+                className={wordmarkClass}
               />
             </span>
           </Link>

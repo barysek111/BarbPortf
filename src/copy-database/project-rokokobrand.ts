@@ -49,7 +49,7 @@ export const rokokoBrand = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/rokokobrand/herororkoko.png",
+    src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-hero.png",
     alt: "Rokoko brand overview",
     variant: "fill",
   },
@@ -115,17 +115,17 @@ export const rokokoBrand = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/logo-placement-example1.svg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-logo-placement-1.svg",
               alt: "Logo placement",
             },
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/logo-placement-example2.svg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-logo-placement-2.svg",
               alt: "Logo placement",
             },
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/logo-placement-example2-1.svg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-logo-placement-3.svg",
               alt: "Logo placement",
             },
           ],
@@ -169,7 +169,7 @@ export const rokokoBrand = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokobrand/principles-slides-1.png",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-deck-1.png",
               alt: "Deck template",
               color: "var(--color-ink)",
             },
@@ -180,7 +180,7 @@ export const rokokoBrand = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokobrand/principles-slides-2.png",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-deck-2.png",
               alt: "Deck template",
               color: "var(--color-ink)",
             },
@@ -191,12 +191,12 @@ export const rokokoBrand = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/principles-some-1.jpg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-social-1.jpg",
               alt: "Social media branding",
             },
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/principles-some-2.jpg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-social-2.jpg",
               alt: "Social media branding",
             },
           ],
@@ -206,13 +206,13 @@ export const rokokoBrand = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokobrand/principles-jobads.svg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-job-listings.svg",
               alt: "Job listings",
               color: "var(--color-ink)",
             },
             {
               variant: "solid",
-              src: "/images/works/rokokobrand/principles-postss.png",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-social-posts.png",
               alt: "Social posts",
               color: "var(--color-ink)",
             },
@@ -223,7 +223,7 @@ export const rokokoBrand = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokobrand/principles-emails.png",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-emails.png",
               alt: "Email communication",
               color: "var(--color-ink)",
             },
@@ -234,17 +234,17 @@ export const rokokoBrand = {
           frames: [
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/Headrig_20-copy.jpg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-headrig-1.jpg",
               alt: "Headrig packaging",
             },
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/Headrig_21-copy.jpg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-headrig-2.jpg",
               alt: "Headrig packaging",
             },
             {
               variant: "fill",
-              src: "/images/works/rokokobrand/Headrig_23-copy.jpg",
+              src: "/images/works/rokokobrand/barboragadlinova-rokokobrand-headrig-3.jpg",
               alt: "Headrig packaging",
             },
           ],

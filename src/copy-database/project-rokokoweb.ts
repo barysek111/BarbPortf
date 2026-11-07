@@ -49,10 +49,10 @@ export const rokokoWeb = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/rokokoweb/webrokokohero.png",
+    src: "/images/works/rokokoweb/barboragadlinova-rokokoweb-hero.png",
     alt: "Rokoko website overview",
     variant: "background",
-    backgroundSrc: "/images/works/rokokoweb/fillllbckgr.png",
+    backgroundSrc: "/images/works/rokokoweb/barboragadlinova-rokokoweb-hero-background.png",
   },
 
   // =====================================================
@@ -99,7 +99,7 @@ export const rokokoWeb = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/competitors.svg",
+              src: "/images/works/rokokoweb/barboragadlinova-rokokoweb-competitors.svg",
               alt: "Competitor benchmarking chart",
             },
           ],
@@ -131,7 +131,7 @@ export const rokokoWeb = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/rokokositemap.svg",
+              src: "/images/works/rokokoweb/barboragadlinova-rokokoweb-sitemap.svg",
               alt: "Rokoko sitemap",
               description: "Sitemap for marketing website",
             },
@@ -142,7 +142,7 @@ export const rokokoWeb = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/comp.svg",
+              src: "/images/works/rokokoweb/barboragadlinova-rokokoweb-components.svg",
               alt: "Rokoko website components",
               description: "Overview of components needed for modular website section system",
             },
@@ -181,27 +181,12 @@ export const rokokoWeb = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/screens/1.png",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-1.png",
               alt: "Rokoko website",
             },
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/screens/2.png",
-              alt: "Rokoko website",
-            },
-          ],
-        },
-        {
-          columns: 2,
-          frames: [
-            {
-              variant: "solid",
-              src: "/images/works/rokokoweb/screens/3.png",
-              alt: "Rokoko website",
-            },
-            {
-              variant: "solid",
-              src: "/images/works/rokokoweb/screens/4.png",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-2.png",
               alt: "Rokoko website",
             },
           ],
@@ -211,12 +196,27 @@ export const rokokoWeb = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/screens/5.png",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-3.png",
               alt: "Rokoko website",
             },
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/screens/6.png",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-4.png",
+              alt: "Rokoko website",
+            },
+          ],
+        },
+        {
+          columns: 2,
+          frames: [
+            {
+              variant: "solid",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-5.png",
+              alt: "Rokoko website",
+            },
+            {
+              variant: "solid",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-6.png",
               alt: "Rokoko website",
             },
           ],
@@ -226,8 +226,8 @@ export const rokokoWeb = {
           frames: [
             {
               variant: "background",
-              src: "/images/works/rokokoweb/screens/mobile.png",
-              backgroundSrc: "/images/works/rokokoweb/fillllbckgr.png",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-mobile.png",
+              backgroundSrc: "/images/works/rokokoweb/barboragadlinova-rokokoweb-hero-background.png",
               alt: "Rokoko website on mobile",
             },
           ],
@@ -237,12 +237,12 @@ export const rokokoWeb = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/screens/7.png",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-7.png",
               alt: "Rokoko website",
             },
             {
               variant: "solid",
-              src: "/images/works/rokokoweb/screens/8.png",
+              src: "/images/works/rokokoweb/screens/barboragadlinova-rokokoweb-screen-8.png",
               alt: "Rokoko website",
             },
           ],

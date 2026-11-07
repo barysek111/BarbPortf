@@ -44,9 +44,8 @@ export const projects: Project[] = works.projects.map((entry) => ({
   listImage: listThumb(entry),
 }));
 
-export function formatIndex(index: number) {
-  const digits = String(index + 1).padStart(2, "0");
-  return `${global.brackets.open}${digits}${global.brackets.close}`;
+export function formatYear(year: string) {
+  return `${global.brackets.open}${year}${global.brackets.close}`;
 }
 
 export function getProject(slug: string) {

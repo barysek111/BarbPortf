@@ -47,10 +47,10 @@ export const libraryDrift = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/librarydrifther.png",
+    src: "/images/works/barboragadlinova-library-drift-hero.png",
     alt: "Library Drift Figma plugin",
     variant: "background",
-    backgroundSrc: "/images/works/herobackgrunddd.png",
+    backgroundSrc: "/images/works/barboragadlinova-library-drift-hero-background.png",
   },
 
   // =====================================================
@@ -108,7 +108,7 @@ export const libraryDrift = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/library-drift/libdrift-diagram.svg",
+              src: "/images/works/library-drift/barboragadlinova-library-drift-how-it-works.svg",
               alt: "Three steps: scan the file, compare instances to the library, and summarize issues.",
               maxHeight: 400,
             },
@@ -119,13 +119,13 @@ export const libraryDrift = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/library-drift/group-10.svg",
+              src: "/images/works/library-drift/barboragadlinova-library-drift-scan-results-1.svg",
               alt: "Library Drift scan results",
               color: "var(--color-ink)",
             },
             {
               variant: "solid",
-              src: "/images/works/library-drift/group-11.svg",
+              src: "/images/works/library-drift/barboragadlinova-library-drift-scan-results-2.svg",
               alt: "Library Drift scan results",
               color: "var(--color-ink)",
             },
@@ -136,13 +136,13 @@ export const libraryDrift = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/library-drift/1111.svg",
+              src: "/images/works/library-drift/barboragadlinova-library-drift-scan-results-3.svg",
               alt: "Library Drift scan results",
               color: "var(--color-ink)",
             },
             {
               variant: "solid",
-              src: "/images/works/library-drift/2222.svg",
+              src: "/images/works/library-drift/barboragadlinova-library-drift-scan-results-4.svg",
               alt: "Library Drift scan results",
               color: "var(--color-ink)",
             },

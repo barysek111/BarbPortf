@@ -52,7 +52,7 @@ export const cococare = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/cococare/cococarenewhero.svg",
+    src: "/images/works/cococare/barboragadlinova-cococare-hero.svg",
     alt: "Coco Care product overview",
     variant: "solid",
     color: "FFBC9B",
@@ -107,17 +107,17 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/persona-jonas.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-persona-jonas.svg",
               alt: "Persona, Jonas",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/persona-alice.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-persona-alice.svg",
               alt: "Persona, Alice",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/project-goals.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-goals.svg",
               alt: "Coco Care project goals",
             },
           ],
@@ -187,13 +187,13 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/cococare-onboardingflow.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-onboarding-flow.svg",
               alt: "Coco Care onboarding flow",
               description: "Onboarding flow",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/cococare-exerciseflow.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-exercise-flow.svg",
               alt: "Coco Care exercise flow",
               description: "Training flow",
             },
@@ -204,13 +204,13 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/cococare-sitemap-admin.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-sitemap-admin.svg",
               alt: "Coco Care admin sitemap",
               description: "Information architecture map - Admin view",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/cococare-sitemap-fysio.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-sitemap-physio.svg",
               alt: "Coco Care physiotherapist sitemap",
               description: "Information architecture map - Physiotherapist view",
             },
@@ -243,19 +243,19 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/design-r-fe.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-ui-sample-1.png",
               alt: "Coco Care design screen",
               color: "EFEAE1",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/design-r-frame-6187.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-ui-sample-2.svg",
               alt: "Coco Care design screen",
               color: "2A2A2A",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/design-r-frame-427321985.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-ui-sample-3.svg",
               alt: "Coco Care design screen",
               color: "FFBC9B",
             },
@@ -266,13 +266,13 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/portal-patient-overview-table.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-patient-overview.svg",
               alt: "Coco Care portal patient overview",
               description: "Portal patient overview table",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/app-home-dashboard.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-app-home.svg",
               alt: "Coco Care app home dashboard",
               description: "App home dashboard",
             },
@@ -283,13 +283,13 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/design-portal-1.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-pre-training.png",
               alt: "Coco Care pre-training flow",
               description: "PRE-TRAINING FLOW",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/design-portal-2.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-training.png",
               alt: "Coco Care training flow",
               description: "TRAINING FLOW",
             },
@@ -300,13 +300,13 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/design-portal-3.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-post-training.png",
               alt: "Coco Care post-training flow",
               description: "POST-TRAINING FLOW AND PROFILE",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/design-portal-4.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-utility-pages.png",
               alt: "Coco Care utility pages",
               description: "SELECTION OF UTILITY PAGES",
             },
@@ -317,13 +317,13 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/design-patient.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-patient.png",
               alt: "Coco Care patient page",
               description: "Overview of compliance, SMART goal, pain development, activity history",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/design-portal-program-builder.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-program-builder.png",
               alt: "Coco Care program builder",
               description: "Create a program for a patient in the drag-and-drop editor",
             },
@@ -334,13 +334,13 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/design-portal-active-program.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-active-program.png",
               alt: "Coco Care active program",
               description: "Frequency, Note, current exercises",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/design-portal-smart-score.png",
+              src: "/images/works/cococare/barboragadlinova-cococare-goals-screen.png",
               alt: "Coco Care goals",
               description: "patient's progress, history and setting a new goal",
             },
@@ -373,17 +373,17 @@ export const cococare = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/cococare/testing-edit-6197.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-testing-1.svg",
               alt: "Coco Care testing revision",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/testing-edit-6198.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-testing-2.svg",
               alt: "Coco Care testing revision",
             },
             {
               variant: "solid",
-              src: "/images/works/cococare/testing-edit-6199.svg",
+              src: "/images/works/cococare/barboragadlinova-cococare-testing-3.svg",
               alt: "Coco Care testing revision",
             },
           ],

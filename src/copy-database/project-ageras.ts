@@ -121,7 +121,7 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/sitemap-dk.svg",
+              src: "/images/works/ageras/barboragadlinova-ageras-sitemap.svg",
               alt: "Sitemap DK",
               description: "Sitemap DK",
             },
@@ -132,13 +132,13 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/login-signup-flow.png",
+              src: "/images/works/ageras/barboragadlinova-ageras-login-flow.png",
               alt: "Login and signup flow",
               description: "login & signup flow",
             },
             {
               variant: "solid",
-              src: "/images/works/ageras/regions-and-services-overview.svg",
+              src: "/images/works/ageras/barboragadlinova-ageras-regions.svg",
               alt: "Regions and services overview",
               description: "Regions and services overview",
             },
@@ -183,7 +183,7 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/diagram-ageras.svg",
+              src: "/images/works/ageras/barboragadlinova-ageras-design-system.svg",
               alt: "Ageras design system",
             },
           ],
@@ -193,13 +193,13 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/layout-settings.png",
+              src: "/images/works/ageras/barboragadlinova-ageras-layout-settings.png",
               alt: "Global layout settings for responsiveness and rhythm",
               description: "Global layout settings for responsiveness and rhythm",
             },
             {
               variant: "solid",
-              src: "/images/works/ageras/base-components.svg",
+              src: "/images/works/ageras/barboragadlinova-ageras-base-components.svg",
               alt: "Base components",
               description: "Base components",
             },
@@ -210,8 +210,8 @@ export const ageras = {
           frames: [
             {
               variant: "background",
-              src: "/images/works/ageras/icon-pack.svg",
-              backgroundSrc: "/images/works/ageras/icons-background.png",
+              src: "/images/works/ageras/barboragadlinova-ageras-icon-pack.svg",
+              backgroundSrc: "/images/works/ageras/barboragadlinova-ageras-icon-background.png",
               alt: "Custom brand icon pack",
               description: "Custom brand icon pack",
             },
@@ -222,7 +222,7 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/newagerasimgs.png",
+              src: "/images/works/ageras/barboragadlinova-ageras-content-library.png",
               alt: "Website content library",
               description: "Website content library",
               color: "007751",
@@ -234,13 +234,13 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/component-docs-cards.png",
+              src: "/images/works/ageras/barboragadlinova-ageras-docs-cards.png",
               alt: "Documentation and specs",
               description: "Documentation and specs",
             },
             {
               variant: "solid",
-              src: "/images/works/ageras/component-docs-sections.png",
+              src: "/images/works/ageras/barboragadlinova-ageras-docs-sections.png",
               alt: "Documentation and specs",
               description: "Documentation and specs",
             },
@@ -273,7 +273,7 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/newwscreens.png",
+              src: "/images/works/ageras/barboragadlinova-ageras-page-screens.png",
               alt: "Page screens",
             },
           ],
@@ -283,7 +283,7 @@ export const ageras = {
           frames: [
             {
               variant: "solid",
-              src: "/images/works/ageras/pricing.svg",
+              src: "/images/works/ageras/barboragadlinova-ageras-pricing.svg",
               alt: "Pricing page",
               color: "002E33",
             },
@@ -315,9 +315,9 @@ export const ageras = {
   // HERO IMAGE
   // =====================================================
   heroImage: {
-    src: "/images/works/ageras/ageras-hero.png",
+    src: "/images/works/ageras/barboragadlinova-ageras-hero.png",
     alt: "Ageras quote screen, expense chart, and logo",
     variant: "background",
-    backgroundSrc: "/images/works/ageras/ageras-hero-background.png",
+    backgroundSrc: "/images/works/ageras/barboragadlinova-ageras-hero-background.png",
   },
 } satisfies CaseStudy;
