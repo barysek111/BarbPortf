@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { global } from "@/copy-database/global";
 import { cn } from "@/lib/cn";
 
@@ -22,7 +22,7 @@ export type ImageFrameProps = {
   columns?: 1 | 2 | 3;
   /** Responsive width hint for the optimizer. Image rows set this from the column count. */
   sizes?: string;
-  /** Set by ImageRow when the row uses a shared caption track (tablet, multi-column). */
+  /** Set by ImageRow when a 2- or 3-column row shares one frame-height track and one caption track. */
   captionedRow?: boolean;
   /** Caps the contained image in solid and background frames, in px. Omitted frames use the column max. */
   maxHeight?: number;
@@ -72,18 +72,26 @@ function ContainedImage({
   maxHeight?: number;
 }) {
   const [portrait, setPortrait] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  function syncOrientation(img: HTMLImageElement) {
+    if (img.naturalWidth > 0) setPortrait(img.naturalHeight > img.naturalWidth);
+  }
+
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img) syncOrientation(img);
+  }, [src]);
 
   return (
     // Native img so the frame hugs the real aspect ratio. A square width/height
     // on next/image letterboxed wide pictures and the empty band read as row gap.
     <img
+      ref={imgRef}
       src={src}
       alt={alt}
-      onLoad={(e) => {
-        const img = e.currentTarget;
-        setPortrait(img.naturalHeight > img.naturalWidth);
-      }}
-      className={cn("block h-auto max-w-full object-contain object-top", maxClass, portrait ? "w-auto" : "w-full")}
+      onLoad={(e) => syncOrientation(e.currentTarget)}
+      className={cn("block h-auto max-w-full object-contain object-center", maxClass, portrait ? "w-auto" : "w-full")}
       style={maxHeight ? { maxHeight } : undefined}
     />
   );
@@ -118,10 +126,7 @@ export function ImageFrame({
 }: ImageFrameProps) {
   const pad = ROW_PAD[columns];
   const imageMax = IMAGE_MAX[columns];
-  const mediaWrap = cn(
-    "grid min-h-0 min-w-0 w-full grid-cols-1",
-    columns === 1 ? "content-start justify-items-center" : "place-content-center",
-  );
+  const mediaWrap = "grid h-full min-h-0 min-w-0 w-full grid-cols-1 place-items-center";
   const frame =
     variant === "fill" ? (
       <div className={FRAME} data-name="Image Frame — fill">
@@ -157,30 +162,28 @@ export function ImageFrame({
     );
 
   const frameSlot = (
-    <div className={cn(captionedRow && "tablet:row-start-1 tablet:h-full tablet:min-h-0")}>
+    <div className={cn(captionedRow && "row-start-1 h-full min-h-0")}>
       {frame}
     </div>
   );
 
   if (!description) {
     if (!captionedRow) return frame;
-    return (
-      <div className="tablet:row-span-2 tablet:grid tablet:grid-rows-subgrid">{frameSlot}</div>
-    );
+    return <div className="row-span-2 grid grid-rows-subgrid gap-y-0">{frameSlot}</div>;
   }
 
   return (
     <div
       className={cn(
-        "grid w-full grid-cols-1 gap-y-8",
-        captionedRow && "tablet:row-span-2 tablet:grid-rows-subgrid tablet:gap-y-0",
+        "grid w-full grid-cols-1",
+        captionedRow ? "row-span-2 grid-rows-subgrid gap-y-0" : "gap-y-8",
       )}
     >
       {frameSlot}
       <p
         className={cn(
           "type-label text-muted",
-          captionedRow && "tablet:row-start-2 tablet:mt-8 tablet:self-start",
+          captionedRow && "row-start-2 mt-8 self-start",
         )}
       >
         {description}

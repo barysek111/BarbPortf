@@ -31,7 +31,7 @@ export function ImageRow({
         className={cn(
           "grid min-w-0 items-stretch gap-12 [&>*]:min-w-0",
           columnClass[columns],
-          captionedRow && "tablet:grid-rows-[auto_auto]",
+          captionedRow && "grid-rows-[auto_auto]",
         )}
       >
         {frames.map((frame, index) => (
